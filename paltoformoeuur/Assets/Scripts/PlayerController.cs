@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 2;
     [SerializeField] private float jumpHeight = 50;
 
+
+
     private Rigidbody2D playerRigidbody;
 
     private float sprintSpeed = 1;
@@ -51,10 +53,17 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.AddForce(new Vector2(0,jumpHeight));
         }
+
+        if (context.canceled)
+        {
+            if (playerRigidbody.linearVelocityY > 0)
+            {
+                playerRigidbody.linearVelocityY = 0;
+            }
+        }
     }
     private bool CheckIfGrounded()
     {
-        Ray ray = new Ray();
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,1,LayerMask.GetMask("Ground"));
         if (hit)
         {
@@ -62,6 +71,8 @@ public class PlayerController : MonoBehaviour
         }
             return false;
     }
+
+
     
 
 

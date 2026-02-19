@@ -289,9 +289,25 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 206886725}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSpawnHand
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e70c9a59-389a-417f-9c88-e7954d855b54
+    m_ActionName: 'Player/SpawnHand[/Keyboard/j]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &206886725
@@ -309,6 +325,9 @@ MonoBehaviour:
   speed: 6
   sprintSpeedMultiplier: 2
   jumpHeight: 500
+  jumpRaycastSize: 1
+  handPrefab: {fileID: 6945894226895364931, guid: 603d9c422db60bf498633d9c174e2dac, type: 3}
+  playerInput: {fileID: 0}
 --- !u!212 &206886726
 SpriteRenderer:
   serializedVersion: 2

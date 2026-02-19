@@ -2,35 +2,30 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class HandController : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private float sprintSpeedMultiplier = 2;
     [SerializeField] private float jumpHeight = 50;
     [SerializeField] private float jumpRaycastSize = 1;
-
-    [SerializeField] private GameObject handPrefab;
-
-
-    private Rigidbody2D playerRigidbody;
-    public PlayerInput playerInput;
-
+    
     private float sprintSpeed = 1;
     private Vector2 moveInput;
 
+    private Rigidbody2D handRigidbody;
     
+    public PlayerController player;
+
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerRigidbody = GetComponent<Rigidbody2D>();
+        handRigidbody = GetComponent<Rigidbody2D>();
     }
-    
+
     private void FixedUpdate()
     {
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }
-    
-    
+
     
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -53,14 +48,14 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed && CheckIfGrounded())
         {
-            playerRigidbody.AddForce(new Vector2(0,jumpHeight));
+            handRigidbody.AddForce(new Vector2(0,jumpHeight));
         }
 
         if (context.canceled)
         {
-            if (playerRigidbody.linearVelocityY > 0)
+            if (handRigidbody.linearVelocityY > 0)
             {
-                playerRigidbody.linearVelocityY = 0;
+                handRigidbody.linearVelocityY = 0;
             }
         }
     }
@@ -71,30 +66,21 @@ public class PlayerController : MonoBehaviour
         {
             return true;
         }
-            return false;
+        return false;
     }
 
-    public void OnSpawnHand(InputAction.CallbackContext context)
+    private void DespawnHand()
     {
-        if(context.performed)
-        {
-            SpawnHand();
-        }
-    }
-
-
-    private void SpawnHand()
-    {
-        GameObject hand = Instantiate(handPrefab, transform.position, Quaternion.identity);
-        HandController script = hand.GetComponent<HandController>();
-        script.player = this;
-        
-        playerRigidbody.linearVelocity = Vector2.zero;
-        moveInput = Vector2.zero;
-        
-        playerInput.enabled = false;
+        player.playerInput.enabled = true;
+        Destroy(gameObject);
     }
     
-
-
+    public void OnSpawnHand(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            DespawnHand();
+        }
+    }
+    
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,7 +24,6 @@ public class HandController : MonoBehaviour
     {
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }
-
     
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -62,11 +60,7 @@ public class HandController : MonoBehaviour
     private bool CheckIfGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * jumpRaycastSize,1,LayerMask.GetMask("Ground"));
-        if (hit)
-        {
-            return true;
-        }
-        return false;
+        return hit;
     }
 
     private void DespawnHand()

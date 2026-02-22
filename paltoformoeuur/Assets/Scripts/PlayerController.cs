@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 2;
     [SerializeField] private float jumpHeight = 50;
     [SerializeField] private float jumpRaycastSize = 1;
+    [SerializeField] private float jumpStopDelay = 0.2f;
 
     [SerializeField] private GameObject handPrefab;
 
@@ -30,8 +31,6 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }
     
-    
-    
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -53,25 +52,19 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed && CheckIfGrounded())
         {
+            StopAllCoroutines();
             playerRigidbody.AddForce(new Vector2(0,jumpHeight));
         }
 
         if (context.canceled)
         {
-            if (playerRigidbody.linearVelocityY > 0)
-            {
-                playerRigidbody.linearVelocityY = 0;
-            }
+            StartCoroutine(StopJump());
         }
     }
     private bool CheckIfGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * jumpRaycastSize,1,LayerMask.GetMask("Ground"));
-        if (hit)
-        {
-            return true;
-        }
-            return false;
+        return hit;
     }
 
     public void OnSpawnHand(InputAction.CallbackContext context)
@@ -94,7 +87,14 @@ public class PlayerController : MonoBehaviour
         
         playerInput.enabled = false;
     }
-    
 
+    IEnumerator StopJump()
+    {
+        yield return new WaitForSeconds(jumpStopDelay);
+        if (playerRigidbody.linearVelocityY > 0)
+        {
+            playerRigidbody.linearVelocityY = 0;
+        }
+    }
 
 }

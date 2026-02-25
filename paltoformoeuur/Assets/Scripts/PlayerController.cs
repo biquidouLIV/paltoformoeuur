@@ -8,11 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 2;
     [SerializeField] private float jumpHeight = 50;
     [SerializeField] private float jumpRaycastSize = 1;
-    [SerializeField] private float jumpStopDelay = 0.2f;
 
     [SerializeField] private Vector2 rotationInput;
     [SerializeField] private Vector2 rotation;
-    [SerializeField] private bool appuiEnCours = false;
     
     [SerializeField] private GameObject handPrefab;
 
@@ -23,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     
     private GameObject aim;
+    private bool isAiming;
     
     private void Start()
     {
@@ -38,23 +37,35 @@ public class PlayerController : MonoBehaviour
         {
             float angle = Mathf.Atan(rotation.y / rotation.x);
 
-            Vector3 rot = new(0f, 0f, 0f);
+            Vector2 rot = new(0f, 0f);
             
             if (rotation.x > 0)
             {
-                rot = new (0f, 0f, angle * 180 / Mathf.PI + 270);
+                rot = new (0f, angle * 180 / Mathf.PI + 270);
             }
             else
             {
-                rot = new (0f, 0f, angle * 180 / Mathf.PI + 90);
+                rot = new (0f, angle * 180 / Mathf.PI + 90);
             }
-            aim.transform.rotation = Quaternion.Euler(rot);
         }
     }
     
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        if (isAiming)
+        {
+            rotationInput = context.ReadValue<Vector2>();
+            if (rotationInput.x + rotationInput.y > 0.1 || rotationInput.x + rotationInput.y < -0.1)
+            {
+                rotation = rotationInput.normalized;
+            }
+            moveInput = Vector2.zero;
+        }
+        else
+        {
+            rotation = Vector2.zero;
+            moveInput = context.ReadValue<Vector2>();
+        }
     }
     
     public void OnSprint(InputAction.CallbackContext context)
@@ -98,8 +109,7 @@ public class PlayerController : MonoBehaviour
             SpawnHand();
         }
     }
-
-
+    
     private void SpawnHand()
     {
         GameObject hand = Instantiate(handPrefab, transform.position, Quaternion.identity);
@@ -112,30 +122,19 @@ public class PlayerController : MonoBehaviour
 
         gameObject.layer = 0;
         playerInput.enabled = false;
+        hand.GetComponent<Rigidbody2D>().AddForce(new (rotation.x * 500, rotation.y * 500));
     }
     
-    public void OnAim(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context)
     {
-        rotationInput = context.ReadValue<Vector2>();
-        if (rotationInput.x + rotationInput.y > 0.1 || rotationInput.x + rotationInput.y < -0.1)
+        if (context.started)
         {
-            rotation = rotationInput.normalized;
+            isAiming = true;
         }
-    }
-    
-    public void OnThrow(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
+        else if (context.canceled && isAiming)
         {
-            appuiEnCours = true;
-        }
-        else if (ctx.canceled)
-        {
-            if (appuiEnCours)
-            {
-                playerRigidbody.AddForce(new (rotation.x * 500, rotation.y * 500));
-            }
-            appuiEnCours = false;
+            isAiming = false;
+            SpawnHand();
         }
     }
     

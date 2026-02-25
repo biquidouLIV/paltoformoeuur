@@ -327,6 +327,9 @@ MonoBehaviour:
   jumpHeight: 500
   jumpRaycastSize: 1
   jumpStopDelay: 0.2
+  rotationInput: {x: 0, y: 0}
+  rotation: {x: 0, y: 0}
+  appuiEnCours: 0
   handPrefab: {fileID: 6945894226895364931, guid: 603d9c422db60bf498633d9c174e2dac, type: 3}
   playerRigidbody: {fileID: 0}
   playerInput: {fileID: 0}
@@ -503,7 +506,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253203075}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         playerInput.enabled = false;
     }
     
-    public void OnLook(InputAction.CallbackContext context)
+    public void OnAim(InputAction.CallbackContext context)
     {
         rotationInput = context.ReadValue<Vector2>();
         if (rotationInput.x + rotationInput.y > 0.1 || rotationInput.x + rotationInput.y < -0.1)

@@ -10,15 +10,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpRaycastSize = 1;
     [SerializeField] private float jumpStopDelay = 0.2f;
 
+    [SerializeField] private Vector2 rotationInput;
+    [SerializeField] private Vector2 rotation;
+    [SerializeField] private bool appuiEnCours = false;
+    
     [SerializeField] private GameObject handPrefab;
-
 
     public Rigidbody2D playerRigidbody;
     public PlayerInput playerInput;
 
     private float sprintSpeed = 1;
     private Vector2 moveInput;
-
+    
+    private GameObject aim;
     
     private void Start()
     {
@@ -29,6 +33,23 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
+        
+        if (rotation.x != 0)
+        {
+            float angle = Mathf.Atan(rotation.y / rotation.x);
+
+            Vector3 rot = new(0f, 0f, 0f);
+            
+            if (rotation.x > 0)
+            {
+                rot = new (0f, 0f, angle * 180 / Mathf.PI + 270);
+            }
+            else
+            {
+                rot = new (0f, 0f, angle * 180 / Mathf.PI + 90);
+            }
+            aim.transform.rotation = Quaternion.Euler(rot);
+        }
     }
     
     public void OnMove(InputAction.CallbackContext context)
@@ -91,6 +112,31 @@ public class PlayerController : MonoBehaviour
 
         gameObject.layer = 0;
         playerInput.enabled = false;
+    }
+    
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        rotationInput = context.ReadValue<Vector2>();
+        if (rotationInput.x + rotationInput.y > 0.1 || rotationInput.x + rotationInput.y < -0.1)
+        {
+            rotation = rotationInput.normalized;
+        }
+    }
+    
+    public void OnThrow(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            appuiEnCours = true;
+        }
+        else if (ctx.canceled)
+        {
+            if (appuiEnCours)
+            {
+                playerRigidbody.AddForce(new (rotation.x * 500, rotation.y * 500));
+            }
+            appuiEnCours = false;
+        }
     }
     
 }

@@ -42,6 +42,7 @@ public class HandController : MonoBehaviour
             sprintSpeed = 1;
         }
     }
+    
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && CheckIfGrounded())

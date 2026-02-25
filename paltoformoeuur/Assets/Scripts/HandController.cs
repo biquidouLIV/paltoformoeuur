@@ -8,6 +8,7 @@ public class HandController : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 2;
     [SerializeField] private float dashLength = 50;
     [SerializeField] private float dashCooldown = 3.0f;
+    [SerializeField] private float dashStopDelay = 0.3f;
     [SerializeField] private float jumpRaycastSize = 1;
 
     private bool canDash = true;
@@ -37,10 +38,11 @@ public class HandController : MonoBehaviour
         {
             direction = 1;
         }
-        else
+        else if(moveInput.x < 0)
         {
             direction = -1;
         }
+
         Debug.Log(direction);
     }
     
@@ -66,6 +68,7 @@ public class HandController : MonoBehaviour
             handRigidbody.AddForce(new Vector2(dashLength*direction,0));
             canDash = false;
             StartCoroutine(DashCooldown());
+            StartCoroutine(DashStop());
         }
         
     }
@@ -75,6 +78,12 @@ public class HandController : MonoBehaviour
         canDash = true;
     }
 
+    private IEnumerator DashStop()
+    {
+        yield return new WaitForSeconds(dashStopDelay);
+        handRigidbody.linearVelocityX /= 2;
+    }
+    
     
     private void DespawnHand()
     {

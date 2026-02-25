@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,7 +24,6 @@ public class HandController : MonoBehaviour
     {
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }
-
     
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -48,30 +46,28 @@ public class HandController : MonoBehaviour
     {
         if (context.performed && CheckIfGrounded())
         {
-            handRigidbody.AddForce(new Vector2(0,jumpHeight));
+            handRigidbody.AddForce(new Vector2(jumpHeight,0));
         }
 
         if (context.canceled)
         {
-            if (handRigidbody.linearVelocityY > 0)
+            if (handRigidbody.linearVelocityX > 0)
             {
-                handRigidbody.linearVelocityY = 0;
+                handRigidbody.linearVelocityX /= 2;
             }
         }
     }
     private bool CheckIfGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * jumpRaycastSize,1,LayerMask.GetMask("Ground"));
-        if (hit)
-        {
-            return true;
-        }
-        return false;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
+        return hit;
     }
 
     private void DespawnHand()
     {
         player.playerInput.enabled = true;
+        player.gameObject.layer = 6;
+        player.playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         Destroy(gameObject);
     }
     

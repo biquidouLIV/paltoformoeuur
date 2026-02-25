@@ -46,14 +46,14 @@ public class HandController : MonoBehaviour
     {
         if (context.performed && CheckIfGrounded())
         {
-            handRigidbody.AddForce(new Vector2(0,jumpHeight));
+            handRigidbody.AddForce(new Vector2(jumpHeight,0));
         }
 
         if (context.canceled)
         {
-            if (handRigidbody.linearVelocityY > 0)
+            if (handRigidbody.linearVelocityX > 0)
             {
-                handRigidbody.linearVelocityY /= 2;
+                handRigidbody.linearVelocityX /= 2;
             }
         }
     }

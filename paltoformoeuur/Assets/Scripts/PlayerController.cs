@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject handPrefab;
 
 
-    private Rigidbody2D playerRigidbody;
+    public Rigidbody2D playerRigidbody;
     public PlayerInput playerInput;
 
     private float sprintSpeed = 1;
@@ -58,12 +58,15 @@ public class PlayerController : MonoBehaviour
 
         if (context.canceled)
         {
-            StartCoroutine(StopJump());
+            if (playerRigidbody.linearVelocityY > 0)
+            {
+                playerRigidbody.linearVelocityY /= 2;
+            }
         }
     }
     private bool CheckIfGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * jumpRaycastSize,1,LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
         return hit;
     }
 
@@ -83,18 +86,11 @@ public class PlayerController : MonoBehaviour
         script.player = this;
         
         playerRigidbody.linearVelocity = Vector2.zero;
+        playerRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         moveInput = Vector2.zero;
-        
+
+        gameObject.layer = 0;
         playerInput.enabled = false;
     }
-
-    IEnumerator StopJump()
-    {
-        yield return new WaitForSeconds(jumpStopDelay);
-        if (playerRigidbody.linearVelocityY > 0)
-        {
-            playerRigidbody.linearVelocityY = 0;
-        }
-    }
-
+    
 }

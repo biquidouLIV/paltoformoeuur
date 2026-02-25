@@ -53,19 +53,21 @@ public class HandController : MonoBehaviour
         {
             if (handRigidbody.linearVelocityY > 0)
             {
-                handRigidbody.linearVelocityY = 0;
+                handRigidbody.linearVelocityY /= 2;
             }
         }
     }
     private bool CheckIfGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * jumpRaycastSize,1,LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
         return hit;
     }
 
     private void DespawnHand()
     {
         player.playerInput.enabled = true;
+        player.gameObject.layer = 6;
+        player.playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         Destroy(gameObject);
     }
     

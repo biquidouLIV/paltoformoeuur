@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,8 +6,12 @@ public class HandController : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private float sprintSpeedMultiplier = 2;
-    [SerializeField] private float jumpHeight = 50;
+    [SerializeField] private float dashLength = 50;
+    [SerializeField] private float dashCooldown = 3.0f;
     [SerializeField] private float jumpRaycastSize = 1;
+
+    private bool canDash = true;
+    private int direction = 1;
     
     private float sprintSpeed = 1;
     private Vector2 moveInput;
@@ -28,6 +33,15 @@ public class HandController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        if (moveInput.x > 0)
+        {
+            direction = 1;
+        }
+        else
+        {
+            direction = -1;
+        }
+        Debug.Log(direction);
     }
     
     public void OnSprint(InputAction.CallbackContext context)
@@ -42,27 +56,26 @@ public class HandController : MonoBehaviour
             sprintSpeed = 1;
         }
     }
-    public void OnJump(InputAction.CallbackContext context)
+    
+    
+    //ca s'appelle jump mais c'est un dash 
+    public void OnJump(InputAction.CallbackContext context) 
     {
-        if (context.performed && CheckIfGrounded())
+        if (context.performed && canDash)
         {
-            handRigidbody.AddForce(new Vector2(jumpHeight,0));
+            handRigidbody.AddForce(new Vector2(dashLength*direction,0));
+            canDash = false;
+            StartCoroutine(DashCooldown());
         }
-
-        if (context.canceled)
-        {
-            if (handRigidbody.linearVelocityX > 0)
-            {
-                handRigidbody.linearVelocityX /= 2;
-            }
-        }
+        
     }
-    private bool CheckIfGrounded()
+    private IEnumerator DashCooldown()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return hit;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
+    
     private void DespawnHand()
     {
         player.playerInput.enabled = true;
@@ -78,5 +91,6 @@ public class HandController : MonoBehaviour
             DespawnHand();
         }
     }
-    
+
+
 }

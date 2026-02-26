@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,10 +7,12 @@ public class HandController : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private float sprintSpeedMultiplier = 2;
-    [SerializeField] private float dashLength = 50;
+    [SerializeField] private float dashSpeed = 50;
+    [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private float dashCooldown = 3.0f;
-    [SerializeField] private float dashStopDelay = 0.3f;
     [SerializeField] private float jumpRaycastSize = 1;
+    
+    
 
     private bool canDash = true;
     private int direction = 1;
@@ -17,7 +20,7 @@ public class HandController : MonoBehaviour
     private float sprintSpeed = 1;
     private Vector2 moveInput;
 
-    private Rigidbody2D handRigidbody;
+    public Rigidbody2D handRigidbody;
     
     public PlayerController player;
 
@@ -43,7 +46,6 @@ public class HandController : MonoBehaviour
             direction = -1;
         }
 
-        Debug.Log(direction);
     }
     
     public void OnSprint(InputAction.CallbackContext context)
@@ -65,34 +67,42 @@ public class HandController : MonoBehaviour
     {
         if (context.performed && canDash)
         {
-            handRigidbody.AddForce(new Vector2(dashLength*direction,0));
-            canDash = false;
-            StartCoroutine(DashCooldown());
-            StartCoroutine(DashStop());
+            StartCoroutine(Dash());
         }
-        
-    }
-    private IEnumerator DashCooldown()
-    {
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
     }
 
-    private IEnumerator DashStop()
+
+
+    private IEnumerator Dash()
     {
-        yield return new WaitForSeconds(dashStopDelay);
-        handRigidbody.linearVelocityX /= 2;
+        canDash = false;
+        handRigidbody.linearVelocityX = dashSpeed*direction;
+        yield return new WaitForSeconds(dashDuration);
+        handRigidbody.linearVelocityX /= 5;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+
     }
     
     
     private void DespawnHand()
     {
-        player.playerInput.enabled = true;
-        player.gameObject.layer = 6;
-        player.playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        Destroy(gameObject);
+        transform.DOMove(player.transform.position, 1)
+            .OnComplete(DisableHand);
+
     }
-    
+
+    private void DisableHand()
+    {
+        GetComponent<PlayerInput>().enabled = false;
+        player.playerInput.enabled = true;
+        
+        handRigidbody.simulated = false;
+        player.playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+ 
+    }
+
+
     public void OnSpawnHand(InputAction.CallbackContext context)
     {
         if (context.performed)

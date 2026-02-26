@@ -469,7 +469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HandController
   speed: 6
   sprintSpeedMultiplier: 2
-  dashLength: 400
+  dashSpeed: 30
+  dashDuration: 0.2
   dashCooldown: 3
   jumpRaycastSize: 1
   player: {fileID: 0}

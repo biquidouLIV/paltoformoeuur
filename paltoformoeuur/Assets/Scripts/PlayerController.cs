@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rotation = Vector2.zero;
             moveInput = context.ReadValue<Vector2>();
         }
     }
@@ -120,9 +119,9 @@ public class PlayerController : MonoBehaviour
         playerRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         moveInput = Vector2.zero;
 
-        gameObject.layer = 0;
         playerInput.enabled = false;
         hand.GetComponent<Rigidbody2D>().AddForce(new (rotation.x * 500, rotation.y * 500));
+		rotation = Vector2.zero;
     }
     
     public void OnAttack(InputAction.CallbackContext context)

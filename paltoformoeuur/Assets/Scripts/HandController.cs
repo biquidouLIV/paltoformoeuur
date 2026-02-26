@@ -28,6 +28,7 @@ public class HandController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+		Debug.Log(moveInput);
     }
     
     public void OnSprint(InputAction.CallbackContext context)
@@ -41,6 +42,7 @@ public class HandController : MonoBehaviour
         {
             sprintSpeed = 1;
         }
+        Debug.Log(moveInput);
     }
     
     public void OnJump(InputAction.CallbackContext context)
@@ -57,6 +59,7 @@ public class HandController : MonoBehaviour
                 handRigidbody.linearVelocityX /= 2;
             }
         }
+        Debug.Log(moveInput);
     }
     private bool CheckIfGrounded()
     {

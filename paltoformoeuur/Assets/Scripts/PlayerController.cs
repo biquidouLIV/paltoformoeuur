@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,11 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private GameObject handPrefab;
 
+    [SerializeField] private Camera camera;
+    [SerializeField] private GameObject hand;
+    [SerializeField] private HandController handController;
+    
+    public Transform handTransform;
     public Rigidbody2D playerRigidbody;
     public PlayerInput playerInput;
 
@@ -27,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        handTransform = hand.transform;
     }
     
     private void FixedUpdate()
@@ -111,10 +118,10 @@ public class PlayerController : MonoBehaviour
     
     private void SpawnHand()
     {
-        GameObject hand = Instantiate(handPrefab, transform.position, Quaternion.identity);
-        HandController script = hand.GetComponent<HandController>();
-        script.player = this;
-        
+        hand.GetComponent<PlayerInput>().enabled = true;
+        playerInput.enabled = false;
+
+        handController.handRigidbody.simulated = true; 
         playerRigidbody.linearVelocity = Vector2.zero;
         playerRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         moveInput = Vector2.zero;

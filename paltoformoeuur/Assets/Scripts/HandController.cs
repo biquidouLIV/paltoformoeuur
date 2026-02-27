@@ -1,3 +1,5 @@
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,13 +7,20 @@ public class HandController : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private float sprintSpeedMultiplier = 2;
-    [SerializeField] private float jumpHeight = 50;
+    [SerializeField] private float dashSpeed = 50;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashCooldown = 3.0f;
     [SerializeField] private float jumpRaycastSize = 1;
+    
+    
+
+    private bool canDash = true;
+    private int direction = 1;
     
     private float sprintSpeed = 1;
     private Vector2 moveInput;
 
-    private Rigidbody2D handRigidbody;
+    public Rigidbody2D handRigidbody;
     
     public PlayerController player;
 
@@ -28,7 +37,15 @@ public class HandController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-		Debug.Log(moveInput);
+        if (moveInput.x > 0)
+        {
+            direction = 1;
+        }
+        else if(moveInput.x < 0)
+        {
+            direction = -1;
+        }
+
     }
     
     public void OnSprint(InputAction.CallbackContext context)
@@ -45,36 +62,48 @@ public class HandController : MonoBehaviour
         Debug.Log(moveInput);
     }
     
-    public void OnJump(InputAction.CallbackContext context)
+    
+    //ca s'appelle jump mais c'est un dash 
+    public void OnJump(InputAction.CallbackContext context) 
     {
-        if (context.performed && CheckIfGrounded())
+        if (context.performed && canDash)
         {
-            handRigidbody.AddForce(new Vector2(jumpHeight,0));
+            StartCoroutine(Dash());
         }
-
-        if (context.canceled)
-        {
-            if (handRigidbody.linearVelocityX > 0)
-            {
-                handRigidbody.linearVelocityX /= 2;
-            }
-        }
-        Debug.Log(moveInput);
-    }
-    private bool CheckIfGrounded()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return hit;
     }
 
-    private void DespawnHand()
+
+
+    private IEnumerator Dash()
     {
-        player.playerInput.enabled = true;
-        player.gameObject.layer = 6;
-        player.playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        Destroy(gameObject);
+        canDash = false;
+        handRigidbody.linearVelocityX = dashSpeed*direction;
+        yield return new WaitForSeconds(dashDuration);
+        handRigidbody.linearVelocityX /= 5;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+
     }
     
+    
+    private void DespawnHand()
+    {
+        transform.DOMove(player.transform.position, 1)
+            .OnComplete(DisableHand);
+
+    }
+
+    private void DisableHand()
+    {
+        GetComponent<PlayerInput>().enabled = false;
+        player.playerInput.enabled = true;
+        
+        handRigidbody.simulated = false;
+        player.playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+ 
+    }
+
+
     public void OnSpawnHand(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -82,5 +111,6 @@ public class HandController : MonoBehaviour
             DespawnHand();
         }
     }
-    
+
+
 }

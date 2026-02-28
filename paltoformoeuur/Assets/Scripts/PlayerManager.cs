@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,16 +7,16 @@ public class PlayerManager : MonoBehaviour
     
     [SerializeField] private BodyController bodyController;
     [SerializeField] private HandController handController;
-    [SerializeField] private PlayerPart selectedPart;
-    [SerializeField] private PlayerPart controlledPart;
-    [SerializeField] private Camera camera;
+    [SerializeField] private HeadController headController;
+    [SerializeField] public PlayerPart selectedPart;
+    [SerializeField] public PlayerPart controlledPart;
 
     private bool handOnBody = true;
     private bool headOnBody = true;
 
     private int numberOfBodyPart = 3;
     
-    private enum PlayerPart
+    public enum PlayerPart
     {
         body = 0,
         hand = 1,
@@ -27,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null) { instance = this; }
-        else { Destroy(gameObject); }
+        else { Destroy(this); }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -52,16 +51,26 @@ public class PlayerManager : MonoBehaviour
     {
         if (!context.started) return;
         selectedPart += 1;
-        if (selectedPart.Equals(numberOfBodyPart))
+        if ((int)selectedPart == (numberOfBodyPart))
         {
             selectedPart = 0;
         }
-        
+        Debug.Log(selectedPart);
+    }
+
+    public void OnSelectChange(PlayerPart playerPart)
+    {
+        selectedPart = playerPart;
+        CheckControlledPart();
+    }
+
+    private void CheckControlledPart()
+    {
         switch (selectedPart)
         {
             case PlayerPart.body:
                 controlledPart = selectedPart;
-                //Set la camera sur le corps
+                CameraManager.instance.SetOnBody();
                 break;
             case PlayerPart.hand:
                 if (handOnBody)
@@ -71,7 +80,7 @@ public class PlayerManager : MonoBehaviour
                 else
                 {
                     controlledPart = selectedPart;
-                    //Set la camera sur la main
+                    CameraManager.instance.SetOnHand();
                 }
                 break;
             case PlayerPart.head:
@@ -82,12 +91,15 @@ public class PlayerManager : MonoBehaviour
                 else
                 {
                     controlledPart = selectedPart;
-                    //Set la camera sur la tete
+                    CameraManager.instance.SetOnHead();
                 }
+                break;
+            default:
+                Debug.LogError("No selected part");
                 break;
         }
     }
-
+    
     public void OnJump(InputAction.CallbackContext context)
     {
         switch (controlledPart)
@@ -127,7 +139,30 @@ public class PlayerManager : MonoBehaviour
     public void EnableHand()
     {
         handOnBody = false;
-        selectedPart = PlayerPart.hand;
-        controlledPart = PlayerPart.hand;
+        OnSelectChange(PlayerPart.hand);
+    }
+    
+    public void EnableHead()
+    {
+        headOnBody = false;
+        OnSelectChange(PlayerPart.head);
+    }
+
+    public void OnRecall(InputAction.CallbackContext context)
+    {
+        switch (controlledPart)
+        {
+            case PlayerPart.body:
+                break;
+            case PlayerPart.hand:
+                handController.Recall(context);
+                break;
+            case PlayerPart.head:
+                headController.Recall(context);
+                break;
+            default:
+                Debug.LogError("No controlled part");
+                break;
+        }
     }
 }

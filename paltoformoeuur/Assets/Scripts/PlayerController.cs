@@ -1,23 +1,25 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] protected float speed = 1;
     [SerializeField] protected float sprintSpeedMultiplier = 2;
+    [SerializeField] protected GameObject player;
     
     [NonSerialized] public Rigidbody2D elementRigidbody;
 
     private float sprintSpeed = 1;
     protected Vector2 moveInput;
-    
 
-    public abstract void OnJump(InputAction.CallbackContext context);
+    protected BodyController playerScript;
     
     private void Start()
     {
         elementRigidbody = GetComponent<Rigidbody2D>();
+        playerScript = player.GetComponent<BodyController>();
     }
     
     private void FixedUpdate()
@@ -41,6 +43,19 @@ public abstract class PlayerController : MonoBehaviour
         {
             sprintSpeed = 1;
         }
+    }
+    
+    private void DisableElement()
+    {
+        elementRigidbody.simulated = false;
+        transform.parent = player.transform;
+        playerScript.elementRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
+    }
+    
+    public void Recall(InputAction.CallbackContext context)
+    {
+        transform.DOMove(player.transform.position, 1).OnComplete(DisableElement);
     }
 }
         

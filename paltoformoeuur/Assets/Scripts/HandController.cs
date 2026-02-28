@@ -1,5 +1,4 @@
 using System.Collections;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,8 +11,6 @@ public class HandController : PlayerController
     private bool canDash = true;
     private int direction = 1;
     
-    public PlayerController player;
-    
     public override void OnMove(InputAction.CallbackContext context)
     {
         base.OnMove(context);
@@ -25,11 +22,10 @@ public class HandController : PlayerController
         {
             direction = -1;
         }
-
     }
     
     //ca s'appelle jump mais c'est un dash 
-    public override void OnJump(InputAction.CallbackContext context) 
+    public void OnJump(InputAction.CallbackContext context) 
     {
         if (context.performed && canDash)
         {
@@ -47,28 +43,4 @@ public class HandController : PlayerController
         canDash = true;
 
     }
-    
-    private void DespawnHand()
-    {
-        transform.DOMove(player.transform.position, 1).OnComplete(DisableHand);
-    }
-
-    private void DisableHand()
-    {
-        GetComponent<PlayerInput>().enabled = false;
-        
-        elementRigidbody.simulated = false;
-        player.elementRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
-
-
-    public void OnSpawnHand(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            DespawnHand();
-        }
-    }
-
-
 }

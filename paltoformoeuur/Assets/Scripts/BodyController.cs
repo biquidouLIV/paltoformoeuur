@@ -7,7 +7,9 @@ public class BodyController : PlayerController
     [SerializeField] private float jumpRaycastSize = 1;
     
     [SerializeField] protected GameObject hand;
+    [SerializeField] protected GameObject head;
     [SerializeField] protected HandController handController;
+    [SerializeField] protected HeadController headController;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
@@ -32,11 +34,10 @@ public class BodyController : PlayerController
         }
     }
     
-    public override void OnJump(InputAction.CallbackContext context)
+    public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && CheckIfGrounded())
         {
-            StopAllCoroutines();
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
         }
 
@@ -51,8 +52,7 @@ public class BodyController : PlayerController
     
     private bool CheckIfGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return hit;
+        return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
     }
     
     
@@ -65,7 +65,20 @@ public class BodyController : PlayerController
         else if (context.canceled && isAiming)
         {
             isAiming = false;
-            SpawnHand();
+            switch (PlayerManager.instance.selectedPart)
+            {
+                case PlayerManager.PlayerPart.hand:
+                    SpawnHand();
+                    break;
+                case PlayerManager.PlayerPart.head:
+                    SpawnHead();
+                    break;
+                case PlayerManager.PlayerPart.body:
+                    break;
+                default:
+                    Debug.LogError("No selected part");
+                    break;
+            }
         }
     }
     
@@ -81,5 +94,20 @@ public class BodyController : PlayerController
         
         PlayerManager.instance.EnableHand();
         hand.transform.SetParent(transform.parent);
+    }
+    
+    
+    private void SpawnHead()
+    {
+        headController.elementRigidbody.simulated = true; 
+        elementRigidbody.linearVelocity = Vector2.zero;
+        elementRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        moveInput = Vector2.zero;
+
+        head.GetComponent<Rigidbody2D>().AddForce(new (rotation.x * 500, rotation.y * 500));
+        rotation = Vector2.zero;
+        
+        PlayerManager.instance.EnableHead();
+        head.transform.SetParent(transform.parent);
     }
 }

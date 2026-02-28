@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,14 +49,41 @@ public class PlayerController : MonoBehaviour
     private void DisableElement()
     {
         elementRigidbody.simulated = false;
-        transform.parent = player.transform;
+        elementRigidbody.linearVelocity = Vector2.zero;
+        moveInput = Vector2.zero;
         playerScript.elementRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
+        
     }
     
     public void Recall(InputAction.CallbackContext context)
     {
-        transform.DOMove(player.transform.position, 1).OnComplete(DisableElement);
+        transform.parent = player.transform;
+        switch (PlayerManager.instance.controlledPart)
+        {
+            case(PlayerManager.PlayerPart.hand):
+                transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, 1)
+                         .OnComplete(() =>
+                             {
+                                 DisableElement();
+                                 PlayerManager.instance.handOnBody = false;
+                             }
+                        );
+                transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
+                break;
+            
+            case(PlayerManager.PlayerPart.head):
+                transform.DOLocalMove(PlayerManager.instance.headAnchorPosition, 1)
+                    .OnComplete(() =>
+                        {
+                            DisableElement();
+                            PlayerManager.instance.headOnBody = false;
+                        }
+                    );
+                transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
+                break;
+        }
+        
     }
 }
         

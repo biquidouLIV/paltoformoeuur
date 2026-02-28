@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +11,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private HeadController headController;
     [SerializeField] public PlayerPart selectedPart;
     [SerializeField] public PlayerPart controlledPart;
+    
+    [SerializeField] public Vector3 handAnchorPosition;
+    [SerializeField] public Vector3 headAnchorPosition;
 
-    private bool handOnBody = true;
-    private bool headOnBody = true;
+    public bool handOnBody = true;
+    public bool headOnBody = true;
 
     private int numberOfBodyPart = 3;
     
@@ -27,6 +31,12 @@ public class PlayerManager : MonoBehaviour
     {
         if (instance == null) { instance = this; }
         else { Destroy(this); }
+    }
+
+    private void Start()
+    {
+        handAnchorPosition = handController.gameObject.transform.localPosition;
+        headAnchorPosition = headController.gameObject.transform.localPosition;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -49,13 +59,16 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSelectChange(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
-        selectedPart += 1;
-        if ((int)selectedPart == (numberOfBodyPart))
+        if (context.performed)
         {
-            selectedPart = 0;
+            selectedPart += 1;
+            if ((int)selectedPart == numberOfBodyPart)
+            {
+                selectedPart = 0;
+            }
+            Debug.Log(selectedPart);
         }
-        Debug.Log(selectedPart);
+        CheckControlledPart();
     }
 
     public void OnSelectChange(PlayerPart playerPart)
@@ -76,6 +89,8 @@ public class PlayerManager : MonoBehaviour
                 if (handOnBody)
                 {
                     //Afficher la main comme élément sélectionné
+                    controlledPart = PlayerPart.body;
+                    CameraManager.instance.SetOnBody();
                 }
                 else
                 {
@@ -87,6 +102,8 @@ public class PlayerManager : MonoBehaviour
                 if (headOnBody)
                 {
                     //Afficher la tete comme élément sélectionné
+                    controlledPart = PlayerPart.body;
+                    CameraManager.instance.SetOnBody();
                 }
                 else
                 {

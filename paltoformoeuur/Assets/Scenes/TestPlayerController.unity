@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c33fa8f9ea5a540957c1c7e594ab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandController
-  speed: 1
+  speed: 6
   sprintSpeedMultiplier: 2
   dashSpeed: 50
   dashDuration: 0.2
@@ -1546,9 +1546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaae8ac87084194a93b936df389fdc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BodyController
-  speed: 1
+  speed: 6
   sprintSpeedMultiplier: 2
-  jumpHeight: 50
+  jumpHeight: 500
   jumpRaycastSize: 1
   hand: {fileID: 1020059491}
   handController: {fileID: 1020059496}

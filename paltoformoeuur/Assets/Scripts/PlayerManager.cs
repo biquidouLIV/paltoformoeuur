@@ -66,7 +66,6 @@ public class PlayerManager : MonoBehaviour
             {
                 selectedPart = 0;
             }
-            Debug.Log(selectedPart);
         }
         CheckControlledPart();
     }
@@ -94,9 +93,11 @@ public class PlayerManager : MonoBehaviour
                 }
                 else
                 {
+                    bodyController.moveInput = Vector2.zero;
                     controlledPart = selectedPart;
                     CameraManager.instance.SetOnHand();
                 }
+                Debug.Log(handOnBody);
                 break;
             case PlayerPart.head:
                 if (headOnBody)
@@ -107,6 +108,7 @@ public class PlayerManager : MonoBehaviour
                 }
                 else
                 {
+                    handController.moveInput = Vector2.zero;
                     controlledPart = selectedPart;
                     CameraManager.instance.SetOnHead();
                 }
@@ -115,6 +117,7 @@ public class PlayerManager : MonoBehaviour
                 Debug.LogError("No selected part");
                 break;
         }
+        Debug.Log(controlledPart);
     }
     
     public void OnJump(InputAction.CallbackContext context)

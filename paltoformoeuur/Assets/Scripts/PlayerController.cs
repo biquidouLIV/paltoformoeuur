@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [NonSerialized] public Rigidbody2D elementRigidbody;
 
     private float sprintSpeed = 1;
-    protected Vector2 moveInput;
+    public Vector2 moveInput;
 
     protected BodyController playerScript;
     
@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
         moveInput = Vector2.zero;
         playerScript.elementRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
-        
     }
     
     public void Recall(InputAction.CallbackContext context)
@@ -66,7 +65,7 @@ public class PlayerController : MonoBehaviour
                          .OnComplete(() =>
                              {
                                  DisableElement();
-                                 PlayerManager.instance.handOnBody = false;
+                                 PlayerManager.instance.handOnBody = true;
                              }
                         );
                 transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
@@ -77,7 +76,7 @@ public class PlayerController : MonoBehaviour
                     .OnComplete(() =>
                         {
                             DisableElement();
-                            PlayerManager.instance.headOnBody = false;
+                            PlayerManager.instance.headOnBody = true;
                         }
                     );
                 transform.DOLocalRotate(new Vector3(0, 0, 0), 1);

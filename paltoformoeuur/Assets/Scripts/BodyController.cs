@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -87,11 +86,11 @@ public class BodyController : PlayerController
     
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body)
         {
             isAiming = true;
         }
-        else if (context.canceled && isAiming)
+        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body)
         {
             isAiming = false;
             switch (PlayerManager.instance.selectedPart)
@@ -115,7 +114,6 @@ public class BodyController : PlayerController
     {
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
-        elementRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         moveInput = Vector2.zero;
 
         hand.GetComponent<Rigidbody2D>().AddForce(new (rotation.x * 500, rotation.y * 500));
@@ -128,9 +126,9 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
-        headController.elementRigidbody.simulated = true; 
+        headController.elementRigidbody.simulated = true;
+        head.layer = 7;
         elementRigidbody.linearVelocity = Vector2.zero;
-        elementRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         moveInput = Vector2.zero;
 
         head.GetComponent<Rigidbody2D>().AddForce(new (rotation.x * 500, rotation.y * 500));

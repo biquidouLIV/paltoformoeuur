@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
         elementRigidbody.simulated = false;
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-        playerScript.elementRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
     }
     

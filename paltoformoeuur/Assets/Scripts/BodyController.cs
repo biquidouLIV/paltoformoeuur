@@ -1,22 +1,42 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BodyController : PlayerController
 {
     [SerializeField] private float jumpHeight = 50;
-    [SerializeField] private float jumpRaycastSize = 1;
+    [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
+    [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
+
+    [SerializeField] private float coyoteTime = 0.5f;
+    private float coyoteTimeCounter;
+    
     
     [SerializeField] protected GameObject hand;
     [SerializeField] protected GameObject head;
     [SerializeField] protected HandController handController;
     [SerializeField] protected HeadController headController;
     
+    
     private Vector2 rotationInput;
     private Vector2 rotation;
     
     private GameObject aim;
-    private bool isAiming;
-    
+    public bool isAiming;
+
+
+    private void Update()
+    {
+        if (CheckIfGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+    }
+
     public override void OnMove(InputAction.CallbackContext context)
     {
         if (isAiming)
@@ -36,9 +56,10 @@ public class BodyController : PlayerController
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && CheckIfGrounded())
+        if (context.performed && coyoteTimeCounter > 0.0f)
         {
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            coyoteTimeCounter = 0f;
         }
 
         if (context.canceled)
@@ -52,8 +73,16 @@ public class BodyController : PlayerController
     
     private bool CheckIfGrounded()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
+        //return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
+        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player"));
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + (Vector3)jumpRaycastOrigin + Vector3.down, jumpRaycastSize);
+    }
+
     
     
     public void OnAim(InputAction.CallbackContext context)

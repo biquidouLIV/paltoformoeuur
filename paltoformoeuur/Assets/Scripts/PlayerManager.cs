@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     
     [SerializeField] private BodyController bodyController;
-    [SerializeField] private HandController handController;
+    [SerializeField] public HandController handController;
     [SerializeField] private HeadController headController;
     [SerializeField] public PlayerPart selectedPart;
     [SerializeField] public PlayerPart controlledPart;
@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public Vector3 handAnchorPosition;
     [SerializeField] public Vector3 headAnchorPosition;
 
+    [SerializeField] public PlayerInput PlayerInput;
+    
     public bool handOnBody = true;
     public bool headOnBody = true;
 
@@ -59,6 +61,8 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSelectChange(InputAction.CallbackContext context)
     {
+        if(bodyController.isAiming) return;
+        
         if (context.performed)
         {
             selectedPart += 1;
@@ -85,6 +89,7 @@ public class PlayerManager : MonoBehaviour
                 CameraManager.instance.SetOnBody();
                 break;
             case PlayerPart.hand:
+                bodyController.moveInput = Vector2.zero;
                 if (handOnBody)
                 {
                     //Afficher la main comme élément sélectionné
@@ -93,13 +98,14 @@ public class PlayerManager : MonoBehaviour
                 }
                 else
                 {
-                    bodyController.moveInput = Vector2.zero;
+                    
                     controlledPart = selectedPart;
                     CameraManager.instance.SetOnHand();
                 }
                 Debug.Log(handOnBody);
                 break;
             case PlayerPart.head:
+                handController.moveInput = Vector2.zero;
                 if (headOnBody)
                 {
                     //Afficher la tete comme élément sélectionné
@@ -108,7 +114,7 @@ public class PlayerManager : MonoBehaviour
                 }
                 else
                 {
-                    handController.moveInput = Vector2.zero;
+                    
                     controlledPart = selectedPart;
                     CameraManager.instance.SetOnHead();
                 }

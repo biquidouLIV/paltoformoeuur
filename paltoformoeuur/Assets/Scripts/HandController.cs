@@ -38,7 +38,7 @@ public class HandController : PlayerController
         canDash = false;
         elementRigidbody.linearVelocityX = dashSpeed*direction;
         yield return new WaitForSeconds(dashDuration);
-        elementRigidbody.linearVelocityX /= 5;
+        elementRigidbody.linearVelocityX = 0;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
 

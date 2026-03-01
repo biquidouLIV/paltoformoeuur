@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -9,7 +10,15 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private GameObject body;
     [SerializeField] private GameObject hand;
     [SerializeField] private GameObject head;
-    
+
+    [SerializeField] private float bodyCameraFOV = 5f;
+    [SerializeField] private float handCameraFOV = 1.5f;
+    [SerializeField] private float headCameraFOV = 8f;
+    [SerializeField] private float FOVTransitionSpeed = 0.2f;
+
+    private float targetFOV;
+
+    private Camera camera;
     private GameObject targetBodyPart;
     
     private Vector2 direction;
@@ -22,22 +31,31 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
+        camera = GetComponent<Camera>();
         SetOnBody();
     }
-    
+
+    private void Update()
+    {
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetFOV,FOVTransitionSpeed);
+    }
+
     public void SetOnBody()
     {
         targetBodyPart = body;
+        targetFOV = bodyCameraFOV;
     }
 
     public void SetOnHand()
     {
         targetBodyPart = hand;
+        targetFOV = handCameraFOV;
     }
     
     public void SetOnHead()
     {
         targetBodyPart = head;
+        targetFOV = headCameraFOV;
     }
     
     private void Move()

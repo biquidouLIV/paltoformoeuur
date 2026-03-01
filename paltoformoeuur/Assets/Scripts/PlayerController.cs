@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     
     public void Recall(InputAction.CallbackContext context)
     {
+        PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
         switch (PlayerManager.instance.controlledPart)
         {
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
                              {
                                  DisableElement();
                                  PlayerManager.instance.handOnBody = true;
+                                 PlayerManager.instance.PlayerInput.enabled = true;
                              }
                         );
                 transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
                         {
                             DisableElement();
                             PlayerManager.instance.headOnBody = true;
+                            PlayerManager.instance.PlayerInput.enabled = true;
                         }
                     );
                 transform.DOLocalRotate(new Vector3(0, 0, 0), 1);

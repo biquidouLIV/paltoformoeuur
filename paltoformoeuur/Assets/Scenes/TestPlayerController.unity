@@ -1609,7 +1609,8 @@ MonoBehaviour:
   launchForce: 500
   jumpRaycastSize: {x: 0.76, y: 0.08}
   jumpRaycastOrigin: {x: -0.08, y: -0.28}
-  coyoteTime: 0.5
+  coyoteTime: 0.2
+  bufferingTime: 1
   hand: {fileID: 1020059491}
   head: {fileID: 239126646}
   handController: {fileID: 1020059496}

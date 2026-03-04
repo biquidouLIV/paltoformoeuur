@@ -8,8 +8,11 @@ public class BodyController : PlayerController
     [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
     [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
 
-    [SerializeField] private float coyoteTime = 0.5f;
+    [SerializeField] private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
+    
+    [SerializeField] private float bufferingTime = 0.2f;
+    private float bufferingTimeCounter;
     
     [SerializeField] protected GameObject hand;
     [SerializeField] protected GameObject head;
@@ -38,6 +41,14 @@ public class BodyController : PlayerController
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        bufferingTimeCounter -= Time.deltaTime;
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        {
+            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            coyoteTimeCounter = 0f;
+            bufferingTimeCounter = 0f;
+        }
+        
         if (!isAiming)
         {
             trajectory.HideTrajectory();
@@ -66,9 +77,6 @@ public class BodyController : PlayerController
                 rotation = rotationInput.normalized;
             }
 
-            
-            
-            
             moveInput = Vector2.zero;
         }
         else
@@ -79,12 +87,17 @@ public class BodyController : PlayerController
     
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (context.performed)
+        {
+            bufferingTimeCounter = bufferingTime;
+        }
         if (context.performed && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
         {
+            return;
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
             coyoteTimeCounter = 0f;
         }
-
+        
         if (context.canceled)
         {
             if (elementRigidbody.linearVelocityY > 0)

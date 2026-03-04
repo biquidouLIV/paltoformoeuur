@@ -79,7 +79,7 @@ public class BodyController : PlayerController
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && coyoteTimeCounter > 0.0f)
+        if (context.performed && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
         {
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
             coyoteTimeCounter = 0f;

@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class BodyController : PlayerController
 {
     [SerializeField] private float jumpHeight = 50;
+    [SerializeField] private float launchForce = 100;
     [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
     [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
 
@@ -15,6 +16,8 @@ public class BodyController : PlayerController
     [SerializeField] protected GameObject head;
     [SerializeField] protected HandController handController;
     [SerializeField] protected HeadController headController;
+
+    [SerializeField] private Trajectory trajectory;
     
     
     private Vector2 rotationInput;
@@ -34,6 +37,11 @@ public class BodyController : PlayerController
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
+
+        if (!isAiming)
+        {
+            trajectory.HideTrajectory();
+        }
     }
 
     public override void OnMove(InputAction.CallbackContext context)
@@ -45,6 +53,18 @@ public class BodyController : PlayerController
             {
                 rotation = rotationInput.normalized;
             }
+
+            switch (PlayerManager.instance.selectedPart)
+            {
+                case PlayerManager.PlayerPart.head:
+                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+                case PlayerManager.PlayerPart.hand:
+                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+            }
+            
+            
             moveInput = Vector2.zero;
         }
         else
@@ -116,7 +136,7 @@ public class BodyController : PlayerController
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
 
-        hand.GetComponent<Rigidbody2D>().AddForce(new (rotation.x * 500, rotation.y * 500));
+        hand.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
@@ -131,7 +151,7 @@ public class BodyController : PlayerController
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
 
-        head.GetComponent<Rigidbody2D>().AddForce(new (rotation.x * 500, rotation.y * 500));
+        head.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();

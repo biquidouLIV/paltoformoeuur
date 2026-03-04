@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected float speed = 1;
     [SerializeField] protected float sprintSpeedMultiplier = 2;
     [SerializeField] protected GameObject player;
+    [SerializeField] private int recallSpeed;
     
     [NonSerialized] public Rigidbody2D elementRigidbody;
 
@@ -48,7 +49,6 @@ public class PlayerController : MonoBehaviour
     
     private void DisableElement()
     {
-        elementRigidbody.simulated = false;
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
         PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
@@ -58,10 +58,11 @@ public class PlayerController : MonoBehaviour
     {
         PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
+        elementRigidbody.simulated = false;
         switch (PlayerManager.instance.controlledPart)
         {
             case(PlayerManager.PlayerPart.hand):
-                transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, 1)
+                transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
                          .OnComplete(() =>
                              {
                                  DisableElement();
@@ -73,9 +74,11 @@ public class PlayerController : MonoBehaviour
                 break;
             
             case(PlayerManager.PlayerPart.head):
-                transform.DOLocalMove(PlayerManager.instance.headAnchorPosition, 1)
+                transform.DOLocalMove(PlayerManager.instance.headAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
                     .OnComplete(() =>
                         {
+                            playerScript.colliderWithHead.enabled = true;
+                            playerScript.colliderWithoutHead.enabled = false;
                             DisableElement();
                             PlayerManager.instance.headOnBody = true;
                             PlayerManager.instance.PlayerInput.enabled = true;

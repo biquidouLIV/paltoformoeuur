@@ -11,21 +11,21 @@ public class BodyController : PlayerController
     [SerializeField] private float coyoteTime = 0.5f;
     private float coyoteTimeCounter;
     
-    
     [SerializeField] protected GameObject hand;
     [SerializeField] protected GameObject head;
     [SerializeField] protected HandController handController;
     [SerializeField] protected HeadController headController;
 
     [SerializeField] private Trajectory trajectory;
-    
+
+    [SerializeField] public BoxCollider2D colliderWithHead;
+    [SerializeField] public BoxCollider2D colliderWithoutHead;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
     
     private GameObject aim;
     public bool isAiming;
-
 
     private void Update()
     {
@@ -42,6 +42,18 @@ public class BodyController : PlayerController
         {
             trajectory.HideTrajectory();
         }
+        else
+        {
+            switch (PlayerManager.instance.selectedPart)
+            {
+                case PlayerManager.PlayerPart.head:
+                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+                case PlayerManager.PlayerPart.hand:
+                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+            }
+        }
     }
 
     public override void OnMove(InputAction.CallbackContext context)
@@ -54,15 +66,7 @@ public class BodyController : PlayerController
                 rotation = rotationInput.normalized;
             }
 
-            switch (PlayerManager.instance.selectedPart)
-            {
-                case PlayerManager.PlayerPart.head:
-                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-                case PlayerManager.PlayerPart.hand:
-                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-            }
+            
             
             
             moveInput = Vector2.zero;
@@ -101,17 +105,17 @@ public class BodyController : PlayerController
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + (Vector3)jumpRaycastOrigin + Vector3.down, jumpRaycastSize);
     }
-
-    
     
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (context.started && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body)
+        if (context.started && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body && PlayerManager.instance.selectedPart != PlayerManager.PlayerPart.body)
         {
             isAiming = true;
+            Time.timeScale = 0.25f;
         }
         else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body)
         {
+            Time.timeScale = 1f;
             isAiming = false;
             switch (PlayerManager.instance.selectedPart)
             {
@@ -127,6 +131,10 @@ public class BodyController : PlayerController
                     Debug.LogError("No selected part");
                     break;
             }
+        }
+        else if (context.canceled)
+        {
+            Time.timeScale = 1f;
         }
     }
     
@@ -146,6 +154,8 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
+        colliderWithHead.enabled = false;
+        colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
         head.layer = 7;
         elementRigidbody.linearVelocity = Vector2.zero;

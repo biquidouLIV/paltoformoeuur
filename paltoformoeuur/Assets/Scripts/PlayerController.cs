@@ -6,16 +6,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] protected float speed = 1;
-    [SerializeField] protected float sprintSpeedMultiplier = 2;
-    [SerializeField] protected GameObject player;
-    [SerializeField] private int recallSpeed;
+    [Header("paramètres")]
+        [SerializeField] protected float speed = 1;
+        [SerializeField] protected float sprintSpeedMultiplier = 2;
+        [SerializeField] private int recallSpeed;
+    
+    [Header("Refs")]
+        [SerializeField] protected GameObject player;
+    
     
     [NonSerialized] public Rigidbody2D elementRigidbody;
-
+    [NonSerialized]public Vector2 moveInput;
     private float sprintSpeed = 1;
-    public Vector2 moveInput;
-
     protected BodyController playerScript;
     
     private void Start()

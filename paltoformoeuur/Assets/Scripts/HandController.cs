@@ -4,9 +4,10 @@ using UnityEngine.InputSystem;
 
 public class HandController : PlayerController
 {
-    [SerializeField] private float dashSpeed = 50;
-    [SerializeField] private float dashDuration = 0.2f;
-    [SerializeField] private float dashCooldown = 3.0f;
+    [Header("paramètres")]
+        [SerializeField] private float dashSpeed = 50;
+        [SerializeField] private float dashDuration = 0.2f;
+        [SerializeField] private float dashCooldown = 3.0f;
 
     private bool canDash = true;
     private int direction = 1;

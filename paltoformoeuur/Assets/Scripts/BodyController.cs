@@ -3,30 +3,31 @@ using UnityEngine.InputSystem;
 
 public class BodyController : PlayerController
 {
-    [SerializeField] private float jumpHeight = 50;
-    [SerializeField] private float launchForce = 100;
-    [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
-    [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
-
-    [SerializeField] private float coyoteTime = 0.2f;
-    private float coyoteTimeCounter;
     
-    [SerializeField] private float bufferingTime = 0.2f;
-    private float bufferingTimeCounter;
+    [Header("paramètres")]
+        [SerializeField] private float jumpHeight = 50;
+        [SerializeField] private float launchForce = 100;
+        [SerializeField] private float coyoteTime = 0.2f;
+        private float coyoteTimeCounter;
+        [SerializeField] private float bufferingTime = 0.2f;
+        private float bufferingTimeCounter;
+        
+    [Header("GD pas touche")]
+        [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
+        [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
+        
+    [Header("Refs")]
+        [SerializeField] protected GameObject hand;
+        [SerializeField] protected GameObject head;
+        [SerializeField] protected HandController handController;
+        [SerializeField] protected HeadController headController;
+        [SerializeField] private Trajectory trajectory;
+        [SerializeField] public BoxCollider2D colliderWithHead;
+        [SerializeField] public BoxCollider2D colliderWithoutHead;
     
-    [SerializeField] protected GameObject hand;
-    [SerializeField] protected GameObject head;
-    [SerializeField] protected HandController handController;
-    [SerializeField] protected HeadController headController;
-
-    [SerializeField] private Trajectory trajectory;
-
-    [SerializeField] public BoxCollider2D colliderWithHead;
-    [SerializeField] public BoxCollider2D colliderWithoutHead;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
-    
     private GameObject aim;
     public bool isAiming;
 

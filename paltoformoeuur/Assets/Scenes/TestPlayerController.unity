@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trajectory
   lineRenderer: {fileID: 216977664}
-  length: 20
+  length: 200
 --- !u!120 &216977664
 LineRenderer:
   serializedVersion: 3
@@ -447,9 +447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeadController
   speed: 1
   sprintSpeedMultiplier: 2
-  player: {fileID: 1200946026}
   recallSpeed: 10
-  moveInput: {x: 0, y: 0}
+  player: {fileID: 1200946026}
 --- !u!1 &257264581
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +599,7 @@ GameObject:
   - component: {fileID: 588632017}
   - component: {fileID: 588632015}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1273,9 +1272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HandController
   speed: 8
   sprintSpeedMultiplier: 2
-  player: {fileID: 1200946026}
   recallSpeed: 10
-  moveInput: {x: 0, y: 0}
+  player: {fileID: 1200946026}
   dashSpeed: 30
   dashDuration: 0.2
   dashCooldown: 3
@@ -1602,15 +1600,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BodyController
   speed: 6
   sprintSpeedMultiplier: 2
-  player: {fileID: 1200946026}
   recallSpeed: 0
-  moveInput: {x: 0, y: 0}
+  player: {fileID: 1200946026}
   jumpHeight: 500
   launchForce: 500
-  jumpRaycastSize: {x: 0.76, y: 0.08}
-  jumpRaycastOrigin: {x: -0.08, y: -0.28}
   coyoteTime: 0.2
   bufferingTime: 1
+  jumpRaycastSize: {x: 0.76, y: 0.08}
+  jumpRaycastOrigin: {x: -0.08, y: -0.28}
   hand: {fileID: 1020059491}
   head: {fileID: 239126646}
   handController: {fileID: 1020059496}
@@ -1954,13 +1951,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 0.5
-  body: {fileID: 1200946026}
-  hand: {fileID: 1020059491}
-  head: {fileID: 239126646}
   bodyCameraFOV: 5
   handCameraFOV: 1.5
   headCameraFOV: 8
   FOVTransitionSpeed: 0.03
+  body: {fileID: 1200946026}
+  hand: {fileID: 1020059491}
+  head: {fileID: 239126646}
 --- !u!1 &1973431143
 GameObject:
   m_ObjectHideFlags: 0

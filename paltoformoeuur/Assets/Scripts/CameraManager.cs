@@ -5,22 +5,23 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
 
-    [SerializeField] private float speed;
+    [Header("paramètres")]
+        [SerializeField] private float speed;
+        [SerializeField] private float bodyCameraFOV = 5f;
+        [SerializeField] private float handCameraFOV = 1.5f;
+        [SerializeField] private float headCameraFOV = 8f;
+        [SerializeField] private float FOVTransitionSpeed = 0.2f;
 
-    [SerializeField] private GameObject body;
-    [SerializeField] private GameObject hand;
-    [SerializeField] private GameObject head;
+    [Header("Refs")]
+        [SerializeField] private GameObject body;
+        [SerializeField] private GameObject hand;
+        [SerializeField] private GameObject head;
 
-    [SerializeField] private float bodyCameraFOV = 5f;
-    [SerializeField] private float handCameraFOV = 1.5f;
-    [SerializeField] private float headCameraFOV = 8f;
-    [SerializeField] private float FOVTransitionSpeed = 0.2f;
+
 
     private float targetFOV;
-
     private Camera camera;
     private GameObject targetBodyPart;
-    
     private Vector2 direction;
     
     private void Awake()

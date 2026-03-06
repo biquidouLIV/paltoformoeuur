@@ -5,15 +5,15 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
-    
+    [Header("Pas touche GD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")]
     [SerializeField] private BodyController bodyController;
     [SerializeField] public HandController handController;
     [SerializeField] private HeadController headController;
     [SerializeField] public PlayerPart selectedPart;
     [SerializeField] public PlayerPart controlledPart;
     
-    [SerializeField] public Vector3 handAnchorPosition;
-    [SerializeField] public Vector3 headAnchorPosition;
+    [NonSerialized] public Vector3 handAnchorPosition;
+    [NonSerialized] public Vector3 headAnchorPosition;
 
     [SerializeField] public PlayerInput PlayerInput;
     

@@ -24,7 +24,7 @@ public class BodyController : PlayerController
         [SerializeField] private Trajectory trajectory;
         [SerializeField] public BoxCollider2D colliderWithHead;
         [SerializeField] public BoxCollider2D colliderWithoutHead;
-    
+        
     
     private Vector2 rotationInput;
     private Vector2 rotation;
@@ -33,8 +33,28 @@ public class BodyController : PlayerController
 
     private void Update()
     {
+        if (elementRigidbody.linearVelocityY < 0)
+        {
+            elementAnimator.SetBool("IsFalling",true);
+            elementAnimator.SetBool("IsJumping",false);
+            
+        }
+        else if(elementRigidbody.linearVelocityY > 0)
+        {
+            elementAnimator.SetBool("IsJumping",true);
+            
+        }
+        else
+        {
+            elementAnimator.SetBool("IsJumping",false);
+            elementAnimator.SetBool("IsFalling",false);
+        }
+        
+        
+        
         if (CheckIfGrounded())
         {
+            
             coyoteTimeCounter = coyoteTime;
         }
         else
@@ -45,7 +65,6 @@ public class BodyController : PlayerController
         bufferingTimeCounter -= Time.deltaTime;
         if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
         {
-            Debug.Log("d");
             elementRigidbody.linearVelocityY = 0f;
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
             coyoteTimeCounter = 0f;
@@ -84,7 +103,13 @@ public class BodyController : PlayerController
         }
         else
         {
+            elementAnimator.SetBool("IsWalking",true);
             base.OnMove(context);
+        }
+
+        if (context.canceled)
+        {
+            elementAnimator.SetBool("IsWalking",false);
         }
     }
     

@@ -13,16 +13,17 @@ public class PlayerController : MonoBehaviour
     
     [Header("Refs")]
         [SerializeField] protected GameObject player;
-    
-    
+
+    [SerializeField] public Animator elementAnimator;
     [NonSerialized] public Rigidbody2D elementRigidbody;
-    [NonSerialized]public Vector2 moveInput;
+    [NonSerialized] public Vector2 moveInput;
     private float sprintSpeed = 1;
     protected BodyController playerScript;
     
     private void Start()
     {
         elementRigidbody = GetComponent<Rigidbody2D>();
+        elementAnimator = GetComponent<Animator>();
         playerScript = player.GetComponent<BodyController>();
     }
     

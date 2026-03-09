@@ -68,6 +68,7 @@ public class BodyController : PlayerController
         bufferingTimeCounter -= Time.deltaTime;
         if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
         {
+            jumpSound.Play();
             elementRigidbody.linearVelocityY = 0f;
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
             coyoteTimeCounter = 0f;

@@ -33,7 +33,6 @@ public class BodyController : PlayerController
 
     private void Update()
     {
-        
         if (CheckIfGrounded())
         {
             coyoteTimeCounter = coyoteTime;
@@ -42,11 +41,14 @@ public class BodyController : PlayerController
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-        
-        bufferingTimeCounter -= Time.deltaTime;
 
-        
-        
+        bufferingTimeCounter -= Time.deltaTime;
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        {
+            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            coyoteTimeCounter = 0f;
+            bufferingTimeCounter = 0f;
+        }
         
         if (!isAiming)
         {
@@ -88,16 +90,13 @@ public class BodyController : PlayerController
     {
         if (context.performed)
         {
-            if (bufferingTimeCounter > 0f || coyoteTimeCounter > 0.0f)
-            {
-                elementRigidbody.AddForce(new Vector2(0,jumpHeight));
-                coyoteTimeCounter = 0f;
-                bufferingTimeCounter = 0f;
-            }
-            else
-            {
-                bufferingTimeCounter = bufferingTime;
-            }
+            bufferingTimeCounter = bufferingTime;
+        }
+        if (context.performed && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        {
+            return;
+            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            coyoteTimeCounter = 0f;
         }
         
         if (context.canceled)

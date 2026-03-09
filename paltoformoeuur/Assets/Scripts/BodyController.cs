@@ -25,6 +25,8 @@ public class BodyController : PlayerController
         [SerializeField] public BoxCollider2D colliderWithHead;
         [SerializeField] public BoxCollider2D colliderWithoutHead;
     
+
+    [SerializeField] private AudioSource jumpSound;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
@@ -33,43 +35,10 @@ public class BodyController : PlayerController
 
     private void Update()
     {
-        if (CheckIfGrounded())
-        {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
-
-        bufferingTimeCounter -= Time.deltaTime;
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
-        {
-            Debug.Log("d");
-            elementRigidbody.linearVelocityY = 0f;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
-            coyoteTimeCounter = 0f;
-            bufferingTimeCounter = 0f;
-        }
-        
-        if (!isAiming)
-        {
-            trajectory.HideTrajectory();
-        }
-        else
-        {
-            switch (PlayerManager.instance.selectedPart)
-            {
-                case PlayerManager.PlayerPart.head:
-                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-                case PlayerManager.PlayerPart.hand:
-                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-            }
-        }
+        CheckJump();
+        DisplayTrajectory();
     }
-
+    
     public override void OnMove(InputAction.CallbackContext context)
     {
         if (isAiming)
@@ -116,6 +85,49 @@ public class BodyController : PlayerController
         return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player"));
     }
 
+    private void DisplayTrajectory()
+    {
+        
+        if (!isAiming)
+        {
+            trajectory.HideTrajectory();
+        }
+        else
+        {
+            switch (PlayerManager.instance.selectedPart)
+            {
+                case PlayerManager.PlayerPart.head:
+                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+                case PlayerManager.PlayerPart.hand:
+                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+            }
+        }
+    }
+    
+    private void CheckJump()
+    {
+        if (CheckIfGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        bufferingTimeCounter -= Time.deltaTime;
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        {
+            jumpSound.Play();
+            elementRigidbody.linearVelocityY = 0f;
+            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            coyoteTimeCounter = 0f;
+            bufferingTimeCounter = 0f;
+        }
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

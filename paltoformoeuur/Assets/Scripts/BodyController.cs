@@ -24,6 +24,7 @@ public class BodyController : PlayerController
         [SerializeField] private Trajectory trajectory;
         [SerializeField] public BoxCollider2D colliderWithHead;
         [SerializeField] public BoxCollider2D colliderWithoutHead;
+        
     
 
     [SerializeField] private AudioSource jumpSound;
@@ -35,8 +36,60 @@ public class BodyController : PlayerController
 
     private void Update()
     {
-        CheckJump();
-        DisplayTrajectory();
+        if (elementRigidbody.linearVelocityY < 0)
+        {
+            elementAnimator.SetBool("IsFalling",true);
+            elementAnimator.SetBool("IsJumping",false);
+            
+        }
+        else if(elementRigidbody.linearVelocityY > 0)
+        {
+            elementAnimator.SetBool("IsJumping",true);
+            
+        }
+        else
+        {
+            elementAnimator.SetBool("IsJumping",false);
+            elementAnimator.SetBool("IsFalling",false);
+        }
+        
+        
+        
+        if (CheckIfGrounded())
+        {
+            
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        bufferingTimeCounter -= Time.deltaTime;
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        {
+            elementRigidbody.linearVelocityY = 0f;
+            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            coyoteTimeCounter = 0f;
+            bufferingTimeCounter = 0f;
+        }
+        
+        if (!isAiming)
+        {
+            trajectory.HideTrajectory();
+        }
+        else
+        {
+            switch (PlayerManager.instance.selectedPart)
+            {
+                case PlayerManager.PlayerPart.head:
+                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+                case PlayerManager.PlayerPart.hand:
+                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
+                    break;
+            }
+        }
     }
     
     public override void OnMove(InputAction.CallbackContext context)
@@ -53,7 +106,13 @@ public class BodyController : PlayerController
         }
         else
         {
+            elementAnimator.SetBool("IsWalking",true);
             base.OnMove(context);
+        }
+
+        if (context.canceled)
+        {
+            elementAnimator.SetBool("IsWalking",false);
         }
     }
     

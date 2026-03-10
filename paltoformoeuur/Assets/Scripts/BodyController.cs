@@ -24,33 +24,34 @@ public class BodyController : PlayerController
         [SerializeField] private Trajectory trajectory;
         [SerializeField] public BoxCollider2D colliderWithHead;
         [SerializeField] public BoxCollider2D colliderWithoutHead;
+        [SerializeField] public Animator bodyAnimator;
         
     
-
     [SerializeField] private AudioSource jumpSound;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
     private GameObject aim;
     public bool isAiming;
-
+    
+    
     private void Update()
     {
         if (elementRigidbody.linearVelocityY < 0)
         {
-            elementAnimator.SetBool("IsFalling",true);
-            elementAnimator.SetBool("IsJumping",false);
+            bodyAnimator.SetBool("IsFalling",true);
+            bodyAnimator.SetBool("IsJumping",false);
             
         }
         else if(elementRigidbody.linearVelocityY > 0)
         {
-            elementAnimator.SetBool("IsJumping",true);
+            bodyAnimator.SetBool("IsJumping",true);
             
         }
         else
         {
-            elementAnimator.SetBool("IsJumping",false);
-            elementAnimator.SetBool("IsFalling",false);
+            bodyAnimator.SetBool("IsJumping",false);
+            bodyAnimator.SetBool("IsFalling",false);
         }
         
         
@@ -107,13 +108,22 @@ public class BodyController : PlayerController
         }
         else
         {
-            elementAnimator.SetBool("IsWalking",true);
+            bodyAnimator.SetBool("IsWalking",true);
             base.OnMove(context);
+
+            if (moveInput.x > 0)
+            {
+                bodyAnimator.SetBool("IsGoingLeft", false);
+            }
+            else if(moveInput.x < 0)
+            {
+                bodyAnimator.SetBool("IsGoingLeft", true);
+            }
         }
 
         if (context.canceled)
         {
-            elementAnimator.SetBool("IsWalking",false);
+            bodyAnimator.SetBool("IsWalking",false);
         }
     }
     
@@ -228,6 +238,7 @@ public class BodyController : PlayerController
     
     private void SpawnHand()
     {
+        bodyAnimator.SetBool("IsArmless", true);
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
@@ -242,6 +253,7 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
+        bodyAnimator.SetBool("IsHeadless", true);
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;

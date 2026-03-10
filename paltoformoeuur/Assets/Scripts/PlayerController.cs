@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("Refs")]
         [SerializeField] protected GameObject player;
 
-    [SerializeField] public Animator elementAnimator;
+    
     [NonSerialized] public Rigidbody2D elementRigidbody;
     [NonSerialized] public Vector2 moveInput;
     private float sprintSpeed = 1;
@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         elementRigidbody = GetComponent<Rigidbody2D>();
-        elementAnimator = GetComponent<Animator>();
         playerScript = player.GetComponent<BodyController>();
     }
     
@@ -68,6 +67,7 @@ public class PlayerController : MonoBehaviour
                 transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
                          .OnComplete(() =>
                              {
+                                 playerScript.bodyAnimator.SetBool("IsArmless",false);
                                  DisableElement();
                                  PlayerManager.instance.handOnBody = true;
                                  PlayerManager.instance.PlayerInput.enabled = true;
@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
                         {
                             playerScript.colliderWithHead.enabled = true;
                             playerScript.colliderWithoutHead.enabled = false;
+                            playerScript.bodyAnimator.SetBool("IsHeadless",false);
                             DisableElement();
                             PlayerManager.instance.headOnBody = true;
                             PlayerManager.instance.PlayerInput.enabled = true;

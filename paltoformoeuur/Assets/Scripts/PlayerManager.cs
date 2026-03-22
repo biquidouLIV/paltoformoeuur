@@ -20,6 +20,9 @@ public class PlayerManager : MonoBehaviour
     public bool handOnBody = true;
     public bool headOnBody = true;
 
+    public Vector3 checkpointTransform;
+    public int indiceCheckpoint;
+
     private int numberOfBodyPart = 3;
     
     public enum PlayerPart
@@ -37,6 +40,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        checkpointTransform = transform.position;
+        indiceCheckpoint = 0;
         handAnchorPosition = handController.gameObject.transform.localPosition;
         headAnchorPosition = headController.gameObject.transform.localPosition;
     }
@@ -191,5 +196,10 @@ public class PlayerManager : MonoBehaviour
                 Debug.LogError("No controlled part");
                 break;
         }
+    }
+
+    public void Respawn()
+    {
+        bodyController.transform.position = checkpointTransform;
     }
 }

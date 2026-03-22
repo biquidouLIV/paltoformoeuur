@@ -40,11 +40,13 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
+            playerScript.bodyAnimator.SetBool("IsSprinting",true);
             sprintSpeed = sprintSpeedMultiplier;
         }
 
         if (context.canceled)
         {
+            playerScript.bodyAnimator.SetBool("IsSprinting",false);
             sprintSpeed = 1;
         }
     }

@@ -53,7 +53,19 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsJumping",false);
             bodyAnimator.SetBool("IsFalling",false);
         }
-        
+
+/*
+        if (elementRigidbody.linearVelocityY > 0)
+        {
+            bodyAnimator.SetBool("IsFalling",false);
+            bodyAnimator.SetBool("IsJumping",true);
+        }
+
+        if (elementRigidbody.linearVelocityY < 0)
+        {
+            bodyAnimator.SetBool("IsFalling",true);
+            bodyAnimator.SetBool("IsJumping",false);
+        }*/
         
         
         if (CheckIfGrounded())
@@ -79,6 +91,15 @@ public class BodyController : PlayerController
         if (!isAiming)
         {
             trajectory.HideTrajectory();
+            switch (PlayerManager.instance.selectedPart)
+            {
+                case(PlayerManager.PlayerPart.head):
+                    bodyAnimator.SetBool("IsAimingHead",false);
+                    break;
+                case(PlayerManager.PlayerPart.hand):
+                    bodyAnimator.SetBool("IsAimingHand",false);
+                    break;
+            }
         }
         else
         {
@@ -98,6 +119,7 @@ public class BodyController : PlayerController
     {
         if (isAiming)
         {
+
             rotationInput = context.ReadValue<Vector2>();
             if (rotationInput.x + rotationInput.y > 0.1 || rotationInput.x + rotationInput.y < -0.1)
             {
@@ -210,6 +232,16 @@ public class BodyController : PlayerController
         {
             isAiming = true;
             Time.timeScale = 0.25f;
+            
+            switch (PlayerManager.instance.selectedPart)
+            {
+                case(PlayerManager.PlayerPart.head):
+                    bodyAnimator.SetBool("IsAimingHead",true);
+                    break;
+                case(PlayerManager.PlayerPart.hand):
+                    bodyAnimator.SetBool("IsAimingHand",true);
+                    break;
+            }
         }
         else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body)
         {

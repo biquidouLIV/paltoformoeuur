@@ -54,18 +54,7 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsFalling",false);
         }
 
-/*
-        if (elementRigidbody.linearVelocityY > 0)
-        {
-            bodyAnimator.SetBool("IsFalling",false);
-            bodyAnimator.SetBool("IsJumping",true);
-        }
 
-        if (elementRigidbody.linearVelocityY < 0)
-        {
-            bodyAnimator.SetBool("IsFalling",true);
-            bodyAnimator.SetBool("IsJumping",false);
-        }*/
         
         
         if (CheckIfGrounded())

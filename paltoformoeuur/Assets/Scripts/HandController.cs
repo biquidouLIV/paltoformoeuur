@@ -44,4 +44,10 @@ public class HandController : PlayerController
         canDash = true;
 
     }
+
+    public override void Die()
+    {
+        PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.hand);
+        Recall();
+    }
 }

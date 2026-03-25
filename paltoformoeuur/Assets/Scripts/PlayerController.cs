@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerController : MonoBehaviour
 {
     [Header("paramètres")]
         [SerializeField] protected float speed = 1;
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
     }
     
-    public void Recall(InputAction.CallbackContext context)
+    public void Recall()
     {
         PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
@@ -95,5 +95,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    public abstract void Die();
 }
         

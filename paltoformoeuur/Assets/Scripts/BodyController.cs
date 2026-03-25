@@ -288,4 +288,11 @@ public class BodyController : PlayerController
         PlayerManager.instance.EnableHead();
         head.transform.SetParent(transform.parent);
     }
+    
+    public override void Die()
+    {
+        bodyAnimator.SetTrigger("Die");
+        transform.position = PlayerManager.instance.checkpointTransform;
+        
+    }
 }

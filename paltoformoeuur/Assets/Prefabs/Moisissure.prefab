@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5469351122886091908}
   - component: {fileID: 1963147135887065178}
   - component: {fileID: 5730153184043695302}
+  - component: {fileID: -8283031015233442501}
   m_Layer: 0
   m_Name: Moisissure
   m_TagString: Untagged
@@ -138,3 +139,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-8283031015233442501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386516589306415804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d1f993b4a06b443b678846b79c870b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Moisissure

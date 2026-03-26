@@ -189,7 +189,6 @@ public class PlayerManager : MonoBehaviour
                 handController.Recall();
                 break;
             case PlayerPart.head:
-                
                 headController.Recall();
                 break;
             default:

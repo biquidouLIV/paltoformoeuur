@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +18,11 @@ public abstract class PlayerController : MonoBehaviour
     [NonSerialized] public Vector2 moveInput;
     private float sprintSpeed = 1;
     protected BodyController playerScript;
+
+    public virtual void Die()
+    {
+        
+    }
     
     private void Start()
     {
@@ -95,7 +99,5 @@ public abstract class PlayerController : MonoBehaviour
         }
         
     }
-
-    public abstract void Die();
 }
         

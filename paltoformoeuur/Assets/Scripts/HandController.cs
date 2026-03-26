@@ -78,9 +78,10 @@ public class HandController : PlayerController
     private IEnumerator Dash()
     {
         canDash = false;
-        handAnimator.SetTrigger("IsDashing");
+        handAnimator.SetBool("IsDashing",true);
         elementRigidbody.linearVelocityX = dashSpeed*direction;
         yield return new WaitForSeconds(dashDuration);
+        handAnimator.SetBool("IsDashing",false);
         elementRigidbody.linearVelocityX = 0;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;

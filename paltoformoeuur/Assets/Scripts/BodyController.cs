@@ -307,6 +307,5 @@ public class BodyController : PlayerController
     {
         bodyAnimator.SetTrigger("Die");
         transform.position = PlayerManager.instance.checkpointTransform;
-        
     }
 }

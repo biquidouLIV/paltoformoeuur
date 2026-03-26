@@ -1,14 +1,10 @@
 using UnityEngine;
 
-public class Moisissure : MonoBehaviour
+public class Spike : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("enterMoisissure");
-        if (other.gameObject.CompareTag("head"))
-        {
-            return;
-        }
+        Debug.Log("enterSpike");
         if (other.GetComponent<PlayerController>() != null)
         {
             other.GetComponent<PlayerController>().Die();

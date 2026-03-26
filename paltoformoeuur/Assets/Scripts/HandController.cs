@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -16,6 +15,8 @@ public class HandController : PlayerController
         [SerializeField] public Animator handAnimator;
         
     private bool canDash = true;
+    private bool accroche = false;
+    private Crochet currentCrochet;
     private int direction = 1;
 
     private void Update()
@@ -33,8 +34,14 @@ public class HandController : PlayerController
 
     public override void OnMove(InputAction.CallbackContext context)
     {
+        if (accroche)
+        {
+            return;
+        }
+        
         handAnimator.SetBool("IsWalking", true);
         base.OnMove(context);
+        
         if (moveInput.x > 0)
         {
             direction = 1;
@@ -83,6 +90,8 @@ public class HandController : PlayerController
         transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
             .OnComplete(() =>
                 {
+                    accroche = false;
+                    currentCrochet = null;
                     playerScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
@@ -108,5 +117,13 @@ public class HandController : PlayerController
     {
         PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.hand);
         Recall();
+    }
+
+    public void Accroche(Crochet crochet)
+    {
+        accroche = true;
+        currentCrochet = crochet;
+        elementRigidbody.simulated = false;
+        transform.position = crochet.gameObject.transform.position - new Vector3(0,0.8f,0);
     }
 }

@@ -8,7 +8,6 @@ public abstract class PlayerController : MonoBehaviour
     [Header("paramètres")]
         [SerializeField] protected float speed = 1;
         [SerializeField] protected float sprintSpeedMultiplier = 2;
-        [SerializeField] private int recallSpeed;
     
     [Header("Refs")]
         [SerializeField] protected GameObject player;
@@ -18,14 +17,10 @@ public abstract class PlayerController : MonoBehaviour
     [NonSerialized] public Vector2 moveInput;
     private float sprintSpeed = 1;
     protected BodyController playerScript;
-
-    public virtual void Die()
-    {
-        
-    }
     
+    public abstract void Die();
     
-    private void Start()
+    protected virtual void Start()
     {
         elementRigidbody = GetComponent<Rigidbody2D>();
         playerScript = player.GetComponent<BodyController>();
@@ -56,49 +51,18 @@ public abstract class PlayerController : MonoBehaviour
         }
     }
     
-    private void DisableElement()
+    public void DisableElement()
     {
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
         PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
     }
     
-    public void Recall()
+    public virtual void Recall()
     {
         PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
-        switch (PlayerManager.instance.controlledPart)
-        {
-            case(PlayerManager.PlayerPart.hand):
-                transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
-                         .OnComplete(() =>
-                             {
-                                 playerScript.bodyAnimator.SetBool("IsArmless",false);
-                                 DisableElement();
-                                 PlayerManager.instance.handOnBody = true;
-                                 PlayerManager.instance.PlayerInput.enabled = true;
-                             }
-                        );
-                transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
-                break;
-            
-            case(PlayerManager.PlayerPart.head):
-                transform.DOLocalMove(PlayerManager.instance.headAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
-                    .OnComplete(() =>
-                        {
-                            playerScript.colliderWithHead.enabled = true;
-                            playerScript.colliderWithoutHead.enabled = false;
-                            playerScript.bodyAnimator.SetBool("IsHeadless",false);
-                            DisableElement();
-                            PlayerManager.instance.headOnBody = true;
-                            PlayerManager.instance.PlayerInput.enabled = true;
-                        }
-                    );
-                transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
-                break;
-        }
-        
     }
 }
         

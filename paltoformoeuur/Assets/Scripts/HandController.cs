@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class HandController : PlayerController
         [SerializeField] private float dashSpeed = 50;
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float dashCooldown = 3.0f;
+        [SerializeField] private int recallSpeed;
 
     [Header("Refs")]
         [SerializeField] public Animator handAnimator;
@@ -73,6 +75,21 @@ public class HandController : PlayerController
         {
             StartCoroutine(Dash());
         }
+    }
+
+    public override void Recall()
+    {
+        base.Recall();
+        transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
+            .OnComplete(() =>
+                {
+                    playerScript.bodyAnimator.SetBool("IsArmless",false);
+                    DisableElement();
+                    PlayerManager.instance.handOnBody = true;
+                    PlayerManager.instance.PlayerInput.enabled = true;
+                }
+            );
+        transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
     }
 
     private IEnumerator Dash()

@@ -186,20 +186,14 @@ public class PlayerManager : MonoBehaviour
             case PlayerPart.body:
                 break;
             case PlayerPart.hand:
-                handController.Recall(context);
+                handController.Recall();
                 break;
             case PlayerPart.head:
-                
-                headController.Recall(context);
+                headController.Recall();
                 break;
             default:
                 Debug.LogError("No controlled part");
                 break;
         }
-    }
-
-    public void Respawn()
-    {
-        bodyController.transform.position = checkpointTransform;
     }
 }

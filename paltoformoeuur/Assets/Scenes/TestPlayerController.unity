@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170f839ca09f69443aab75bb7a651ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  strength: 2
+  strength: 100
 --- !u!58 &20930633
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,8 +185,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0.0030651093}
+  m_Radius: 0.5030651
 --- !u!212 &20930634
 SpriteRenderer:
   serializedVersion: 2
@@ -1906,6 +1906,7 @@ GameObject:
   - component: {fileID: 1020059494}
   - component: {fileID: 1020059493}
   - component: {fileID: 1020059496}
+  - component: {fileID: 1020059497}
   m_Layer: 6
   m_Name: hand
   m_TagString: Untagged
@@ -2079,6 +2080,29 @@ MonoBehaviour:
   dashSpeed: 30
   dashDuration: 0.2
   dashCooldown: 3
+  handAnimator: {fileID: 1020059497}
+--- !u!95 &1020059497
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020059491}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d239ef1eb05c0946b4d2c799e4a3ed7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1086219424
 GameObject:
   m_ObjectHideFlags: 0

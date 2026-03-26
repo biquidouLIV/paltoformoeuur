@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [NonSerialized] public Vector3 headAnchorPosition;
 
     [SerializeField] public PlayerInput PlayerInput;
+    [SerializeField] public TMP_Text textElementSelectionne;
     
     public bool handOnBody = true;
     public bool headOnBody = true;
@@ -90,6 +92,7 @@ public class PlayerManager : MonoBehaviour
         switch (selectedPart)
         {
             case PlayerPart.body:
+                textElementSelectionne.text = "body";
                 controlledPart = selectedPart;
                 CameraManager.instance.SetOnBody();
                 break;
@@ -97,6 +100,7 @@ public class PlayerManager : MonoBehaviour
                 bodyController.moveInput = Vector2.zero;
                 if (handOnBody)
                 {
+                    textElementSelectionne.text = "hand";
                     //Afficher la main comme élément sélectionné
                     controlledPart = PlayerPart.body;
                     CameraManager.instance.SetOnBody();
@@ -113,6 +117,7 @@ public class PlayerManager : MonoBehaviour
                 handController.moveInput = Vector2.zero;
                 if (headOnBody)
                 {
+                    textElementSelectionne.text = "head";
                     //Afficher la tete comme élément sélectionné
                     controlledPart = PlayerPart.body;
                     CameraManager.instance.SetOnBody();

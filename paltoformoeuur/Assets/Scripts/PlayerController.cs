@@ -20,6 +20,7 @@ public abstract class PlayerController : MonoBehaviour
     private float sprintSpeed = 1;
     protected BodyController playerScript;
     
+    
     private void Start()
     {
         elementRigidbody = GetComponent<Rigidbody2D>();
@@ -36,7 +37,7 @@ public abstract class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
     
-    public void OnSprint(InputAction.CallbackContext context)
+    public virtual void OnSprint(InputAction.CallbackContext context)
     {
         if (context.performed)
         {

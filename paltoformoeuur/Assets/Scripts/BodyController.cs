@@ -137,7 +137,21 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsWalking",false);
         }
     }
-    
+
+    public override void OnSprint(InputAction.CallbackContext context)
+    {
+        base.OnSprint(context);
+        if (context.performed)
+        {
+            bodyAnimator.SetBool("IsSprinting",true);
+        }
+
+        if (context.canceled)
+        {
+            bodyAnimator.SetBool("IsSprinting",false);
+        }
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)

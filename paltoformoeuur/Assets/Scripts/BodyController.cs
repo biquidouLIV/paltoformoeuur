@@ -54,18 +54,7 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsFalling",false);
         }
 
-/*
-        if (elementRigidbody.linearVelocityY > 0)
-        {
-            bodyAnimator.SetBool("IsFalling",false);
-            bodyAnimator.SetBool("IsJumping",true);
-        }
 
-        if (elementRigidbody.linearVelocityY < 0)
-        {
-            bodyAnimator.SetBool("IsFalling",true);
-            bodyAnimator.SetBool("IsJumping",false);
-        }*/
         
         
         if (CheckIfGrounded())
@@ -148,7 +137,21 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsWalking",false);
         }
     }
-    
+
+    public override void OnSprint(InputAction.CallbackContext context)
+    {
+        base.OnSprint(context);
+        if (context.performed)
+        {
+            bodyAnimator.SetBool("IsSprinting",true);
+        }
+
+        if (context.canceled)
+        {
+            bodyAnimator.SetBool("IsSprinting",false);
+        }
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -298,5 +301,11 @@ public class BodyController : PlayerController
         
         PlayerManager.instance.EnableHead();
         head.transform.SetParent(transform.parent);
+    }
+    
+    public override void Die()
+    {
+        bodyAnimator.SetTrigger("Die");
+        transform.position = PlayerManager.instance.checkpointTransform;
     }
 }

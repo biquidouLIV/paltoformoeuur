@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 8888338495537200101}
   m_Layer: 6
   m_Name: body
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +390,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BodyController
   speed: 6
   sprintSpeedMultiplier: 1.5
-  recallSpeed: 0
   player: {fileID: 3024878346645139155}
   jumpHeight: 700
   launchForce: 500
@@ -542,7 +541,7 @@ GameObject:
   - component: {fileID: 1720413786365845372}
   m_Layer: 6
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,8 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeadController
   speed: 1
   sprintSpeedMultiplier: 2
-  recallSpeed: 10
   player: {fileID: 3024878346645139155}
+  recallSpeed: 10
 --- !u!1 &6260475154895817139
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +752,7 @@ MonoBehaviour:
   selectedPart: 0
   controlledPart: 0
   PlayerInput: {fileID: 2160805316179249409}
+  textElementSelectionne: {fileID: 0}
   handOnBody: 1
   headOnBody: 1
   checkpointTransform: {x: 0, y: 0, z: 0}
@@ -1121,11 +1121,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HandController
   speed: 8
   sprintSpeedMultiplier: 2
-  recallSpeed: 10
   player: {fileID: 3024878346645139155}
   dashSpeed: 30
   dashDuration: 0.2
   dashCooldown: 3
+  recallSpeed: 10
   handAnimator: {fileID: 5572336904471285171}
 --- !u!95 &5572336904471285171
 Animator:

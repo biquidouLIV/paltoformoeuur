@@ -98,9 +98,10 @@ public class PlayerManager : MonoBehaviour
                 break;
             case PlayerPart.hand:
                 bodyController.moveInput = Vector2.zero;
+                textElementSelectionne.text = "hand";
+
                 if (handOnBody)
                 {
-                    textElementSelectionne.text = "hand";
                     //Afficher la main comme élément sélectionné
                     controlledPart = PlayerPart.body;
                     CameraManager.instance.SetOnBody();
@@ -115,9 +116,9 @@ public class PlayerManager : MonoBehaviour
                 break;
             case PlayerPart.head:
                 handController.moveInput = Vector2.zero;
+                textElementSelectionne.text = "head";
                 if (headOnBody)
                 {
-                    textElementSelectionne.text = "head";
                     //Afficher la tete comme élément sélectionné
                     controlledPart = PlayerPart.body;
                     CameraManager.instance.SetOnBody();

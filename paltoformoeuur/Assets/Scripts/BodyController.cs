@@ -108,7 +108,7 @@ public class BodyController : PlayerController
     {
         if (isAiming)
         {
-
+            bodyAnimator.SetBool("IsWalking",false);
             rotationInput = context.ReadValue<Vector2>();
             if (rotationInput.x + rotationInput.y > 0.1 || rotationInput.x + rotationInput.y < -0.1)
             {

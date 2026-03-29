@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trajectory
   lineRenderer: {fileID: 6188788373777181275}
-  length: 200
+  length: 20
+  sensitivity: 0.1
 --- !u!120 &6188788373777181275
 LineRenderer:
   serializedVersion: 3
@@ -173,6 +174,7 @@ GameObject:
   - component: {fileID: 1466060844073490421}
   - component: {fileID: 6755396211980822311}
   - component: {fileID: 8888338495537200101}
+  - component: {fileID: 5086582732827617786}
   m_Layer: 6
   m_Name: body
   m_TagString: Body
@@ -395,7 +397,7 @@ MonoBehaviour:
   launchForce: 500
   coyoteTime: 0.2
   bufferingTime: 0.2
-  jumpRaycastSize: {x: 0.76, y: 0.08}
+  jumpRaycastSize: {x: 0.72, y: 0.08}
   jumpRaycastOrigin: {x: 0.1, y: 0.12}
   hand: {fileID: 6392271598579402724}
   head: {fileID: 5699740964625137966}
@@ -526,6 +528,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &5086582732827617786
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024878346645139155}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.1, y: 0.12}
+  m_Radius: 0.36
 --- !u!1 &5699740964625137966
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +593,7 @@ Transform:
   m_GameObject: {fileID: 5699740964625137966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03575, y: 0.6775, z: 0}
+  m_LocalPosition: {x: -0.046, y: 0.785, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -955,7 +993,7 @@ GameObject:
   - component: {fileID: 5572336904471285171}
   m_Layer: 6
   m_Name: hand
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -969,9 +1007,9 @@ Transform:
   m_GameObject: {fileID: 6392271598579402724}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39, y: 0.0425, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0.461, y: 0.03, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.07, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1463248654694922415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

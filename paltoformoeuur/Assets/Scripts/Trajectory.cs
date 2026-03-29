@@ -5,6 +5,8 @@ public class Trajectory : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private int length = 20;
+    [SerializeField] private float sensitivity = 0.1f;
+    private Vector3 oldCurveLastPoint;
 
     private void Start()
     {
@@ -22,7 +24,18 @@ public class Trajectory : MonoBehaviour
             Vector2 pos = startPosition + velocity * t + (Physics2D.gravity * t * t / 2);
             pts[i] = new Vector3(pos.x, pos.y, 0);
         }
+        
+        Debug.Log(Vector3.Distance(oldCurveLastPoint,pts[length-1]));
+        
+        
+        if(Vector3.Distance(oldCurveLastPoint,pts[length-1]) < sensitivity)
+        {
+            return;
+        }
+
+        oldCurveLastPoint = pts[pts.Length - 1];
         lineRenderer.SetPositions(pts);
+        
     }
 
     public void HideTrajectory()

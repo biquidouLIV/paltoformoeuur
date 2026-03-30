@@ -31,7 +31,6 @@ public class HandController : PlayerController
         }
     }
 
-
     public override void OnMove(InputAction.CallbackContext context)
     {
         if (accroche)
@@ -63,8 +62,6 @@ public class HandController : PlayerController
     {
         return;
     }
-
-
 
     //ca s'appelle jump mais c'est un dash 
     public void OnJump(InputAction.CallbackContext context) 

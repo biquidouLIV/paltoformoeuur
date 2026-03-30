@@ -76,6 +76,7 @@ public class HandController : PlayerController
     {
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
+            .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
                     accroche = false;

@@ -17,6 +17,7 @@ public class HeadController : PlayerController
         elementRigidbody.angularDamping = initialAngularDamping;
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.headAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
+            .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
                     playerScript.colliderWithHead.enabled = true;

@@ -736,7 +736,7 @@ MonoBehaviour:
   speed: 1
   sprintSpeedMultiplier: 2
   player: {fileID: 3024878346645139155}
-  recallSpeed: 10
+  recallSpeed: 20
 --- !u!1 &6260475154895817139
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +769,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1463248654694922415}
-  - {fileID: 6502553033393782822}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2365311328493070183
@@ -972,9 +971,53 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 23b745e4-bc15-4945-8b0f-2041e312de9a
     m_ActionName: 'Player/SelectionChange[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5cc354d3-23da-4b22-9b18-430ef1eca554
+    m_ActionName: 'Test/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 84cd693d-b746-4436-b411-012b3671ab53
+    m_ActionName: 'Test/Look[/XInputControllerWindows/rightStick,/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7736823d-53ef-4335-818c-a3d8cdce6a18
+    m_ActionName: 'Test/AimHead[/XInputControllerWindows/rightTrigger,/Mouse/leftButton,/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cbd06901-e085-4155-94f7-856f30c68845
+    m_ActionName: 'Test/AimHand[/XInputControllerWindows/leftTrigger,/Mouse/leftButton,/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5d5bd575-07b5-4a59-bcc5-726c332acccc
+    m_ActionName: 'Test/Interact[/Keyboard/e,/XInputControllerWindows/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0161049e-daa7-4cc1-aec6-684140f88722
+    m_ActionName: 'Test/Recall[/XInputControllerWindows/buttonNorth,/Keyboard/c]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e83b65d-a4e3-4105-8f1a-c91489b17851
+    m_ActionName: 'Test/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1439fccb-5859-41cb-b8f1-aec01c14bc44
+    m_ActionName: 'Test/Previous[/Keyboard/1,/XInputControllerWindows/dpad/left]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 475056bb-c4c0-4157-bd78-a926b777fea4
+    m_ActionName: 'Test/Next[/Keyboard/2,/XInputControllerWindows/dpad/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 50481e4a-cac9-484c-9ced-1de06fe8f09b
+    m_ActionName: 'Test/Sprint[/Keyboard/leftShift,/XInputControllerWindows/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6afb7eb5-d673-470f-abc0-a66b6f55cc76
+    m_ActionName: 'Test/SelectionChange[/Keyboard/r,/XInputControllerWindows/rightShoulder]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &6392271598579402724
@@ -1157,13 +1200,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c33fa8f9ea5a540957c1c7e594ab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandController
-  speed: 8
+  speed: 4
   sprintSpeedMultiplier: 2
   player: {fileID: 3024878346645139155}
-  dashSpeed: 30
+  dashSpeed: 10
   dashDuration: 0.2
-  dashCooldown: 3
-  recallSpeed: 10
+  dashCooldown: 0.2
+  recallSpeed: 20
   handAnimator: {fileID: 5572336904471285171}
 --- !u!95 &5572336904471285171
 Animator:
@@ -1187,161 +1230,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &8650759182668835751
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6502553033393782822}
-  - component: {fileID: 4419893924195871621}
-  - component: {fileID: 8591821267065940826}
-  - component: {fileID: 5526853133128732596}
-  - component: {fileID: 5220403130068679891}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6502553033393782822
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650759182668835751}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4225828230949415905}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &4419893924195871621
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650759182668835751}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.33254716, g: 0.3799498, b: 0.4433962, a: 1}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &8591821267065940826
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650759182668835751}
-  m_Enabled: 1
---- !u!114 &5526853133128732596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650759182668835751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
-  m_Version: 2
---- !u!114 &5220403130068679891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650759182668835751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d3e32a2b0782f46b2f745495b5ff6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  speed: 0.5
-  bodyCameraFOV: 5
-  handCameraFOV: 1.5
-  headCameraFOV: 8
-  FOVTransitionSpeed: 0.03
-  body: {fileID: 3024878346645139155}
-  hand: {fileID: 6392271598579402724}
-  head: {fileID: 5699740964625137966}

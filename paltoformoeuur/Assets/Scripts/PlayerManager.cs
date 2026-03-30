@@ -94,7 +94,6 @@ public class PlayerManager : MonoBehaviour
             case PlayerPart.body:
                 textElementSelectionne.text = "body";
                 controlledPart = selectedPart;
-                CameraManager.instance.SetOnBody();
                 break;
             case PlayerPart.hand:
                 bodyController.moveInput = Vector2.zero;
@@ -102,15 +101,11 @@ public class PlayerManager : MonoBehaviour
 
                 if (handOnBody)
                 {
-                    //Afficher la main comme élément sélectionné
                     controlledPart = PlayerPart.body;
-                    CameraManager.instance.SetOnBody();
                 }
                 else
                 {
-                    
                     controlledPart = selectedPart;
-                    CameraManager.instance.SetOnHand();
                 }
                 break;
             case PlayerPart.head:
@@ -118,15 +113,11 @@ public class PlayerManager : MonoBehaviour
                 textElementSelectionne.text = "head";
                 if (headOnBody)
                 {
-                    //Afficher la tete comme élément sélectionné
                     controlledPart = PlayerPart.body;
-                    CameraManager.instance.SetOnBody();
                 }
                 else
                 {
-                    
                     controlledPart = selectedPart;
-                    CameraManager.instance.SetOnHead();
                 }
                 break;
             default:

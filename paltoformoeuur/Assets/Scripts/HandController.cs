@@ -61,16 +61,7 @@ public class HandController : PlayerController
     
     public override void OnSprint(InputAction.CallbackContext context)
     {
-        base.OnSprint(context);
-        if (context.performed)
-        {
-            handAnimator.SetBool("IsSprinting",true);
-        }
-
-        if (context.canceled)
-        {
-            handAnimator.SetBool("IsSprinting",false);
-        }
+        return;
     }
 
 

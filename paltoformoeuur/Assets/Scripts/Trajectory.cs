@@ -25,9 +25,8 @@ public class Trajectory : MonoBehaviour
             pts[i] = new Vector3(pos.x, pos.y, 0);
         }
         
-        Debug.Log(Vector3.Distance(oldCurveLastPoint,pts[length-1]));
         
-        
+       
         if(Vector3.Distance(oldCurveLastPoint,pts[length-1]) < sensitivity)
         {
             return;
@@ -35,7 +34,6 @@ public class Trajectory : MonoBehaviour
 
         oldCurveLastPoint = pts[pts.Length - 1];
         lineRenderer.SetPositions(pts);
-        
     }
 
     public void HideTrajectory()

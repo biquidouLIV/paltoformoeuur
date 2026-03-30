@@ -8,7 +8,6 @@ public class Moisissure : MonoBehaviour
         
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("enterMoisissure");
         if (other.gameObject.CompareTag("Head"))
         {
             other.GetComponent<Rigidbody2D>().angularDamping += ralentissement;

@@ -6,7 +6,6 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("enterCP");
         if (!other.gameObject.CompareTag("Body"))
         {
             return;

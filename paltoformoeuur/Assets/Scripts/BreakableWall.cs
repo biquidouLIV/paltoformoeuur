@@ -11,12 +11,7 @@ public class BreakableWall : MonoBehaviour
         {
             if (other.relativeVelocity.magnitude > velocityToBreak)
             {
-                Debug.Log("cassage du mur omg " + other.relativeVelocity.magnitude);
                 Destroy(gameObject);
-            }
-            else
-            {
-                Debug.Log("pas assez de velocity " + other.relativeVelocity.magnitude);
             }
         }
     }

@@ -112,7 +112,6 @@ public class PlayerManager : MonoBehaviour
                     controlledPart = selectedPart;
                     CameraManager.instance.SetOnHand();
                 }
-                Debug.Log(handOnBody);
                 break;
             case PlayerPart.head:
                 handController.moveInput = Vector2.zero;
@@ -134,7 +133,6 @@ public class PlayerManager : MonoBehaviour
                 Debug.LogError("No selected part");
                 break;
         }
-        Debug.Log(controlledPart);
     }
     
     public void OnJump(InputAction.CallbackContext context)

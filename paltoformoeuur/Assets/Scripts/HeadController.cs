@@ -10,7 +10,6 @@ public class HeadController : PlayerController
     {
         base.Start();
         initialAngularDamping = elementRigidbody.angularDamping;
-        Debug.Log(initialAngularDamping);
     }
     
     public override void Recall()

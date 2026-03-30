@@ -13,7 +13,6 @@ public class Button : MonoBehaviour
     {
         if(isOpen) return;
         
-        Debug.Log("button pressed");
         door.transform.DOMove(door.transform.position + doorMove, doorOpeningTime)
             .SetEase(Ease.InOutCubic);
         isOpen = true;

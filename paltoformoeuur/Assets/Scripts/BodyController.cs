@@ -175,7 +175,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         //return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player"));
+        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint"));
     }
 
     private void DisplayTrajectory()
@@ -229,14 +229,14 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
-        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming)
+        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming && PlayerManager.instance.headOnBody)
         {
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHead",true);
             aimingPart = PlayerPart.head;
         }
-        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.head)
+        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.head  && PlayerManager.instance.headOnBody)
         {
             Time.timeScale = 1f;
             isAiming = false;

@@ -85,6 +85,7 @@ public class HandController : PlayerController
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;
+                    PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
@@ -104,7 +105,6 @@ public class HandController : PlayerController
 
     public override void Die()
     {
-        PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.hand);
         Recall();
     }
 

@@ -1113,10 +1113,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1466060844073490421, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a36690e8e0d832479aad75e96131496, type: 2}
+    - target: {fileID: 1720413786365845372, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: f03a453b94f9d2f43a97ea8772a57141, type: 2}
     - target: {fileID: 2365311328493070183, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: textElementSelectionne
       value: 
       objectReference: {fileID: 1716602000}
+    - target: {fileID: 3226355294599407309, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: e877430a900c06b428a559dc3d8e6279, type: 2}
+    - target: {fileID: 3226355294599407309, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
+      propertyPath: tempsAccroche
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.266933
@@ -1719,6 +1735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   fallingPlatform: {fileID: 737414007}
+  delayOnLeaving: 2
 --- !u!212 &2016958078
 SpriteRenderer:
   serializedVersion: 2

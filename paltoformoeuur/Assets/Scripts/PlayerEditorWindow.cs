@@ -53,8 +53,23 @@ public class PlayerEditorWindow : EditorWindow
         headData.recallSpeed = EditorGUILayout.IntField("recall Speed", headData.recallSpeed);
         EditorGUILayout.EndVertical();
         
-        EditorGUILayout.Space(40);
-
+        
+        EditorGUILayout.Space(20);
+        EditorGUILayout.BeginVertical();
+        
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Button("✨ Améliorer le jeu ✨", GUILayout.Height(50));
+        GUILayout.Button("✨ Rendre le jeu plus beau ✨", GUILayout.Height(50));
+        EditorGUILayout.EndHorizontal();
+        
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Button("🧠 Gagner du QI 🧠", GUILayout.Height(50));
+        GUILayout.Button("😡 Casser le jeu 😡", GUILayout.Height(50));
+        EditorGUILayout.EndHorizontal();
+        
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(20);
+        
         
         //tqt c'est utile
         GUILayout.Label("qui a pété ?");

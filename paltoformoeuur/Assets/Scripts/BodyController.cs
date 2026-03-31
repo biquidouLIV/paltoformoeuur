@@ -43,9 +43,10 @@ public class BodyController : PlayerController
             jumpHeight = bodyData.jumpHeight;
             launchForce = bodyData.launchForce;
             bufferingTime = bodyData.bufferingTime;
+            coyoteTime = bodyData.coyoteTime;
         }
     }
-            coyoteTime = bodyData.coyoteTime;
+            
     private void Update()
     {
         if (elementRigidbody.linearVelocityY < 0)
@@ -146,13 +147,13 @@ public class BodyController : PlayerController
     {
         if (context.performed)
         {
-            playerScript.bodyAnimator.SetBool("IsSprinting",true);
+            bodyScript.bodyAnimator.SetBool("IsSprinting",true);
             sprintSpeed = sprintSpeedMultiplier;
         }
 
         if (context.canceled)
         {
-            playerScript.bodyAnimator.SetBool("IsSprinting",false);
+            bodyScript.bodyAnimator.SetBool("IsSprinting",false);
             sprintSpeed = 1;
         }
     }

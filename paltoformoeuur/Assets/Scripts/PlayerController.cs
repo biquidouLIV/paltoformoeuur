@@ -5,23 +5,32 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerController : MonoBehaviour
 {
-    [Header("paramètres")]
-        [SerializeField] protected float speed = 1;
-        [SerializeField] protected float sprintSpeedMultiplier = 2;
+    
     
     [Header("Refs")]
+        [SerializeField] private PlayerData data;
         [SerializeField] protected GameObject player;
 
     
     [NonSerialized] public Rigidbody2D elementRigidbody;
     [NonSerialized] public Vector2 moveInput;
-    private float sprintSpeed = 1;
+    
+    protected float sprintSpeed = 1;
+    private float speed = 1;
+    protected float sprintSpeedMultiplier = 2;
+    
+    
     protected BodyController playerScript;
     
     public abstract void Die();
+    public virtual void Init(PlayerData data){}
     
     protected virtual void Start()
     {
+        speed = data.speed;
+        sprintSpeedMultiplier = data.sprintSpeedMultiplier;
+        Init(data);
+        
         elementRigidbody = GetComponent<Rigidbody2D>();
         playerScript = player.GetComponent<BodyController>();
     }
@@ -38,17 +47,6 @@ public abstract class PlayerController : MonoBehaviour
     
     public virtual void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            playerScript.bodyAnimator.SetBool("IsSprinting",true);
-            sprintSpeed = sprintSpeedMultiplier;
-        }
-
-        if (context.canceled)
-        {
-            playerScript.bodyAnimator.SetBool("IsSprinting",false);
-            sprintSpeed = 1;
-        }
     }
     
     public void DisableElement()

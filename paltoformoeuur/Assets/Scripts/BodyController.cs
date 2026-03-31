@@ -4,14 +4,6 @@ using UnityEngine.InputSystem;
 public class BodyController : PlayerController
 {
     
-    [Header("paramètres")]
-        [SerializeField] private float jumpHeight = 50;
-        [SerializeField] private float launchForce = 100;
-        [SerializeField] private float coyoteTime = 0.2f;
-        private float coyoteTimeCounter;
-        [SerializeField] private float bufferingTime = 0.2f;
-        private float bufferingTimeCounter;
-        
     [Header("GD pas touche")]
         [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
         [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
@@ -25,17 +17,32 @@ public class BodyController : PlayerController
         [SerializeField] public BoxCollider2D colliderWithHead;
         [SerializeField] public BoxCollider2D colliderWithoutHead;
         [SerializeField] public Animator bodyAnimator;
-        
-    
-    [SerializeField] private AudioSource jumpSound;
+        [SerializeField] private AudioSource jumpSound;
+
+    private float jumpHeight;
+    private float launchForce;
+    private float coyoteTime;
+    private float coyoteTimeCounter;
+    private float bufferingTime;
+    private float bufferingTimeCounter;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
     private GameObject aim;
     public bool isAiming;
     private PlayerPart aimingPart;
-    
-    
+
+    public override void Init(PlayerData data)
+    {
+        if (data is BodyData bodyData)
+        {
+            jumpHeight = bodyData.jumpHeight;
+            launchForce = bodyData.launchForce;
+            coyoteTime = bodyData.coyoteTime;
+            bufferingTime = bodyData.bufferingTime;
+        }
+    }
+
     private void Update()
     {
         if (elementRigidbody.linearVelocityY < 0)
@@ -47,7 +54,6 @@ public class BodyController : PlayerController
         else if(elementRigidbody.linearVelocityY > 0)
         {
             bodyAnimator.SetBool("IsJumping",true);
-            
         }
         else
         {
@@ -138,15 +144,16 @@ public class BodyController : PlayerController
 
     public override void OnSprint(InputAction.CallbackContext context)
     {
-        base.OnSprint(context);
         if (context.performed)
         {
-            bodyAnimator.SetBool("IsSprinting",true);
+            playerScript.bodyAnimator.SetBool("IsSprinting",true);
+            sprintSpeed = sprintSpeedMultiplier;
         }
 
         if (context.canceled)
         {
-            bodyAnimator.SetBool("IsSprinting",false);
+            playerScript.bodyAnimator.SetBool("IsSprinting",false);
+            sprintSpeed = 1;
         }
     }
 
@@ -175,7 +182,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         //return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player"));
+        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint"));
     }
 
     private void DisplayTrajectory()
@@ -229,14 +236,14 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
-        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming)
+        if (context.started && !isAiming && PlayerManager.instance.headOnBody)
         {
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHead",true);
             aimingPart = PlayerPart.head;
         }
-        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.head)
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.head  && PlayerManager.instance.headOnBody)
         {
             Time.timeScale = 1f;
             isAiming = false;
@@ -251,14 +258,14 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
-        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming)
+        if (context.started && !isAiming)
         {
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHand",true);
             aimingPart = PlayerPart.hand;
         }
-        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.hand)
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.hand)
         {
             Time.timeScale = 1f;
             isAiming = false;

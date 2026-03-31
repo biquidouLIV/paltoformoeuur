@@ -5,19 +5,32 @@ using UnityEngine.InputSystem;
 
 public class HandController : PlayerController
 {
-    [Header("paramètres")]
-        [SerializeField] private float dashSpeed = 50;
-        [SerializeField] private float dashDuration = 0.2f;
-        [SerializeField] private float dashCooldown = 3.0f;
-        [SerializeField] private int recallSpeed;
+
 
     [Header("Refs")]
         [SerializeField] public Animator handAnimator;
-        
+
+
+    private float dashSpeed;
+    private float dashDuration;
+    private float dashCooldown;
+    private int recallSpeed;
+    
     private bool canDash = true;
     private bool accroche = false;
     private Crochet currentCrochet;
     private int direction = 1;
+
+    public override void Init(PlayerData data)
+    {
+        if (data is HandData handData)
+        {
+            dashSpeed = handData.dashSpeed;
+            dashDuration = handData.dashDuration;
+            dashCooldown = handData.dashCooldown;
+            recallSpeed = handData.recallSpeed;
+        }
+    }
 
     private void Update()
     {

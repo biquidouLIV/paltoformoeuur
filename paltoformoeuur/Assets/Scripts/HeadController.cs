@@ -2,8 +2,17 @@ using DG.Tweening;
 using UnityEngine;
 public class HeadController : PlayerController
 {
-    [SerializeField] private int recallSpeed;
+    private int recallSpeed;
     private float initialAngularDamping;
+
+
+    public override void Init(PlayerData data)
+    {
+        if (data is HeadData headData)
+        {
+            recallSpeed = headData.recallSpeed;
+        }
+    }
 
     protected override void Start()
     {

@@ -16,6 +16,7 @@ public class PlayerEditorWindow : EditorWindow
 
     private void OnGUI()
     {
+       
         GUILayout.Label("Refs");
 
         bodyData = (BodyData)EditorGUILayout.ObjectField("body", bodyData, typeof(BodyData), false);
@@ -89,6 +90,13 @@ public class PlayerEditorWindow : EditorWindow
         GUILayout.Button("Salomé");
         EditorGUILayout.EndHorizontal();
 
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(bodyData);
+            EditorUtility.SetDirty(handData);
+            EditorUtility.SetDirty(headData);
+            AssetDatabase.SaveAssets();
+        }
     }
     
 

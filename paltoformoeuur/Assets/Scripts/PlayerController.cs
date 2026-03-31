@@ -20,7 +20,7 @@ public abstract class PlayerController : MonoBehaviour
     protected float sprintSpeedMultiplier = 2;
     
     
-    protected BodyController playerScript;
+    protected BodyController bodyScript;
     
     public abstract void Die();
     public virtual void Init(PlayerData data){}
@@ -32,7 +32,7 @@ public abstract class PlayerController : MonoBehaviour
         Init(data);
         
         elementRigidbody = GetComponent<Rigidbody2D>();
-        playerScript = player.GetComponent<BodyController>();
+        bodyScript = player.GetComponent<BodyController>();
     }
     
     private void FixedUpdate()
@@ -60,6 +60,11 @@ public abstract class PlayerController : MonoBehaviour
         PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
+    }
+
+    public virtual void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    {
+        
     }
 }
         

@@ -48,7 +48,14 @@ public class PlayerManager : MonoBehaviour
                 bodyController.OnMove(context);
                 break;
             case PlayerPart.hand:
-                handController.OnMove(context);
+                if (bodyController.isAiming)
+                {
+                    bodyController.OnMove(context);
+                }
+                else
+                {
+                    handController.OnMove(context);
+                }
                 break;
             default:
                 Debug.LogError("No controlled part");
@@ -113,11 +120,4 @@ public class PlayerManager : MonoBehaviour
     {
         handController.Recall();
     }
-}
-
-public enum PlayerPart
-{
-    body = 0,
-    hand = 1,
-    head = 2
 }

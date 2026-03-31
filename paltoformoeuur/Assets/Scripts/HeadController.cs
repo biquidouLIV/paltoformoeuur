@@ -28,9 +28,9 @@ public class HeadController : PlayerController
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
-                    playerScript.colliderWithHead.enabled = true;
-                    playerScript.colliderWithoutHead.enabled = false;
-                    playerScript.bodyAnimator.SetBool("IsHeadless",false);
+                    bodyScript.colliderWithHead.enabled = true;
+                    bodyScript.colliderWithoutHead.enabled = false;
+                    bodyScript.bodyAnimator.SetBool("IsHeadless",false);
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;

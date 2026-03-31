@@ -1,9 +1,11 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BodyController : PlayerController
 {
     
+        [SerializeField] private float tempsAccroche;
     [Header("GD pas touche")]
         [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
         [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
@@ -31,6 +33,8 @@ public class BodyController : PlayerController
     private GameObject aim;
     public bool isAiming;
     private PlayerPart aimingPart;
+    private bool accroche = false;
+    private Crochet currentCrochet;
 
     public override void Init(PlayerData data)
     {
@@ -38,11 +42,10 @@ public class BodyController : PlayerController
         {
             jumpHeight = bodyData.jumpHeight;
             launchForce = bodyData.launchForce;
-            coyoteTime = bodyData.coyoteTime;
             bufferingTime = bodyData.bufferingTime;
         }
     }
-
+            coyoteTime = bodyData.coyoteTime;
     private void Update()
     {
         if (elementRigidbody.linearVelocityY < 0)
@@ -84,15 +87,8 @@ public class BodyController : PlayerController
         if (!isAiming)
         {
             trajectory.HideTrajectory();
-            switch (aimingPart)
-            {
-                case(PlayerPart.head):
-                    bodyAnimator.SetBool("IsAimingHead",false);
-                    break;
-                case(PlayerPart.hand):
-                    bodyAnimator.SetBool("IsAimingHand",false);
-                    break;
-            }
+            bodyAnimator.SetBool("IsAimingHead",false);
+            bodyAnimator.SetBool("IsAimingHand",false);
         }
         else
         {
@@ -110,6 +106,10 @@ public class BodyController : PlayerController
     
     public override void OnMove(InputAction.CallbackContext context)
     {
+        if (accroche)
+        {
+            return;
+        }
         if (isAiming)
         {
             bodyAnimator.SetBool("IsWalking",false);
@@ -159,6 +159,12 @@ public class BodyController : PlayerController
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (accroche)
+        {
+            accroche = false;
+            currentCrochet = null;
+            elementRigidbody.simulated = true;
+        }
         if (context.performed)
         {
             bufferingTimeCounter = bufferingTime;
@@ -314,5 +320,18 @@ public class BodyController : PlayerController
     {
         bodyAnimator.SetTrigger("Die");
         transform.position = PlayerManager.instance.checkpointTransform;
+    }
+    
+    public override void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    {
+        accroche = true;
+        currentCrochet = crochet;
+        elementRigidbody.simulated = false;
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+            .OnComplete(() =>
+            {
+                gameObject.transform.parent = currentCrochet.transform;
+                fallingPlatform.falling = true;
+            });
     }
 }

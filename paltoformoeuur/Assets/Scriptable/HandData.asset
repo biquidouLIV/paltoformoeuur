@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290e020ede840b7478637b39880af2ed, type: 3}
   m_Name: HandData
   m_EditorClassIdentifier: Assembly-CSharp::HandData
-  speed: 50
+  speed: 4
   sprintSpeedMultiplier: 1
-  dashSpeed: 50
+  dashSpeed: 10
   dashDuration: 0.2
-  dashCooldown: 3
+  dashCooldown: 0.2
   recallSpeed: 20

@@ -9,6 +9,10 @@ public class Crochet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!isAvailable)
+        {
+            return;
+        }
         if (other.gameObject.CompareTag("Hand") || other.gameObject.CompareTag("Body"))
         {
             other.gameObject.GetComponent<PlayerController>().Accroche(this, fallingPlatform);

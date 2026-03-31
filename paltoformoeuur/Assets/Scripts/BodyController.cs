@@ -160,11 +160,15 @@ public class BodyController : PlayerController
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (accroche)
+        if (accroche && context.started)
         {
             accroche = false;
             currentCrochet = null;
             elementRigidbody.simulated = true;
+        }
+        if (accroche)
+        {
+            return;
         }
         if (context.performed)
         {

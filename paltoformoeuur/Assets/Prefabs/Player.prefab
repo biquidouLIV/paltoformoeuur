@@ -894,10 +894,8 @@ MonoBehaviour:
   bodyController: {fileID: 1466060844073490421}
   handController: {fileID: 3226355294599407309}
   headController: {fileID: 1720413786365845372}
-  selectedPart: 0
   controlledPart: 0
   PlayerInput: {fileID: 2160805316179249409}
-  textElementSelectionne: {fileID: 0}
   handOnBody: 1
   headOnBody: 1
   checkpointTransform: {x: 0, y: 0, z: 0}
@@ -1080,7 +1078,19 @@ MonoBehaviour:
     m_ActionId: 23b745e4-bc15-4945-8b0f-2041e312de9a
     m_ActionName: 'Player/SelectionChange[/Keyboard/r]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5cc354d3-23da-4b22-9b18-430ef1eca554
     m_ActionName: 'Test/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
@@ -1088,11 +1098,35 @@ MonoBehaviour:
     m_ActionId: 84cd693d-b746-4436-b411-012b3671ab53
     m_ActionName: 'Test/Look[/XInputControllerWindows/rightStick,/Mouse/delta]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1466060844073490421}
+        m_TargetAssemblyTypeName: BodyController, Assembly-CSharp
+        m_MethodName: OnAimHead
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7736823d-53ef-4335-818c-a3d8cdce6a18
     m_ActionName: 'Test/AimHead[/XInputControllerWindows/rightTrigger,/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1466060844073490421}
+        m_TargetAssemblyTypeName: BodyController, Assembly-CSharp
+        m_MethodName: OnAimHand
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: cbd06901-e085-4155-94f7-856f30c68845
     m_ActionName: 'Test/AimHand[/XInputControllerWindows/leftTrigger,/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
@@ -1100,11 +1134,35 @@ MonoBehaviour:
     m_ActionId: 5d5bd575-07b5-4a59-bcc5-726c332acccc
     m_ActionName: 'Test/Interact[/Keyboard/e,/XInputControllerWindows/buttonEast]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: OnRecallHead
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0161049e-daa7-4cc1-aec6-684140f88722
     m_ActionName: 'Test/Recall[/XInputControllerWindows/buttonNorth,/Keyboard/c]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9e83b65d-a4e3-4105-8f1a-c91489b17851
     m_ActionName: 'Test/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]'
   - m_PersistentCalls:
@@ -1116,13 +1174,37 @@ MonoBehaviour:
     m_ActionId: 475056bb-c4c0-4157-bd78-a926b777fea4
     m_ActionName: 'Test/Next[/Keyboard/2,/XInputControllerWindows/dpad/right]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 50481e4a-cac9-484c-9ced-1de06fe8f09b
     m_ActionName: 'Test/Sprint[/Keyboard/leftShift,/XInputControllerWindows/buttonWest]'
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6afb7eb5-d673-470f-abc0-a66b6f55cc76
-    m_ActionName: 'Test/SelectionChange[/Keyboard/r,/XInputControllerWindows/rightShoulder]'
+      m_Calls:
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: OnRecallHand
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 74ebfef9-d18a-4a1a-b2e8-9dbae277e68a
+    m_ActionName: 'Test/RecallHand[/Keyboard/c]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

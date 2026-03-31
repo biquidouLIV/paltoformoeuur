@@ -33,6 +33,7 @@ public class BodyController : PlayerController
     private Vector2 rotation;
     private GameObject aim;
     public bool isAiming;
+    private PlayerPart aimingPart;
     
     
     private void Update()
@@ -53,9 +54,6 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsJumping",false);
             bodyAnimator.SetBool("IsFalling",false);
         }
-
-
-        
         
         if (CheckIfGrounded())
         {
@@ -80,24 +78,24 @@ public class BodyController : PlayerController
         if (!isAiming)
         {
             trajectory.HideTrajectory();
-            switch (PlayerManager.instance.selectedPart)
+            switch (aimingPart)
             {
-                case(PlayerManager.PlayerPart.head):
+                case(PlayerPart.head):
                     bodyAnimator.SetBool("IsAimingHead",false);
                     break;
-                case(PlayerManager.PlayerPart.hand):
+                case(PlayerPart.hand):
                     bodyAnimator.SetBool("IsAimingHand",false);
                     break;
             }
         }
         else
         {
-            switch (PlayerManager.instance.selectedPart)
+            switch (aimingPart)
             {
-                case PlayerManager.PlayerPart.head:
+                case PlayerPart.head:
                     trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
                     break;
-                case PlayerManager.PlayerPart.hand:
+                case PlayerPart.hand:
                     trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
                     break;
             }
@@ -189,18 +187,18 @@ public class BodyController : PlayerController
         }
         else
         {
-            switch (PlayerManager.instance.selectedPart)
+            switch (aimingPart)
             {
-                case PlayerManager.PlayerPart.head:
+                case PlayerPart.head:
                     trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
                     break;
-                case PlayerManager.PlayerPart.hand:
+                case PlayerPart.hand:
                     trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
                     break;
             }
         }
     }
-    
+
     private void CheckJump()
     {
         if (CheckIfGrounded())
@@ -222,48 +220,50 @@ public class BodyController : PlayerController
             bufferingTimeCounter = 0f;
         }
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + (Vector3)jumpRaycastOrigin + Vector3.down, jumpRaycastSize);
     }
-    
-    public void OnAim(InputAction.CallbackContext context)
+
+    public void OnAimHead(InputAction.CallbackContext context)
     {
-        if (context.started && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body && PlayerManager.instance.selectedPart != PlayerManager.PlayerPart.body)
+        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming)
         {
             isAiming = true;
             Time.timeScale = 0.25f;
-            
-            switch (PlayerManager.instance.selectedPart)
-            {
-                case(PlayerManager.PlayerPart.head):
-                    bodyAnimator.SetBool("IsAimingHead",true);
-                    break;
-                case(PlayerManager.PlayerPart.hand):
-                    bodyAnimator.SetBool("IsAimingHand",true);
-                    break;
-            }
+            bodyAnimator.SetBool("IsAimingHead",true);
+            aimingPart = PlayerPart.head;
         }
-        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerManager.PlayerPart.body)
+        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.head)
         {
             Time.timeScale = 1f;
             isAiming = false;
-            switch (PlayerManager.instance.selectedPart)
-            {
-                case PlayerManager.PlayerPart.hand:
-                    SpawnHand();
-                    break;
-                case PlayerManager.PlayerPart.head:
-                    SpawnHead();
-                    break;
-                case PlayerManager.PlayerPart.body:
-                    break;
-                default:
-                    Debug.LogError("No selected part");
-                    break;
-            }
+            SpawnHead();
+            aimingPart = default;
+        }
+        else if (context.canceled)
+        {
+            Time.timeScale = 1f;
+        }
+    }
+    
+    public void OnAimHand(InputAction.CallbackContext context)
+    {
+        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming)
+        {
+            isAiming = true;
+            Time.timeScale = 0.25f;
+            bodyAnimator.SetBool("IsAimingHand",true);
+            aimingPart = PlayerPart.hand;
+        }
+        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.hand)
+        {
+            Time.timeScale = 1f;
+            isAiming = false;
+            SpawnHand();
+            aimingPart = default;
         }
         else if (context.canceled)
         {

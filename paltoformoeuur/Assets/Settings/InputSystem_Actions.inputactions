@@ -557,9 +557,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Recall",
+                    "name": "RecallHead",
                     "type": "Button",
                     "id": "0161049e-daa7-4cc1-aec6-684140f88722",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RecallHand",
+                    "type": "Button",
+                    "id": "74ebfef9-d18a-4a1a-b2e8-9dbae277e68a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -596,15 +605,6 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "50481e4a-cac9-484c-9ced-1de06fe8f09b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SelectionChange",
-                    "type": "Button",
-                    "id": "6afb7eb5-d673-470f-abc0-a66b6f55cc76",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1044,11 +1044,11 @@
                 {
                     "name": "",
                     "id": "661fc6b0-a16a-4194-a75e-0092ada68266",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Recall",
+                    "action": "RecallHead",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1059,29 +1059,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Recall",
+                    "action": "RecallHead",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "29d6cc4e-9524-47d0-9a42-a3938591f835",
-                    "path": "<Keyboard>/r",
+                    "id": "43b21e9c-5e65-414b-b297-06bb2d649eba",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "SelectionChange",
+                    "groups": "Gamepad",
+                    "action": "RecallHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "63aad2a0-87bb-4b86-a8eb-265c2f793bcb",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "09eb03c2-9613-49bb-be7e-ff8fcf9fd9f9",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "SelectionChange",
+                    "groups": "Keyboard&Mouse",
+                    "action": "RecallHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

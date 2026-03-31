@@ -55,7 +55,6 @@ public abstract class PlayerController : MonoBehaviour
     {
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-        PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
     }
     
     public virtual void Recall()

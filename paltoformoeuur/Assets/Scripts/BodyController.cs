@@ -47,7 +47,6 @@ public class BodyController : PlayerController
         else if(elementRigidbody.linearVelocityY > 0)
         {
             bodyAnimator.SetBool("IsJumping",true);
-            
         }
         else
         {
@@ -229,14 +228,14 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
-        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming && PlayerManager.instance.headOnBody)
+        if (context.started && !isAiming && PlayerManager.instance.headOnBody)
         {
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHead",true);
             aimingPart = PlayerPart.head;
         }
-        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.head  && PlayerManager.instance.headOnBody)
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.head  && PlayerManager.instance.headOnBody)
         {
             Time.timeScale = 1f;
             isAiming = false;
@@ -251,14 +250,14 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
-        if (context.started && PlayerManager.instance.controlledPart == PlayerPart.body && !isAiming)
+        if (context.started && !isAiming)
         {
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHand",true);
             aimingPart = PlayerPart.hand;
         }
-        else if (context.canceled && isAiming && PlayerManager.instance.controlledPart == PlayerPart.body && aimingPart == PlayerPart.hand)
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.hand)
         {
             Time.timeScale = 1f;
             isAiming = false;

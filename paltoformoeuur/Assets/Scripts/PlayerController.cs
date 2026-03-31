@@ -16,14 +16,14 @@ public abstract class PlayerController : MonoBehaviour
     [NonSerialized] public Rigidbody2D elementRigidbody;
     [NonSerialized] public Vector2 moveInput;
     private float sprintSpeed = 1;
-    protected BodyController playerScript;
+    protected BodyController bodyScript;
     
     public abstract void Die();
     
     protected virtual void Start()
     {
         elementRigidbody = GetComponent<Rigidbody2D>();
-        playerScript = player.GetComponent<BodyController>();
+        bodyScript = player.GetComponent<BodyController>();
     }
     
     private void FixedUpdate()
@@ -40,13 +40,13 @@ public abstract class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            playerScript.bodyAnimator.SetBool("IsSprinting",true);
+            bodyScript.bodyAnimator.SetBool("IsSprinting",true);
             sprintSpeed = sprintSpeedMultiplier;
         }
 
         if (context.canceled)
         {
-            playerScript.bodyAnimator.SetBool("IsSprinting",false);
+            bodyScript.bodyAnimator.SetBool("IsSprinting",false);
             sprintSpeed = 1;
         }
     }
@@ -62,6 +62,11 @@ public abstract class PlayerController : MonoBehaviour
         PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
+    }
+
+    public virtual void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    {
+        
     }
 }
         

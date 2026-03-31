@@ -10,6 +10,7 @@ public class HandController : PlayerController
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float dashCooldown = 3.0f;
         [SerializeField] private int recallSpeed;
+        [SerializeField] private float tempsAccroche;
 
     [Header("Refs")]
         [SerializeField] public Animator handAnimator;
@@ -81,7 +82,7 @@ public class HandController : PlayerController
                 {
                     accroche = false;
                     currentCrochet = null;
-                    playerScript.bodyAnimator.SetBool("IsArmless",false);
+                    bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;
@@ -108,11 +109,16 @@ public class HandController : PlayerController
         Recall();
     }
 
-    public void Accroche(Crochet crochet)
+    public override void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
     {
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
-        transform.position = crochet.gameObject.transform.position - new Vector3(0,0.8f,0);
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+            .OnComplete(() =>
+            {
+                gameObject.transform.parent = currentCrochet.transform;
+                fallingPlatform.falling = true;
+            });
     }
 }

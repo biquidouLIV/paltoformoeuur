@@ -127,6 +127,7 @@ public class HandController : PlayerController
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
+        moveInput = Vector2.zero;
         transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
             .OnComplete(() =>
             {

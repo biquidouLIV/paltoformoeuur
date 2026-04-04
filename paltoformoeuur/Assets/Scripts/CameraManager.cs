@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -16,8 +17,7 @@ public class CameraManager : MonoBehaviour
         [SerializeField] private GameObject body;
         [SerializeField] private GameObject hand;
         [SerializeField] private GameObject head;
-
-
+        
 
     private float targetFOV;
     private Camera camera;

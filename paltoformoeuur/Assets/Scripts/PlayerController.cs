@@ -5,25 +5,34 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerController : MonoBehaviour
 {
-    [Header("paramètres")]
-        [SerializeField] protected float speed = 1;
-        [SerializeField] protected float sprintSpeedMultiplier = 2;
+    
     
     [Header("Refs")]
+        [SerializeField] private PlayerData data;
         [SerializeField] protected GameObject player;
 
     
     [NonSerialized] public Rigidbody2D elementRigidbody;
     [NonSerialized] public Vector2 moveInput;
-    private float sprintSpeed = 1;
-    protected BodyController playerScript;
+    
+    protected float sprintSpeed = 1;
+    private float speed = 1;
+    protected float sprintSpeedMultiplier = 2;
+    
+    
+    protected BodyController bodyScript;
     
     public abstract void Die();
+    public virtual void Init(PlayerData data){}
     
     protected virtual void Start()
     {
+        speed = data.speed;
+        sprintSpeedMultiplier = data.sprintSpeedMultiplier;
+        Init(data);
+        
         elementRigidbody = GetComponent<Rigidbody2D>();
-        playerScript = player.GetComponent<BodyController>();
+        bodyScript = player.GetComponent<BodyController>();
     }
     
     private void FixedUpdate()
@@ -38,24 +47,12 @@ public abstract class PlayerController : MonoBehaviour
     
     public virtual void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            playerScript.bodyAnimator.SetBool("IsSprinting",true);
-            sprintSpeed = sprintSpeedMultiplier;
-        }
-
-        if (context.canceled)
-        {
-            playerScript.bodyAnimator.SetBool("IsSprinting",false);
-            sprintSpeed = 1;
-        }
     }
     
     public void DisableElement()
     {
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-        PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.body);
     }
     
     public virtual void Recall()
@@ -63,6 +60,11 @@ public abstract class PlayerController : MonoBehaviour
         PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
+    }
+
+    public virtual void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    {
+        
     }
 }
         

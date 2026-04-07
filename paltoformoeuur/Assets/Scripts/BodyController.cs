@@ -318,6 +318,7 @@ public class BodyController : PlayerController
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();
+        CameraManager.instance.ChangeFOV(PlayerPart.head);
         head.transform.SetParent(transform.parent);
     }
     

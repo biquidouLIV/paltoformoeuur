@@ -1,77 +1,57 @@
 using System;
+using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
 
-    [Header("paramètres")]
-        [SerializeField] private float speed;
-        [SerializeField] private float bodyCameraFOV = 5f;
-        [SerializeField] private float handCameraFOV = 1.5f;
-        [SerializeField] private float headCameraFOV = 8f;
-        [SerializeField] private float FOVTransitionSpeed = 0.2f;
-
-    [Header("Refs")]
-        [SerializeField] private GameObject body;
-        [SerializeField] private GameObject hand;
-        [SerializeField] private GameObject head;
-
-
-
-    private float targetFOV;
-    private Camera camera;
-    private GameObject targetBodyPart;
-    private Vector2 direction;
-    
     private void Awake()
     {
-        if (instance == null) { instance = this; }
-        else { Destroy(this); }
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
+
+    [SerializeField] private CameraData data;
+    [SerializeField] private CinemachineCamera camera;
+
+     private float bodyCameraFOV;
+     private float headCameraFOV;
+     private float FOVTransitionDuration;
+     private Ease ease;
+        
+     private float targetFOV;
 
     private void Start()
     {
-        camera = GetComponent<Camera>();
-        SetOnBody();
+        bodyCameraFOV = data.bodyCameraFOV;
+        headCameraFOV = data.headCameraFOV;
+        FOVTransitionDuration = data.FOVTransitionDuration;
+        ease = data.ease;
     }
 
-    private void Update()
+    public void ChangeFOV(PlayerPart part)
     {
-        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetFOV,FOVTransitionSpeed);
-    }
-
-    public void SetOnBody()
-    {
-        targetBodyPart = body;
-        targetFOV = bodyCameraFOV;
-    }
-
-    public void SetOnHand()
-    {
-        targetBodyPart = hand;
-        targetFOV = handCameraFOV;
-    }
-    
-    public void SetOnHead()
-    {
-        targetBodyPart = head;
-        targetFOV = headCameraFOV;
-    }
-    
-    private void Move()
-    {
-        if (Vector3.Distance(transform.position, targetBodyPart.transform.position) < 0.2)
+        switch (part)
         {
-            return;
+            case PlayerPart.body:
+                targetFOV = bodyCameraFOV;
+                break;
+            case PlayerPart.head:
+                targetFOV = headCameraFOV;
+                break;
         }
-        direction =  new Vector2(targetBodyPart.transform.position.x,targetBodyPart.transform.position.y) - new Vector2(transform.position.x,transform.position.y);
-        direction *= speed;
-        transform.Translate(direction);
-    }
 
-    private void FixedUpdate()
-    {
-        Move();
+        DOTween.To(() => camera.Lens.OrthographicSize, x => camera.Lens.OrthographicSize = x, targetFOV,
+                FOVTransitionDuration)
+            .SetEase(ease);
     }
 }
+

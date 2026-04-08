@@ -5,19 +5,33 @@ using UnityEngine.InputSystem;
 
 public class HandController : PlayerController
 {
-    [Header("paramètres")]
-        [SerializeField] private float dashSpeed = 50;
-        [SerializeField] private float dashDuration = 0.2f;
-        [SerializeField] private float dashCooldown = 3.0f;
-        [SerializeField] private int recallSpeed;
+        [SerializeField] private float tempsAccroche;
+
 
     [Header("Refs")]
         [SerializeField] public Animator handAnimator;
-        
+
+
+    private float dashSpeed;
+    private float dashDuration;
+    private float dashCooldown;
+    private int recallSpeed;
+    
     private bool canDash = true;
     private bool accroche = false;
     private Crochet currentCrochet;
     private int direction = 1;
+
+    public override void Init(PlayerData data)
+    {
+        if (data is HandData handData)
+        {
+            dashSpeed = handData.dashSpeed;
+            dashDuration = handData.dashDuration;
+            dashCooldown = handData.dashCooldown;
+            recallSpeed = handData.recallSpeed;
+        }
+    }
 
     private void Update()
     {
@@ -30,7 +44,6 @@ public class HandController : PlayerController
             handAnimator.SetBool("IsFalling",false);
         }
     }
-
 
     public override void OnMove(InputAction.CallbackContext context)
     {
@@ -61,19 +74,8 @@ public class HandController : PlayerController
     
     public override void OnSprint(InputAction.CallbackContext context)
     {
-        base.OnSprint(context);
-        if (context.performed)
-        {
-            handAnimator.SetBool("IsSprinting",true);
-        }
-
-        if (context.canceled)
-        {
-            handAnimator.SetBool("IsSprinting",false);
-        }
+        return;
     }
-
-
 
     //ca s'appelle jump mais c'est un dash 
     public void OnJump(InputAction.CallbackContext context) 
@@ -88,14 +90,16 @@ public class HandController : PlayerController
     {
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
+            .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
                     accroche = false;
                     currentCrochet = null;
-                    playerScript.bodyAnimator.SetBool("IsArmless",false);
+                    bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;
+                    PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
@@ -115,15 +119,20 @@ public class HandController : PlayerController
 
     public override void Die()
     {
-        PlayerManager.instance.OnSelectChange(PlayerManager.PlayerPart.hand);
         Recall();
     }
 
-    public void Accroche(Crochet crochet)
+    public override void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
     {
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
-        transform.position = crochet.gameObject.transform.position - new Vector3(0,0.8f,0);
+        moveInput = Vector2.zero;
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+            .OnComplete(() =>
+            {
+                gameObject.transform.parent = currentCrochet.transform;
+                fallingPlatform.falling = true;
+            });
     }
 }

@@ -269,14 +269,14 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
-        if (context.started && !isAiming)
+        if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHand",true);
             aimingPart = PlayerPart.hand;
         }
-        else if (context.canceled && isAiming && aimingPart == PlayerPart.hand)
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.hand && PlayerManager.instance.handOnBody)
         {
             Time.timeScale = 1f;
             isAiming = false;
@@ -318,6 +318,7 @@ public class BodyController : PlayerController
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();
+        CameraManager.instance.ChangeFOV(PlayerPart.head);
         head.transform.SetParent(transform.parent);
     }
     

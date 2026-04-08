@@ -22,6 +22,7 @@ public class HeadController : PlayerController
     
     public override void Recall()
     {
+        CameraManager.instance.ChangeFOV(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.headAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
@@ -33,6 +34,7 @@ public class HeadController : PlayerController
                     bodyScript.bodyAnimator.SetBool("IsHeadless",false);
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
+                    
                     PlayerManager.instance.PlayerInput.enabled = true;
                 }
             );

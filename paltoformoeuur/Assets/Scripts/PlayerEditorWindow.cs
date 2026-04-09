@@ -107,6 +107,7 @@ public class PlayerEditorWindow : EditorWindow
             EditorUtility.SetDirty(bodyData);
             EditorUtility.SetDirty(handData);
             EditorUtility.SetDirty(headData);
+            EditorUtility.SetDirty(cameraData);
             AssetDatabase.SaveAssets();
         }
     }

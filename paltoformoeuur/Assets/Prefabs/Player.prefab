@@ -249,7 +249,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1534088222, guid: 6bff061ef80f58041bc52eab582d3020, type: 3}
+  m_Sprite: {fileID: 165012586, guid: c80f127e71192cc4f9520aca3aa1a634, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -324,7 +324,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 0.83, y: 2.03}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -370,7 +370,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 0.83, y: 2.03}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -390,13 +390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaae8ac87084194a93b936df389fdc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BodyController
-  speed: 6
-  sprintSpeedMultiplier: 1.5
+  data: {fileID: 11400000, guid: 6a36690e8e0d832479aad75e96131496, type: 2}
   player: {fileID: 3024878346645139155}
-  jumpHeight: 700
-  launchForce: 500
-  coyoteTime: 0.2
-  bufferingTime: 0.2
+  tempsAccroche: 0
   jumpRaycastSize: {x: 0.72, y: 0.08}
   jumpRaycastOrigin: {x: 0.1, y: 0.12}
   hand: {fileID: 6392271598579402724}
@@ -701,7 +697,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.046, y: 0.785, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1463248654694922415}
@@ -755,7 +751,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 42ddfe6d3dc6abe4990e635d61489ba5, type: 3}
+  m_Sprite: {fileID: 923256040, guid: c80f127e71192cc4f9520aca3aa1a634, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -826,8 +822,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.4470858}
-  m_Radius: 3.5529141
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.4
 --- !u!114 &1720413786365845372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,10 +836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522d45975c9006d4d997a16a90a1cf4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeadController
-  speed: 1
-  sprintSpeedMultiplier: 2
+  data: {fileID: 11400000, guid: f03a453b94f9d2f43a97ea8772a57141, type: 2}
   player: {fileID: 3024878346645139155}
-  recallSpeed: 20
 --- !u!1 &6260475154895817139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1235,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.461, y: 0.03, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.07, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1463248654694922415}
@@ -1295,7 +1289,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 16c98034f22e79a439458d01e9205d5a, type: 3}
+  m_Sprite: {fileID: 1178685415, guid: c80f127e71192cc4f9520aca3aa1a634, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1369,8 +1363,8 @@ BoxCollider2D:
   m_Offset: {x: 0.093304634, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.65414864, y: 0.5020691}
-    oldSize: {x: 10.24, y: 10.24}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.68, y: 0.57}
     newSize: {x: 4.87, y: 3.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1390,13 +1384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c33fa8f9ea5a540957c1c7e594ab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandController
-  speed: 4
-  sprintSpeedMultiplier: 2
+  data: {fileID: 11400000, guid: e877430a900c06b428a559dc3d8e6279, type: 2}
   player: {fileID: 3024878346645139155}
-  dashSpeed: 10
-  dashDuration: 0.2
-  dashCooldown: 0.2
-  recallSpeed: 20
+  tempsAccroche: 0.2
   handAnimator: {fileID: 5572336904471285171}
 --- !u!95 &5572336904471285171
 Animator:

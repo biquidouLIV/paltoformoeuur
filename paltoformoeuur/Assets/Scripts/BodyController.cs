@@ -35,6 +35,7 @@ public class BodyController : PlayerController
     private PlayerPart aimingPart;
     private bool accroche = false;
     private Crochet currentCrochet;
+    public bool isGrounded;
 
     public override void Init(PlayerData data)
     {
@@ -67,11 +68,12 @@ public class BodyController : PlayerController
         
         if (CheckIfGrounded())
         {
-            
+            isGrounded = true;
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
+            isGrounded = false;
             coyoteTimeCounter -= Time.deltaTime;
         }
 

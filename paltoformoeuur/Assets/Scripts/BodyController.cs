@@ -21,6 +21,8 @@ public class BodyController : PlayerController
         [SerializeField] public Animator bodyAnimator;
         [SerializeField] private AudioSource jumpSound;
 
+        [Header("Temp")] public float hitBumper;
+
     private float jumpHeight;
     private float launchForce;
     private float coyoteTime;
@@ -69,7 +71,6 @@ public class BodyController : PlayerController
         
         if (CheckIfGrounded())
         {
-            
             coyoteTimeCounter = coyoteTime;
         }
         else
@@ -77,8 +78,9 @@ public class BodyController : PlayerController
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        hitBumper = Mathf.Max(hitBumper - Time.deltaTime, 0);
         bufferingTimeCounter -= Time.deltaTime;
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0 && (hitBumper <= 0 || CheckIfGrounded()))
         {
             jumpSound.Play();
             elementRigidbody.linearVelocityY = 0f;
@@ -176,12 +178,6 @@ public class BodyController : PlayerController
         {
             bufferingTimeCounter = bufferingTime;
         }
-        if (context.performed && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
-        {
-            return;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
-            coyoteTimeCounter = 0f;
-        }
         
         if (context.canceled)
         {
@@ -195,7 +191,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         //return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint"));
+        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint","Bumper"));
     }
 
     private void DisplayTrajectory()

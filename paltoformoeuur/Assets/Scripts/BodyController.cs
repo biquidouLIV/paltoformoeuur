@@ -133,10 +133,12 @@ public class BodyController : PlayerController
 
             if (moveInput.x > 0)
             {
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
                 bodyAnimator.SetBool("IsGoingLeft", false);
             }
             else if(moveInput.x < 0)
             {
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
                 bodyAnimator.SetBool("IsGoingLeft", true);
             }
         }

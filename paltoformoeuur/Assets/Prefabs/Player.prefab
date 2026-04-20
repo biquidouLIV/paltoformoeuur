@@ -193,7 +193,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4796413823645638865}
   - {fileID: 2579370246421124648}
@@ -404,6 +404,8 @@ MonoBehaviour:
   colliderWithoutHead: {fileID: 8450161257705626914}
   bodyAnimator: {fileID: 6755396211980822311}
   jumpSound: {fileID: 8888338495537200101}
+  hitBumper: 0
+  bufferingTimeCounter: 0
   isAiming: 0
 --- !u!95 &6755396211980822311
 Animator:
@@ -587,7 +589,7 @@ Transform:
   m_GameObject: {fileID: 4330439118272193298}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.045999527, y: 0.78499985, z: -10}
+  m_LocalPosition: {x: -0.046001434, y: 0.78499985, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

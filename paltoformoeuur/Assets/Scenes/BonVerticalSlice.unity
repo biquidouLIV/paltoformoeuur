@@ -13181,7 +13181,7 @@ GameObject:
   - component: {fileID: 934021218}
   - component: {fileID: 934021217}
   - component: {fileID: 934021216}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13216,6 +13216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   strength: 400
+  baseStrength: 400
+  delayBigJump: 0
 --- !u!58 &934021217
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13474,7 +13476,7 @@ GameObject:
   - component: {fileID: 941896588}
   - component: {fileID: 941896587}
   - component: {fileID: 941896586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13508,7 +13510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170f839ca09f69443aab75bb7a651ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  strength: 400
+  strength: 1000
+  baseStrength: 400
+  delayBigJump: 5
 --- !u!58 &941896587
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14993,7 +14997,7 @@ GameObject:
   - component: {fileID: 1029281889}
   - component: {fileID: 1029281888}
   - component: {fileID: 1029281887}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15028,6 +15032,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   strength: 800
+  baseStrength: 400
+  delayBigJump: 0
 --- !u!58 &1029281888
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -18350,7 +18356,7 @@ Transform:
   m_GameObject: {fileID: 1223709803}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000000018626454, y: 0.000000003723618, z: -6.93578e-18, w: 1}
-  m_LocalPosition: {x: -39.546, y: -9.215, z: -10}
+  m_LocalPosition: {x: 169.35399, y: -11.515, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18388,17 +18394,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!114 &1230946758 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3299245048709816121, guid: b5b8c7f756c6cdc448fb42abe3b32730, type: 3}
-  m_PrefabInstance: {fileID: 1889655791}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1231965014
 GameObject:
   m_ObjectHideFlags: 0
@@ -20821,7 +20816,7 @@ GameObject:
   - component: {fileID: 1375848908}
   - component: {fileID: 1375848907}
   - component: {fileID: 1375848906}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20856,6 +20851,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   strength: 300
+  baseStrength: 400
+  delayBigJump: 0
 --- !u!58 &1375848907
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -21851,49 +21848,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 411411620518389706, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: m_Size.x
-      value: 0.8056145
-      objectReference: {fileID: 0}
-    - target: {fileID: 411411620518389706, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: m_Size.y
-      value: 0.7303896
-      objectReference: {fileID: 0}
-    - target: {fileID: 411411620518389706, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.00014305115
-      objectReference: {fileID: 0}
-    - target: {fileID: 411411620518389706, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.015895367
-      objectReference: {fileID: 0}
-    - target: {fileID: 926707091998779594, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: Lens.OrthographicSize
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1466060844073490421, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: data
-      value: 
-      objectReference: {fileID: 11400000, guid: 6a36690e8e0d832479aad75e96131496, type: 2}
-    - target: {fileID: 1720413786365845372, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: data
-      value: 
-      objectReference: {fileID: 11400000, guid: f03a453b94f9d2f43a97ea8772a57141, type: 2}
-    - target: {fileID: 2365311328493070183, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: textElementSelectionne
-      value: 
-      objectReference: {fileID: 1230946758}
-    - target: {fileID: 3226355294599407309, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: data
-      value: 
-      objectReference: {fileID: 11400000, guid: e877430a900c06b428a559dc3d8e6279, type: 2}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.5
+      value: 169.4
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: -12.3
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24396,7 +24357,7 @@ GameObject:
   - component: {fileID: 1632262587}
   - component: {fileID: 1632262586}
   - component: {fileID: 1632262585}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24431,6 +24392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   strength: 400
+  baseStrength: 400
+  delayBigJump: 0
 --- !u!58 &1632262586
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -27155,7 +27118,7 @@ GameObject:
   - component: {fileID: 1784714171}
   - component: {fileID: 1784714170}
   - component: {fileID: 1784714169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27190,6 +27153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   strength: 400
+  baseStrength: 400
+  delayBigJump: 0
 --- !u!58 &1784714170
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -28698,7 +28663,7 @@ GameObject:
   - component: {fileID: 1933661736}
   - component: {fileID: 1933661735}
   - component: {fileID: 1933661734}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28733,6 +28698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   strength: 200
+  baseStrength: 400
+  delayBigJump: 0
 --- !u!58 &1933661735
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -29841,7 +29808,7 @@ GameObject:
   - component: {fileID: 1993344588}
   - component: {fileID: 1993344587}
   - component: {fileID: 1993344586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bumper_006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29876,6 +29843,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   strength: 350
+  baseStrength: 400
+  delayBigJump: 0
 --- !u!58 &1993344587
 CircleCollider2D:
   m_ObjectHideFlags: 0

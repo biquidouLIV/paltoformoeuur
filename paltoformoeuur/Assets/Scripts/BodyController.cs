@@ -28,7 +28,7 @@ public class BodyController : PlayerController
     private float coyoteTime;
     private float coyoteTimeCounter;
     private float bufferingTime;
-    private float bufferingTimeCounter;
+    public float bufferingTimeCounter;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
@@ -79,8 +79,8 @@ public class BodyController : PlayerController
         }
 
         hitBumper = Mathf.Max(hitBumper - Time.deltaTime, 0);
-        bufferingTimeCounter -= Time.deltaTime;
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0 && (hitBumper <= 0 || CheckIfGrounded()))
+        bufferingTimeCounter = Mathf.Max(bufferingTimeCounter - Time.deltaTime, 0);
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY >= 0 && (hitBumper <= 0 || CheckIfGrounded()))
         {
             jumpSound.Play();
             elementRigidbody.linearVelocityY = 0f;
@@ -179,7 +179,7 @@ public class BodyController : PlayerController
             bufferingTimeCounter = bufferingTime;
         }
         
-        if (context.canceled)
+        if (context.canceled && hitBumper <= 0)
         {
             if (elementRigidbody.linearVelocityY > 0)
             {

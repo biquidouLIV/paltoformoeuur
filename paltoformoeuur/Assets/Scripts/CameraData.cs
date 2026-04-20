@@ -6,7 +6,8 @@ public class CameraData : ScriptableObject
 {
     public float horizontalDistance = 7;
     public float verticalDistance = 7;
-    public float speed = 2;
+    public float horizontalSpeed = 2;
+    public float verticalSpeed = 2;
     
     public float bodyCameraFOV = 5;
     public float headCameraFOV = 12;

@@ -19,11 +19,12 @@ public class CameraManager : MonoBehaviour
 
 
     [SerializeField] private CameraData data;
-    
+    [SerializeField] private Ease ease;
 
     private float horizontalDistance;
     private float verticalDistance;
-    private float speed;
+    private float horizontalSpeed;
+    private float verticalSpeed;
     private float bodyCameraFOV;
     private float headCameraFOV ;
     private float FOVTransitionDuration;
@@ -37,9 +38,12 @@ public class CameraManager : MonoBehaviour
      private PlayerController targetPart;
      
      private Vector3 lastFramePosition;
-     private Vector3 cameraOffset;
+     private Vector2 cameraOffset;
+     private Vector3  target;
 
      private Vector3 direction = new Vector3(0,0,0);
+     
+     
      
      private void Start()
      {
@@ -48,7 +52,8 @@ public class CameraManager : MonoBehaviour
          
          horizontalDistance = data.horizontalDistance;
          verticalDistance = data.verticalDistance; 
-         speed = data.speed;
+         horizontalSpeed = data.horizontalSpeed;
+         verticalSpeed = data.verticalSpeed;
          bodyCameraFOV = data.bodyCameraFOV;
          headCameraFOV = data.headCameraFOV;
          FOVTransitionDuration = data.FOVTransitionDuration;
@@ -56,11 +61,14 @@ public class CameraManager : MonoBehaviour
          testCamera = gameObject.GetComponent<Camera>();
      
          targetPart = body;
+         target = targetPart.transform.position;
          ChangeFOV(PlayerPart.body);
          
      }
      private void FixedUpdate()
      {
+         
+         direction = (targetPart.transform.position - lastFramePosition);
          
          //quand on commence a descendre
          if((targetPart.transform.position - lastFramePosition).normalized == new Vector3(0, -1, 0) && direction == new Vector3(0, 1, 0))
@@ -68,59 +76,53 @@ public class CameraManager : MonoBehaviour
              //faire un truc ici
              Debug.Log("kaka");
          }
-         else
-         {
-             direction = (targetPart.transform.position - lastFramePosition).normalized;
-         }
-
          
          //quand on atterit
          if (body.isGrounded)
          {
-             direction = new Vector3(targetPart.transform.position.x - lastFramePosition.x, 0, 0).normalized;
+             direction.y = 0;
          }
-         else
-         {
-             direction = (targetPart.transform.position - lastFramePosition).normalized;
-         }
-
-         /*
+         
          //quand on va dans un mur a gauche
-         if ((targetPart.transform.position - lastFramePosition).normalized == new Vector3(-1, 0, 0) && direction == new Vector3(1, 0, 0))
+         if ((targetPart.transform.position - lastFramePosition).normalized == new Vector3(-1, 0, 0) && PlayerManager.instance.bodyController.moveInput.x >= 0)
          {
-             direction = new Vector3(0, targetPart.transform.position.y - lastFramePosition.y, 0);
-         }
-         else
-         {
-             direction = (targetPart.transform.position - lastFramePosition).normalized;
+             direction.x = 0;
          }
          
          //quand on va dans un mur a droite
-         if ((targetPart.transform.position - lastFramePosition).normalized == new Vector3(1, 0, 0) && direction == new Vector3(-1, 0, 0))
+         if ((targetPart.transform.position - lastFramePosition).normalized == new Vector3(1, 0, 0) && PlayerManager.instance.bodyController.moveInput.x <= 0)
          {
-             direction = new Vector3(0, targetPart.transform.position.y - lastFramePosition.y, 0);
+             direction.x = 0;
          }
-         else
-         {
-             direction = (targetPart.transform.position - lastFramePosition).normalized;
-         }
-         */
          
+         direction.Normalize();
+
+
+
+
          
          Debug.Log(direction);
-         cameraOffset = new Vector3(direction.x * horizontalDistance, direction.y * verticalDistance,-10);
+         cameraOffset = new Vector2(direction.x * horizontalDistance, direction.y * verticalDistance);
+         target = targetPart.transform.position;
          
          if (targetPart == body)
          {
-             testCamera.transform.DOMove(targetPart.transform.position + cameraOffset, speed).SetEase(Ease.OutCubic);
+             testCamera.transform.DOMoveX(target.x + cameraOffset.x, horizontalSpeed)
+                 .SetEase(ease);
+             testCamera.transform.DOMoveY(target.y + cameraOffset.y, verticalSpeed)
+                 .SetEase(ease);
          }
          else
          {
-             testCamera.transform.DOMove(new Vector3(targetPart.transform.position.x,targetPart.transform.position.y, -10), 0.5f*speed);
+             testCamera.transform.DOMoveX(target.x, horizontalSpeed)
+                 .SetEase(ease);
+             testCamera.transform.DOMoveY(target.y, verticalSpeed)
+                 .SetEase(ease);
          }
          
          
          lastFramePosition = targetPart.transform.position;
+         
      }
      
      

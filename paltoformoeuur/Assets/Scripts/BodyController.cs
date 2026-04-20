@@ -21,12 +21,14 @@ public class BodyController : PlayerController
         [SerializeField] public Animator bodyAnimator;
         [SerializeField] private AudioSource jumpSound;
 
+        [Header("Temp")] public float hitBumper;
+
     private float jumpHeight;
     private float launchForce;
     private float coyoteTime;
     private float coyoteTimeCounter;
     private float bufferingTime;
-    private float bufferingTimeCounter;
+    public float bufferingTimeCounter;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
@@ -69,7 +71,6 @@ public class BodyController : PlayerController
         
         if (CheckIfGrounded())
         {
-            
             coyoteTimeCounter = coyoteTime;
         }
         else
@@ -77,8 +78,9 @@ public class BodyController : PlayerController
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        bufferingTimeCounter -= Time.deltaTime;
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        hitBumper = Mathf.Max(hitBumper - Time.deltaTime, 0);
+        bufferingTimeCounter = Mathf.Max(bufferingTimeCounter - Time.deltaTime, 0);
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY >= 0 && (hitBumper <= 0 || CheckIfGrounded()))
         {
             jumpSound.Play();
             elementRigidbody.linearVelocityY = 0f;
@@ -131,10 +133,12 @@ public class BodyController : PlayerController
 
             if (moveInput.x > 0)
             {
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
                 bodyAnimator.SetBool("IsGoingLeft", false);
             }
             else if(moveInput.x < 0)
             {
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
                 bodyAnimator.SetBool("IsGoingLeft", true);
             }
         }
@@ -176,14 +180,8 @@ public class BodyController : PlayerController
         {
             bufferingTimeCounter = bufferingTime;
         }
-        if (context.performed && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
-        {
-            return;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
-            coyoteTimeCounter = 0f;
-        }
         
-        if (context.canceled)
+        if (context.canceled && hitBumper <= 0)
         {
             if (elementRigidbody.linearVelocityY > 0)
             {
@@ -195,7 +193,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         //return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint"));
+        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint","Bumper"));
     }
 
     private void DisplayTrajectory()

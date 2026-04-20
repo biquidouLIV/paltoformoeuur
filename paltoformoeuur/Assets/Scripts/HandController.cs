@@ -100,10 +100,10 @@ public class HandController : PlayerController
                     PlayerManager.instance.handOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;
                     PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
+                    gameObject.SetActive(false);
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
-		gameObject.SetActive(false);
     }
 
     private IEnumerator Dash()

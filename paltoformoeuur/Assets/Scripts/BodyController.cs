@@ -44,6 +44,8 @@ public class BodyController : PlayerController
             launchForce = bodyData.launchForce;
             bufferingTime = bodyData.bufferingTime;
             coyoteTime = bodyData.coyoteTime;
+            head.SetActive(false);
+            hand.SetActive(false);
         }
     }
             
@@ -291,6 +293,7 @@ public class BodyController : PlayerController
     
     private void SpawnHand()
     {
+        hand.SetActive(true);
         bodyAnimator.SetBool("IsArmless", true);
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
@@ -306,6 +309,7 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
+        head.SetActive(true);
         bodyAnimator.SetBool("IsHeadless", true);
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;

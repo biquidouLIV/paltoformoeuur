@@ -34,7 +34,7 @@ public class HeadController : PlayerController
                     bodyScript.bodyAnimator.SetBool("IsHeadless",false);
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
-                    
+                    gameObject.SetActive(false);
                     PlayerManager.instance.PlayerInput.enabled = true;
                 }
             );

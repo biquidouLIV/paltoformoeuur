@@ -178,9 +178,7 @@ public class BodyController : PlayerController
     {
         if (accroche && context.started)
         {
-            accroche = false;
-            currentCrochet = null;
-            elementRigidbody.simulated = true;
+            Decroche();
         }
         if (accroche)
         {
@@ -352,5 +350,13 @@ public class BodyController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
+    }
+    
+    public override void Decroche()
+    {
+        StartCoroutine(currentCrochet.Active());
+        accroche = false;
+        currentCrochet = null;
+        elementRigidbody.simulated = true;
     }
 }

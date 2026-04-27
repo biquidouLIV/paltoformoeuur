@@ -1,7 +1,10 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 public class HeadController : PlayerController
 {
+    [SerializeField] private Collider2D colliderCarre;
+    [SerializeField] private Collider2D colliderRond;
     private int recallSpeed;
     private float initialAngularDamping;
 
@@ -19,7 +22,28 @@ public class HeadController : PlayerController
         base.Start();
         initialAngularDamping = elementRigidbody.angularDamping;
     }
-    
+
+    private void OnEnable()
+    {
+        colliderCarre.enabled = false;
+        colliderRond.enabled = true;
+    }
+
+    protected void Update()
+    {
+        if (elementRigidbody.linearVelocity.x < 0.2f)
+        {
+            elementRigidbody.linearVelocity = new Vector2(0, elementRigidbody.linearVelocity.y);
+            colliderCarre.enabled = true;
+            colliderRond.enabled = false;
+        }
+        else
+        {
+            colliderCarre.enabled = false;
+            colliderRond.enabled = true;
+        }
+    }
+
     public override void Recall()
     {
         CameraManager.instance.ChangeFOV(PlayerPart.body);

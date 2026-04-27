@@ -82,7 +82,7 @@ public class BodyController : PlayerController
         bufferingTimeCounter = Mathf.Max(bufferingTimeCounter - Time.deltaTime, 0);
         if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY >= 0 && (hitBumper <= 0 || CheckIfGrounded()))
         {
-            jumpSound.Play();
+            //jumpSound.Play();
             elementRigidbody.linearVelocityY = 0f;
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
             coyoteTimeCounter = 0f;

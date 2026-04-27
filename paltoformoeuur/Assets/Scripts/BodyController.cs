@@ -53,11 +53,17 @@ public class BodyController : PlayerController
             
     private void Update()
     {
+        AnimationGestion();
+        UpdateJump();
+        GestionVise();
+    }
+
+    private void AnimationGestion()
+    {
         if (elementRigidbody.linearVelocityY < 0)
         {
             bodyAnimator.SetBool("IsFalling",true);
             bodyAnimator.SetBool("IsJumping",false);
-            
         }
         else if(elementRigidbody.linearVelocityY > 0)
         {
@@ -68,7 +74,10 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsJumping",false);
             bodyAnimator.SetBool("IsFalling",false);
         }
-        
+    }
+
+    private void UpdateJump()
+    {
         if (CheckIfGrounded())
         {
             coyoteTimeCounter = coyoteTime;
@@ -88,7 +97,10 @@ public class BodyController : PlayerController
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
         }
-        
+    }
+    
+    private void GestionVise()
+    {
         if (!isAiming)
         {
             trajectory.HideTrajectory();
@@ -134,12 +146,10 @@ public class BodyController : PlayerController
             if (moveInput.x > 0)
             {
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
-                bodyAnimator.SetBool("IsGoingLeft", false);
             }
             else if(moveInput.x < 0)
             {
                 transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-                bodyAnimator.SetBool("IsGoingLeft", true);
             }
         }
 
@@ -297,7 +307,7 @@ public class BodyController : PlayerController
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
 
-        hand.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
+        handController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
@@ -315,8 +325,8 @@ public class BodyController : PlayerController
         head.layer = 7;
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-
-        head.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
+        
+        headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();

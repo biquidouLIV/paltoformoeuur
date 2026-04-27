@@ -31,7 +31,7 @@ public class HeadController : PlayerController
 
     protected void Update()
     {
-        if (elementRigidbody.linearVelocity.x < 0.2f)
+        if (Mathf.Abs(elementRigidbody.linearVelocity.x) < 0.2f)
         {
             elementRigidbody.linearVelocity = new Vector2(0, elementRigidbody.linearVelocity.y);
             colliderCarre.enabled = true;
@@ -43,7 +43,7 @@ public class HeadController : PlayerController
             colliderRond.enabled = true;
         }
     }
-
+    
     public override void Recall()
     {
         CameraManager.instance.ChangeFOV(PlayerPart.body);

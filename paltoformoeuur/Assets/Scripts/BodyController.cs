@@ -37,7 +37,7 @@ public class BodyController : PlayerController
     public bool isAiming;
     private PlayerPart aimingPart;
     private bool accroche;
-    private Crochet currentCrochet;
+    private CrochetPlatform currentCrochet;
     public bool isGrounded;
 
     public override void Init(PlayerData data)
@@ -344,7 +344,7 @@ public class BodyController : PlayerController
         transform.position = PlayerManager.instance.checkpointTransform;
     }
     
-    public override void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
         accroche = true;
         currentCrochet = crochet;

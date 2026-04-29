@@ -19,7 +19,7 @@ public class HandController : PlayerController
     
     private bool canDash = true;
     private bool accroche = false;
-    private Crochet currentCrochet;
+    private CrochetPlatform currentCrochet;
     private int direction = 1;
 
     public override void Init(PlayerData data)
@@ -131,7 +131,7 @@ public class HandController : PlayerController
         Recall();
     }
 
-    public override void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
         accroche = true;
         currentCrochet = crochet;

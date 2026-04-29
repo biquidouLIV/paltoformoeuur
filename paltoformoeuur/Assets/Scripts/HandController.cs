@@ -138,7 +138,10 @@ public class HandController : PlayerController
     
     public override void Decroche()
     {
-        StartCoroutine(currentCrochet.Active());
+        if (currentCrochet != null)
+        {
+            StartCoroutine(currentCrochet.Active());
+        }
         accroche = false;
         currentCrochet = null;
         elementRigidbody.simulated = true;

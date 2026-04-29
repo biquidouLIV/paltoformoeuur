@@ -63,6 +63,7 @@ public class HeadController : PlayerController
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
+        
     }
     
     public override void Die()

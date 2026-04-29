@@ -17,7 +17,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-
+    [SerializeField] private Vector2 defaultOffset;
+    
+    
     [SerializeField] private CameraData data;
     [SerializeField] private Ease ease;
 
@@ -40,10 +42,15 @@ public class CameraManager : MonoBehaviour
      private Vector3 lastFramePosition;
      private Vector2 cameraOffset;
      private Vector3  target;
+     private Vector3 destination;
 
      private float directionX;
      private float directionY;
-     
+
+     [SerializeField] private float multiplicationDeQuandTuVasEnBas = 1.5f;
+     private float multiplicationDeQuandTuVasEnBasMultiplicateur;
+     [SerializeField] private Vector2 YMaxDistance = new Vector2(-3,3);
+     [SerializeField] private Vector2 XMaxDistance = new Vector2(-3,3);
      
      private void Start()
      {
@@ -68,6 +75,14 @@ public class CameraManager : MonoBehaviour
      private void FixedUpdate()
      {
          
+        SetOffset();
+        Move();
+        
+         
+     }
+
+     private void SetOffset()
+     {
          directionX = targetPart.transform.position.x - lastFramePosition.x;
          directionY = targetPart.transform.position.y - lastFramePosition.y;
          
@@ -75,8 +90,7 @@ public class CameraManager : MonoBehaviour
          //quand on commence a descendre
          if((targetPart.transform.position - lastFramePosition).normalized == new Vector3(0, -1, 0) && directionY == 1)
          {
-             //faire un truc ici
-             Debug.Log("kaka");
+             //jsp
          }
          
          //quand on atterit
@@ -96,17 +110,35 @@ public class CameraManager : MonoBehaviour
          {
              directionX = 0;
          }
+
+         if (directionY < 0)
+         {
+             multiplicationDeQuandTuVasEnBasMultiplicateur = multiplicationDeQuandTuVasEnBas;
+         }
+         else
+         {
+             multiplicationDeQuandTuVasEnBasMultiplicateur = 1;
+         }
          
-         cameraOffset = new Vector2(directionX * horizontalDistance, directionY * verticalDistance);
+         cameraOffset = new Vector2(directionX * horizontalDistance, directionY * verticalDistance * multiplicationDeQuandTuVasEnBasMultiplicateur);
+     }
+
+     private void Move()
+     {
          target = targetPart.transform.position;
+
+         destination = (Vector2)target + defaultOffset + cameraOffset;
          
-         Debug.Log(cameraOffset);
+         
+         destination.x = Mathf.Clamp(destination.x, XMaxDistance.x, XMaxDistance.y);
+         destination.y = Mathf.Clamp(destination.y, YMaxDistance.x, YMaxDistance.y);
          
          if (targetPart == body)
          {
-             testCamera.transform.DOMoveX(target.x + cameraOffset.x, horizontalSpeed)
+             
+             testCamera.transform.DOMoveX(target.x + defaultOffset.x + cameraOffset.x, horizontalSpeed)
                  .SetEase(ease);
-             testCamera.transform.DOMoveY(target.y + cameraOffset.y, verticalSpeed)
+             testCamera.transform.DOMoveY(target.y + defaultOffset.y + cameraOffset.y, verticalSpeed)
                  .SetEase(ease);
          }
          else
@@ -117,11 +149,8 @@ public class CameraManager : MonoBehaviour
                  .SetEase(ease);
          }
          
-         
          lastFramePosition = targetPart.transform.position;
-         
      }
-     
      
     public void ChangeFOV(PlayerPart part)
     {

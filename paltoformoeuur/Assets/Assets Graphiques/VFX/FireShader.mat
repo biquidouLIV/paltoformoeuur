@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FireShader
-  m_Shader: {fileID: -6465566751694194690, guid: 76e60d45bfbee98408820ed87418382d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 09f3a5db6a166e84d8c10eb4e7024cef, type: 3}
   m_Parent: {fileID: 2100000, guid: 7d4f059c6e509dd4992fc27ce9bc61f3, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -39,6 +39,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 3.3855567, g: 8.589805, b: 15.396224, a: 1}
+    - _ColorTop: {r: 2.8284268, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

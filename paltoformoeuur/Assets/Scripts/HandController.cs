@@ -93,13 +93,13 @@ public class HandController : PlayerController
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
-                    accroche = false;
-                    currentCrochet = null;
+                    Decroche();
                     bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;
                     PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
+                    gameObject.SetActive(false);
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
@@ -134,5 +134,13 @@ public class HandController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
+    }
+    
+    public override void Decroche()
+    {
+        StartCoroutine(currentCrochet.Active());
+        accroche = false;
+        currentCrochet = null;
+        elementRigidbody.simulated = true;
     }
 }

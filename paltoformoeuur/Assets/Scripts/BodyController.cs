@@ -21,12 +21,14 @@ public class BodyController : PlayerController
         [SerializeField] public Animator bodyAnimator;
         [SerializeField] private AudioSource jumpSound;
 
+        [Header("Temp")] public float hitBumper;
+
     private float jumpHeight;
     private float launchForce;
     private float coyoteTime;
     private float coyoteTimeCounter;
     private float bufferingTime;
-    private float bufferingTimeCounter;
+    public float bufferingTimeCounter;
     
     private Vector2 rotationInput;
     private Vector2 rotation;
@@ -45,16 +47,24 @@ public class BodyController : PlayerController
             launchForce = bodyData.launchForce;
             bufferingTime = bodyData.bufferingTime;
             coyoteTime = bodyData.coyoteTime;
+            head.SetActive(false);
+            hand.SetActive(false);
         }
     }
             
     private void Update()
     {
+        AnimationGestion();
+        UpdateJump();
+        GestionVise();
+    }
+
+    private void AnimationGestion()
+    {
         if (elementRigidbody.linearVelocityY < 0)
         {
             bodyAnimator.SetBool("IsFalling",true);
             bodyAnimator.SetBool("IsJumping",false);
-            
         }
         else if(elementRigidbody.linearVelocityY > 0)
         {
@@ -65,7 +75,10 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsJumping",false);
             bodyAnimator.SetBool("IsFalling",false);
         }
-        
+    }
+
+    private void UpdateJump()
+    {
         if (CheckIfGrounded())
         {
             isGrounded = true;
@@ -77,16 +90,20 @@ public class BodyController : PlayerController
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        bufferingTimeCounter -= Time.deltaTime;
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
+        hitBumper = Mathf.Max(hitBumper - Time.deltaTime, 0);
+        bufferingTimeCounter = Mathf.Max(bufferingTimeCounter - Time.deltaTime, 0);
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY >= 0 && (hitBumper <= 0 || CheckIfGrounded()))
         {
-            jumpSound.Play();
+            //jumpSound.Play();
             elementRigidbody.linearVelocityY = 0f;
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
         }
-        
+    }
+    
+    private void GestionVise()
+    {
         if (!isAiming)
         {
             trajectory.HideTrajectory();
@@ -131,11 +148,11 @@ public class BodyController : PlayerController
 
             if (moveInput.x > 0)
             {
-                bodyAnimator.SetBool("IsGoingLeft", false);
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
             else if(moveInput.x < 0)
             {
-                bodyAnimator.SetBool("IsGoingLeft", true);
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
         }
 
@@ -164,9 +181,7 @@ public class BodyController : PlayerController
     {
         if (accroche && context.started)
         {
-            accroche = false;
-            currentCrochet = null;
-            elementRigidbody.simulated = true;
+            Decroche();
         }
         if (accroche)
         {
@@ -176,14 +191,8 @@ public class BodyController : PlayerController
         {
             bufferingTimeCounter = bufferingTime;
         }
-        if (context.performed && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
-        {
-            return;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
-            coyoteTimeCounter = 0f;
-        }
         
-        if (context.canceled)
+        if (context.canceled && hitBumper <= 0)
         {
             if (elementRigidbody.linearVelocityY > 0)
             {
@@ -195,7 +204,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         //return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint"));
+        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint","Bumper"));
     }
 
     private void DisplayTrajectory()
@@ -293,12 +302,13 @@ public class BodyController : PlayerController
     
     private void SpawnHand()
     {
+        hand.SetActive(true);
         bodyAnimator.SetBool("IsArmless", true);
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
 
-        hand.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
+        handController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
@@ -308,6 +318,7 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
+        head.SetActive(true);
         bodyAnimator.SetBool("IsHeadless", true);
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;
@@ -315,8 +326,8 @@ public class BodyController : PlayerController
         head.layer = 7;
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-
-        head.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
+        
+        headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();
@@ -342,5 +353,13 @@ public class BodyController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
+    }
+    
+    public override void Decroche()
+    {
+        StartCoroutine(currentCrochet.Active());
+        accroche = false;
+        currentCrochet = null;
+        elementRigidbody.simulated = true;
     }
 }

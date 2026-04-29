@@ -4,7 +4,7 @@ using UnityEngine;
 public class Crochet : MonoBehaviour
 {
     [SerializeField] private FallingPlatform fallingPlatform;
-    [SerializeField] private float delayOnLeaving = 2;
+    [SerializeField] private float delayOnLeaving = 1;
     private bool isAvailable = true;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,17 +20,10 @@ public class Crochet : MonoBehaviour
 
         isAvailable = false;
     }
-
-    private void OnTriggerExit2D(Collider2D other)
+    
+    public IEnumerator Active()
     {
-        if (other.gameObject.CompareTag("Hand") || other.gameObject.CompareTag("Body"))
-        {
-            StartCoroutine(Active());
-        }
-    }
-
-    private IEnumerator Active()
-    {
+        fallingPlatform.falling = false;
         yield return new WaitForSeconds(delayOnLeaving);
         isAvailable = true;
     }

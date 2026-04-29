@@ -66,5 +66,10 @@ public abstract class PlayerController : MonoBehaviour
     {
         
     }
+    
+    public virtual void Decroche()
+    {
+        
+    }
 }
         

@@ -93,8 +93,7 @@ public class HandController : PlayerController
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
-                    accroche = false;
-                    currentCrochet = null;
+                    Decroche();
                     bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
@@ -135,5 +134,13 @@ public class HandController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
+    }
+    
+    public override void Decroche()
+    {
+        StartCoroutine(currentCrochet.Active());
+        accroche = false;
+        currentCrochet = null;
+        elementRigidbody.simulated = true;
     }
 }

@@ -217,9 +217,6 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -111600221586965333}
   m_Solo: 0
@@ -242,9 +239,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsAimingHead
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3132193586881039659}
@@ -330,9 +324,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2212741668477578010}
@@ -506,9 +497,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7975671825166595388}
@@ -770,9 +758,6 @@ AnimatorTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsHeadless
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2117703690721215554}
   m_Solo: 0
@@ -873,9 +858,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3779378533084500759}
@@ -1674,9 +1656,6 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7211877479223772551}
   m_Solo: 0
@@ -1721,9 +1700,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2044859018038546924}
@@ -1772,9 +1748,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsWalking
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3479956187977623535}
@@ -1845,9 +1818,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8121694140527881527}
@@ -1989,12 +1959,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: IsGoingLeft
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: IsAimingHead
     m_Type: 4
     m_DefaultFloat: 0
@@ -2039,9 +2003,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 693067732781012763}
@@ -2165,9 +2126,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4036217569922655238}
@@ -2356,9 +2314,6 @@ AnimatorTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsHeadless
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2259359744186952601}
   m_Solo: 0
@@ -2485,9 +2440,6 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2203113904677575650}
   m_Solo: 0
@@ -2579,9 +2531,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2936703634821873187}
@@ -3148,9 +3097,6 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsAimingHand
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2309615764196299975}
   m_Solo: 0
@@ -3223,9 +3169,6 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsHeadless
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2621527265157992295}
   m_Solo: 0
@@ -3248,9 +3191,6 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsAimingHead
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsGoingLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2280324970016721592}

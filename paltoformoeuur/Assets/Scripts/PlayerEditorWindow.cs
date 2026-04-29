@@ -62,6 +62,11 @@ public class PlayerEditorWindow : EditorWindow
         EditorGUILayout.Space(10);
         EditorGUILayout.BeginVertical();
         GUILayout.Label("camera settings");
+        cameraData.horizontalDistance = EditorGUILayout.FloatField("horizontal Distance", cameraData.horizontalDistance);
+        cameraData.verticalDistance = EditorGUILayout.FloatField("vertical Distance", cameraData.verticalDistance);
+        cameraData.horizontalSpeed = EditorGUILayout.FloatField("horizontal Speed", cameraData.horizontalSpeed);
+        cameraData.verticalSpeed = EditorGUILayout.FloatField("vertical Speed", cameraData.verticalSpeed);
+        
         cameraData.bodyCameraFOV = EditorGUILayout.FloatField("body Camera FOV", cameraData.bodyCameraFOV);
         cameraData.headCameraFOV = EditorGUILayout.FloatField("head Camera FOV", cameraData.headCameraFOV);
         cameraData.FOVTransitionDuration = EditorGUILayout.FloatField("FOV Transition Duration", cameraData.FOVTransitionDuration);

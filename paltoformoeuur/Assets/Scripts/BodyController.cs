@@ -11,6 +11,7 @@ public class BodyController : PlayerController
         [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
         
     [Header("Refs")]
+        [SerializeField] protected GameObject playerParent;
         [SerializeField] protected GameObject hand;
         [SerializeField] protected GameObject head;
         [SerializeField] protected HandController handController;
@@ -35,7 +36,7 @@ public class BodyController : PlayerController
     private GameObject aim;
     public bool isAiming;
     private PlayerPart aimingPart;
-    private bool accroche = false;
+    private bool accroche;
     private Crochet currentCrochet;
     public bool isGrounded;
 
@@ -357,6 +358,7 @@ public class BodyController : PlayerController
     
     public override void Decroche()
     {
+        gameObject.transform.parent = playerParent.transform;
         StartCoroutine(currentCrochet.Active());
         accroche = false;
         currentCrochet = null;

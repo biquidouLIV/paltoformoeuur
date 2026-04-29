@@ -37,6 +37,7 @@ public class BodyController : PlayerController
     private PlayerPart aimingPart;
     private bool accroche = false;
     private Crochet currentCrochet;
+    public bool isGrounded;
 
     public override void Init(PlayerData data)
     {
@@ -53,11 +54,17 @@ public class BodyController : PlayerController
             
     private void Update()
     {
+        AnimationGestion();
+        UpdateJump();
+        GestionVise();
+    }
+
+    private void AnimationGestion()
+    {
         if (elementRigidbody.linearVelocityY < 0)
         {
             bodyAnimator.SetBool("IsFalling",true);
             bodyAnimator.SetBool("IsJumping",false);
-            
         }
         else if(elementRigidbody.linearVelocityY > 0)
         {
@@ -68,13 +75,18 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsJumping",false);
             bodyAnimator.SetBool("IsFalling",false);
         }
-        
+    }
+
+    private void UpdateJump()
+    {
         if (CheckIfGrounded())
         {
+            isGrounded = true;
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
+            isGrounded = false;
             coyoteTimeCounter -= Time.deltaTime;
         }
 
@@ -82,13 +94,16 @@ public class BodyController : PlayerController
         bufferingTimeCounter = Mathf.Max(bufferingTimeCounter - Time.deltaTime, 0);
         if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY >= 0 && (hitBumper <= 0 || CheckIfGrounded()))
         {
-            jumpSound.Play();
+            //jumpSound.Play();
             elementRigidbody.linearVelocityY = 0f;
             elementRigidbody.AddForce(new Vector2(0,jumpHeight));
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
         }
-        
+    }
+    
+    private void GestionVise()
+    {
         if (!isAiming)
         {
             trajectory.HideTrajectory();
@@ -134,12 +149,10 @@ public class BodyController : PlayerController
             if (moveInput.x > 0)
             {
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
-                bodyAnimator.SetBool("IsGoingLeft", false);
             }
             else if(moveInput.x < 0)
             {
                 transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-                bodyAnimator.SetBool("IsGoingLeft", true);
             }
         }
 
@@ -168,9 +181,7 @@ public class BodyController : PlayerController
     {
         if (accroche && context.started)
         {
-            accroche = false;
-            currentCrochet = null;
-            elementRigidbody.simulated = true;
+            Decroche();
         }
         if (accroche)
         {
@@ -297,7 +308,7 @@ public class BodyController : PlayerController
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
 
-        hand.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
+        handController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
@@ -315,8 +326,8 @@ public class BodyController : PlayerController
         head.layer = 7;
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-
-        head.GetComponent<Rigidbody2D>().AddForce(rotation * launchForce);
+        
+        headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();
@@ -342,5 +353,13 @@ public class BodyController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
+    }
+    
+    public override void Decroche()
+    {
+        StartCoroutine(currentCrochet.Active());
+        accroche = false;
+        currentCrochet = null;
+        elementRigidbody.simulated = true;
     }
 }

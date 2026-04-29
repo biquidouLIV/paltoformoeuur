@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d4a3fb74e9dc943ae5568e29a1a625, type: 3}
   m_Name: CameraData
   m_EditorClassIdentifier: Assembly-CSharp::CameraData
+  horizontalDistance: 80
+  verticalDistance: 80
+  horizontalSpeed: 2
+  verticalSpeed: 2
   bodyCameraFOV: 6
-  headCameraFOV: 10
+  headCameraFOV: 15
   FOVTransitionDuration: 1
-  ease: 9

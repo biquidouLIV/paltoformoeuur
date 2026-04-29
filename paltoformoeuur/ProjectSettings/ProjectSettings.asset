@@ -144,7 +144,8 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -524,7 +525,10 @@ PlayerSettings:
       m_Height: 720
       m_Kind: 1
       m_SubKind: 
-  m_BuildTargetBatching: []
+  m_BuildTargetBatching:
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
@@ -825,7 +829,25 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: DOTWEEN;DOTWEEN_NOAUDIO
+    EmbeddedLinux: DOTWEEN;DOTWEEN_NOAUDIO
+    GameCoreScarlett: DOTWEEN;DOTWEEN_NOAUDIO
+    GameCoreXboxOne: DOTWEEN;DOTWEEN_NOAUDIO
+    Kepler: DOTWEEN;DOTWEEN_NOAUDIO
+    LinuxHeadlessSimulation: DOTWEEN;DOTWEEN_NOAUDIO
+    Nintendo Switch: DOTWEEN;DOTWEEN_NOAUDIO
+    Nintendo Switch 2: DOTWEEN;DOTWEEN_NOAUDIO
+    PS4: DOTWEEN;DOTWEEN_NOAUDIO
+    PS5: DOTWEEN;DOTWEEN_NOAUDIO
+    QNX: DOTWEEN;DOTWEEN_NOAUDIO
+    Standalone: DOTWEEN;DOTWEEN_NOAUDIO
+    VisionOS: DOTWEEN;DOTWEEN_NOAUDIO
+    WebGL: DOTWEEN;DOTWEEN_NOAUDIO
+    Windows Store Apps: DOTWEEN;DOTWEEN_NOAUDIO
+    XboxOne: DOTWEEN;DOTWEEN_NOAUDIO
+    iPhone: DOTWEEN;DOTWEEN_NOAUDIO
+    tvOS: DOTWEEN;DOTWEEN_NOAUDIO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -847,7 +869,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: paltoformoeuur
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -855,7 +877,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: paltoformoeuur
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: paltoformoeuur
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

@@ -1,29 +1,38 @@
-using System.Collections;
+using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 1;
-    [SerializeField] private float sprintSpeedMultiplier = 2;
-    [SerializeField] private float jumpHeight = 50;
-    [SerializeField] private float jumpRaycastSize = 1;
-    [SerializeField] private float jumpStopDelay = 0.2f;
-
-    [SerializeField] private GameObject handPrefab;
-
-
-    public Rigidbody2D playerRigidbody;
-    public PlayerInput playerInput;
-
-    private float sprintSpeed = 1;
-    private Vector2 moveInput;
+    
+    
+    [Header("Refs")]
+        [SerializeField] private PlayerData data;
+        [SerializeField] protected GameObject player;
 
     
-    private void Start()
+    [NonSerialized] public Rigidbody2D elementRigidbody;
+    [NonSerialized] public Vector2 moveInput;
+    
+    protected float sprintSpeed = 1;
+    private float speed = 1;
+    protected float sprintSpeedMultiplier = 2;
+    
+    
+    protected BodyController bodyScript;
+    
+    public abstract void Die();
+    public virtual void Init(PlayerData data){}
+    
+    protected virtual void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerRigidbody = GetComponent<Rigidbody2D>();
+        speed = data.speed;
+        sprintSpeedMultiplier = data.sprintSpeedMultiplier;
+        Init(data);
+        
+        elementRigidbody = GetComponent<Rigidbody2D>();
+        bodyScript = player.GetComponent<BodyController>();
     }
     
     private void FixedUpdate()
@@ -31,66 +40,36 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }
     
-    public void OnMove(InputAction.CallbackContext context)
+    public virtual void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
     }
     
-    public void OnSprint(InputAction.CallbackContext context)
+    public virtual void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            sprintSpeed = sprintSpeedMultiplier;
-        }
-
-        if (context.canceled)
-        {
-            sprintSpeed = 1;
-        }
-    }
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.performed && CheckIfGrounded())
-        {
-            StopAllCoroutines();
-            playerRigidbody.AddForce(new Vector2(0,jumpHeight));
-        }
-
-        if (context.canceled)
-        {
-            if (playerRigidbody.linearVelocityY > 0)
-            {
-                playerRigidbody.linearVelocityY /= 2;
-            }
-        }
-    }
-    private bool CheckIfGrounded()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return hit;
-    }
-
-    public void OnSpawnHand(InputAction.CallbackContext context)
-    {
-        if(context.performed)
-        {
-            SpawnHand();
-        }
-    }
-
-
-    private void SpawnHand()
-    {
-        GameObject hand = Instantiate(handPrefab, transform.position, Quaternion.identity);
-        HandController script = hand.GetComponent<HandController>();
-        script.player = this;
-        
-        playerRigidbody.linearVelocity = Vector2.zero;
-        playerRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-        moveInput = Vector2.zero;
-
-        gameObject.layer = 0;
-        playerInput.enabled = false;
     }
     
+    public void DisableElement()
+    {
+        elementRigidbody.linearVelocity = Vector2.zero;
+        moveInput = Vector2.zero;
+    }
+    
+    public virtual void Recall()
+    {
+        PlayerManager.instance.PlayerInput.enabled = false;
+        transform.parent = player.transform;
+        elementRigidbody.simulated = false;
+    }
+
+    public virtual void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    {
+        
+    }
+    
+    public virtual void Decroche()
+    {
+        
+    }
 }
+        

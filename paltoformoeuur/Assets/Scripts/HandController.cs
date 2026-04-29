@@ -1,82 +1,146 @@
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class HandController : MonoBehaviour
+public class HandController : PlayerController
 {
-    [SerializeField] private float speed = 1;
-    [SerializeField] private float sprintSpeedMultiplier = 2;
-    [SerializeField] private float jumpHeight = 50;
-    [SerializeField] private float jumpRaycastSize = 1;
-    
-    private float sprintSpeed = 1;
-    private Vector2 moveInput;
+        [SerializeField] private float tempsAccroche;
 
-    private Rigidbody2D handRigidbody;
-    
-    public PlayerController player;
 
-    private void Start()
-    {
-        handRigidbody = GetComponent<Rigidbody2D>();
-    }
+    [Header("Refs")]
+        [SerializeField] public Animator handAnimator;
 
-    private void FixedUpdate()
-    {
-        transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
-    }
+
+    private float dashSpeed;
+    private float dashDuration;
+    private float dashCooldown;
+    private int recallSpeed;
     
-    public void OnMove(InputAction.CallbackContext context)
+    private bool canDash = true;
+    private bool accroche = false;
+    private Crochet currentCrochet;
+    private int direction = 1;
+
+    public override void Init(PlayerData data)
     {
-        moveInput = context.ReadValue<Vector2>();
-    }
-    
-    public void OnSprint(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        if (data is HandData handData)
         {
-            sprintSpeed = sprintSpeedMultiplier;
+            dashSpeed = handData.dashSpeed;
+            dashDuration = handData.dashDuration;
+            dashCooldown = handData.dashCooldown;
+            recallSpeed = handData.recallSpeed;
+        }
+    }
+
+    private void Update()
+    {
+        if (elementRigidbody.linearVelocityY < 0f)
+        {
+            handAnimator.SetBool("IsFalling",true);
+        }
+        else
+        {
+            handAnimator.SetBool("IsFalling",false);
+        }
+    }
+
+    public override void OnMove(InputAction.CallbackContext context)
+    {
+        if (accroche)
+        {
+            return;
+        }
+        
+        handAnimator.SetBool("IsWalking", true);
+        base.OnMove(context);
+        
+        if (moveInput.x > 0)
+        {
+            direction = 1;
+            handAnimator.SetBool("IsGoingLeft", false);
+        }
+        else if(moveInput.x < 0)
+        {
+            direction = -1;
+            handAnimator.SetBool("IsGoingLeft", true);
         }
 
         if (context.canceled)
         {
-            sprintSpeed = 1;
+            handAnimator.SetBool("IsWalking",false);
         }
     }
-    public void OnJump(InputAction.CallbackContext context)
+    
+    public override void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed && CheckIfGrounded())
-        {
-            handRigidbody.AddForce(new Vector2(jumpHeight,0));
-        }
+        return;
+    }
 
-        if (context.canceled)
+    //ca s'appelle jump mais c'est un dash 
+    public void OnJump(InputAction.CallbackContext context) 
+    {
+        if (context.performed && canDash)
         {
-            if (handRigidbody.linearVelocityX > 0)
+            StartCoroutine(Dash());
+        }
+    }
+
+    public override void Recall()
+    {
+        base.Recall();
+        transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
+            .SetEase(Ease.OutCubic)
+            .OnComplete(() =>
+                {
+                    Decroche();
+                    bodyScript.bodyAnimator.SetBool("IsArmless",false);
+                    DisableElement();
+                    PlayerManager.instance.handOnBody = true;
+                    PlayerManager.instance.PlayerInput.enabled = true;
+                    PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
+                    gameObject.SetActive(false);
+                }
+            );
+        transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        handAnimator.SetBool("IsDashing",true);
+        elementRigidbody.linearVelocityX = dashSpeed*direction;
+        yield return new WaitForSeconds(dashDuration);
+        handAnimator.SetBool("IsDashing",false);
+        elementRigidbody.linearVelocityX = 0;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
+    public override void Die()
+    {
+        Recall();
+    }
+
+    public override void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    {
+        accroche = true;
+        currentCrochet = crochet;
+        elementRigidbody.simulated = false;
+        moveInput = Vector2.zero;
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+            .OnComplete(() =>
             {
-                handRigidbody.linearVelocityX /= 2;
-            }
-        }
-    }
-    private bool CheckIfGrounded()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return hit;
-    }
-
-    private void DespawnHand()
-    {
-        player.playerInput.enabled = true;
-        player.gameObject.layer = 6;
-        player.playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        Destroy(gameObject);
+                gameObject.transform.parent = currentCrochet.transform;
+                fallingPlatform.falling = true;
+            });
     }
     
-    public void OnSpawnHand(InputAction.CallbackContext context)
+    public override void Decroche()
     {
-        if (context.performed)
-        {
-            DespawnHand();
-        }
+        StartCoroutine(currentCrochet.Active());
+        accroche = false;
+        currentCrochet = null;
+        elementRigidbody.simulated = true;
     }
-    
 }

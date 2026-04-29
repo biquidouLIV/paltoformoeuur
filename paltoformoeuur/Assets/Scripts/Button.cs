@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    [SerializeField] private GameObject door;
-    [SerializeField] private Vector3 doorMove = new Vector3(0,3,0);
-    [SerializeField] private float doorOpeningTime;
+    [SerializeField] private Door[] doorList;
+    private Animator animator;
+    [NonSerialized] public bool isActivated;
 
-    private bool isOpen;
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(isOpen) return;
+        if(isActivated)return;
+        isActivated = true;
         
-        door.transform.DOMove(door.transform.position + doorMove, doorOpeningTime)
-            .SetEase(Ease.InOutCubic);
-        isOpen = true;
+        animator.Play("Activation");
+        foreach (var door in doorList)
+        {
+            door.Open();
+        }
 
+        
     }
 }

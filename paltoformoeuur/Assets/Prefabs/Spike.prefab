@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7133026034857433690}
+  - component: {fileID: 6453864718678198813}
   - component: {fileID: 7446579831682924340}
   - component: {fileID: 3869937598719575000}
-  - component: {fileID: 6453864718678198813}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -34,6 +34,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6453864718678198813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428824113532177629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80f1a9baaff7d640ac27ad69f3002dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!212 &7446579831682924340
 SpriteRenderer:
   serializedVersion: 2
@@ -139,15 +151,3 @@ BoxCollider2D:
   m_AutoTiling: 1
   m_Size: {x: 4.4, y: 0.35635698}
   m_EdgeRadius: 0
---- !u!114 &6453864718678198813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3428824113532177629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80f1a9baaff7d640ac27ad69f3002dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Spike

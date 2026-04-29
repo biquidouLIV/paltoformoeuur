@@ -52,6 +52,15 @@ public class HandController : PlayerController
             return;
         }
         
+        if (moveInput.x > 0)
+        {
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+        }
+        else if(moveInput.x < 0)
+        {
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        }
+        
         handAnimator.SetBool("IsWalking", true);
         base.OnMove(context);
         

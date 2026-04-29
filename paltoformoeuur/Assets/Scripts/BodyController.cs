@@ -164,6 +164,8 @@ public class BodyController : PlayerController
 
     public override void OnSprint(InputAction.CallbackContext context)
     {
+        if(sprintSpeedMultiplier == 1) return;
+        
         if (context.performed)
         {
             bodyScript.bodyAnimator.SetBool("IsSprinting",true);

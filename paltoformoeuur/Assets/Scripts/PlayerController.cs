@@ -21,6 +21,9 @@ public abstract class PlayerController : MonoBehaviour
     
     
     protected BodyController bodyScript;
+
+
+
     
     public abstract void Die();
     public virtual void Init(PlayerData data){}

@@ -150,5 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d3e32a2b0782f46b2f745495b5ff6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
+  defaultOffset: {x: 0, y: 2.5}
   data: {fileID: 11400000, guid: 26899c7d499651d409be8f71869c2b71, type: 2}
-  ease: 0
+  horizontalEase: 9
+  verticalEase: 9
+  YDistance: {x: 0, y: -8}
+  speedMonte: 1
+  speedDescend: 2
+  minVelocity: 0.2
+  minDistanceWithGound: 6

@@ -46,7 +46,7 @@ public class HeadController : PlayerController
     
     public override void Recall()
     {
-        CameraManager.instance.ChangeFOV(PlayerPart.body);
+        CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.headAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)

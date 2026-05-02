@@ -39,7 +39,7 @@ public class BodyController : PlayerController
     private bool accroche;
     private Crochet currentCrochet;
     public bool isGrounded;
-
+    public float distanceWithGround;
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -58,6 +58,7 @@ public class BodyController : PlayerController
         AnimationGestion();
         UpdateJump();
         GestionVise();
+        CheckDistanceWithGround();
     }
 
     private void AnimationGestion()
@@ -210,6 +211,14 @@ public class BodyController : PlayerController
         return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint","Bumper"));
     }
 
+    private void CheckDistanceWithGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
+        distanceWithGround = hit.distance;
+        Debug.Log(distanceWithGround);
+    }
+    
+    
     private void DisplayTrajectory()
     {
         
@@ -334,7 +343,7 @@ public class BodyController : PlayerController
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();
-        CameraManager.instance.ChangeFOV(PlayerPart.head);
+        CameraManager.instance.ChangeTarget(PlayerPart.head);
         head.transform.SetParent(transform.parent);
     }
     

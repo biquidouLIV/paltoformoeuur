@@ -7,8 +7,8 @@ public class BodyController : PlayerController
     
         [SerializeField] private float tempsAccroche;
     [Header("GD pas touche")]
-        [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
-        [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
+        [SerializeField] private Vector2 jumpRaycastSize = new (1,1);
+        [SerializeField] private Vector2 jumpRaycastOrigin = new (0,1);
         
     [Header("Refs")]
         [SerializeField] protected GameObject playerParent;
@@ -39,6 +39,8 @@ public class BodyController : PlayerController
     private bool accroche;
     private CrochetPlatform currentCrochet;
     public bool isGrounded;
+    private float timeSinceLastJump;
+    private float jumpMinimumDelay = 0.3f;
 
     public override void Init(PlayerData data)
     {
@@ -50,13 +52,15 @@ public class BodyController : PlayerController
             coyoteTime = bodyData.coyoteTime;
             head.SetActive(false);
             hand.SetActive(false);
+            timeSinceLastJump = jumpMinimumDelay;
         }
     }
             
     private void Update()
     {
         AnimationGestion();
-        UpdateJump();
+        UpdateVariableJump();
+        CheckJump();
         GestionVise();
     }
 
@@ -78,7 +82,7 @@ public class BodyController : PlayerController
         }
     }
 
-    private void UpdateJump()
+    private void UpdateVariableJump()
     {
         if (CheckIfGrounded())
         {
@@ -92,12 +96,18 @@ public class BodyController : PlayerController
         }
 
         hitBumper = Mathf.Max(hitBumper - Time.deltaTime, 0);
-        bufferingTimeCounter = Mathf.Max(bufferingTimeCounter - Time.deltaTime, 0);
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY >= 0 && (hitBumper <= 0 || CheckIfGrounded()))
+        bufferingTimeCounter -= Time.deltaTime;
+        timeSinceLastJump += Time.deltaTime;
+    }
+
+    private void CheckJump()
+    {
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && (hitBumper <= 0 || CheckIfGrounded()))
         {
             //jumpSound.Play();
-            elementRigidbody.linearVelocityY = 0f;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            timeSinceLastJump = 0;
+            elementRigidbody.linearVelocityY = 0;
+            elementRigidbody.linearVelocityY = jumpHeight;
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
         }
@@ -228,28 +238,6 @@ public class BodyController : PlayerController
                     trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
                     break;
             }
-        }
-    }
-
-    private void CheckJump()
-    {
-        if (CheckIfGrounded())
-        {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
-
-        bufferingTimeCounter -= Time.deltaTime;
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
-        {
-            jumpSound.Play();
-            elementRigidbody.linearVelocityY = 0f;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
-            coyoteTimeCounter = 0f;
-            bufferingTimeCounter = 0f;
         }
     }
 

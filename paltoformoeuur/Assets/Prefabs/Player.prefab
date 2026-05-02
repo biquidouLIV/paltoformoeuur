@@ -406,6 +406,7 @@ MonoBehaviour:
   bodyAnimator: {fileID: 6755396211980822311}
   jumpSound: {fileID: 8888338495537200101}
   hitBumper: 0
+  distanceVisionTete: 20
   bufferingTimeCounter: 0
   isAiming: 0
   isGrounded: 0
@@ -1077,7 +1078,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2365311328493070183}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: OnRecallHead
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1133,7 +1134,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2365311328493070183}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: OnRecallHand
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -111,12 +111,12 @@ public class PlayerManager : MonoBehaviour
         headOnBody = false;
     }
 
-    public void OnRecallHead(InputAction.CallbackContext context)
+    public void OnRecallHead()
     {
         headController.Recall();
     }
     
-    public void OnRecallHand(InputAction.CallbackContext context)
+    public void OnRecallHand()
     {
         handController.Recall();
     }

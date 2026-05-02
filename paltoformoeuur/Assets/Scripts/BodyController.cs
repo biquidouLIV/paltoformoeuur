@@ -23,6 +23,7 @@ public class BodyController : PlayerController
         [SerializeField] private AudioSource jumpSound;
 
         [Header("Temp")] public float hitBumper;
+        [SerializeField] private float distanceVisionTete;
 
     private float jumpHeight;
     private float launchForce;
@@ -249,6 +250,11 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
+        if (PlayerManager.instance.headOnBody == false)
+        {
+            PlayerManager.instance.OnRecallHead();
+            return;
+        }
         if (context.started && !isAiming && PlayerManager.instance.headOnBody)
         {
             isAiming = true;
@@ -271,6 +277,11 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
+        if (PlayerManager.instance.handOnBody == false)
+        {
+            PlayerManager.instance.OnRecallHand();
+            return;
+        }
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
             isAiming = true;
@@ -330,6 +341,15 @@ public class BodyController : PlayerController
     {
         bodyAnimator.SetTrigger("Die");
         transform.position = PlayerManager.instance.checkpointTransform;
+        if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
+        {
+            PlayerManager.instance.OnRecallHand();
+            PlayerManager.instance.OnRecallHead();
+        }
+        else if (Vector3.Distance(head.transform.position, hand.transform.position) > distanceVisionTete)
+        {
+            PlayerManager.instance.OnRecallHand();
+        }
     }
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)

@@ -100,8 +100,6 @@ public class CameraManager : MonoBehaviour
          cameraOffset = new Vector2(directionX * horizontalDistance, directionY * verticalDistance);
          target = targetPart.transform.position;
          
-         Debug.Log(cameraOffset);
-         
          if (targetPart == body)
          {
              testCamera.transform.DOMoveX(target.x + cameraOffset.x, horizontalSpeed)

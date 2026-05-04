@@ -275,7 +275,8 @@ public class BodyController : PlayerController
         {
             Time.timeScale = 1f;
             isAiming = false;
-            SpawnHead();
+            //SpawnHead();
+            bodyAnimator.SetBool("IsHeadless", true);
             aimingPart = default;
         }
         else if (context.canceled)
@@ -302,7 +303,8 @@ public class BodyController : PlayerController
         {
             Time.timeScale = 1f;
             isAiming = false;
-            SpawnHand();
+            //SpawnHand();
+            bodyAnimator.SetBool("IsArmless", true);
             aimingPart = default;
         }
         else if (context.canceled)
@@ -314,7 +316,7 @@ public class BodyController : PlayerController
     private void SpawnHand()
     {
         hand.SetActive(true);
-        bodyAnimator.SetBool("IsArmless", true);
+        //bodyAnimator.SetBool("IsArmless", true);
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
@@ -330,7 +332,7 @@ public class BodyController : PlayerController
     private void SpawnHead()
     {
         head.SetActive(true);
-        bodyAnimator.SetBool("IsHeadless", true);
+        //bodyAnimator.SetBool("IsHeadless", true);
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;

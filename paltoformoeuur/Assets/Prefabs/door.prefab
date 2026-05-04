@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8754103733669587981}
   - component: {fileID: 5368398571717889877}
   m_Layer: 0
-  m_Name: Door
+  m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,13 +121,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7507702976228175814}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.056447327, w: 0.9984056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4422432422668018839}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.472}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &414627045707296146
 SpriteRenderer:
   serializedVersion: 2
@@ -174,11 +174,11 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 365260569
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayer: 4
+  m_SortingOrder: -10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: d624b49daefd10a47a239ce0815a85e9, type: 3}
-  m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 516843dbd809b83458bc85587ef6c85f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

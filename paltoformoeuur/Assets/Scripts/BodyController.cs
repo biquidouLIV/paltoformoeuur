@@ -22,7 +22,7 @@ public class BodyController : PlayerController
         [SerializeField] public Animator bodyAnimator;
         [SerializeField] private AudioSource jumpSound;
 
-        [Header("Temp")] public float hitBumper;
+        [Header("Temp")] public bool hitBumper;
         [SerializeField] private float distanceVisionTete;
 
     private float jumpHeight;
@@ -98,14 +98,13 @@ public class BodyController : PlayerController
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        hitBumper = Mathf.Max(hitBumper - Time.deltaTime, 0);
         bufferingTimeCounter -= Time.deltaTime;
         timeSinceLastJump += Time.deltaTime;
     }
 
     private void CheckJump()
     {
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && (hitBumper <= 0 || CheckIfGrounded()))
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && (!hitBumper || CheckIfGrounded()))
         {
             //jumpSound.Play();
             timeSinceLastJump = 0;
@@ -208,7 +207,7 @@ public class BodyController : PlayerController
             bufferingTimeCounter = bufferingTime;
         }
         
-        if (context.canceled && hitBumper <= 0)
+        if (context.canceled && !hitBumper)
         {
             if (elementRigidbody.linearVelocityY > 0)
             {
@@ -219,8 +218,13 @@ public class BodyController : PlayerController
     
     private bool CheckIfGrounded()
     {
-        //return Physics2D.Raycast(transform.position, Vector2.down, jumpRaycastSize, ~LayerMask.GetMask("Player"));
-        return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint","Bumper"));
+        bool onFloor = Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f,
+            Vector2.down, 1, ~LayerMask.GetMask("Player", "Checkpoint", "Bumper"));
+        if (onFloor)
+        {
+            hitBumper = false;
+        }
+        return onFloor;
     }
 
     private void CheckDistanceWithGround()
@@ -349,11 +353,13 @@ public class BodyController : PlayerController
     public override void Die()
     {
         bodyAnimator.SetTrigger("Die");
+        PlayerManager.instance.PlayerInput.enabled = false;
     }
 
     public void Respaw()
     {
         transform.position = PlayerManager.instance.checkpointTransform;
+        PlayerManager.instance.PlayerInput.enabled = true;
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
         {
             PlayerManager.instance.OnRecallHand();

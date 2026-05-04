@@ -1,33 +1,40 @@
+using System;
 using UnityEngine;
 
 public class Bumper : MonoBehaviour
 {
-    [SerializeField] private float strength;
-    [SerializeField] private float baseStrength = 400;
-    [SerializeField] private float delayBigJump;
+    [SerializeField] private float strength = 16;
+    [SerializeField] private float baseStrength = 8;
+    [SerializeField] private float delayBigJump = 2f;
     private float delayBigJumpCounter;
-    
+
+    private void Update()
+    {
+        delayBigJumpCounter -= Time.deltaTime;
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
         {
             case "Hand":
-                other.rigidbody.AddForce(Vector3.up * strength);
+                other.rigidbody.linearVelocityY = strength;
                 break;
             case "Head":
-                other.rigidbody.AddForce(Vector3.up * strength);
+                other.rigidbody.linearVelocityY = strength;
                 break;
             case "Body":
-                if (other.gameObject.GetComponent<BodyController>().bufferingTimeCounter > 0f || delayBigJumpCounter == 0)
+                if (other.gameObject.GetComponent<BodyController>().bufferingTimeCounter > 0f || delayBigJumpCounter <= 0)
                 {
-                    other.rigidbody.AddForce(Vector3.up * strength);
+                    other.rigidbody.linearVelocityY = strength;
                 }
                 else
                 {
-                    other.rigidbody.AddForce(Vector3.up * baseStrength);
+                    other.rigidbody.linearVelocityY = baseStrength;
                 }
+
+                other.gameObject.GetComponent<BodyController>().hitBumper = true;
                 delayBigJumpCounter = delayBigJump;
-                other.gameObject.GetComponent<BodyController>().hitBumper = 1f;
                 break;
         }
     }

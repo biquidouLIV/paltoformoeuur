@@ -21,9 +21,6 @@ public abstract class PlayerController : MonoBehaviour
     
     
     protected BodyController bodyScript;
-
-
-
     
     public abstract void Die();
     public virtual void Init(PlayerData data){}
@@ -38,7 +35,7 @@ public abstract class PlayerController : MonoBehaviour
         bodyScript = player.GetComponent<BodyController>();
     }
     
-    private void FixedUpdate()
+    protected virtual void Update()
     {
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }

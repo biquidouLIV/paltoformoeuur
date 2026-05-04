@@ -108,12 +108,19 @@ public class HandController : PlayerController
                     PlayerManager.instance.handOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;
                     PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
+                    PlayerManager.instance.StartCoroutine(doLatter());
                     gameObject.SetActive(false);
+                    
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
     }
 
+    private IEnumerator doLatter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        bodyScript.canThrowHand = false;
+    }
     private IEnumerator Dash()
     {
         canDash = false;
@@ -125,7 +132,12 @@ public class HandController : PlayerController
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-
+    
+    private void OnDisable()
+    {
+        
+        bodyScript.bodyAnimator.SetBool("IsArmless",false);
+    }
     public override void Die()
     {
         Recall();

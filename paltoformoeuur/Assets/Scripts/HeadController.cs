@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 public class HeadController : PlayerController
@@ -59,13 +60,27 @@ public class HeadController : PlayerController
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
                     PlayerManager.instance.PlayerInput.enabled = true;
+                    PlayerManager.instance.StartCoroutine(doLatter());
                     gameObject.SetActive(false);
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
         
     }
-    
+
+    private IEnumerator doLatter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        bodyScript.canThrowHead = false;
+        
+    }
+
+    private void OnDisable()
+    {
+        
+        bodyScript.bodyAnimator.SetBool("IsHeadless",false);
+    }
+
     public override void Die()
     {
         Recall();

@@ -4907,11 +4907,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: strength
-      value: 1100
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: baseStrength
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: delayBigJump
@@ -5604,6 +5604,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1106469636}
     m_Modifications:
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: strength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: baseStrength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: delayBigJump
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
       value: Bumper_005
@@ -10813,6 +10825,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1106469636}
     m_Modifications:
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: strength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: baseStrength
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
       value: Bumper_002
@@ -18627,7 +18647,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: strength
-      value: 1250
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: baseStrength
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
@@ -22398,7 +22422,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: strength
-      value: 900
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: baseStrength
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
@@ -22626,6 +22654,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1106469636}
     m_Modifications:
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: strength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: baseStrength
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
       value: Bumper_004
@@ -24268,11 +24304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -146
+      value: -297.9
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46
+      value: 9.9
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24748,11 +24784,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: strength
-      value: 1100
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: baseStrength
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
@@ -28336,11 +28372,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: strength
-      value: 1100
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: baseStrength
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: delayBigJump
@@ -29287,11 +29323,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: strength
-      value: 900
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: baseStrength
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: delayBigJump
@@ -31315,7 +31351,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: strength
-      value: 900
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 185797099422469172, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: baseStrength
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name

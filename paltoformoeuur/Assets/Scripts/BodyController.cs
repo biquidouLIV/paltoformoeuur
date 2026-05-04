@@ -7,8 +7,8 @@ public class BodyController : PlayerController
     
         [SerializeField] private float tempsAccroche;
     [Header("GD pas touche")]
-        [SerializeField] private Vector2 jumpRaycastSize = new Vector2(1,1);
-        [SerializeField] private Vector2 jumpRaycastOrigin = new Vector2(0,1);
+        [SerializeField] private Vector2 jumpRaycastSize = new (1,1);
+        [SerializeField] private Vector2 jumpRaycastOrigin = new (0,1);
         
     [Header("Refs")]
         [SerializeField] protected GameObject playerParent;
@@ -23,6 +23,7 @@ public class BodyController : PlayerController
         [SerializeField] private AudioSource jumpSound;
 
         [Header("Temp")] public float hitBumper;
+        [SerializeField] private float distanceVisionTete;
 
     private float jumpHeight;
     private float launchForce;
@@ -37,9 +38,12 @@ public class BodyController : PlayerController
     public bool isAiming;
     private PlayerPart aimingPart;
     private bool accroche;
-    private Crochet currentCrochet;
+    private CrochetPlatform currentCrochet;
     public bool isGrounded;
+    private float timeSinceLastJump;
+    private float jumpMinimumDelay = 0.3f;
 
+    public float distanceWithGround;
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -50,14 +54,17 @@ public class BodyController : PlayerController
             coyoteTime = bodyData.coyoteTime;
             head.SetActive(false);
             hand.SetActive(false);
+            timeSinceLastJump = jumpMinimumDelay;
         }
     }
             
     private void Update()
     {
         AnimationGestion();
-        UpdateJump();
+        UpdateVariableJump();
+        CheckJump();
         GestionVise();
+        CheckDistanceWithGround();
     }
 
     private void AnimationGestion()
@@ -78,7 +85,7 @@ public class BodyController : PlayerController
         }
     }
 
-    private void UpdateJump()
+    private void UpdateVariableJump()
     {
         if (CheckIfGrounded())
         {
@@ -92,12 +99,18 @@ public class BodyController : PlayerController
         }
 
         hitBumper = Mathf.Max(hitBumper - Time.deltaTime, 0);
-        bufferingTimeCounter = Mathf.Max(bufferingTimeCounter - Time.deltaTime, 0);
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY >= 0 && (hitBumper <= 0 || CheckIfGrounded()))
+        bufferingTimeCounter -= Time.deltaTime;
+        timeSinceLastJump += Time.deltaTime;
+    }
+
+    private void CheckJump()
+    {
+        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && (hitBumper <= 0 || CheckIfGrounded()))
         {
             //jumpSound.Play();
-            elementRigidbody.linearVelocityY = 0f;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
+            timeSinceLastJump = 0;
+            elementRigidbody.linearVelocityY = 0;
+            elementRigidbody.linearVelocityY = jumpHeight;
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
         }
@@ -210,6 +223,13 @@ public class BodyController : PlayerController
         return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint","Bumper"));
     }
 
+    private void CheckDistanceWithGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
+        distanceWithGround = hit.distance;
+    }
+    
+    
     private void DisplayTrajectory()
     {
         
@@ -231,28 +251,6 @@ public class BodyController : PlayerController
         }
     }
 
-    private void CheckJump()
-    {
-        if (CheckIfGrounded())
-        {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
-
-        bufferingTimeCounter -= Time.deltaTime;
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && elementRigidbody.linearVelocityY <= 0)
-        {
-            jumpSound.Play();
-            elementRigidbody.linearVelocityY = 0f;
-            elementRigidbody.AddForce(new Vector2(0,jumpHeight));
-            coyoteTimeCounter = 0f;
-            bufferingTimeCounter = 0f;
-        }
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -261,6 +259,11 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
+        if (PlayerManager.instance.headOnBody == false)
+        {
+            PlayerManager.instance.OnRecallHead();
+            return;
+        }
         if (context.started && !isAiming && PlayerManager.instance.headOnBody)
         {
             isAiming = true;
@@ -283,6 +286,11 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
+        if (PlayerManager.instance.handOnBody == false)
+        {
+            PlayerManager.instance.OnRecallHand();
+            return;
+        }
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
             isAiming = true;
@@ -334,17 +342,30 @@ public class BodyController : PlayerController
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();
-        CameraManager.instance.ChangeFOV(PlayerPart.head);
+        CameraManager.instance.ChangeTarget(PlayerPart.head);
         head.transform.SetParent(transform.parent);
     }
     
     public override void Die()
     {
         bodyAnimator.SetTrigger("Die");
+    }
+
+    public void Respaw()
+    {
         transform.position = PlayerManager.instance.checkpointTransform;
+        if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
+        {
+            PlayerManager.instance.OnRecallHand();
+            PlayerManager.instance.OnRecallHead();
+        }
+        else if (Vector3.Distance(head.transform.position, hand.transform.position) > distanceVisionTete)
+        {
+            PlayerManager.instance.OnRecallHand();
+        }
     }
     
-    public override void Accroche(Crochet crochet, FallingPlatform fallingPlatform)
+    public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
         accroche = true;
         currentCrochet = crochet;

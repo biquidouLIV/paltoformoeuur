@@ -9,16 +9,26 @@ public class Bumper : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<BodyController>().bufferingTimeCounter > 0f || delayBigJumpCounter == 0)
+        switch (other.gameObject.tag)
         {
-            other.rigidbody.AddForce(Vector3.up * strength);
+            case "Hand":
+                other.rigidbody.AddForce(Vector3.up * strength);
+                break;
+            case "Head":
+                other.rigidbody.AddForce(Vector3.up * strength);
+                break;
+            case "Body":
+                if (other.gameObject.GetComponent<BodyController>().bufferingTimeCounter > 0f || delayBigJumpCounter == 0)
+                {
+                    other.rigidbody.AddForce(Vector3.up * strength);
+                }
+                else
+                {
+                    other.rigidbody.AddForce(Vector3.up * baseStrength);
+                }
+                delayBigJumpCounter = delayBigJump;
+                other.gameObject.GetComponent<BodyController>().hitBumper = 1f;
+                break;
         }
-        else
-        {
-            other.rigidbody.AddForce(Vector3.up * baseStrength);
-        }
-
-        delayBigJumpCounter = delayBigJump;
-        other.gameObject.GetComponent<BodyController>().hitBumper = 1f;
     }
 }

@@ -353,11 +353,13 @@ public class BodyController : PlayerController
     public override void Die()
     {
         bodyAnimator.SetTrigger("Die");
+        PlayerManager.instance.PlayerInput.enabled = false;
     }
 
     public void Respaw()
     {
         transform.position = PlayerManager.instance.checkpointTransform;
+        PlayerManager.instance.PlayerInput.enabled = true;
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
         {
             PlayerManager.instance.OnRecallHand();

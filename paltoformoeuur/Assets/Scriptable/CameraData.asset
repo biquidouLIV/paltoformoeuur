@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraData
   horizontalDistance: 80
   horizontalSpeed: 3
-  verticalSpeed: 0.8
+  verticalSpeed: 1.2
   verticalDistance: 10
   minVelocity: 0.2
-  minDistanceWithGround: 6
+  minDistanceWithGround: 1
   bodyCameraFOV: 6
   headCameraFOV: 10
   FOVTransitionDuration: 1

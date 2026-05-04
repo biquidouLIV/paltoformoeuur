@@ -38,7 +38,7 @@ public class BodyController : PlayerController
     public bool isAiming;
     private PlayerPart aimingPart;
     private bool accroche;
-    private CrochetPlatform currentCrochet;
+    private Crochet currentCrochet;
     public bool isGrounded;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
@@ -58,8 +58,9 @@ public class BodyController : PlayerController
         }
     }
             
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         AnimationGestion();
         UpdateVariableJump();
         CheckJump();
@@ -104,7 +105,7 @@ public class BodyController : PlayerController
 
     private void CheckJump()
     {
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && (!hitBumper || CheckIfGrounded()))
+        if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
             //jumpSound.Play();
             timeSinceLastJump = 0;
@@ -141,6 +142,7 @@ public class BodyController : PlayerController
     {
         if (accroche)
         {
+            
             return;
         }
         if (isAiming)
@@ -369,6 +371,19 @@ public class BodyController : PlayerController
         {
             PlayerManager.instance.OnRecallHand();
         }
+    }
+    
+    public override void Accroche(CrochetBalance crochet)
+    {
+        accroche = true;
+        currentCrochet = crochet;
+        elementRigidbody.simulated = false;
+        moveInput = Vector2.zero;
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+            .OnComplete(() =>
+            {
+                gameObject.transform.parent = currentCrochet.transform;
+            });
     }
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)

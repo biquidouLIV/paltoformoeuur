@@ -43,6 +43,7 @@ public class BodyController : PlayerController
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
 
+    public float distanceWithGround;
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -63,6 +64,7 @@ public class BodyController : PlayerController
         UpdateVariableJump();
         CheckJump();
         GestionVise();
+        CheckDistanceWithGround();
     }
 
     private void AnimationGestion()
@@ -221,6 +223,13 @@ public class BodyController : PlayerController
         return Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f, Vector2.down, 1, ~LayerMask.GetMask("Player","Checkpoint","Bumper"));
     }
 
+    private void CheckDistanceWithGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
+        distanceWithGround = hit.distance;
+    }
+    
+    
     private void DisplayTrajectory()
     {
         
@@ -333,13 +342,17 @@ public class BodyController : PlayerController
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();
-        CameraManager.instance.ChangeFOV(PlayerPart.head);
+        CameraManager.instance.ChangeTarget(PlayerPart.head);
         head.transform.SetParent(transform.parent);
     }
     
     public override void Die()
     {
         bodyAnimator.SetTrigger("Die");
+    }
+
+    public void Respaw()
+    {
         transform.position = PlayerManager.instance.checkpointTransform;
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
         {

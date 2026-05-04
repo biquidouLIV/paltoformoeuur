@@ -1,13 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class CrochetBalance : MonoBehaviour
+public class CrochetBalance : Crochet
 {
-    /*
-    [SerializeField] private FallingPlatform fallingPlatform;
     [SerializeField] private float delayOnLeaving = 1;
     private bool isAvailable = true;
+    private PlayerController playerController;
 
+    public void Move(InputAction.CallbackContext context)
+    {
+        
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isAvailable)
@@ -16,16 +21,16 @@ public class CrochetBalance : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Hand") || other.gameObject.CompareTag("Body"))
         {
-            other.gameObject.GetComponent<PlayerController>().Accroche(this, fallingPlatform);
+            playerController = other.gameObject.GetComponent<PlayerController>();
+            playerController.Accroche(this);
         }
 
         isAvailable = false;
     }
     
-    public IEnumerator Active()
+    public override IEnumerator Active()
     {
-        fallingPlatform.falling = false;
         yield return new WaitForSeconds(delayOnLeaving);
         isAvailable = true;
-    }*/
+    }
 }

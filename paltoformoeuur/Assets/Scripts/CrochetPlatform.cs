@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CrochetPlatform : MonoBehaviour
+public class CrochetPlatform : Crochet
 {
     [SerializeField] private FallingPlatform fallingPlatform;
     [SerializeField] private float delayOnLeaving = 1;
@@ -21,7 +21,7 @@ public class CrochetPlatform : MonoBehaviour
         isAvailable = false;
     }
     
-    public IEnumerator Active()
+    public override IEnumerator Active()
     {
         fallingPlatform.falling = false;
         yield return new WaitForSeconds(delayOnLeaving);

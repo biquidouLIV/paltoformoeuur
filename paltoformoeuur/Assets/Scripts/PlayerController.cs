@@ -65,6 +65,11 @@ public abstract class PlayerController : MonoBehaviour
         elementRigidbody.simulated = false;
     }
 
+    public virtual void Accroche(CrochetBalance crochet)
+    {
+        
+    }
+    
     public virtual void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
         

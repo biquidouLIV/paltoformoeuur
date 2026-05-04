@@ -215,7 +215,6 @@ public class BodyController : PlayerController
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
         distanceWithGround = hit.distance;
-        Debug.Log(distanceWithGround);
     }
     
     
@@ -350,6 +349,10 @@ public class BodyController : PlayerController
     public override void Die()
     {
         bodyAnimator.SetTrigger("Die");
+    }
+
+    public void Respaw()
+    {
         transform.position = PlayerManager.instance.checkpointTransform;
     }
     

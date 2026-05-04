@@ -23,9 +23,6 @@ public class PlayerManager : MonoBehaviour
     public Vector3 checkpointTransform;
     public int indiceCheckpoint;
 
-    private int numberOfBodyPart = 3;
-    
-
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -111,12 +108,12 @@ public class PlayerManager : MonoBehaviour
         headOnBody = false;
     }
 
-    public void OnRecallHead(InputAction.CallbackContext context)
+    public void OnRecallHead()
     {
         headController.Recall();
     }
     
-    public void OnRecallHand(InputAction.CallbackContext context)
+    public void OnRecallHand()
     {
         handController.Recall();
     }

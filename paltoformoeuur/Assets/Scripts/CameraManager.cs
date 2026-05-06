@@ -162,5 +162,10 @@ public class CameraManager : MonoBehaviour
         
         testCamera.DOOrthoSize(targetFOV, FOVTransitionDuration);
     }
+
+    public void CameraOnRespawn()
+    {
+        lastFramePosition = PlayerManager.instance.checkpointTransform;
+    }
 }
 

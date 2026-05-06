@@ -44,6 +44,8 @@ public class BodyController : PlayerController
     private float jumpMinimumDelay = 0.3f;
 
     public float distanceWithGround;
+    public bool canThrowHead;
+    public bool canThrowHand;
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -265,23 +267,25 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
-        if (PlayerManager.instance.headOnBody == false)
+        
+        if (context.started && !isAiming)
         {
-            PlayerManager.instance.OnRecallHead();
-            return;
-        }
-        if (context.started && !isAiming && PlayerManager.instance.headOnBody)
-        {
+            if(head.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHead",true);
             aimingPart = PlayerPart.head;
         }
-        else if (context.canceled && isAiming && aimingPart == PlayerPart.head  && PlayerManager.instance.headOnBody)
-        {
+        
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.head && PlayerManager.instance.headOnBody)
+        {     
+            SpawnHead();
+            
             Time.timeScale = 1f;
             isAiming = false;
-            SpawnHead();
+            if(canThrowHead)return;
+            if (head.activeSelf) return;
+            canThrowHead = true;
             aimingPart = default;
         }
         else if (context.canceled)
@@ -292,13 +296,9 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
-        if (PlayerManager.instance.handOnBody == false)
-        {
-            PlayerManager.instance.OnRecallHand();
-            return;
-        }
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
+            if(hand.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHand",true);
@@ -306,9 +306,12 @@ public class BodyController : PlayerController
         }
         else if (context.canceled && isAiming && aimingPart == PlayerPart.hand && PlayerManager.instance.handOnBody)
         {
+            SpawnHand();
             Time.timeScale = 1f;
             isAiming = false;
-            SpawnHand();
+            if(canThrowHand)return;
+            if(hand.activeSelf)return;
+            canThrowHand = true;
             aimingPart = default;
         }
         else if (context.canceled)
@@ -319,8 +322,11 @@ public class BodyController : PlayerController
     
     private void SpawnHand()
     {
-        hand.SetActive(true);
         bodyAnimator.SetBool("IsArmless", true);
+        bodyAnimator.SetBool("IsWalking",false);
+        bodyAnimator.SetBool("IsSprinting",false);
+        
+        hand.SetActive(true);
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
@@ -335,8 +341,8 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
-        head.SetActive(true);
         bodyAnimator.SetBool("IsHeadless", true);
+        head.SetActive(true);
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
@@ -358,8 +364,11 @@ public class BodyController : PlayerController
         PlayerManager.instance.PlayerInput.enabled = false;
     }
 
+    
+    //event dans animation de mort
     public void Respaw()
     {
+        CameraManager.instance.CameraOnRespawn();
         transform.position = PlayerManager.instance.checkpointTransform;
         PlayerManager.instance.PlayerInput.enabled = true;
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
@@ -405,6 +414,11 @@ public class BodyController : PlayerController
         gameObject.transform.parent = playerParent.transform;
         StartCoroutine(currentCrochet.Active());
         accroche = false;
+        //c'est de la part de maxence ducoup je les ai pas retiré
+        Debug.Log("kk");
+        Debug.Log("kk");
+        Debug.Log("kk");
+        Debug.Log("kk");
         currentCrochet = null;
         elementRigidbody.simulated = true;
     }

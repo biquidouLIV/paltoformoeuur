@@ -261,12 +261,8 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
-        if (PlayerManager.instance.headOnBody == false)
-        {
-            PlayerManager.instance.OnRecallHead();
-            return;
-        }
-        if (context.started && !isAiming && PlayerManager.instance.headOnBody)
+        
+        if (context.started && !isAiming)
         {
             if(head.activeSelf) return;
             isAiming = true;
@@ -274,16 +270,16 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsAimingHead",true);
             aimingPart = PlayerPart.head;
         }
-        else if (context.canceled && isAiming && aimingPart == PlayerPart.head  && PlayerManager.instance.headOnBody )
+        
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.head && PlayerManager.instance.headOnBody)
         {     
+            SpawnHead();
+            
             Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHead)return;
             if (head.activeSelf) return;
             canThrowHead = true;
-       
-
-            bodyAnimator.SetBool("IsHeadless", true);
             aimingPart = default;
         }
         else if (context.canceled)
@@ -294,11 +290,6 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
-        if (PlayerManager.instance.handOnBody == false)
-        {
-            PlayerManager.instance.OnRecallHand();
-            return;
-        }
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
             if(hand.activeSelf) return;
@@ -309,13 +300,12 @@ public class BodyController : PlayerController
         }
         else if (context.canceled && isAiming && aimingPart == PlayerPart.hand && PlayerManager.instance.handOnBody)
         {
+            SpawnHand();
             Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHand)return;
             if(hand.activeSelf)return;
             canThrowHand = true;
-            
-            bodyAnimator.SetBool("IsArmless", true);
             aimingPart = default;
         }
         else if (context.canceled)
@@ -326,6 +316,10 @@ public class BodyController : PlayerController
     
     private void SpawnHand()
     {
+        bodyAnimator.SetBool("IsArmless", true);
+        bodyAnimator.SetBool("IsWalking",false);
+        bodyAnimator.SetBool("IsSprinting",false);
+        
         hand.SetActive(true);
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
@@ -341,6 +335,7 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
+        bodyAnimator.SetBool("IsHeadless", true);
         head.SetActive(true);
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;

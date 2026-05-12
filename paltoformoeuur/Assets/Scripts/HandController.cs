@@ -18,7 +18,7 @@ public class HandController : PlayerController
     private int recallSpeed;
     
     private bool canDash = true;
-    private bool accroche = false;
+    private bool accroche;
     private CrochetPlatform currentCrochet;
     private int direction = 1;
 
@@ -81,13 +81,8 @@ public class HandController : PlayerController
             handAnimator.SetBool("IsWalking",false);
         }
     }
-    
-    public override void OnSprint(InputAction.CallbackContext context)
-    {
-        return;
-    }
 
-    //ca s'appelle jump mais c'est un dash 
+    //ca s'appelle jump mais c'est un dash
     public void OnJump(InputAction.CallbackContext context) 
     {
         if (context.performed && canDash)

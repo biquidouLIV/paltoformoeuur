@@ -38,12 +38,14 @@ public class BodyController : PlayerController
     public bool isAiming;
     private PlayerPart aimingPart;
     private bool accroche;
-    private CrochetPlatform currentCrochet;
-    public bool isGrounded;
+    private Crochet currentCrochet;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
 
     public float distanceWithGround;
+    public bool canThrowHead;
+    public bool canThrowHand;
+    
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -52,14 +54,15 @@ public class BodyController : PlayerController
             launchForce = bodyData.launchForce;
             bufferingTime = bodyData.bufferingTime;
             coyoteTime = bodyData.coyoteTime;
+            timeSinceLastJump = jumpMinimumDelay;
             head.SetActive(false);
             hand.SetActive(false);
-            timeSinceLastJump = jumpMinimumDelay;
         }
     }
             
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         AnimationGestion();
         UpdateVariableJump();
         CheckJump();
@@ -89,12 +92,10 @@ public class BodyController : PlayerController
     {
         if (CheckIfGrounded())
         {
-            isGrounded = true;
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
-            isGrounded = false;
             coyoteTimeCounter -= Time.deltaTime;
         }
 
@@ -104,7 +105,7 @@ public class BodyController : PlayerController
 
     private void CheckJump()
     {
-        if (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && (!hitBumper || CheckIfGrounded()))
+        if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
             //jumpSound.Play();
             timeSinceLastJump = 0;
@@ -141,6 +142,7 @@ public class BodyController : PlayerController
     {
         if (accroche)
         {
+            
             return;
         }
         if (isAiming)
@@ -175,7 +177,7 @@ public class BodyController : PlayerController
         }
     }
 
-    public override void OnSprint(InputAction.CallbackContext context)
+    /*public override void OnSprint(InputAction.CallbackContext context)
     {
         if(sprintSpeedMultiplier == 1) return;
         
@@ -190,7 +192,7 @@ public class BodyController : PlayerController
             bodyScript.bodyAnimator.SetBool("IsSprinting",false);
             sprintSpeed = 1;
         }
-    }
+    }*/
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -263,23 +265,25 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
-        if (PlayerManager.instance.headOnBody == false)
+        
+        if (context.started && !isAiming)
         {
-            PlayerManager.instance.OnRecallHead();
-            return;
-        }
-        if (context.started && !isAiming && PlayerManager.instance.headOnBody)
-        {
+            if(head.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHead",true);
             aimingPart = PlayerPart.head;
         }
-        else if (context.canceled && isAiming && aimingPart == PlayerPart.head  && PlayerManager.instance.headOnBody)
-        {
+        
+        else if (context.canceled && isAiming && aimingPart == PlayerPart.head && PlayerManager.instance.headOnBody)
+        {     
+            SpawnHead();
+            
             Time.timeScale = 1f;
             isAiming = false;
-            SpawnHead();
+            if(canThrowHead)return;
+            if (head.activeSelf) return;
+            canThrowHead = true;
             aimingPart = default;
         }
         else if (context.canceled)
@@ -290,13 +294,9 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
-        if (PlayerManager.instance.handOnBody == false)
-        {
-            PlayerManager.instance.OnRecallHand();
-            return;
-        }
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
+            if(hand.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHand",true);
@@ -304,9 +304,12 @@ public class BodyController : PlayerController
         }
         else if (context.canceled && isAiming && aimingPart == PlayerPart.hand && PlayerManager.instance.handOnBody)
         {
+            SpawnHand();
             Time.timeScale = 1f;
             isAiming = false;
-            SpawnHand();
+            if(canThrowHand)return;
+            if(hand.activeSelf)return;
+            canThrowHand = true;
             aimingPart = default;
         }
         else if (context.canceled)
@@ -317,8 +320,11 @@ public class BodyController : PlayerController
     
     private void SpawnHand()
     {
-        hand.SetActive(true);
         bodyAnimator.SetBool("IsArmless", true);
+        bodyAnimator.SetBool("IsWalking",false);
+        bodyAnimator.SetBool("IsSprinting",false);
+        
+        hand.SetActive(true);
         handController.elementRigidbody.simulated = true; 
         elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
@@ -333,8 +339,8 @@ public class BodyController : PlayerController
     
     private void SpawnHead()
     {
-        head.SetActive(true);
         bodyAnimator.SetBool("IsHeadless", true);
+        head.SetActive(true);
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
@@ -356,8 +362,11 @@ public class BodyController : PlayerController
         PlayerManager.instance.PlayerInput.enabled = false;
     }
 
-    public void Respaw()
+    
+    //event dans animation de mort
+    public void Respawn()
     {
+        CameraManager.instance.CameraOnRespawn();
         transform.position = PlayerManager.instance.checkpointTransform;
         PlayerManager.instance.PlayerInput.enabled = true;
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
@@ -369,6 +378,20 @@ public class BodyController : PlayerController
         {
             PlayerManager.instance.OnRecallHand();
         }
+    }
+    
+    public override void Accroche(CrochetBalance crochet)
+    {
+        accroche = true;
+        currentCrochet = crochet;
+        elementRigidbody.simulated = false;
+        moveInput = Vector2.zero;
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+            .OnComplete(() =>
+            {
+                gameObject.transform.parent = currentCrochet.transform;
+                crochet.moving = true;
+            });
     }
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)

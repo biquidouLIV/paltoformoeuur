@@ -1,13 +1,46 @@
+using System;
 using System.Collections;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class CrochetBalance : MonoBehaviour
+public class CrochetBalance : Crochet
 {
-    /*
-    [SerializeField] private FallingPlatform fallingPlatform;
     [SerializeField] private float delayOnLeaving = 1;
     private bool isAvailable = true;
+    private PlayerController playerController;
+    private GameObject parent;
+    public bool moving;
+    private bool goingRight = true;
 
+    private void Start()
+    {
+        parent = gameObject.transform.parent.gameObject;
+    }
+
+    private void Update()
+    {
+        if (moving) Move();
+    }
+
+    public void Move()
+    {
+        if (goingRight && (Mathf.Abs(parent.transform.eulerAngles.z) > 305 || Mathf.Abs(parent.transform.eulerAngles.z) < 50))
+        {
+            parent.transform.Rotate(new Vector3(0, 0, 1));
+        }
+        else if (Mathf.Abs(parent.transform.eulerAngles.z) > 310 || Mathf.Abs(parent.transform.eulerAngles.z) < 55)
+        {
+            goingRight = false;
+            parent.transform.Rotate(new Vector3(0, 0, -1));
+        }
+        else
+        {
+            goingRight = true;
+            parent.transform.Rotate(new Vector3(0, 0, 1));
+        }
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isAvailable)
@@ -16,16 +49,16 @@ public class CrochetBalance : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Hand") || other.gameObject.CompareTag("Body"))
         {
-            other.gameObject.GetComponent<PlayerController>().Accroche(this, fallingPlatform);
+            playerController = other.gameObject.GetComponent<PlayerController>();
+            playerController.Accroche(this);
         }
 
         isAvailable = false;
     }
     
-    public IEnumerator Active()
+    public override IEnumerator Active()
     {
-        fallingPlatform.falling = false;
         yield return new WaitForSeconds(delayOnLeaving);
         isAvailable = true;
-    }*/
+    }
 }

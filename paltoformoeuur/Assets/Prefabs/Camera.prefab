@@ -46,9 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Arrow
   arrow: {fileID: 3103832452780543339}
-  arrowDistance: {x: 16.7, y: 9.08}
+  arrowDistance: {x: 17.3, y: 9.52}
   maxDistance: {x: 18, y: 10.5}
   scaleDuration: 0.1
+  minScale: 0.4
+  maxScale: 1.5
+  scaleMultiplicator: 8
 --- !u!1 &3103832452780543339
 GameObject:
   m_ObjectHideFlags: 0

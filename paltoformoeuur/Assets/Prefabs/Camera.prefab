@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arrow
   arrow: {fileID: 3103832452780543339}
   arrowDistance: {x: 16.7, y: 9.08}
-  maxDistance: {x: 18, y: 10}
+  maxDistance: {x: 18, y: 10.5}
+  scaleDuration: 0.1
 --- !u!1 &3103832452780543339
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +60,7 @@ GameObject:
   - component: {fileID: 968070674000585898}
   - component: {fileID: 1359618656163686867}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

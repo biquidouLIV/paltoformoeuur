@@ -5,65 +5,86 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private GameObject arrow;
+    
     [SerializeField] private Vector2 arrowDistance;
     [SerializeField] private Vector2 maxDistance;
+
+    [SerializeField] private float scaleDuration = 0.1f;
     
     private Vector2 distance;
     private BodyController body;
+    private HandController hand;
     private HeadController head;
-    
-    
-    
-
-
+    private PlayerController targetPart;
 
     private void Start()
     {
-        arrow.SetActive(false);
+        arrow.transform.localScale = new Vector3(0, 0, 0);
         body = PlayerManager.instance.bodyController;
         head = PlayerManager.instance.headController;
+        hand = PlayerManager.instance.handController;
     }
 
     private void Update()
     {
-        distance.x = Mathf.Abs(head.transform.position.x - body.transform.position.x);
-        distance.y = Mathf.Abs(head.transform.position.y - body.transform.position.y);
+        switch (PlayerManager.instance.controlledPart)
+        {
+            case(PlayerPart.body):
+                targetPart = body;
+                break;
+            case(PlayerPart.hand):
+                targetPart = hand;
+                break;
+        }
+        
+        
+        
+        distance.x = Mathf.Abs(head.transform.position.x - targetPart.transform.position.x);
+        distance.y = Mathf.Abs(head.transform.position.y - targetPart.transform.position.y);
         
         
         if(!PlayerManager.instance.headOnBody)
         {
             if (distance.x >= maxDistance.x || distance.y >= maxDistance.y)
             {
-                arrow.SetActive(true);
+               Show();
             }
             else
             {
-                arrow.SetActive(false);
+                Hide();
             }
         }
         else
         {
-            arrow.SetActive(false);
+            Hide();
         }
-        
-        
-        
-        Vector2 destination = body.transform.position;
+
+
+
+
+        Vector2 destination = targetPart.transform.position;
         destination.x = Mathf.Clamp(destination.x, head.transform.position.x - arrowDistance.x, head.transform.position.x + arrowDistance.x);
         destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistance.y, head.transform.position.y + arrowDistance.y);
         
         arrow.transform.DOMove(destination, 0.1f);
-
         
-        float rotation = Mathf.Acos((body.transform.position.x - head.transform.position.x)/Vector3.Distance(body.transform.position,head.transform.position)) * 180/Mathf.PI;
-        if (body.transform.position.y < head.transform.position.y)
+        float rotation = Mathf.Acos((targetPart.transform.position.x - head.transform.position.x)/Vector3.Distance(targetPart.transform.position,head.transform.position)) * 180/Mathf.PI;
+        if (targetPart.transform.position.y < head.transform.position.y)
         {
             rotation = -rotation;
         }
-        
-        
-        Debug.Log(rotation);
         arrow.transform.DORotate(new Vector3(0, 0, rotation), 0.1f);
 
     }
+
+    private void Show()
+    {
+        arrow.transform.DOScale(new Vector3(1,1,1),scaleDuration);
+    }
+
+    private void Hide()
+    {
+        arrow.transform.DOScale(new Vector3(0,0,0),scaleDuration);
+    }
+    
 }

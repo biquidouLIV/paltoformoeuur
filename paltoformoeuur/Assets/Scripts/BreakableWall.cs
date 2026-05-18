@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BreakableWall : MonoBehaviour
@@ -13,6 +12,7 @@ public class BreakableWall : MonoBehaviour
             if (rigidbodyD.linearVelocity.magnitude > velocityToBreak)
             {
                 Destroy(gameObject);
+                rigidbodyD.linearVelocity = new(rigidbodyD.linearVelocity.x / 2, rigidbodyD.linearVelocity.y / 2);
             }
         }
     }

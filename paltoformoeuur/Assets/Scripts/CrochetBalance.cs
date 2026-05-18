@@ -63,9 +63,8 @@ public class CrochetBalance : Crochet
             playerController.Accroche(this);
             goingRight = playerController.gameObject.transform.position.x < transform.position.x;
             playerController.gameObject.transform.eulerAngles = parent.transform.eulerAngles;
+            isAvailable = false;
         }
-
-        isAvailable = false;
     }
     
     public override IEnumerator Active(Rigidbody2D rigidbody)

@@ -19,8 +19,9 @@ public class HandController : PlayerController
     
     private bool canDash = true;
     private bool accroche;
-    private CrochetPlatform currentCrochet;
+    private Crochet currentCrochet;
     private int direction = 1;
+    private GameObject lastParent;
 
     public override void Init(PlayerData data)
     {
@@ -83,9 +84,17 @@ public class HandController : PlayerController
     }
 
     //ca s'appelle jump mais c'est un dash
-    public void OnJump(InputAction.CallbackContext context) 
+    public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && canDash)
+        if (context.performed)
+        {
+            Debug.Log("ez");
+        }
+        if (context.performed && accroche)
+        {
+            Decroche();
+        }
+        else if (context.performed && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -98,7 +107,10 @@ public class HandController : PlayerController
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
-                    Decroche();
+                    if (currentCrochet != null)
+                    {
+                        Decroche();
+                    }
                     bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
@@ -139,8 +151,26 @@ public class HandController : PlayerController
         Recall();
     }
 
+    public override void Accroche(CrochetBalance crochet)
+    {
+        lastParent = gameObject.transform.parent.gameObject;
+        handAnimator.SetBool("IsWalking", false);
+        accroche = true;
+        currentCrochet = crochet;
+        elementRigidbody.simulated = false;
+        moveInput = Vector2.zero;
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+            .OnComplete(() =>
+            {
+                gameObject.transform.parent = currentCrochet.transform;
+                crochet.moving = true;
+            });
+    }
+    
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
+        lastParent = gameObject.transform.parent.gameObject;
+        handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
@@ -155,12 +185,11 @@ public class HandController : PlayerController
     
     public override void Decroche()
     {
-        if (currentCrochet != null)
-        {
-            StartCoroutine(currentCrochet.Active(elementRigidbody));
-        }
+        gameObject.transform.parent = lastParent.transform;
+        gameObject.transform.eulerAngles = Vector3.zero;
+        elementRigidbody.simulated = true;
+        StartCoroutine(currentCrochet.Active(elementRigidbody));
         accroche = false;
         currentCrochet = null;
-        elementRigidbody.simulated = true;
     }
 }

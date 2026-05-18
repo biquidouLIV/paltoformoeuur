@@ -382,6 +382,7 @@ public class BodyController : PlayerController
     
     public override void Accroche(CrochetBalance crochet)
     {
+        bodyAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
@@ -396,6 +397,7 @@ public class BodyController : PlayerController
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
+        bodyAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
@@ -411,7 +413,8 @@ public class BodyController : PlayerController
     public override void Decroche()
     {
         gameObject.transform.parent = playerParent.transform;
-        StartCoroutine(currentCrochet.Active());
+        gameObject.transform.eulerAngles = Vector3.zero;
+        StartCoroutine(currentCrochet.Active(elementRigidbody));
         accroche = false;
         currentCrochet = null;
         elementRigidbody.simulated = true;

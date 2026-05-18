@@ -157,7 +157,7 @@ public class HandController : PlayerController
     {
         if (currentCrochet != null)
         {
-            StartCoroutine(currentCrochet.Active());
+            StartCoroutine(currentCrochet.Active(elementRigidbody));
         }
         accroche = false;
         currentCrochet = null;

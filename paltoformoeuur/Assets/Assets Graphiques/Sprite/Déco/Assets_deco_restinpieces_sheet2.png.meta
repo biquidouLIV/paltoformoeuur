@@ -1,0 +1,491 @@
+fileFormatVersion: 2
+guid: 07df02f7cdefe9744a245fe8ffc129e6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fungus_ground_ohmu
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1876
+        width: 801
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6cf802a89e8f62449b4d6e87f609c23
+      internalID: 1161870327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_tree_lollipopL
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 1833
+        width: 128
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6adb5e55245ae443b58a41cf7ca0c63
+      internalID: -302971989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_tree_lollipopR
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 1756
+        width: 197
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f35454dfd3a792489045efc5ad0ce83
+      internalID: 1116004231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_tree_spikyS
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 1750
+        width: 288
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de1057438879004b9dfefa05ab23c75
+      internalID: -1447971239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_succu
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 1429
+        width: 354
+        height: 310
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6fecefe0a8f29745a11a644bf5d13ff
+      internalID: 292581128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_clavaria
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 1388
+        width: 581
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c3d0223af9f1c4d8724c66caae5cad
+      internalID: -252679556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_sponge
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 1421
+        width: 284
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f74ee8a90c5977d419abb363d7a5190a
+      internalID: 1364014003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_fuzzy1
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 1233
+        width: 69
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95add2539b01d8848b268ee54f5ddd9f
+      internalID: 1128094800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_fuzzy2
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 1222
+        width: 105
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b4a7d7cab701345b61939f4e1fefac
+      internalID: 1131689092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_fuzzy3
+      rect:
+        serializedVersion: 2
+        x: 2015
+        y: 1220
+        width: 206
+        height: 502
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 113ff0fec14496940b49af6d7d7fa6b6
+      internalID: -1941489394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_tree_spikyB
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 1132
+        width: 422
+        height: 555
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d8ae93dd6fcdb64fb69e24f0381ac98
+      internalID: 1289866663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_fuzzy4
+      rect:
+        serializedVersion: 2
+        x: 2258
+        y: 1224
+        width: 80
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad2a11e2350fac489db7e855d74ddb3
+      internalID: 2099383002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_lichen
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 770
+        width: 774
+        height: 509
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294134cfe9154414ab8c8ff8f93720d4
+      internalID: -2070056231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_ground_catinellaVar2
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1220
+        width: 389
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb8294f768f34b41b19d51a66d1bcfe
+      internalID: -540743601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d70438c0598cc704490a3aa5468f9f2d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Assets_deco_restinpieces_sheet2_0: -1750765536
+      Assets_deco_restinpieces_sheet2_11: -1316717898
+      Assets_deco_restinpieces_sheet2_12: -1448810698
+      Assets_deco_restinpieces_sheet2_14: -243172259
+      Assets_deco_restinpieces_sheet2_15: -466996056
+      Assets_deco_restinpieces_sheet2_2: -1648961204
+      Assets_deco_restinpieces_sheet2_21: 1894310331
+      Assets_deco_restinpieces_sheet2_22: -1177796579
+      Assets_deco_restinpieces_sheet2_23: 1214929238
+      Assets_deco_restinpieces_sheet2_24: -2043018170
+      Assets_deco_restinpieces_sheet2_25: -740603953
+      Assets_deco_restinpieces_sheet2_26: 1345126119
+      Assets_deco_restinpieces_sheet2_27: -2004662337
+      Assets_deco_restinpieces_sheet2_28: 806673177
+      Assets_deco_restinpieces_sheet2_29: 1693561182
+      Assets_deco_restinpieces_sheet2_3: 1853568466
+      Assets_deco_restinpieces_sheet2_30: -1431309192
+      Assets_deco_restinpieces_sheet2_32: 131166368
+      Assets_deco_restinpieces_sheet2_33: -547053535
+      Assets_deco_restinpieces_sheet2_35: -1290651406
+      Assets_deco_restinpieces_sheet2_37: -1107386743
+      Assets_deco_restinpieces_sheet2_38: 390465718
+      Assets_deco_restinpieces_sheet2_39: 1839479239
+      Assets_deco_restinpieces_sheet2_4: -271967581
+      Assets_deco_restinpieces_sheet2_40: -381479899
+      Assets_deco_restinpieces_sheet2_41: -1229123806
+      Assets_deco_restinpieces_sheet2_42: 1397386256
+      Assets_deco_restinpieces_sheet2_43: -59267676
+      Assets_deco_restinpieces_sheet2_44: -262279535
+      Assets_deco_restinpieces_sheet2_45: 2118096097
+      Assets_deco_restinpieces_sheet2_46: 100452818
+      Assets_deco_restinpieces_sheet2_47: 1926765484
+      Assets_deco_restinpieces_sheet2_48: -265899935
+      Assets_deco_restinpieces_sheet2_49: -358095140
+      Assets_deco_restinpieces_sheet2_50: 1957964502
+      Assets_deco_restinpieces_sheet2_8: -198694226
+      Assets_deco_restinpieces_sheet2_9: -2140675250
+      Fungus_ground_catinellaVar2: -540743601
+      Fungus_ground_clavaria: -252679556
+      Fungus_ground_fuzzy1: 1128094800
+      Fungus_ground_fuzzy2: 1131689092
+      Fungus_ground_fuzzy3: -1941489394
+      Fungus_ground_fuzzy4: 2099383002
+      Fungus_ground_lichen: -2070056231
+      Fungus_ground_ohmu: 1161870327
+      Fungus_ground_sponge: 1364014003
+      Fungus_ground_succu: 292581128
+      Fungus_tree_lollipopL: -302971989
+      Fungus_tree_lollipopR: 1116004231
+      Fungus_tree_spikyB: 1289866663
+      Fungus_tree_spikyS: -1447971239
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

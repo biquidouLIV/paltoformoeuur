@@ -39,13 +39,13 @@ public class BodyController : PlayerController
     private PlayerPart aimingPart;
     private bool accroche;
     private Crochet currentCrochet;
-    public bool isGrounded;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
 
     public float distanceWithGround;
     public bool canThrowHead;
     public bool canThrowHand;
+    
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -54,9 +54,9 @@ public class BodyController : PlayerController
             launchForce = bodyData.launchForce;
             bufferingTime = bodyData.bufferingTime;
             coyoteTime = bodyData.coyoteTime;
+            timeSinceLastJump = jumpMinimumDelay;
             head.SetActive(false);
             hand.SetActive(false);
-            timeSinceLastJump = jumpMinimumDelay;
         }
     }
             
@@ -92,12 +92,10 @@ public class BodyController : PlayerController
     {
         if (CheckIfGrounded())
         {
-            isGrounded = true;
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
-            isGrounded = false;
             coyoteTimeCounter -= Time.deltaTime;
         }
 
@@ -179,7 +177,7 @@ public class BodyController : PlayerController
         }
     }
 
-    public override void OnSprint(InputAction.CallbackContext context)
+    /*public override void OnSprint(InputAction.CallbackContext context)
     {
         if(sprintSpeedMultiplier == 1) return;
         
@@ -194,7 +192,7 @@ public class BodyController : PlayerController
             bodyScript.bodyAnimator.SetBool("IsSprinting",false);
             sprintSpeed = 1;
         }
-    }
+    }*/
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -366,7 +364,7 @@ public class BodyController : PlayerController
 
     
     //event dans animation de mort
-    public void Respaw()
+    public void Respawn()
     {
         CameraManager.instance.CameraOnRespawn();
         transform.position = PlayerManager.instance.checkpointTransform;
@@ -392,6 +390,7 @@ public class BodyController : PlayerController
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
+                crochet.moving = true;
             });
     }
     
@@ -414,11 +413,6 @@ public class BodyController : PlayerController
         gameObject.transform.parent = playerParent.transform;
         StartCoroutine(currentCrochet.Active());
         accroche = false;
-        //c'est de la part de maxence ducoup je les ai pas retiré
-        Debug.Log("kk");
-        Debug.Log("kk");
-        Debug.Log("kk");
-        Debug.Log("kk");
         currentCrochet = null;
         elementRigidbody.simulated = true;
     }

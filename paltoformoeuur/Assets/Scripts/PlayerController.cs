@@ -17,7 +17,7 @@ public abstract class PlayerController : MonoBehaviour
     
     protected float sprintSpeed = 1;
     private float speed = 1;
-    protected float sprintSpeedMultiplier = 2;
+    //protected float sprintSpeedMultiplier = 2;
     
     
     protected BodyController bodyScript;
@@ -28,7 +28,7 @@ public abstract class PlayerController : MonoBehaviour
     protected virtual void Start()
     {
         speed = data.speed;
-        sprintSpeedMultiplier = data.sprintSpeedMultiplier;
+        //sprintSpeedMultiplier = data.sprintSpeedMultiplier;
         Init(data);
         
         elementRigidbody = GetComponent<Rigidbody2D>();
@@ -43,10 +43,6 @@ public abstract class PlayerController : MonoBehaviour
     public virtual void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-    }
-    
-    public virtual void OnSprint(InputAction.CallbackContext context)
-    {
     }
     
     public void DisableElement()

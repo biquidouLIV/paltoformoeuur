@@ -81,7 +81,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void OnSprint(InputAction.CallbackContext context)
+    /*public void OnSprint(InputAction.CallbackContext context)
     {
         switch (controlledPart)
         {
@@ -95,7 +95,7 @@ public class PlayerManager : MonoBehaviour
                 Debug.LogError("No controlled part");
                 break;
         }
-    }
+    }*/
 
     public void EnableHand()
     {

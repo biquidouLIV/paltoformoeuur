@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,10 +9,36 @@ public class CrochetBalance : Crochet
     [SerializeField] private float delayOnLeaving = 1;
     private bool isAvailable = true;
     private PlayerController playerController;
+    private GameObject parent;
+    public bool moving;
+    private bool goingRight = true;
 
-    public void Move(InputAction.CallbackContext context)
+    private void Start()
     {
-        
+        parent = gameObject.transform.parent.gameObject;
+    }
+
+    private void Update()
+    {
+        if (moving) Move();
+    }
+
+    public void Move()
+    {
+        if (goingRight && (Mathf.Abs(parent.transform.eulerAngles.z) > 305 || Mathf.Abs(parent.transform.eulerAngles.z) < 50))
+        {
+            parent.transform.Rotate(new Vector3(0, 0, 1));
+        }
+        else if (Mathf.Abs(parent.transform.eulerAngles.z) > 310 || Mathf.Abs(parent.transform.eulerAngles.z) < 55)
+        {
+            goingRight = false;
+            parent.transform.Rotate(new Vector3(0, 0, -1));
+        }
+        else
+        {
+            goingRight = true;
+            parent.transform.Rotate(new Vector3(0, 0, 1));
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)

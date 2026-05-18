@@ -102,15 +102,15 @@ public class HandController : PlayerController
 
     public override void Recall()
     {
+        if (currentCrochet != null)
+        {
+            Decroche();
+        }
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
-                    if (currentCrochet != null)
-                    {
-                        Decroche();
-                    }
                     bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
@@ -143,9 +143,9 @@ public class HandController : PlayerController
     
     private void OnDisable()
     {
-        
         bodyScript.bodyAnimator.SetBool("IsArmless",false);
     }
+    
     public override void Die()
     {
         Recall();
@@ -188,8 +188,8 @@ public class HandController : PlayerController
         gameObject.transform.parent = lastParent.transform;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;
-        StartCoroutine(currentCrochet.Active(elementRigidbody));
         accroche = false;
+        StartCoroutine(currentCrochet.Active(elementRigidbody));
         currentCrochet = null;
     }
 }

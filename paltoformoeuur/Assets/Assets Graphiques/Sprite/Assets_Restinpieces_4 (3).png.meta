@@ -69,9 +69,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_0
+      name: Bumper_up
       rect:
         serializedVersion: 2
         x: 714
-        y: 885
+        y: 886
         width: 126
         height: 138
       alignment: 0
@@ -132,11 +132,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_2
+      name: Bumper_deco2
       rect:
         serializedVersion: 2
         x: 1028
-        y: 894
+        y: 895
         width: 149
         height: 138
       alignment: 0
@@ -154,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_4
+      name: Button_on
       rect:
         serializedVersion: 2
         x: 120
@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_6
+      name: Button_off
       rect:
         serializedVersion: 2
         x: 402
@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_7
+      name: Bumper_deco1
       rect:
         serializedVersion: 2
         x: 870
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_14
+      name: Button_nerve_straight
       rect:
         serializedVersion: 2
         x: 124
@@ -242,7 +242,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_16
+      name: Button_nerve_curve
       rect:
         serializedVersion: 2
         x: 456
@@ -264,7 +264,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_17
+      name: Checkpoint_deco_roof
       rect:
         serializedVersion: 2
         x: 155
@@ -286,7 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_18
+      name: Checkpoint_deco_wall
       rect:
         serializedVersion: 2
         x: 445
@@ -308,7 +308,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_19
+      name: Checkpoint_deco_hole_wall
       rect:
         serializedVersion: 2
         x: 558
@@ -330,7 +330,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_20
+      name: Checkpoint_deco_manhole_wall
       rect:
         serializedVersion: 2
         x: 670
@@ -352,10 +352,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assets_Restinpieces_4 (3)_21
+      name: Checkpoin_forest
       rect:
         serializedVersion: 2
-        x: 388
+        x: 390
         y: 356
         width: 197
         height: 114
@@ -389,30 +389,30 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Assets_Restinpieces_4 (3)_0: -1127425852
       Assets_Restinpieces_4 (3)_1: -1807363605
       Assets_Restinpieces_4 (3)_10: -1862775748
       Assets_Restinpieces_4 (3)_11: 879737842
       Assets_Restinpieces_4 (3)_12: -1965514048
       Assets_Restinpieces_4 (3)_13: -1667301177
-      Assets_Restinpieces_4 (3)_14: -39772817
       Assets_Restinpieces_4 (3)_15: -1674902972
-      Assets_Restinpieces_4 (3)_16: 1777765645
-      Assets_Restinpieces_4 (3)_17: 86910806
-      Assets_Restinpieces_4 (3)_18: 1563532948
-      Assets_Restinpieces_4 (3)_19: -1783805629
-      Assets_Restinpieces_4 (3)_2: -1328642249
-      Assets_Restinpieces_4 (3)_20: -1826941640
-      Assets_Restinpieces_4 (3)_21: 1096834067
       Assets_Restinpieces_4 (3)_22: 1996573856
       Assets_Restinpieces_4 (3)_23: -1871790679
       Assets_Restinpieces_4 (3)_3: 1650201237
-      Assets_Restinpieces_4 (3)_4: -1864458949
       Assets_Restinpieces_4 (3)_5: 1062335648
-      Assets_Restinpieces_4 (3)_6: 785607651
-      Assets_Restinpieces_4 (3)_7: -539555730
       Assets_Restinpieces_4 (3)_8: -169990224
       Assets_Restinpieces_4 (3)_9: -298688007
+      Bumper_deco1: -539555730
+      Bumper_deco2: -1328642249
+      Bumper_up: -1127425852
+      Button_nerve_curve: 1777765645
+      Button_nerve_straight: -39772817
+      Button_off: 785607651
+      Button_on: -1864458949
+      Checkpoin_forest: 1096834067
+      Checkpoint_deco_hole_wall: -1783805629
+      Checkpoint_deco_manhole_wall: -1826941640
+      Checkpoint_deco_roof: 86910806
+      Checkpoint_deco_wall: 1563532948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

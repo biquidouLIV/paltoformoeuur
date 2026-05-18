@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+
 public class HeadController : PlayerController
 {
     [SerializeField] private Collider2D colliderCarre;

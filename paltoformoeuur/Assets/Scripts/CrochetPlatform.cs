@@ -16,9 +16,9 @@ public class CrochetPlatform : Crochet
         if (other.gameObject.CompareTag("Hand") || other.gameObject.CompareTag("Body"))
         {
             other.gameObject.GetComponent<PlayerController>().Accroche(this, fallingPlatform);
+            isAvailable = false;
         }
 
-        isAvailable = false;
     }
     
     public override IEnumerator Active(Rigidbody2D rigidbody)

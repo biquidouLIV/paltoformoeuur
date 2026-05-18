@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170f839ca09f69443aab75bb7a651ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  strength: 1000
-  baseStrength: 400
+  strength: 50
+  baseStrength: 10
   delayBigJump: 0
 --- !u!58 &20930633
 CircleCollider2D:
@@ -563,13 +563,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661957269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.46, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.53999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1511642067}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1086219427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &971550382 stripped
 MonoBehaviour:
@@ -787,10 +787,11 @@ Transform:
   m_GameObject: {fileID: 1086219424}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 7.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 661957270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1096730286 stripped
@@ -2046,6 +2047,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike
       objectReference: {fileID: 0}
+    - target: {fileID: 3869937598719575000, guid: b8a9d7ab3c4e8d040b2ab3f8330843c3, type: 3}
+      propertyPath: m_Size.x
+      value: 2.8160038
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869937598719575000, guid: b8a9d7ab3c4e8d040b2ab3f8330843c3, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.031713247
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869937598719575000, guid: b8a9d7ab3c4e8d040b2ab3f8330843c3, type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7133026034857433690, guid: b8a9d7ab3c4e8d040b2ab3f8330843c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.59
@@ -2245,4 +2258,3 @@ SceneRoots:
   - {fileID: 1344083366336442428}
   - {fileID: 1472775042}
   - {fileID: 2604353542486551757}
-  - {fileID: 661957270}

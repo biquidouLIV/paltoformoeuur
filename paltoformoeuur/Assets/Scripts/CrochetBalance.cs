@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CrochetBalance : Crochet
 {

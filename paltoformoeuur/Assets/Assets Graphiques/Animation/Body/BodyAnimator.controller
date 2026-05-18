@@ -2268,7 +2268,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FullbodyRightDie
+  m_Name: FullbodyDie
   m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
@@ -2346,7 +2346,7 @@ AnimatorStateMachine:
     m_Position: {x: -460, y: -1140, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -8764459860270847132}
-    m_Position: {x: -540, y: -650, z: 0}
+    m_Position: {x: -500, y: -650, z: 0}
   m_AnyStateTransitions:
   - {fileID: -2549436901955307597}
   m_EntryTransitions:
@@ -2393,7 +2393,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -260, y: -640, z: 0}
   m_EntryPosition: {x: 260, y: -730, z: 0}
-  m_ExitPosition: {x: 890, y: -550, z: 0}
+  m_ExitPosition: {x: 480, y: -640, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 7101148016372758770}
 --- !u!1102 &-3279791947896568134
@@ -3528,7 +3528,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HeadlessRightDie
+  m_Name: HeadlessDie
   m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
@@ -4313,7 +4313,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ArmlessRightDie
+  m_Name: ArmlessDie
   m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
@@ -4601,7 +4601,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HeadlessArmlessRightDie
+  m_Name: HeadlessArmlessDie
   m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:

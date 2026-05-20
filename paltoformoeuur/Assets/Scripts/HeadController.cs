@@ -48,6 +48,7 @@ public class HeadController : PlayerController
     
     public override void Recall()
     {
+        Parallaxe.ChangeTarget(PlayerPart.body);
         CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
         base.Recall();

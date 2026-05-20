@@ -18524,7 +18524,13 @@ PrefabInstance:
     - {fileID: 2274781183613230329, guid: acd0256af9d7f364a9d8cef8e76d8e94, type: 3}
     - {fileID: 3153250712641329012, guid: acd0256af9d7f364a9d8cef8e76d8e94, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6305393720264557147, guid: acd0256af9d7f364a9d8cef8e76d8e94, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 638827513}
+    - targetCorrespondingSourceObject: {fileID: 622250839353809684, guid: acd0256af9d7f364a9d8cef8e76d8e94, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1326631226}
   m_SourcePrefab: {fileID: 100100000, guid: acd0256af9d7f364a9d8cef8e76d8e94, type: 3}
 --- !u!1001 &638027485
 PrefabInstance:
@@ -18596,6 +18602,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7133026034857433690, guid: b8a9d7ab3c4e8d040b2ab3f8330843c3, type: 3}
   m_PrefabInstance: {fileID: 638027485}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &638827511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6305393720264557147, guid: acd0256af9d7f364a9d8cef8e76d8e94, type: 3}
+  m_PrefabInstance: {fileID: 637740929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &638827513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638827511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b82c83518126244a58af3567000ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parallaxe
+  speed: 20
 --- !u!1001 &640008752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37827,6 +37851,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2692653453928905497, guid: 647eb1365d4496f4faf9c0e31dcd38f1, type: 3}
   m_PrefabInstance: {fileID: 34709133}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1326631224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 622250839353809684, guid: acd0256af9d7f364a9d8cef8e76d8e94, type: 3}
+  m_PrefabInstance: {fileID: 637740929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326631226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326631224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b82c83518126244a58af3567000ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parallaxe
+  speed: 10
 --- !u!1001 &1326853740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41116,11 +41158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 364.76
+      value: -71.16
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.03
+      value: -9.83
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.z

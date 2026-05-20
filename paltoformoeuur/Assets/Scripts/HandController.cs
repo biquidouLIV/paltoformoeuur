@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -106,6 +107,7 @@ public class HandController : PlayerController
         {
             Decroche();
         }
+        PlayerManager.instance.PlayerInput.enabled = false;
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
             .SetEase(Ease.OutCubic)
@@ -133,14 +135,19 @@ public class HandController : PlayerController
     {
         canDash = false;
         handAnimator.SetBool("IsDashing",true);
-        elementRigidbody.linearVelocityX = dashSpeed*direction;
+        elementRigidbody.linearVelocityX += dashSpeed*direction;
         yield return new WaitForSeconds(dashDuration);
         handAnimator.SetBool("IsDashing",false);
-        elementRigidbody.linearVelocityX = 0;
+        elementRigidbody.linearVelocityX -= dashSpeed*direction;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-    
+
+    private void OnEnable()
+    {
+        canDash = true;
+    }
+
     private void OnDisable()
     {
         bodyScript.bodyAnimator.SetBool("IsArmless",false);

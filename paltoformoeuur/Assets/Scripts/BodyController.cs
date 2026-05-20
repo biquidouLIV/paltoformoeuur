@@ -258,6 +258,10 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
+        if (headController.isRecalling)
+        {
+            return;
+        }
         
         if (context.started && !isAiming)
         {

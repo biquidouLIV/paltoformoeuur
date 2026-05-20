@@ -8,6 +8,7 @@ public class HeadController : PlayerController
     [SerializeField] private Collider2D colliderRond;
     private int recallSpeed;
     private float initialAngularDamping;
+    public bool isRecalling;
 
 
     public override void Init(PlayerData data)
@@ -48,6 +49,12 @@ public class HeadController : PlayerController
     
     public override void Recall()
     {
+        if (isRecalling)
+        {
+            return;
+        }
+
+        isRecalling = true;
         Parallaxe.ChangeTarget(PlayerPart.body);
         CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
@@ -62,6 +69,7 @@ public class HeadController : PlayerController
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
                     PlayerManager.instance.StartCoroutine(doLatter());
+                    isRecalling = false;
                     gameObject.SetActive(false);
                 }
             );

@@ -163,7 +163,11 @@ public class BodyController : PlayerController
                 rotation = rotationInput.normalized;
             }
 
-            moveInput = Vector2.zero;
+            if (CheckIfGrounded())
+            {
+                moveInput = Vector2.zero;
+            }
+            
         }
         else
         {
@@ -335,14 +339,27 @@ public class BodyController : PlayerController
         
         hand.SetActive(true);
         handController.elementRigidbody.simulated = true; 
-        elementRigidbody.linearVelocity = Vector2.zero;
-        moveInput = Vector2.zero;
+        StartCoroutine(VelocityWhenSpawnHand());
 
         handController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
         hand.transform.SetParent(transform.parent);
+    }
+
+    private IEnumerator VelocityWhenSpawnHand()
+    {
+        if (CheckIfGrounded())
+        {
+            moveInput = Vector2.zero;
+            
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(VelocityWhenSpawnHand());
+        }
     }
     
     
@@ -354,8 +371,6 @@ public class BodyController : PlayerController
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
         head.layer = 7;
-        elementRigidbody.linearVelocity = Vector2.zero;
-        moveInput = Vector2.zero;
         
         headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;

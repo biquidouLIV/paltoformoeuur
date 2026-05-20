@@ -52,7 +52,6 @@ public abstract class PlayerController : MonoBehaviour
     
     public virtual void Recall()
     {
-        PlayerManager.instance.PlayerInput.enabled = false;
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
     }

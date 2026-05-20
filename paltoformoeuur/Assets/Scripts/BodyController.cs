@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class BodyController : PlayerController
 {
+    [SerializeField] private Vector2 defaultRotationInput = new Vector2(0.8f, 0.6f);
+    [SerializeField] private float tempsAccroche;
     
-        [SerializeField] private float tempsAccroche;
+    
     [Header("GD pas touche")]
         [SerializeField] private Vector2 jumpRaycastSize = new (1,1);
         [SerializeField] private Vector2 jumpRaycastOrigin = new (0,1);
@@ -127,6 +129,12 @@ public class BodyController : PlayerController
         }
         else
         {
+            if (rotation.magnitude <= 0.1)
+            {
+                rotation = defaultRotationInput;
+            }
+            Debug.Log(rotation);
+            
             switch (aimingPart)
             {
                 case PlayerPart.head:
@@ -155,7 +163,11 @@ public class BodyController : PlayerController
                 rotation = rotationInput.normalized;
             }
 
-            moveInput = Vector2.zero;
+            if (CheckIfGrounded())
+            {
+                moveInput = Vector2.zero;
+            }
+            
         }
         else
         {
@@ -235,28 +247,7 @@ public class BodyController : PlayerController
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
         distanceWithGround = hit.distance;
     }
-    
-    
-    private void DisplayTrajectory()
-    {
-        
-        if (!isAiming)
-        {
-            trajectory.HideTrajectory();
-        }
-        else
-        {
-            switch (aimingPart)
-            {
-                case PlayerPart.head:
-                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-                case PlayerPart.hand:
-                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-            }
-        }
-    }
+
 
     private void OnDrawGizmos()
     {
@@ -327,14 +318,27 @@ public class BodyController : PlayerController
         
         hand.SetActive(true);
         handController.elementRigidbody.simulated = true; 
-        elementRigidbody.linearVelocity = Vector2.zero;
-        moveInput = Vector2.zero;
+        StartCoroutine(VelocityWhenSpawnHand());
 
         handController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
         hand.transform.SetParent(transform.parent);
+    }
+
+    private IEnumerator VelocityWhenSpawnHand()
+    {
+        if (CheckIfGrounded())
+        {
+            moveInput = Vector2.zero;
+            
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(VelocityWhenSpawnHand());
+        }
     }
     
     
@@ -346,8 +350,6 @@ public class BodyController : PlayerController
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
         head.layer = 7;
-        elementRigidbody.linearVelocity = Vector2.zero;
-        moveInput = Vector2.zero;
         
         headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;

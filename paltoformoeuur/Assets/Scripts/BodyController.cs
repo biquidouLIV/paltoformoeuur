@@ -247,28 +247,7 @@ public class BodyController : PlayerController
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
         distanceWithGround = hit.distance;
     }
-    
-    
-    private void DisplayTrajectory()
-    {
-        
-        if (!isAiming)
-        {
-            trajectory.HideTrajectory();
-        }
-        else
-        {
-            switch (aimingPart)
-            {
-                case PlayerPart.head:
-                    trajectory.TrajectoryCalcul(head.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-                case PlayerPart.hand:
-                    trajectory.TrajectoryCalcul(hand.transform.position, rotation * launchForce * Time.fixedDeltaTime);
-                    break;
-            }
-        }
-    }
+
 
     private void OnDrawGizmos()
     {

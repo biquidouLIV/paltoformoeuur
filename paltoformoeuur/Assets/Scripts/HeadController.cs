@@ -60,7 +60,6 @@ public class HeadController : PlayerController
                     bodyScript.bodyAnimator.SetBool("IsHeadless",false);
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
-                    PlayerManager.instance.PlayerInput.enabled = true;
                     PlayerManager.instance.StartCoroutine(doLatter());
                     gameObject.SetActive(false);
                 }
@@ -78,7 +77,6 @@ public class HeadController : PlayerController
 
     private void OnDisable()
     {
-        
         bodyScript.bodyAnimator.SetBool("IsHeadless",false);
     }
 

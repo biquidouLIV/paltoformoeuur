@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class BodyController : PlayerController
 {
+    [SerializeField] private Vector2 defaultRotationInput = new Vector2(0.8f, 0.6f);
+    [SerializeField] private float tempsAccroche;
     
-        [SerializeField] private float tempsAccroche;
+    
     [Header("GD pas touche")]
         [SerializeField] private Vector2 jumpRaycastSize = new (1,1);
         [SerializeField] private Vector2 jumpRaycastOrigin = new (0,1);
@@ -127,6 +129,12 @@ public class BodyController : PlayerController
         }
         else
         {
+            if (rotation.magnitude <= 0.1)
+            {
+                rotation = defaultRotationInput;
+            }
+            Debug.Log(rotation);
+            
             switch (aimingPart)
             {
                 case PlayerPart.head:

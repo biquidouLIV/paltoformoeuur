@@ -15,6 +15,7 @@ public class Bumper : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        other.rigidbody.linearVelocityX = 0;
         switch (other.gameObject.tag)
         {
             case "Hand":

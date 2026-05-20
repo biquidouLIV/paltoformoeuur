@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -356,6 +357,7 @@ public class BodyController : PlayerController
         
         PlayerManager.instance.EnableHead();
         CameraManager.instance.ChangeTarget(PlayerPart.head);
+        Parallaxe.ChangeTarget(PlayerPart.head);
         head.transform.SetParent(transform.parent);
     }
     

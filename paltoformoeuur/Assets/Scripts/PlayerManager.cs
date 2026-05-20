@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
 
     public Vector3 checkpointTransform;
     public int indiceCheckpoint;
-
+    
     private void Awake()
     {
         if (instance == null) { instance = this; }

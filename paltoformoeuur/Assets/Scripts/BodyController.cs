@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -368,7 +369,7 @@ public class BodyController : PlayerController
     {
         CameraManager.instance.CameraOnRespawn();
         transform.position = PlayerManager.instance.checkpointTransform;
-        PlayerManager.instance.PlayerInput.enabled = true;
+        
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
         {
             PlayerManager.instance.OnRecallHand();
@@ -379,6 +380,13 @@ public class BodyController : PlayerController
             PlayerManager.instance.OnRecallHand();
         }
     }
+
+    //event dans l'anim de respawn
+    public void ActiveInput()
+    {
+        PlayerManager.instance.PlayerInput.enabled = true;
+    }
+    
     
     public override void Accroche(CrochetBalance crochet)
     {
@@ -414,9 +422,9 @@ public class BodyController : PlayerController
     {
         gameObject.transform.parent = playerParent.transform;
         gameObject.transform.eulerAngles = Vector3.zero;
+        elementRigidbody.simulated = true;
         StartCoroutine(currentCrochet.Active(elementRigidbody));
         accroche = false;
         currentCrochet = null;
-        elementRigidbody.simulated = true;
     }
 }

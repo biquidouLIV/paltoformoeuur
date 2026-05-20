@@ -15,7 +15,7 @@ public class Arrow : MonoBehaviour
     [SerializeField] private float scaleMultiplicator;
     
     private Vector2 distance;
-    private Vector3 scale = new Vector3(1,1,1);
+    private Vector3 scale = new (1,1,1);
     private BodyController body;
     private HandController hand;
     private HeadController head;
@@ -81,19 +81,16 @@ public class Arrow : MonoBehaviour
             {
                 scale.x = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
                 scale.y = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
-                Debug.Log("ez");
             }
             else
             {
                 scale = Vector3.zero;
-                Debug.Log("trop proche de tete");
             }
 
         }
         else
         {
             scale = Vector3.zero;
-            Debug.Log("tete sur joueur");
         }
         arrow.transform.DOScale(scale,scaleDuration);
     }

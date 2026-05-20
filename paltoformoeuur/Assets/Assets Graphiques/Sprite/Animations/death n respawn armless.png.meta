@@ -1,0 +1,971 @@
+fileFormatVersion: 2
+guid: f182fca9ab1293b4880196396b8e690f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1084
+        width: 126
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4851b4bc79c3e4b9b8bbd0ad522aaf
+      internalID: 1604299988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1084
+        width: 126
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602702474f50bf54a80f5a148c31c629
+      internalID: 1244734800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_3
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 1093
+        width: 93
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa154f44748a8404782ab2cd52ec1890
+      internalID: -1961429941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_4
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1090
+        width: 133
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77ea775fbbd40c94f949f0afc947c385
+      internalID: -42293441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_5
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 1074
+        width: 172
+        height: 213
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb8d195076531a4cad8380554c7463e
+      internalID: -879758667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_6
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 1079
+        width: 281
+        height: 213
+      alignment: 9
+      pivot: {x: 0.42, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09176f7fb86c98840b126fab45ea9057
+      internalID: -104328521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_7
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 1079
+        width: 301
+        height: 213
+      alignment: 9
+      pivot: {x: 0.32, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3a408d115fef6d459ede015f4aba9df
+      internalID: 1150106860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_8
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 1079
+        width: 338
+        height: 213
+      alignment: 9
+      pivot: {x: 0.28, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7300dd419f3db3c4fb811d92455090da
+      internalID: -578105371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_9
+      rect:
+        serializedVersion: 2
+        x: 2075
+        y: 1079
+        width: 328
+        height: 213
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06860ce1ffb994b48af8c4cd862f1954
+      internalID: 1303570327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessDeath_10
+      rect:
+        serializedVersion: 2
+        x: 2490
+        y: 1079
+        width: 325
+        height: 213
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff763111e0f6cc84885ffc7964e1dc3b
+      internalID: -184460581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 795
+        width: 126
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f963cc41d9fb11549bde2989873e0b52
+      internalID: -624742597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 795
+        width: 126
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4feb9e46dd54f0447aee3135eb813572
+      internalID: -1020191772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_3
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 804
+        width: 93
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97d7da47ee835054a80e9f2e05e79bf8
+      internalID: -542982191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_4
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 801
+        width: 133
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44b1326dbf5decc4ea71efa1b56056e2
+      internalID: 1636790354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_5
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 785
+        width: 172
+        height: 213
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44fc4f0f742724c4586f34b9e90a57bc
+      internalID: -131298828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_6
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 792
+        width: 281
+        height: 213
+      alignment: 9
+      pivot: {x: 0.42, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc05d162b6256754ca8b635485926024
+      internalID: 898283724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_7
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 792
+        width: 301
+        height: 213
+      alignment: 9
+      pivot: {x: 0.32, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e921aea561006d5469c38e0f5f495023
+      internalID: -1413004421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_8
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 792
+        width: 338
+        height: 213
+      alignment: 9
+      pivot: {x: 0.28, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ae0125edaf3b14698881ce6446a0be
+      internalID: 453990007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_9
+      rect:
+        serializedVersion: 2
+        x: 2075
+        y: 794
+        width: 328
+        height: 213
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8821e56808aace458a3bf579c7ba216
+      internalID: -1561789170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_1
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 347
+        width: 77
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5390bcd85abfe6d40afa57a91c7f62e6
+      internalID: 1357416981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_2
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 347
+        width: 73
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da26ae802bd53a84cbc46a7d087d65f1
+      internalID: -950123353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_3
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 347
+        width: 74
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 696b089a9a40ea9428fd946a4b604514
+      internalID: -1972190975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_4
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 347
+        width: 94
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae4d648e37e6874abeba3aab3b5a781
+      internalID: -195273274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_5
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 347
+        width: 112
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d3b72974da05d48a0a566a9e4c22cc
+      internalID: 839908958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_6
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 347
+        width: 118
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bcea1b8612d1f143a36208cc3c2d3ce
+      internalID: 1636979680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_7
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 347
+        width: 130
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a4f62cafd42f8c41825e921cf2b3bad
+      internalID: 64814515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessRespawn_8
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 347
+        width: 107
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ad134c8f54285499645a51ab55d365
+      internalID: 131975119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_1
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 25
+        width: 66
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caab86cf0d1a15c419b2f260ad1204a1
+      internalID: 506830675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_2
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 24
+        width: 66
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6578dc3e261b844382437ca1515df6d
+      internalID: -1321871666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_3
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 25
+        width: 64
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e77d0ba8680b9849b4e6664249a6bbb
+      internalID: -843641118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_4
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 25
+        width: 94
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 385188cfbed48ef44b2375333923e809
+      internalID: 1255384155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_5
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 25
+        width: 112
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4616d1d418efa0408193f93baa76389
+      internalID: -1421265352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_6
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 25
+        width: 118
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 092dbc93cf5c3a244807f187533282d3
+      internalID: 843044845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_7
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 25
+        width: 130
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9057e9dd252d4348a78281e49b69f79
+      internalID: -1908031409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessRespawn_8
+      rect:
+        serializedVersion: 2
+        x: 1753
+        y: 25
+        width: 97
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 285ff7e7ca2c5e24b91724e77d4655a5
+      internalID: 777777078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmlessDeath_10
+      rect:
+        serializedVersion: 2
+        x: 2490
+        y: 789
+        width: 325
+        height: 213
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43c94b437848c0429f07a1c4322ff2e
+      internalID: 316144884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5d74477e085466942a2d560e8929e175
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      ArmlessDeath_1: -624742597
+      ArmlessDeath_10: 316144884
+      ArmlessDeath_2: -1020191772
+      ArmlessDeath_3: -542982191
+      ArmlessDeath_4: 1636790354
+      ArmlessDeath_5: -131298828
+      ArmlessDeath_6: 898283724
+      ArmlessDeath_7: -1413004421
+      ArmlessDeath_8: 453990007
+      ArmlessDeath_9: -1561789170
+      ArmlessRespawn_1: 1357416981
+      ArmlessRespawn_2: -950123353
+      ArmlessRespawn_3: -1972190975
+      ArmlessRespawn_4: -195273274
+      ArmlessRespawn_5: 839908958
+      ArmlessRespawn_6: 1636979680
+      ArmlessRespawn_7: 64814515
+      ArmlessRespawn_8: 131975119
+      HeadlessArmlessDeath_1: 1604299988
+      HeadlessArmlessDeath_10: -184460581
+      HeadlessArmlessDeath_2: 1244734800
+      HeadlessArmlessDeath_3: -1961429941
+      HeadlessArmlessDeath_4: -42293441
+      HeadlessArmlessDeath_5: -879758667
+      HeadlessArmlessDeath_6: -104328521
+      HeadlessArmlessDeath_7: 1150106860
+      HeadlessArmlessDeath_8: -578105371
+      HeadlessArmlessDeath_9: 1303570327
+      HeadlessArmlessRespawn_1: 506830675
+      HeadlessArmlessRespawn_2: -1321871666
+      HeadlessArmlessRespawn_3: -843641118
+      HeadlessArmlessRespawn_4: 1255384155
+      HeadlessArmlessRespawn_5: -1421265352
+      HeadlessArmlessRespawn_6: 843044845
+      HeadlessArmlessRespawn_7: -1908031409
+      HeadlessArmlessRespawn_8: 777777078
+      death n respawn armless_11: 280193007
+      death n respawn armless_12: -1791903055
+      death n respawn armless_14: 644060624
+      death n respawn armless_15: -1210595255
+      death n respawn armless_17: 1418386263
+      death n respawn armless_18: -1120542369
+      death n respawn armless_23: -1190033732
+      death n respawn armless_25: 1209819933
+      death n respawn armless_27: -1965360723
+      death n respawn armless_28: 1581694596
+      death n respawn armless_29: -1244340721
+      death n respawn armless_30: 2767270
+      death n respawn armless_31: 557276684
+      death n respawn armless_32: 1095228593
+      death n respawn armless_33: 1017948907
+      death n respawn armless_34: -699563194
+      death n respawn armless_35: 1739468275
+      death n respawn armless_36: 148335648
+      death n respawn armless_39: 626391009
+      death n respawn armless_41: 1044205272
+      death n respawn armless_42: -1524639474
+      death n respawn armless_43: 960760971
+      death n respawn armless_7: 1977390536
+      death n respawn armless_9: -1948226392
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

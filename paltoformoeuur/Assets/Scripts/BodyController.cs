@@ -132,11 +132,9 @@ public class BodyController : PlayerController
         {
             if (rotation.magnitude <= 0.1)
             {
-                Debug.Log("1");
                 rotation = defaultRotationInput;
-                if (transform.localScale.x < 0)
+                if (GetComponent<SpriteRenderer>().flipX)
                 {
-                    Debug.Log("2");
                     rotation.x = -defaultRotationInput.x;
                 }
             }
@@ -182,11 +180,13 @@ public class BodyController : PlayerController
 
             if (moveInput.x > 0)
             {
-                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                GetComponent<SpriteRenderer>().flipX = false;
+                //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
             else if(moveInput.x < 0)
             {
-                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+                GetComponent<SpriteRenderer>().flipX = true;
+                //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
         }
 
@@ -380,7 +380,7 @@ public class BodyController : PlayerController
     //event dans animation de mort
     public void Respawn()
     {
-        CameraManager.instance.CameraOnRespawn();
+        StartCoroutine(CameraManager.instance.CameraOnRespawn());
         transform.position = PlayerManager.instance.checkpointTransform;
         
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)

@@ -89,7 +89,7 @@ public class HandController : PlayerController
     {
         if (context.performed)
         {
-            Debug.Log("ez");
+            //Debug.Log("ez");
         }
         if (context.performed && accroche)
         {

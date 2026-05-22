@@ -71,6 +71,7 @@ public class HeadController : PlayerController
                     PlayerManager.instance.StartCoroutine(doLatter());
                     isRecalling = false;
                     gameObject.SetActive(false);
+                    CameraManager.instance.CameraOnRecallHead();
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);

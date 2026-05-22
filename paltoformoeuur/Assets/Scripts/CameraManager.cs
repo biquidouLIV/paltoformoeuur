@@ -34,16 +34,11 @@ public class CameraManager : MonoBehaviour
     private BodyController body;
     private PlayerController targetPart;
     
-    
-    private Vector2 cameraOffset;
     private float bodyCameraFOV;
     private float headCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
 
-
-    private Vector3 destination;
-    private Vector2 direction;
 
     private Vector3 defaultTargetOffset;
     private float defaultLookAheadTime;
@@ -64,9 +59,7 @@ public class CameraManager : MonoBehaviour
         bodyCameraFOV = data.bodyCameraFOV;
         headCameraFOV = data.headCameraFOV;
         FOVTransitionDuration = data.FOVTransitionDuration;
-
-        defaultOffset = data.defaultOffset;
-
+        
         
         targetPart = body;
         ChangeTarget(PlayerPart.body);

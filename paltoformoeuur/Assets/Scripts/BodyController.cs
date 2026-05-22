@@ -132,9 +132,14 @@ public class BodyController : PlayerController
         {
             if (rotation.magnitude <= 0.1)
             {
+                Debug.Log("1");
                 rotation = defaultRotationInput;
+                if (transform.localScale.x < 0)
+                {
+                    Debug.Log("2");
+                    rotation.x = -defaultRotationInput.x;
+                }
             }
-            Debug.Log(rotation);
             
             switch (aimingPart)
             {

@@ -27,7 +27,6 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Ease verticalEase;
     
     
-    private Camera testCamera;
     private CinemachineCamera cinemachine;
     private CinemachinePositionComposer cinemachinePositionComposer;
     
@@ -37,22 +36,12 @@ public class CameraManager : MonoBehaviour
     
     
     private Vector2 cameraOffset;
-    
-    private float horizontalDistance;
-    private float horizontalSpeed;
-    
-    private float verticalDistance;
-    private float verticalSpeed;
-    private float minVelocity;
-    private float minDistanceWithGound;
-    
     private float bodyCameraFOV;
     private float headCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
 
-    private Vector3 lastFramePosition;
-    private Vector3 targetPosition;
+
     private Vector3 destination;
     private Vector2 direction;
 
@@ -66,16 +55,11 @@ public class CameraManager : MonoBehaviour
         defaultTargetOffset = cinemachinePositionComposer.TargetOffset;
         defaultLookAheadTime = cinemachinePositionComposer.Lookahead.Time;
         
+        
         body = PlayerManager.instance.bodyController;
         head = PlayerManager.instance.headController;
-
-        horizontalDistance = data.horizontalDistance;
-        horizontalSpeed = data.horizontalSpeed;
-
-        verticalDistance = data.verticalDistance;
-        verticalSpeed = data.verticalSpeed;
-        minVelocity = data.minVelocity;
-        minDistanceWithGound = data.minDistanceWithGround;
+        cinemachine.Follow = head.transform;
+        
 
         bodyCameraFOV = data.bodyCameraFOV;
         headCameraFOV = data.headCameraFOV;
@@ -83,10 +67,8 @@ public class CameraManager : MonoBehaviour
 
         defaultOffset = data.defaultOffset;
 
-
-        testCamera = Camera.current;
+        
         targetPart = body;
-        targetPosition = targetPart.transform.position;
         ChangeTarget(PlayerPart.body);
          
      }
@@ -107,7 +89,6 @@ public class CameraManager : MonoBehaviour
                 cinemachinePositionComposer.Lookahead.Enabled = false;
                 break;
         }
-        lastFramePosition = targetPart.transform.position;
         DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, FOVTransitionDuration);
     }
 

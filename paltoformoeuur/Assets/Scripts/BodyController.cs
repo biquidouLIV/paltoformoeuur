@@ -367,7 +367,7 @@ public class BodyController : PlayerController
         PlayerManager.instance.EnableHead();
         CameraManager.instance.ChangeTarget(PlayerPart.head);
         Parallaxe.ChangeTarget(PlayerPart.head);
-        head.transform.SetParent(transform.parent);
+        head.transform.SetParent(null);
     }
     
     public override void Die()

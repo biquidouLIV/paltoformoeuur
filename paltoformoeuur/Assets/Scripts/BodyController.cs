@@ -334,7 +334,7 @@ public class BodyController : PlayerController
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
-        hand.transform.SetParent(transform.parent);
+        hand.transform.SetParent(null);
     }
 
     private IEnumerator VelocityWhenSpawnHand()

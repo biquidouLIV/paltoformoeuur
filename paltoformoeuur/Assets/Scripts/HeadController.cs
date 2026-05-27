@@ -55,7 +55,6 @@ public class HeadController : PlayerController
         }
 
         isRecalling = true;
-        Parallaxe.ChangeTarget(PlayerPart.body);
         CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
         base.Recall();
@@ -63,6 +62,7 @@ public class HeadController : PlayerController
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
+                    Parallaxe.ChangeTarget(PlayerPart.body);
                     bodyScript.colliderWithHead.enabled = true;
                     bodyScript.colliderWithoutHead.enabled = false;
                     bodyScript.bodyAnimator.SetBool("IsHeadless",false);

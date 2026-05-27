@@ -22,7 +22,6 @@ public class HandController : PlayerController
     private bool accroche;
     private Crochet currentCrochet;
     private int direction = 1;
-    private GameObject lastParent;
 
     public override void Init(PlayerData data)
     {
@@ -89,13 +88,13 @@ public class HandController : PlayerController
     {
         if (context.performed)
         {
-            //Debug.Log("ez");
+            Debug.Log("ez");
         }
         if (context.performed && accroche)
         {
             Decroche();
         }
-        else if (context.performed && canDash)
+        else if (context.performed && canDash && !accroche)
         {
             StartCoroutine(Dash());
         }
@@ -120,7 +119,6 @@ public class HandController : PlayerController
                     PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
                     PlayerManager.instance.StartCoroutine(doLatter());
                     gameObject.SetActive(false);
-                    
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
@@ -131,6 +129,7 @@ public class HandController : PlayerController
         yield return new WaitForSeconds(0.5f);
         bodyScript.canThrowHand = false;
     }
+    
     private IEnumerator Dash()
     {
         canDash = false;
@@ -160,7 +159,6 @@ public class HandController : PlayerController
 
     public override void Accroche(CrochetBalance crochet)
     {
-        lastParent = gameObject.transform.parent.gameObject;
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
@@ -176,7 +174,6 @@ public class HandController : PlayerController
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
-        lastParent = gameObject.transform.parent.gameObject;
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
@@ -192,11 +189,11 @@ public class HandController : PlayerController
     
     public override void Decroche()
     {
-        gameObject.transform.parent = lastParent.transform;
+        gameObject.transform.parent = null;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;
         accroche = false;
-        StartCoroutine(currentCrochet.Active(elementRigidbody));
+        currentCrochet.StartCoroutine(currentCrochet.Active(elementRigidbody));
         currentCrochet = null;
     }
 }

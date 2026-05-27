@@ -24,6 +24,7 @@ public class CrochetPlatform : Crochet
     public override IEnumerator Active(Rigidbody2D rigidbody)
     {
         fallingPlatform.falling = false;
+        isAvailable = true;
         yield return new WaitForSeconds(delayOnLeaving);
         isAvailable = true;
     }

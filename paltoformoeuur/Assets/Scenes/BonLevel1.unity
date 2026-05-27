@@ -8038,6 +8038,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 935793052}
     m_Modifications:
+    - target: {fileID: 1963147135887065178, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
+      propertyPath: m_Size.x
+      value: 0.95455086
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963147135887065178, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
+      propertyPath: m_Size.y
+      value: 0.76927286
+      objectReference: {fileID: 0}
     - target: {fileID: 3386516589306415804, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
       propertyPath: m_Name
       value: Moisissure (11)
@@ -8052,11 +8060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5469351122886091908, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.2173
+      value: 66.471
       objectReference: {fileID: 0}
     - target: {fileID: 5469351122886091908, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.47
+      value: -0.72
       objectReference: {fileID: 0}
     - target: {fileID: 5469351122886091908, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17788,7 +17796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962903bb1e8281b49b3ba1db14c51d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  mainMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
 --- !u!4 &697880595
 Transform:

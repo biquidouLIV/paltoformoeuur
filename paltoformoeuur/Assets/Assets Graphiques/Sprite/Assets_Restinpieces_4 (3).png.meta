@@ -312,7 +312,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 558
-        y: 599
+        y: 598
         width: 90
         height: 116
       alignment: 0
@@ -373,6 +373,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Door_regular
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 310
+        width: 125
+        height: 515
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8268492e9a539c44681fe277923fda11
+      internalID: 1719031430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_wall
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 310
+        width: 177
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da853ff6d169ba45ac420e42c3cd5bc
+      internalID: 898042528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -413,6 +457,8 @@ TextureImporter:
       Checkpoint_deco_manhole_wall: -1826941640
       Checkpoint_deco_roof: 86910806
       Checkpoint_deco_wall: 1563532948
+      Door_regular: 1719031430
+      Door_wall: 898042528
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

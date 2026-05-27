@@ -8,6 +8,7 @@ public class HeadController : PlayerController
     [SerializeField] private Collider2D colliderRond;
     private int recallSpeed;
     private float initialAngularDamping;
+    public bool isRecalling;
 
 
     public override void Init(PlayerData data)
@@ -48,7 +49,12 @@ public class HeadController : PlayerController
     
     public override void Recall()
     {
-        Parallaxe.ChangeTarget(PlayerPart.body);
+        if (isRecalling)
+        {
+            return;
+        }
+
+        isRecalling = true;
         CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
         base.Recall();
@@ -56,13 +62,16 @@ public class HeadController : PlayerController
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
                 {
+                    Parallaxe.ChangeTarget(PlayerPart.body);
                     bodyScript.colliderWithHead.enabled = true;
                     bodyScript.colliderWithoutHead.enabled = false;
                     bodyScript.bodyAnimator.SetBool("IsHeadless",false);
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
                     PlayerManager.instance.StartCoroutine(doLatter());
+                    isRecalling = false;
                     gameObject.SetActive(false);
+                    CameraManager.instance.CameraOnRecallHead();
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);

@@ -1,4 +1,6 @@
+using System.Collections;
 using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -25,124 +27,43 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Ease verticalEase;
     
     
-    private Camera testCamera; 
+    private CinemachineCamera cinemachine;
+    private CinemachinePositionComposer cinemachinePositionComposer;
+    
     private HeadController head; 
     private BodyController body;
     private PlayerController targetPart;
-    
-    
-    private Vector2 cameraOffset;
-    
-    private float horizontalDistance;
-    private float horizontalSpeed;
-    
-    private float verticalDistance;
-    private float verticalSpeed;
-    private float minVelocity;
-    private float minDistanceWithGound;
     
     private float bodyCameraFOV;
     private float headCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
 
-    private Vector3 lastFramePosition;
-    private Vector3 targetPosition;
-    private Vector3 destination;
-    private Vector2 direction;
 
+    private Vector3 defaultTargetOffset;
+    private float defaultLookAheadTime;
     
      private void Start()
      {
-         
+        cinemachine = GetComponent<CinemachineCamera>();
+        cinemachinePositionComposer = GetComponent<CinemachinePositionComposer>();
+        defaultTargetOffset = cinemachinePositionComposer.TargetOffset;
+        defaultLookAheadTime = cinemachinePositionComposer.Lookahead.Time;
+        
+        
         body = PlayerManager.instance.bodyController;
         head = PlayerManager.instance.headController;
-
-        horizontalDistance = data.horizontalDistance;
-        horizontalSpeed = data.horizontalSpeed;
-
-        verticalDistance = data.verticalDistance;
-        verticalSpeed = data.verticalSpeed;
-        minVelocity = data.minVelocity;
-        minDistanceWithGound = data.minDistanceWithGround;
+        cinemachine.Follow = head.transform;
+        
 
         bodyCameraFOV = data.bodyCameraFOV;
         headCameraFOV = data.headCameraFOV;
         FOVTransitionDuration = data.FOVTransitionDuration;
-
-        defaultOffset = data.defaultOffset;
-
-
-        testCamera = gameObject.GetComponent<Camera>();
+        
+        
         targetPart = body;
-        targetPosition = targetPart.transform.position;
         ChangeTarget(PlayerPart.body);
          
-     }
-     private void FixedUpdate()
-     {
-        SetOffset();
-        Move();
-     }
-
-     private void SetOffset()
-     {
-         direction.x = targetPart.transform.position.x - lastFramePosition.x;
-         direction.y = targetPart.transform.position.y - lastFramePosition.y;
-         
-         //vertical
-         if ((direction.y < -minVelocity) && (body.distanceWithGround >= minDistanceWithGound))
-         {
-            cameraOffset.y = -verticalDistance;
-         }
-         else
-         {
-             cameraOffset.y = 0;
-         }
-         
-         
-         //quand on va dans un mur a gauche
-         if ((targetPart.transform.position - lastFramePosition).normalized == new Vector3(-1, 0, 0) && PlayerManager.instance.bodyController.moveInput.x >= 0)
-         {
-             direction.x = 0;
-         }
-         
-         //quand on va dans un mur a droite
-         if ((targetPart.transform.position - lastFramePosition).normalized == new Vector3(1, 0, 0) && PlayerManager.instance.bodyController.moveInput.x <= 0)
-         {
-             direction.x = 0;
-         }
-         
-         
-         
-         cameraOffset.x = direction.x * horizontalDistance;
-     }
-
-     private void Move()
-     {
-         targetPosition = targetPart.transform.position;
-
-         destination = (Vector2)targetPosition + cameraOffset + defaultOffset;
-
-         
-         if (targetPart == body)
-         {
-             
-             testCamera.transform.DOMoveX(destination.x, horizontalSpeed)
-                 .SetEase(horizontalEase);
-             testCamera.transform.DOMoveY(destination.y, verticalSpeed)
-                 .SetEase(verticalEase);
-         }
-         else
-         {
-             testCamera.transform.DOMoveX(targetPosition.x, horizontalSpeed)
-                 .SetEase(horizontalEase);
-             testCamera.transform.DOMoveY(targetPosition.y, verticalSpeed)
-                 .SetEase(verticalEase);
-         }
-         
-         
-         lastFramePosition = targetPart.transform.position;
      }
      
     public void ChangeTarget(PlayerPart part)
@@ -152,20 +73,33 @@ public class CameraManager : MonoBehaviour
             case PlayerPart.body:
                 targetFOV = bodyCameraFOV;
                 targetPart = body;
+
                 break;
             case PlayerPart.head:
                 targetFOV = headCameraFOV;
                 targetPart = head;
+                cinemachinePositionComposer.TargetOffset = Vector3.zero;
+                cinemachinePositionComposer.Lookahead.Enabled = false;
                 break;
         }
-        lastFramePosition = targetPart.transform.position;
-        
-        testCamera.DOOrthoSize(targetFOV, FOVTransitionDuration);
+        DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, FOVTransitionDuration);
     }
 
-    public void CameraOnRespawn()
+    public void CameraOnRecallHead()
     {
-        lastFramePosition = PlayerManager.instance.checkpointTransform;
+        DOTween.To(() => cinemachinePositionComposer.TargetOffset, x => cinemachinePositionComposer.TargetOffset = x, defaultTargetOffset, 1);
+        cinemachinePositionComposer.Lookahead.Enabled = true;
     }
+    
+    
+    
+    public IEnumerator CameraOnRespawn()
+    {
+        cinemachinePositionComposer.Lookahead.Time = 0;
+        yield return new WaitForSeconds(3);
+        cinemachinePositionComposer.Lookahead.Time = defaultLookAheadTime;
+    }
+
+
 }
 

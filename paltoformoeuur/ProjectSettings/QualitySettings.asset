@@ -60,7 +60,10 @@ QualitySettings:
     terrainMaxTrees: 50
     excludedTargetPlatforms:
     - Standalone
+<<<<<<< HEAD
     - Windows Store Apps
+=======
+>>>>>>> origin/Hippolyte
   - serializedVersion: 5
     name: PC
     pixelLightCount: 2
@@ -103,7 +106,11 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
+<<<<<<< HEAD
     customRenderPipeline: {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd, type: 2}
+=======
+    customRenderPipeline: {fileID: 11400000, guid: 9a26e1ce85199ff429cee0f4f3f17ab9, type: 2}
+>>>>>>> origin/Hippolyte
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1

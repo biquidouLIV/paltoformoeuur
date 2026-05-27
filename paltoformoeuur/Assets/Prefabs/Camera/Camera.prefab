@@ -131,6 +131,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
   m_SortingLayer: 11
+  m_SortingLayer: 10
   m_SortingOrder: 1000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 199cb61a4a687664fa9198d9a1381fb8, type: 3}
@@ -155,7 +156,7 @@ GameObject:
   - component: {fileID: 2337052332552353686}
   - component: {fileID: 3916348781341739269}
   - component: {fileID: 6905324374346634437}
-  - component: {fileID: 5527634557909238378}
+  - component: {fileID: 5625740511377894260}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -214,7 +215,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -282,7 +283,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &5527634557909238378
+--- !u!114 &5625740511377894260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,9 +292,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6832871283109518704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d3e32a2b0782f46b2f745495b5ff6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraManager
-  data: {fileID: 11400000, guid: 26899c7d499651d409be8f71869c2b71, type: 2}
-  horizontalEase: 9
-  verticalEase: 9
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBrain
+  ShowDebugText: 0
+  ShowCameraFrustum: 1
+  IgnoreTimeScale: 0
+  WorldUpOverride: {fileID: 0}
+  ChannelMask: -1
+  UpdateMethod: 2
+  BlendUpdateMethod: 1
+  LensModeOverride:
+    Enabled: 0
+    DefaultMode: 2
+  DefaultBlend:
+    Style: 1
+    Time: 2
+    CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  CustomBlends: {fileID: 0}

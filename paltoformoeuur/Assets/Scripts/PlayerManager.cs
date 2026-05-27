@@ -116,4 +116,9 @@ public class PlayerManager : MonoBehaviour
     {
         handController.Recall();
     }
+    
+    public void Pause()
+    {
+        UIManager.instance.Pause();
+    }
 }

@@ -70,7 +70,6 @@ public class CrochetBalance : Crochet
     public override IEnumerator Active(Rigidbody2D rigidbody)
     {
         moving = false;
-        Debug.Log("1");
         if (parent.transform.eulerAngles.z < 60)
         {
             rigidbody.AddForce(new (parent.transform.eulerAngles.z * strength, 0f));
@@ -79,10 +78,7 @@ public class CrochetBalance : Crochet
         {
             rigidbody.AddForce(new (- (360 - parent.transform.eulerAngles.z) * strength, 0f));
         }
-        Debug.Log("2");
-        Debug.Log(delayOnLeaving);
         yield return new WaitForSeconds(delayOnLeaving);
-        Debug.Log("3");
         isAvailable = true;
     }
 }

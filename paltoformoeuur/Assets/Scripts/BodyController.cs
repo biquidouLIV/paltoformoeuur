@@ -133,8 +133,11 @@ public class BodyController : PlayerController
             if (rotation.magnitude <= 0.1)
             {
                 rotation = defaultRotationInput;
+                if (GetComponent<SpriteRenderer>().flipX)
+                {
+                    rotation.x = -defaultRotationInput.x;
+                }
             }
-            Debug.Log(rotation);
             
             switch (aimingPart)
             {
@@ -177,11 +180,13 @@ public class BodyController : PlayerController
 
             if (moveInput.x > 0)
             {
-                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                GetComponent<SpriteRenderer>().flipX = false;
+                //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
             else if(moveInput.x < 0)
             {
-                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+                GetComponent<SpriteRenderer>().flipX = true;
+                //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
         }
 
@@ -235,7 +240,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         bool onFloor = Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f,
-            Vector2.down, 1, ~LayerMask.GetMask("Player", "Checkpoint", "Bumper"));
+            Vector2.down, 1, ~LayerMask.GetMask("Player", "Checkpoint", "Bumper", "Ignore Raycast"));
         if (onFloor)
         {
             hitBumper = false;
@@ -258,6 +263,10 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
+        if (headController.isRecalling)
+        {
+            return;
+        }
         
         if (context.started && !isAiming)
         {
@@ -325,7 +334,7 @@ public class BodyController : PlayerController
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHand();
-        hand.transform.SetParent(transform.parent);
+        hand.transform.SetParent(null);
     }
 
     private IEnumerator VelocityWhenSpawnHand()
@@ -358,7 +367,7 @@ public class BodyController : PlayerController
         PlayerManager.instance.EnableHead();
         CameraManager.instance.ChangeTarget(PlayerPart.head);
         Parallaxe.ChangeTarget(PlayerPart.head);
-        head.transform.SetParent(transform.parent);
+        head.transform.SetParent(null);
     }
     
     public override void Die()
@@ -371,7 +380,7 @@ public class BodyController : PlayerController
     //event dans animation de mort
     public void Respawn()
     {
-        CameraManager.instance.CameraOnRespawn();
+        StartCoroutine(CameraManager.instance.CameraOnRespawn());
         transform.position = PlayerManager.instance.checkpointTransform;
         
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)

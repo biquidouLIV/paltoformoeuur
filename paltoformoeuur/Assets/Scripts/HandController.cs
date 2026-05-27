@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -21,7 +22,6 @@ public class HandController : PlayerController
     private bool accroche;
     private Crochet currentCrochet;
     private int direction = 1;
-    private GameObject lastParent;
 
     public override void Init(PlayerData data)
     {
@@ -94,7 +94,7 @@ public class HandController : PlayerController
         {
             Decroche();
         }
-        else if (context.performed && canDash)
+        else if (context.performed && canDash && !accroche)
         {
             StartCoroutine(Dash());
         }
@@ -106,6 +106,7 @@ public class HandController : PlayerController
         {
             Decroche();
         }
+        PlayerManager.instance.PlayerInput.enabled = false;
         base.Recall();
         transform.DOLocalMove(PlayerManager.instance.handAnchorPosition, Vector2.Distance(transform.position, player.transform.position) / recallSpeed)
             .SetEase(Ease.OutCubic)
@@ -118,7 +119,6 @@ public class HandController : PlayerController
                     PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
                     PlayerManager.instance.StartCoroutine(doLatter());
                     gameObject.SetActive(false);
-                    
                 }
             );
         transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
@@ -129,18 +129,24 @@ public class HandController : PlayerController
         yield return new WaitForSeconds(0.5f);
         bodyScript.canThrowHand = false;
     }
+    
     private IEnumerator Dash()
     {
         canDash = false;
         handAnimator.SetBool("IsDashing",true);
-        elementRigidbody.linearVelocityX = dashSpeed*direction;
+        elementRigidbody.linearVelocityX += dashSpeed*direction;
         yield return new WaitForSeconds(dashDuration);
         handAnimator.SetBool("IsDashing",false);
-        elementRigidbody.linearVelocityX = 0;
+        elementRigidbody.linearVelocityX -= dashSpeed*direction;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-    
+
+    private void OnEnable()
+    {
+        canDash = true;
+    }
+
     private void OnDisable()
     {
         bodyScript.bodyAnimator.SetBool("IsArmless",false);
@@ -153,7 +159,6 @@ public class HandController : PlayerController
 
     public override void Accroche(CrochetBalance crochet)
     {
-        lastParent = gameObject.transform.parent.gameObject;
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
@@ -169,7 +174,6 @@ public class HandController : PlayerController
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
-        lastParent = gameObject.transform.parent.gameObject;
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
@@ -185,11 +189,11 @@ public class HandController : PlayerController
     
     public override void Decroche()
     {
-        gameObject.transform.parent = lastParent.transform;
+        gameObject.transform.parent = null;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;
         accroche = false;
-        StartCoroutine(currentCrochet.Active(elementRigidbody));
+        currentCrochet.StartCoroutine(currentCrochet.Active(elementRigidbody));
         currentCrochet = null;
     }
 }

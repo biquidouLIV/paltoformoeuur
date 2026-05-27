@@ -396,7 +396,7 @@ MonoBehaviour:
   player: {fileID: 3024878346645139155}
   defaultRotationInput: {x: 0.8, y: 0.6}
   tempsAccroche: 0
-  jumpRaycastSize: {x: 0.72, y: 0.08}
+  jumpRaycastSize: {x: 0.4, y: 0.08}
   jumpRaycastOrigin: {x: 0.1, y: 0.12}
   playerParent: {fileID: 6260475154895817139}
   hand: {fileID: 6392271598579402724}
@@ -790,6 +790,7 @@ MonoBehaviour:
   player: {fileID: 3024878346645139155}
   colliderCarre: {fileID: 4150696167599046214}
   colliderRond: {fileID: 7980838515345731981}
+  isRecalling: 0
 --- !u!1 &6260475154895817139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1039,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 74ebfef9-d18a-4a1a-b2e8-9dbae277e68a
     m_ActionName: 'Test/RecallHand[/Keyboard/c]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 38b3b281-9aab-4d5a-af64-8e33ee8ee806
+    m_ActionName: 'UI/Pause[/XInputControllerWindows/start,/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

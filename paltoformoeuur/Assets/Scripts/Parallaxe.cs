@@ -26,7 +26,7 @@ public class Parallaxe : MonoBehaviour
     
     private void Update()
     {
-        transform.Translate(new Vector2((target.transform.position - lastPosition).x * speed * Time.deltaTime, 0),Space.World);
+        transform.Translate(new Vector2((lastPosition - target.transform.position).x * speed * Time.deltaTime, 0),Space.World);
         lastPosition = target.transform.position;
     }
 }

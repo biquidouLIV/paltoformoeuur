@@ -1,24 +1,32 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenu;
+    public static UIManager instance;
+
+
     [SerializeField] private GameObject pauseMenu;
     private float actualTimeScale;
 
-    public void Play()
+    private void Awake()
     {
-        mainMenu.SetActive(false);
-    }
-    
-    public void Quit()
-    {
-        mainMenu.SetActive(false);
+        if (instance == null) instance = this;
+        else Destroy(this);
     }
 
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+    
     public void Pause()
     {
-        
+        if (pauseMenu == null) return;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         if (pauseMenu.activeSelf)
         {
@@ -28,3 +36,5 @@ public class UIManager : MonoBehaviour
         else Time.timeScale = actualTimeScale;
     }
 }
+
+

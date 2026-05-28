@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 836fc443706571144a68b1923cdc7ebb
+guid: bf941a80899ff2546b349e473b288c30
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,9 +69,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -93,30 +93,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jet de crane_14
+      name: idles_0
       rect:
         serializedVersion: 2
-        x: 911
-        y: 764
-        width: 103
-        height: 214
+        x: 68
+        y: 829
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b5248912f4268444a7dd58765fbf79c
-      internalID: 65619918
+      spriteID: 3ad0af9a2927ed746858714094668526
+      internalID: 382964642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_15
+      name: idles_1
       rect:
         serializedVersion: 2
-        x: 1105
-        y: 769
-        width: 104
-        height: 232
+        x: 219
+        y: 829
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 221908f34376a8941aa9848625e99e89
-      internalID: 1041478777
+      spriteID: bad37c37027b3ac4d9850dd25eae6970
+      internalID: -487562589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_16
+      name: idles_2
       rect:
         serializedVersion: 2
-        x: 1302
-        y: 765
-        width: 130
-        height: 220
+        x: 395
+        y: 829
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2633f56de5f55ea40b2d31c9e504d6f9
-      internalID: 190019274
+      spriteID: 398fd638f2b5147409f1d9232aa8982c
+      internalID: -1595157270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_17
+      name: idles_3
       rect:
         serializedVersion: 2
-        x: 1528
-        y: 774
-        width: 138
-        height: 166
+        x: 576
+        y: 829
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a483030e1d3ad8348be1c8a8cc6bff43
-      internalID: -564393009
+      spriteID: 3a4118e3a216f884083259a8a5ab21e4
+      internalID: 1072511663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_18
+      name: idles_4
       rect:
         serializedVersion: 2
-        x: 1786
-        y: 779
-        width: 119
-        height: 193
+        x: 740
+        y: 829
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a387583c87bdb9348a036df543c96b9d
-      internalID: 1696609174
+      spriteID: dbe9680fede4d174dad1503e016128f5
+      internalID: 1597205934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_19
+      name: idles_5
       rect:
         serializedVersion: 2
-        x: 1977
-        y: 797
-        width: 108
-        height: 134
+        x: 919
+        y: 829
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79de93b097f6bbd4eb53c462831e5e9d
-      internalID: 2095565500
+      spriteID: 70a0ea8f41bfb3d4790f1ccc412b19c3
+      internalID: 1611809680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_20
+      name: idles_6
       rect:
         serializedVersion: 2
-        x: 2145
-        y: 748
-        width: 166
-        height: 165
+        x: 68
+        y: 560
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +244,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a58b17f673bbf0b4fb1d649049c05fad
-      internalID: -2020019374
+      spriteID: 5eb6c731876f9fb4f9da285df862504d
+      internalID: -1396153507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_21
+      name: idles_7
       rect:
         serializedVersion: 2
-        x: 2383
-        y: 727
-        width: 98
-        height: 126
+        x: 219
+        y: 560
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +266,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd9c104a13df7354282df4a12422f89e
-      internalID: -221406202
+      spriteID: d32adec64c4b9c14d868c262fc3d3df4
+      internalID: 961743595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_22
+      name: idles_8
       rect:
         serializedVersion: 2
-        x: 450
-        y: 331
-        width: 141
-        height: 218
+        x: 395
+        y: 560
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,20 +288,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fe00bbd36110034b94e72df42de7ec2
-      internalID: 1214368019
+      spriteID: 6e0d3a4755e951b4c8c40eb6065fd2a2
+      internalID: -173035017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_23
+      name: idles_9
       rect:
         serializedVersion: 2
-        x: 660
-        y: 330
-        width: 99
-        height: 215
+        x: 576
+        y: 560
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,20 +310,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a7b8f576da454b4ca1810ede5019e2f
-      internalID: -655564829
+      spriteID: 005278c013a77374cb9effab708dda01
+      internalID: 2051609546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_24
+      name: idles_10
       rect:
         serializedVersion: 2
-        x: 840
-        y: 386
-        width: 148
-        height: 224
+        x: 740
+        y: 560
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,20 +332,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8261b28ae8703546b93b2a01199d928
-      internalID: 1320541753
+      spriteID: f6c5a3ee60ac5ed4f8cce71546da8fac
+      internalID: -1100138126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_25
+      name: idles_11
       rect:
         serializedVersion: 2
-        x: 1060
-        y: 446
-        width: 143
-        height: 234
+        x: 919
+        y: 560
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,20 +354,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed5245e7d002d544eb547fe6253dc33c
-      internalID: 1809027823
+      spriteID: 85bccd49f0d1ead4fa6d7e5cc9e44a31
+      internalID: -1549157048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_26
+      name: idles_12
       rect:
         serializedVersion: 2
-        x: 1294
-        y: 452
-        width: 130
-        height: 221
+        x: 69
+        y: 289
+        width: 106
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,108 +376,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c707683237bec214c90d21ad5948f092
-      internalID: -2146657162
+      spriteID: 736baef08c59b5a4ea0065054f79d155
+      internalID: 1321406081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_63
+      name: idles_13
       rect:
         serializedVersion: 2
-        x: 265
-        y: 38
-        width: 92
-        height: 234
-      alignment: 9
-      pivot: {x: 0.5, y: 0.42735043}
+        x: 69
+        y: 51
+        width: 106
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a196c9389f9e7b4ea9020d354162ea3
-      internalID: -523986495
+      spriteID: 8d4ce3b10b5944d49a6e379434d92a89
+      internalID: 1250595022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_73
+      name: idles_14
       rect:
         serializedVersion: 2
-        x: 73
-        y: 39
-        width: 91
-        height: 209
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4784689}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ee799295665fbc4fab6e14c7eac7ae8
-      internalID: 2083792692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jet de crane_74
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 38
-        width: 142
-        height: 218
-      alignment: 9
-      pivot: {x: 0.6690141, y: 0.4587156}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4202d89da6788044caf9db4eb2893ab8
-      internalID: -1216627543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jet de crane_75
-      rect:
-        serializedVersion: 2
-        x: 676
-        y: 38
-        width: 163
-        height: 173
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5780347}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38b0d0928e67e6b48b976fbb9b0370fe
-      internalID: 1119216966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jet de crane_76
-      rect:
-        serializedVersion: 2
-        x: 933
+        x: 547
         y: 49
-        width: 120
-        height: 194
+        width: 93
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,20 +420,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0be4dd480e6c23f4ab8b3a9a52461185
-      internalID: -1405624249
+      spriteID: 282067824447ab249875e85827e5446f
+      internalID: 1947884401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_77
+      name: idles_15
       rect:
         serializedVersion: 2
-        x: 1125
-        y: 68
-        width: 108
-        height: 134
+        x: 675
+        y: 49
+        width: 90
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,20 +442,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9476926af0051a549b45bc78c050b226
-      internalID: -351128509
+      spriteID: c5d3279726ac7354daf7b2fd6babd2cf
+      internalID: 16491561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jet de crane_78
+      name: idles_16
       rect:
         serializedVersion: 2
-        x: 1330
-        y: 41
-        width: 98
-        height: 125
+        x: 802
+        y: 49
+        width: 92
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -543,8 +464,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31333821b5902da4d8616ccb60e542e9
-      internalID: 3915643
+      spriteID: 78c3bcd76970a0247acec20ef5eb6199
+      internalID: 1158709673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idles_17
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 49
+        width: 90
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dac3eae40317c94e9cd41b49d210f87
+      internalID: -652890381
       vertices: []
       indices: 
       edges: []
@@ -553,7 +496,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c5220a65415ea154e9666d67412ab541
+    spriteID: a7f4052325326cc4e9a0a14b442f3555
     internalID: 0
     vertices: []
     indices: 
@@ -561,101 +504,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      jet de crane_0: -1272789021
-      jet de crane_1: -380627568
-      jet de crane_10: -881450913
-      jet de crane_11: 600136978
-      jet de crane_12: 1445855119
-      jet de crane_13: -482823575
-      jet de crane_14: 65619918
-      jet de crane_15: 1041478777
-      jet de crane_16: 190019274
-      jet de crane_17: -564393009
-      jet de crane_18: 1696609174
-      jet de crane_19: 2095565500
-      jet de crane_2: -1125408665
-      jet de crane_20: -2020019374
-      jet de crane_21: -221406202
-      jet de crane_22: 1214368019
-      jet de crane_23: -655564829
-      jet de crane_24: 1320541753
-      jet de crane_25: 1809027823
-      jet de crane_26: -2146657162
-      jet de crane_27: -1841000153
-      jet de crane_28: -956384939
-      jet de crane_29: -946918363
-      jet de crane_3: 1898772084
-      jet de crane_30: 727992372
-      jet de crane_31: 2084574339
-      jet de crane_32: 1150986745
-      jet de crane_33: 1009093393
-      jet de crane_34: 1103524873
-      jet de crane_35: -1160225224
-      jet de crane_36: -300071519
-      jet de crane_37: -817804816
-      jet de crane_38: 1960542863
-      jet de crane_39: 1920549247
-      jet de crane_4: -102551519
-      jet de crane_40: -1886151406
-      jet de crane_41: -404248572
-      jet de crane_42: 471203426
-      jet de crane_43: -429915667
-      jet de crane_44: 903796786
-      jet de crane_45: -736447417
-      jet de crane_46: -528460684
-      jet de crane_47: -379246646
-      jet de crane_48: -1068028619
-      jet de crane_49: 1506101636
-      jet de crane_5: 510021458
-      jet de crane_50: 53860760
-      jet de crane_51: 1673892300
-      jet de crane_52: -581778721
-      jet de crane_53: -101089895
-      jet de crane_54: 1945381674
-      jet de crane_55: 324971641
-      jet de crane_56: 1338703336
-      jet de crane_57: -296464267
-      jet de crane_58: -1065336733
-      jet de crane_59: -1836831301
-      jet de crane_6: 1709970290
-      jet de crane_60: 2115501640
-      jet de crane_61: 1739641677
-      jet de crane_62: 1285856051
-      jet de crane_63: -523986495
-      jet de crane_64: 23761810
-      jet de crane_65: -245650011
-      jet de crane_66: 2120324473
-      jet de crane_67: -1402963058
-      jet de crane_68: -1443075577
-      jet de crane_69: 350819946
-      jet de crane_7: -2136971586
-      jet de crane_70: 437867256
-      jet de crane_71: 203697147
-      jet de crane_72: -450933437
-      jet de crane_73: 2083792692
-      jet de crane_74: -1216627543
-      jet de crane_75: 1119216966
-      jet de crane_76: -1405624249
-      jet de crane_77: -351128509
-      jet de crane_78: 3915643
-      jet de crane_79: -1511292395
-      jet de crane_8: 1124608021
-      jet de crane_80: 1828898320
-      jet de crane_81: 1644488638
-      jet de crane_82: -1046708629
-      jet de crane_83: 993582950
-      jet de crane_84: -559741988
-      jet de crane_85: 1143990778
-      jet de crane_86: 1680155419
-      jet de crane_87: 1700314202
-      jet de crane_88: -705850984
-      jet de crane_89: 1144568736
-      jet de crane_9: -62680328
-      jet de crane_90: -62785032
+      idles_0: 382964642
+      idles_1: -487562589
+      idles_10: -1100138126
+      idles_11: -1549157048
+      idles_12: 1321406081
+      idles_13: 1250595022
+      idles_14: 1947884401
+      idles_15: 16491561
+      idles_16: 1158709673
+      idles_17: -652890381
+      idles_2: -1595157270
+      idles_3: 1072511663
+      idles_4: 1597205934
+      idles_5: 1611809680
+      idles_6: -1396153507
+      idles_7: 961743595
+      idles_8: -173035017
+      idles_9: 2051609546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

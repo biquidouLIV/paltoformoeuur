@@ -119,6 +119,7 @@ public class PlayerManager : MonoBehaviour
     
     public void Pause()
     {
+        Debug.Log("1");
         UIManager.instance.Pause();
     }
 }

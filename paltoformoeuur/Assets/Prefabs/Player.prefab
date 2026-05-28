@@ -1040,6 +1040,10 @@ MonoBehaviour:
     m_ActionId: 74ebfef9-d18a-4a1a-b2e8-9dbae277e68a
     m_ActionName: 'Test/RecallHand[/Keyboard/c]'
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38b3b281-9aab-4d5a-af64-8e33ee8ee806
+    m_ActionName: 'UI/Pause[/XInputControllerWindows/start,/Keyboard/escape]'
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2365311328493070183}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
@@ -1053,8 +1057,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 38b3b281-9aab-4d5a-af64-8e33ee8ee806
-    m_ActionName: 'UI/Pause[/XInputControllerWindows/start,/Keyboard/escape]'
+    m_ActionId: 1a2dcf83-84b9-4d39-adf7-c72f31ce9a93
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,35 +23,43 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        transitionScreen.gameObject.SetActive(true);
         Time.timeScale = 1;
-        TransitionScreenOpen();
+        StartCoroutine(TransitionOpen());
 
     }
-
-    private void TransitionScreenOpen()
+    
+    private IEnumerator TransitionOpen()
     {
+        yield return new WaitForSeconds(0.5f);
         transitionScreen.localPosition = new Vector3(0, 0, 0);
-        transitionScreen.DOLocalMove(new Vector3(-1920, 0, 0), 1)
-            .IsTimeScaleIndependent();
+        transitionScreen.DOLocalMove(new Vector3(-1920, 0, 0), 1).SetUpdate(true);
     }
+    
 
-    public void MainMenu()
+    public void LoadScene(int scene)
     {
         transitionScreen.localPosition = new Vector3(1920, 0, 0);
         transitionScreen.DOLocalMove(new Vector3(0, 0, 0), 1)
+            .SetUpdate(true)
             .OnComplete((() =>
             {
                 Time.timeScale = 1;
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(scene);
             }));
     }
+
+
     
     
-    
+    public void Quit()
+    {
+        Application.Quit();
+        return;
+    }
     
     public void Pause()
     {
-        Debug.Log("2");
         if (pauseMenu == null)
         {
             Debug.Log("pas de menu poze");

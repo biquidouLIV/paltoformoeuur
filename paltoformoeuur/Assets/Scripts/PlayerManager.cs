@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     [Header("Pas touche GD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")]
+    // serializefield + public -> inutile, un champ public est serialized par défaut
     [SerializeField] public BodyController bodyController;
     [SerializeField] public HandController handController;
     [SerializeField] public HeadController headController;

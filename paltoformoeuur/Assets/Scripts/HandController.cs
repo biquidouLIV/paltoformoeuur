@@ -83,6 +83,7 @@ public class HandController : PlayerController
         }
     }
 
+    // bah super
     //ca s'appelle jump mais c'est un dash
     public void OnJump(InputAction.CallbackContext context)
     {

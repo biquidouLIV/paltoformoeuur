@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene(1);
+        // pas convaincu du return à la fin des fonctions
         return;
     }
 

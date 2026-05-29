@@ -51,7 +51,7 @@ public class Arrow : MonoBehaviour
         Move();
         Rotate();
         Scale();
-        }
+        } // attention aux espaces inutiles et aux accolades pas alignées / indentation
 
     private void Move()
     {
@@ -70,7 +70,7 @@ public class Arrow : MonoBehaviour
                   rotation = -rotation;
               }
               arrow.transform.DORotate(new Vector3(0, 0, rotation), 0.1f);  
-    }
+    } // attention à l'indentation
 
 
     private void Scale()

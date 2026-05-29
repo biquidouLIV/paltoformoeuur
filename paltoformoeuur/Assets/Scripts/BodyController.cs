@@ -39,7 +39,8 @@ public class BodyController : PlayerController
     private Vector2 rotationInput;
     private Vector2 rotation;
     private GameObject aim;
-    public bool isAiming;
+    public bool isAiming; 
+    // les variables privées et public ont la même nomenclature, c'est pas ouf on sait pas à la lecture à quoi on a affaire
     private PlayerPart aimingPart;
     private bool accroche;
     private Crochet currentCrochet;
@@ -109,6 +110,8 @@ public class BodyController : PlayerController
 
     private void CheckJump()
     {
+        // beaucoup trop longue cette condition, hésite pas à la couper un peu ou au moins mettre un petit entrée au milieu,
+        // ou encore une fonction qui check ca avec un nom claire, genre isGroundedAndCanJump
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
             //jumpSound.Play();
@@ -133,6 +136,7 @@ public class BodyController : PlayerController
             if (rotation.magnitude <= 0.1)
             {
                 rotation = defaultRotationInput;
+                // gaffe à ce get component en update, tu pourrais surement stocker en start
                 if (GetComponent<SpriteRenderer>().flipX)
                 {
                     rotation.x = -defaultRotationInput.x;
@@ -196,6 +200,7 @@ public class BodyController : PlayerController
         }
     }
 
+    // code mort ? à voir si il faut le retirer ?
     /*public override void OnSprint(InputAction.CallbackContext context)
     {
         if(sprintSpeedMultiplier == 1) return;

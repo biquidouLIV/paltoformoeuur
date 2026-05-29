@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Moisissure : MonoBehaviour
 {
+    // pourquoi du francais ?
     [SerializeField] private float ralentissement;
     [SerializeField] private float ralentissementInstantane;
         

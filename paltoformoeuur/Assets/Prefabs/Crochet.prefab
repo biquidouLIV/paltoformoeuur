@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3076870053829796493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.028, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1318471689
-  m_SortingLayer: 12
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2033500963, guid: 6d06d8984c53da54ca71425f8a84d8c8, type: 3}
@@ -152,10 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrochetBalance
   delayOnLeaving: 1
-  speed: 5
+  speed: 3
   strength: 2
-  rotationEase: 10
-  timeForOneRotation: 1.5
   moving: 0
 --- !u!1 &5185085802558704391
 GameObject:
@@ -237,7 +235,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1318471689
-  m_SortingLayer: 12
+  m_SortingLayer: 11
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 252157994, guid: 6d06d8984c53da54ca71425f8a84d8c8, type: 3}
@@ -321,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 7009743668767686294}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.087, z: 0}
+  m_LocalPosition: {x: 0, y: -0.53999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

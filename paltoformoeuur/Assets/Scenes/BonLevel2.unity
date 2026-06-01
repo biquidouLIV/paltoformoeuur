@@ -19289,7 +19289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &697880594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42568,17 +42568,9 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1288385847
       objectReference: {fileID: 0}
-    - target: {fileID: 5699740964625137966, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6260475154895817139, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6392271598579402724, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7212885857938817118, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_SortingLayer

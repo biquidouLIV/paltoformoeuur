@@ -1,5 +1,4 @@
 using System.Collections;
-using DG.Tweening;
 using UnityEngine;
 
 public class CrochetBalance : Crochet
@@ -7,8 +6,6 @@ public class CrochetBalance : Crochet
     [SerializeField] private float delayOnLeaving = 1;
     [SerializeField] private float speed = 1;
     [SerializeField] private float strength = 1;
-    [SerializeField] private Ease rotationEase;
-    [SerializeField] private float timeForOneRotation;
     private bool isAvailable = true;
     private PlayerController playerController;
     private GameObject parent;
@@ -20,34 +17,37 @@ public class CrochetBalance : Crochet
         parent = gameObject.transform.parent.gameObject;
     }
 
-    public void StartRotation(bool goLeft)
+    private void FixedUpdate()
     {
-        moving = true;
-        DoRotation(goLeft);
+       Move();
     }
 
-    public void DoRotation(bool left)
+    public void Move()
     {
-        if (moving)
+        if (!moving)
         {
-            if (!left)
+            if (Mathf.Abs(parent.transform.eulerAngles.z) < 60 && Mathf.Abs(parent.transform.eulerAngles.z) > 1)
             {
-                parent.transform.DORotate(new Vector3(parent.transform.position.x, parent.transform.position.y, 60), timeForOneRotation)
-                    .SetEase(rotationEase).OnComplete(() =>
-                    {
-                        PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
-                        DoRotation(!left);
-                    });
+                parent.transform.Rotate(new Vector3(0, 0, -speed));
             }
-            else
+            else if (Mathf.Abs(parent.transform.eulerAngles.z) > 60)
             {
-                parent.transform.DORotate(new Vector3(parent.transform.position.x, parent.transform.position.y, 310), timeForOneRotation)
-                    .SetEase(rotationEase).OnComplete(() =>
-                    {
-                        PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
-                        DoRotation(!left);
-                    });
+                parent.transform.Rotate(new Vector3(0, 0, speed));
             }
+        }
+        else if (goingRight && (Mathf.Abs(parent.transform.eulerAngles.z) > 305 || Mathf.Abs(parent.transform.eulerAngles.z) < 50))
+        {
+            parent.transform.Rotate(new Vector3(0, 0, speed));
+        }
+        else if (Mathf.Abs(parent.transform.eulerAngles.z) > 310 || Mathf.Abs(parent.transform.eulerAngles.z) < 55)
+        {
+            goingRight = false;
+            parent.transform.Rotate(new Vector3(0, 0, -speed));
+        }
+        else
+        {
+            goingRight = true;
+            parent.transform.Rotate(new Vector3(0, 0, speed));
         }
     }
     
@@ -69,8 +69,6 @@ public class CrochetBalance : Crochet
     
     public override IEnumerator Active(Rigidbody2D rigidbody)
     {
-        parent.transform.DOKill();
-        parent.transform.DORotate(new Vector3(parent.transform.position.x,parent.transform.position.y, 0),2).SetEase(rotationEase);
         moving = false;
         if (parent.transform.eulerAngles.z < 60)
         {

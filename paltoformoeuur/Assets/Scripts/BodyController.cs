@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -20,13 +21,12 @@ public class BodyController : PlayerController
         [SerializeField] protected HandController handController;
         [SerializeField] protected HeadController headController;
         [SerializeField] private Trajectory trajectory;
-        public BoxCollider2D colliderWithHead;
-        public BoxCollider2D colliderWithoutHead;
-        public Animator bodyAnimator;
+        [SerializeField] public BoxCollider2D colliderWithHead;
+        [SerializeField] public BoxCollider2D colliderWithoutHead;
+        [SerializeField] public Animator bodyAnimator;
         [SerializeField] private AudioSource jumpSound;
 
-    [Header("Temp")]
-        public bool hitBumper;
+        [Header("Temp")] public bool hitBumper;
         [SerializeField] private float distanceVisionTete;
 
     private float jumpHeight;
@@ -43,10 +43,10 @@ public class BodyController : PlayerController
     private PlayerPart aimingPart;
     private bool accroche;
     private Crochet currentCrochet;
-    public float timeSinceLastJump;
+    private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
 
-    private SpriteRenderer sprite;
+    public float distanceWithGround;
     public bool canThrowHead;
     public bool canThrowHand;
     
@@ -64,12 +64,14 @@ public class BodyController : PlayerController
         }
     }
             
-    protected void Update()
+    protected override void Update()
     {
+        base.Update();
         AnimationGestion();
         UpdateVariableJump();
         CheckJump();
         GestionVise();
+        CheckDistanceWithGround();
     }
 
     private void AnimationGestion()
@@ -111,16 +113,11 @@ public class BodyController : PlayerController
         {
             //jumpSound.Play();
             timeSinceLastJump = 0;
+            elementRigidbody.linearVelocityY = 0;
             elementRigidbody.linearVelocityY = jumpHeight;
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
         }
-    }
-
-    private bool CanJump()
-    {
-        return (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper)
-               || (bufferingTimeCounter > 0f && CheckIfGrounded());
     }
     
     private void GestionVise()
@@ -243,13 +240,20 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         bool onFloor = Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f,
-            Vector2.down, 1, ~LayerMask.GetMask("Player", "Hand", "Checkpoint", "Bumper", "Ignore Raycast"));
+            Vector2.down, 1, ~LayerMask.GetMask("Player", "Checkpoint", "Bumper", "Ignore Raycast"));
         if (onFloor)
         {
             hitBumper = false;
         }
         return onFloor;
     }
+
+    private void CheckDistanceWithGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
+        distanceWithGround = hit.distance;
+    }
+
 
     private void OnDrawGizmos()
     {
@@ -338,6 +342,7 @@ public class BodyController : PlayerController
         if (CheckIfGrounded())
         {
             moveInput = Vector2.zero;
+            
         }
         else
         {
@@ -354,7 +359,7 @@ public class BodyController : PlayerController
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
-        head.layer = LayerMask.NameToLayer("Head");
+        head.layer = 7;
         
         headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
@@ -395,25 +400,23 @@ public class BodyController : PlayerController
         PlayerManager.instance.PlayerInput.enabled = true;
     }
     
+    
     public override void Accroche(CrochetBalance crochet)
     {
         bodyAnimator.SetBool("IsWalking", false);
-        bodyAnimator.SetBool("IsBalancing",true);
-        bool comeFromLeft = crochet.transform.position.x < transform.position.x;
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
-        elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 2f, 0), tempsAccroche)
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
-                crochet.StartRotation(comeFromLeft);
+                crochet.moving = true;
             });
     }
     
-    /*public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
+    public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
         bodyAnimator.SetBool("IsWalking", false);
         accroche = true;
@@ -426,11 +429,10 @@ public class BodyController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
-    }*/
+    }
     
     public override void Decroche()
     {
-        bodyAnimator.SetBool("IsBalancing",false);
         gameObject.transform.parent = playerParent.transform;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;

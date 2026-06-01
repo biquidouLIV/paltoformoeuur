@@ -61,7 +61,6 @@ public class BodyController : PlayerController
             timeSinceLastJump = jumpMinimumDelay;
             head.SetActive(false);
             hand.SetActive(false);
-            sprite = GetComponent<SpriteRenderer>();
         }
     }
             
@@ -108,7 +107,7 @@ public class BodyController : PlayerController
 
     private void CheckJump()
     {
-        if (CanJump())
+        if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
             //jumpSound.Play();
             timeSinceLastJump = 0;
@@ -137,7 +136,7 @@ public class BodyController : PlayerController
             if (rotation.magnitude <= 0.1)
             {
                 rotation = defaultRotationInput;
-                if (sprite.flipX)
+                if (GetComponent<SpriteRenderer>().flipX)
                 {
                     rotation.x = -defaultRotationInput.x;
                 }
@@ -175,6 +174,7 @@ public class BodyController : PlayerController
             {
                 moveInput = Vector2.zero;
             }
+            
         }
         else
         {
@@ -183,12 +183,12 @@ public class BodyController : PlayerController
 
             if (moveInput.x > 0)
             {
-                sprite.flipX = false;
+                GetComponent<SpriteRenderer>().flipX = false;
                 //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
             else if(moveInput.x < 0)
             {
-                sprite.flipX = true;
+                GetComponent<SpriteRenderer>().flipX = true;
                 //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
         }
@@ -399,6 +399,7 @@ public class BodyController : PlayerController
     public override void Accroche(CrochetBalance crochet)
     {
         bodyAnimator.SetBool("IsWalking", false);
+        bodyAnimator.SetBool("IsBalancing",true);
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
@@ -429,6 +430,7 @@ public class BodyController : PlayerController
     
     public override void Decroche()
     {
+        bodyAnimator.SetBool("IsBalancing",false);
         gameObject.transform.parent = playerParent.transform;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;

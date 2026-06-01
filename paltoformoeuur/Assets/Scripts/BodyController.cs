@@ -43,10 +43,9 @@ public class BodyController : PlayerController
     private PlayerPart aimingPart;
     private bool accroche;
     private Crochet currentCrochet;
-    private float timeSinceLastJump;
+    public float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
 
-    public float distanceWithGround;
     private SpriteRenderer sprite;
     public bool canThrowHead;
     public bool canThrowHand;
@@ -66,14 +65,12 @@ public class BodyController : PlayerController
         }
     }
             
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         AnimationGestion();
         UpdateVariableJump();
         CheckJump();
         GestionVise();
-        CheckDistanceWithGround();
     }
 
     private void AnimationGestion()
@@ -115,7 +112,6 @@ public class BodyController : PlayerController
         {
             //jumpSound.Play();
             timeSinceLastJump = 0;
-            elementRigidbody.linearVelocityY = 0;
             elementRigidbody.linearVelocityY = jumpHeight;
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
@@ -124,7 +120,8 @@ public class BodyController : PlayerController
 
     private bool CanJump()
     {
-        return (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded());
+        return (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper)
+               || (bufferingTimeCounter > 0f && CheckIfGrounded());
     }
     
     private void GestionVise()
@@ -246,20 +243,13 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         bool onFloor = Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f,
-            Vector2.down, 1, ~LayerMask.GetMask("Player", "Head", "Hand", "Checkpoint", "Bumper", "Ignore Raycast"));
+            Vector2.down, 1, ~LayerMask.GetMask("Player", "Hand", "Checkpoint", "Bumper", "Ignore Raycast"));
         if (onFloor)
         {
             hitBumper = false;
         }
         return onFloor;
     }
-
-    private void CheckDistanceWithGround()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Head", "Hand", "Checkpoint","Bumper"));
-        distanceWithGround = hit.distance;
-    }
-
 
     private void OnDrawGizmos()
     {
@@ -365,7 +355,7 @@ public class BodyController : PlayerController
         colliderWithHead.enabled = false;
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
-        head.layer = 7;
+        head.layer = LayerMask.NameToLayer("Head");
         
         headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;

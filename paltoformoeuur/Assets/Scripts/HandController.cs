@@ -34,9 +34,8 @@ public class HandController : PlayerController
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         if (elementRigidbody.linearVelocityY < 0f)
         {
             handAnimator.SetBool("IsFalling",true);

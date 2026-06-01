@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -247,7 +246,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         bool onFloor = Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f,
-            Vector2.down, 1, ~LayerMask.GetMask("Player", "Checkpoint", "Bumper", "Ignore Raycast"));
+            Vector2.down, 1, ~LayerMask.GetMask("Player", "Head", "Hand", "Checkpoint", "Bumper", "Ignore Raycast"));
         if (onFloor)
         {
             hitBumper = false;
@@ -257,7 +256,7 @@ public class BodyController : PlayerController
 
     private void CheckDistanceWithGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Head", "Hand", "Checkpoint","Bumper"));
         distanceWithGround = hit.distance;
     }
 

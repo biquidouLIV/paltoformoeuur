@@ -4,9 +4,10 @@ public class Spike : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerController>() != null)
+        PlayerController playerController = other.GetComponent<PlayerController>();
+        if (playerController != null)
         {
-            other.GetComponent<PlayerController>().Die();
+            playerController.Die();
         }
     }
 }

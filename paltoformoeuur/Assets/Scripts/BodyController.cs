@@ -42,11 +42,12 @@ public class BodyController : PlayerController
     public bool isAiming;
     private PlayerPart aimingPart;
     private bool accroche;
-    private Crochet currentCrochet;
+    private ICrochet currentCrochet;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
 
     public float distanceWithGround;
+    private SpriteRenderer sprite;
     public bool canThrowHead;
     public bool canThrowHand;
     
@@ -61,6 +62,7 @@ public class BodyController : PlayerController
             timeSinceLastJump = jumpMinimumDelay;
             head.SetActive(false);
             hand.SetActive(false);
+            sprite = GetComponent<SpriteRenderer>();
         }
     }
             
@@ -109,7 +111,7 @@ public class BodyController : PlayerController
 
     private void CheckJump()
     {
-        if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
+        if (CanJump())
         {
             //jumpSound.Play();
             timeSinceLastJump = 0;
@@ -118,6 +120,11 @@ public class BodyController : PlayerController
             coyoteTimeCounter = 0f;
             bufferingTimeCounter = 0f;
         }
+    }
+
+    private bool CanJump()
+    {
+        return (bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded());
     }
     
     private void GestionVise()
@@ -133,7 +140,7 @@ public class BodyController : PlayerController
             if (rotation.magnitude <= 0.1)
             {
                 rotation = defaultRotationInput;
-                if (GetComponent<SpriteRenderer>().flipX)
+                if (sprite.flipX)
                 {
                     rotation.x = -defaultRotationInput.x;
                 }
@@ -171,7 +178,6 @@ public class BodyController : PlayerController
             {
                 moveInput = Vector2.zero;
             }
-            
         }
         else
         {
@@ -180,12 +186,12 @@ public class BodyController : PlayerController
 
             if (moveInput.x > 0)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                sprite.flipX = false;
                 //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
             else if(moveInput.x < 0)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                sprite.flipX = true;
                 //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
         }

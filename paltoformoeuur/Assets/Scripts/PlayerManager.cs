@@ -6,10 +6,10 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     [Header("Pas touche GD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")]
-    [SerializeField] public BodyController bodyController;
-    [SerializeField] public HandController handController;
-    [SerializeField] public HeadController headController;
-    [SerializeField] public PlayerPart controlledPart;
+    public BodyController bodyController;
+    public HandController handController;
+    public HeadController headController;
+    public PlayerPart controlledPart;
     
     [NonSerialized] public Vector3 handAnchorPosition;
     [NonSerialized] public Vector3 headAnchorPosition;

@@ -20,7 +20,7 @@ public class HandController : PlayerController
     
     private bool canDash = true;
     private bool accroche;
-    private Crochet currentCrochet;
+    private ICrochet currentCrochet;
     private int direction = 1;
 
     public override void Init(PlayerData data)

@@ -13,7 +13,7 @@ public class CrochetPlatform : Crochet
         {
             return;
         }
-        if (other.gameObject.CompareTag("Hand") || other.gameObject.CompareTag("Body"))
+        if (other.gameObject.CompareTag("Hand"))
         {
             other.gameObject.GetComponent<PlayerController>().Accroche(this, fallingPlatform);
             isAvailable = false;

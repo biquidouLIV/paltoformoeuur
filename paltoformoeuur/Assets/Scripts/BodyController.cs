@@ -21,12 +21,13 @@ public class BodyController : PlayerController
         [SerializeField] protected HandController handController;
         [SerializeField] protected HeadController headController;
         [SerializeField] private Trajectory trajectory;
-        [SerializeField] public BoxCollider2D colliderWithHead;
-        [SerializeField] public BoxCollider2D colliderWithoutHead;
-        [SerializeField] public Animator bodyAnimator;
+        public BoxCollider2D colliderWithHead;
+        public BoxCollider2D colliderWithoutHead;
+        public Animator bodyAnimator;
         [SerializeField] private AudioSource jumpSound;
 
-        [Header("Temp")] public bool hitBumper;
+    [Header("Temp")]
+        public bool hitBumper;
         [SerializeField] private float distanceVisionTete;
 
     private float jumpHeight;
@@ -406,15 +407,15 @@ public class BodyController : PlayerController
         PlayerManager.instance.PlayerInput.enabled = true;
     }
     
-    
     public override void Accroche(CrochetBalance crochet)
     {
         bodyAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
+        elementRigidbody.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
-        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 2f, 0), tempsAccroche)
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
@@ -422,7 +423,7 @@ public class BodyController : PlayerController
             });
     }
     
-    public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
+    /*public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
         bodyAnimator.SetBool("IsWalking", false);
         accroche = true;
@@ -435,7 +436,7 @@ public class BodyController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
-    }
+    }*/
     
     public override void Decroche()
     {

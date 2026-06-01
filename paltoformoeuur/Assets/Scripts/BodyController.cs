@@ -42,7 +42,7 @@ public class BodyController : PlayerController
     public bool isAiming;
     private PlayerPart aimingPart;
     private bool accroche;
-    private ICrochet currentCrochet;
+    private Crochet currentCrochet;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
 

@@ -167,7 +167,7 @@ public class HandController : PlayerController
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
-                crochet.moving = true;
+                crochet.StartRotation(crochet.transform.position.x < transform.position.x);
             });
     }
     

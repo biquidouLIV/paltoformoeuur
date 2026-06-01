@@ -338,7 +338,6 @@ public class BodyController : PlayerController
         if (CheckIfGrounded())
         {
             moveInput = Vector2.zero;
-            
         }
         else
         {
@@ -400,6 +399,7 @@ public class BodyController : PlayerController
     {
         bodyAnimator.SetBool("IsWalking", false);
         bodyAnimator.SetBool("IsBalancing",true);
+        bool comeFromLeft = crochet.transform.position.x < transform.position.x;
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
@@ -409,7 +409,7 @@ public class BodyController : PlayerController
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
-                crochet.moving = true;
+                crochet.StartRotation(comeFromLeft);
             });
     }
     

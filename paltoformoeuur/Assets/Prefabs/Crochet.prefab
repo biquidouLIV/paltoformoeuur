@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrochetBalance
   delayOnLeaving: 1
-  speed: 3
+  speed: 5
   strength: 2
+  rotationEase: 10
+  timeForOneRotation: 1.5
   moving: 0
 --- !u!1 &5185085802558704391
 GameObject:

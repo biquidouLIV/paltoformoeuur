@@ -94,7 +94,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Positions:
@@ -1281,49 +1281,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: flamme (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 931795974270610679, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424525600874020760, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424525600874020760, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424525600874020760, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424525600874020760, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424525600874020760, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: m_SortingLayer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424525600874020760, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 514097421
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424525600874020760, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 7d4f059c6e509dd4992fc27ce9bc61f3, type: 2}
-    - target: {fileID: 5035455936392249129, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+    - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.698546
+      value: 1.0085096
       objectReference: {fileID: 0}
-    - target: {fileID: 5035455936392249129, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+    - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7523962
+      value: 0.9775187
       objectReference: {fileID: 0}
-    - target: {fileID: 5035455936392249129, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+    - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.23396
+      value: 1.3882136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760102028790646771, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+      propertyPath: m_LightVolumeEnabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035455936392249129, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LocalPosition.x

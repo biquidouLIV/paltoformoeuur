@@ -20,7 +20,7 @@ public class HandController : PlayerController
     
     private bool canDash = true;
     private bool accroche;
-    private ICrochet currentCrochet;
+    private Crochet currentCrochet;
     private int direction = 1;
 
     public override void Init(PlayerData data)
@@ -174,6 +174,7 @@ public class HandController : PlayerController
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
+        PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;

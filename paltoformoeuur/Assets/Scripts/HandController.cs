@@ -34,9 +34,8 @@ public class HandController : PlayerController
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         if (elementRigidbody.linearVelocityY < 0f)
         {
             handAnimator.SetBool("IsFalling",true);
@@ -168,12 +167,13 @@ public class HandController : PlayerController
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
-                crochet.moving = true;
+                crochet.StartRotation(crochet.transform.position.x < transform.position.x);
             });
     }
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
+        PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;

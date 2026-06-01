@@ -24,9 +24,9 @@ public class Parallaxe : MonoBehaviour
         }
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Translate(new Vector2((lastPosition - target.transform.position).x * speed * Time.deltaTime, 0),Space.World);
+        transform.Translate(new Vector2((lastPosition - target.transform.position).x * speed * Time.fixedDeltaTime, 0),Space.World);
         lastPosition = target.transform.position;
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +9,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     
-
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private RectTransform transitionScreen;
     private float actualTimeScale;
@@ -24,11 +22,12 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         transitionScreen.gameObject.SetActive(true);
+        if(pauseMenu != null) pauseMenu.SetActive(false);
         Time.timeScale = 1;
         StartCoroutine(TransitionOpen());
-
     }
     
+
     private IEnumerator TransitionOpen()
     {
         yield return new WaitForSeconds(0.5f);
@@ -60,19 +59,27 @@ public class UIManager : MonoBehaviour
     
     public void Pause()
     {
+        Debug.Log(gameObject.name);
         if (pauseMenu == null)
         {
             Debug.Log("pas de menu poze");
             return;
         }
-        
+
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         if (pauseMenu.activeSelf)
         {
+            PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("UI");
+            Debug.Log(PlayerManager.instance.PlayerInput.currentActionMap);
             actualTimeScale = Time.timeScale;
             Time.timeScale = 0;
         }
-        else Time.timeScale = actualTimeScale;
+        else
+        {
+            PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
+            Debug.Log(PlayerManager.instance.PlayerInput.currentActionMap);
+            Time.timeScale = actualTimeScale;
+        }
     }
 }
 

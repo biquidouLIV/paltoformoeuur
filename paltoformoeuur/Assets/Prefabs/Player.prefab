@@ -94,7 +94,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Positions:
@@ -247,7 +247,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1288385847
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1634852709, guid: 1b2e93307bd1f004ea47a885d84dd95d, type: 3}
@@ -411,7 +411,7 @@ MonoBehaviour:
   distanceVisionTete: 10
   bufferingTimeCounter: 0
   isAiming: 0
-  distanceWithGround: 0
+  timeSinceLastJump: 0
   canThrowHead: 0
   canThrowHand: 0
 --- !u!95 &6755396211980822311
@@ -651,7 +651,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1288385847
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 18
   m_MaskInteraction: 0
   m_Sprite: {fileID: 923256040, guid: c80f127e71192cc4f9520aca3aa1a634, type: 3}
@@ -1055,9 +1055,29 @@ MonoBehaviour:
     m_ActionId: 38b3b281-9aab-4d5a-af64-8e33ee8ee806
     m_ActionName: 'UI/Pause[/XInputControllerWindows/start,/Keyboard/escape]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1a2dcf83-84b9-4d39-adf7-c72f31ce9a93
     m_ActionName: 'Player/Pause[/XInputControllerWindows/start,/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d4e4f344-b115-4e05-9ca6-afc2c47f9d27
+    m_ActionName: 'UI/NextTab[/XInputControllerWindows/rightShoulder,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b318638f-ef81-4f0a-96fa-529815c06594
+    m_ActionName: 'UI/PreviousTab[/XInputControllerWindows/leftShoulder,/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -1145,7 +1165,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1288385847
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 19
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1947884401, guid: bf941a80899ff2546b349e473b288c30, type: 3}
@@ -1219,7 +1239,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.01089859, y: -0.027873516}
+  m_Offset: {x: 0.00014305115, y: -0.0330925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1229,7 +1249,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.58890533, y: 0.27542686}
+  m_Size: {x: 0.64510727, y: 0.4208393}
   m_EdgeRadius: 0
 --- !u!114 &3226355294599407309
 MonoBehaviour:
@@ -1292,6 +1312,18 @@ PrefabInstance:
     - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3882136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.603
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760102028790646771, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4760102028790646771, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LightVolumeEnabled

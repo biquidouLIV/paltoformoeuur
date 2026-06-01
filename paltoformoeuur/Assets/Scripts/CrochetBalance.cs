@@ -28,11 +28,21 @@ public class CrochetBalance : Crochet
         {
             if (Mathf.Abs(parent.transform.eulerAngles.z) < 60 && Mathf.Abs(parent.transform.eulerAngles.z) > 1)
             {
-                parent.transform.Rotate(new Vector3(0, 0, -speed));
+                parent.transform.DORotate(new Vector3(0, 0, 60), timeForOneRotation)
+                    .SetEase(rotationEase).OnComplete(() =>
+                    {
+                        PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
+                        DoRotation(!left);
+                    });
             }
             else if (Mathf.Abs(parent.transform.eulerAngles.z) > 60)
             {
-                parent.transform.Rotate(new Vector3(0, 0, speed));
+                parent.transform.DORotate(new Vector3(0, 0, 310), timeForOneRotation)
+                    .SetEase(rotationEase).OnComplete(() =>
+                    {
+                        PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
+                        DoRotation(!left);
+                    });
             }
         }
         else if (goingRight && (Mathf.Abs(parent.transform.eulerAngles.z) > 305 || Mathf.Abs(parent.transform.eulerAngles.z) < 50))
@@ -69,6 +79,8 @@ public class CrochetBalance : Crochet
     
     public override IEnumerator Active(Rigidbody2D rigidbody)
     {
+        parent.transform.DOKill();
+        parent.transform.DORotate(Vector3.zero,2).SetEase(rotationEase);
         moving = false;
         if (parent.transform.eulerAngles.z < 60)
         {

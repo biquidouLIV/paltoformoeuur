@@ -6,7 +6,13 @@ public class Bumper : MonoBehaviour
     [SerializeField] private float strength = 16;
     [SerializeField] private float baseStrength = 8;
     [SerializeField] private float delayBigJump = 2f;
+    private Animator animator;
     private float delayBigJumpCounter;
+
+    private void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -38,5 +44,6 @@ public class Bumper : MonoBehaviour
                 delayBigJumpCounter = delayBigJump;
                 break;
         }
+        animator.Play("Bump");
     }
 }

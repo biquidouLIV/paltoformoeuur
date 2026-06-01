@@ -110,34 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tunnel_Large
-      rect:
-        serializedVersion: 2
-        x: 1413
-        y: 138
-        width: 649
-        height: 1603
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7c4d84a10a727e4d8e08d31d849c41e
-      internalID: -1345420263
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Tunnel_Regular
       rect:
         serializedVersion: 2
-        x: 2202
-        y: 947
-        width: 317
+        x: 1919
+        y: 949
+        width: 626
         height: 783
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -180,9 +158,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2977
-        y: 1277
+        y: 1279
         width: 765
-        height: 364
+        height: 361
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,9 +224,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2608
-        y: 682
+        y: 685
         width: 1131
-        height: 540
+        height: 535
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,9 +245,9 @@ TextureImporter:
       name: MetroRails
       rect:
         serializedVersion: 2
-        x: 129
+        x: 137
         y: 1041
-        width: 709
+        width: 699
         height: 118
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -334,9 +312,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2180
-        y: 707
+        y: 721
         width: 283
-        height: 172
+        height: 158
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -465,13 +443,13 @@ TextureImporter:
       name: MetroFloor
       rect:
         serializedVersion: 2
-        x: 212
+        x: 213
         y: 101
-        width: 924
+        width: 922
         height: 205
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 195}
+      border: {x: 0, y: 4, z: 0, w: 195}
       customData: 
       outline: []
       physicsShape: []
@@ -479,6 +457,28 @@ TextureImporter:
       bones: []
       spriteID: 9a982e8f67729284989bc78efddda301
       internalID: -2115421079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tunnel_Train
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1230
+        width: 1099
+        height: 799
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9329ce7b2fa634e8e0fd11fb3c9814
+      internalID: -344170750
       vertices: []
       indices: 
       edges: []
@@ -516,6 +516,7 @@ TextureImporter:
       Spikes_metro: 1754450839
       Tunnel_Large: -1345420263
       Tunnel_Regular: 1711507132
+      Tunnel_Train: -344170750
       Well_Large: 502006939
       Well_Regular: -2084222396
       manhole: 1027108514

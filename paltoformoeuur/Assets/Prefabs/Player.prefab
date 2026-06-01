@@ -94,7 +94,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Positions:
@@ -247,7 +247,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1288385847
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1634852709, guid: 1b2e93307bd1f004ea47a885d84dd95d, type: 3}
@@ -395,8 +395,8 @@ MonoBehaviour:
   player: {fileID: 3024878346645139155}
   defaultRotationInput: {x: 0.8, y: 0.6}
   tempsAccroche: 0
-  jumpRaycastSize: {x: 0.4, y: 0.08}
-  jumpRaycastOrigin: {x: 0.1, y: 0.12}
+  jumpRaycastSize: {x: 0.4, y: 0.14}
+  jumpRaycastOrigin: {x: 0.1, y: 0.09}
   playerParent: {fileID: 6260475154895817139}
   hand: {fileID: 6392271598579402724}
   head: {fileID: 5699740964625137966}
@@ -651,7 +651,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1288385847
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 18
   m_MaskInteraction: 0
   m_Sprite: {fileID: 923256040, guid: c80f127e71192cc4f9520aca3aa1a634, type: 3}
@@ -1145,7 +1145,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1288385847
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 19
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1947884401, guid: bf941a80899ff2546b349e473b288c30, type: 3}
@@ -1219,7 +1219,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.01089859, y: -0.027873516}
+  m_Offset: {x: 0.00014305115, y: -0.0330925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1229,7 +1229,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.58890533, y: 0.27542686}
+  m_Size: {x: 0.64510727, y: 0.4208393}
   m_EdgeRadius: 0
 --- !u!114 &3226355294599407309
 MonoBehaviour:
@@ -1292,6 +1292,18 @@ PrefabInstance:
     - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3882136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418901325455779442, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.603
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760102028790646771, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4760102028790646771, guid: f52f65888cf12c54db725b12ac49b55a, type: 3}
       propertyPath: m_LightVolumeEnabled

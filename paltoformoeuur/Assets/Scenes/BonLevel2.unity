@@ -19303,6 +19303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   pauseMenu: {fileID: 0}
+  transitionScreen: {fileID: 0}
 --- !u!4 &697880595
 Transform:
   m_ObjectHideFlags: 0
@@ -42497,11 +42498,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e877430a900c06b428a559dc3d8e6279, type: 2}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 285.6
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -9.31
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.z

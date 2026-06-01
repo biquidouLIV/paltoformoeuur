@@ -405,6 +405,7 @@ public class BodyController : PlayerController
     {
         bodyAnimator.SetBool("IsWalking", false);
         accroche = true;
+        bool fromLeft = crochet.transform.position.x < transform.position.x;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
         moveInput = Vector2.zero;
@@ -412,10 +413,11 @@ public class BodyController : PlayerController
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
-                crochet.moving = true;
+                crochet.StartRotation(fromLeft);
             });
     }
     
+    /*
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
         bodyAnimator.SetBool("IsWalking", false);
@@ -429,7 +431,7 @@ public class BodyController : PlayerController
                 gameObject.transform.parent = currentCrochet.transform;
                 fallingPlatform.falling = true;
             });
-    }
+    }*/
     
     public override void Decroche()
     {

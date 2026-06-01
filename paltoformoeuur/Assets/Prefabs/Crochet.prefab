@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1318471689
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2033500963, guid: 6d06d8984c53da54ca71425f8a84d8c8, type: 3}
@@ -152,8 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrochetBalance
   delayOnLeaving: 1
-  speed: 3
   strength: 2
+  rotationEase: 10
+  timeForOneRotation: 1.5
   moving: 0
 --- !u!1 &5185085802558704391
 GameObject:
@@ -235,7 +236,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1318471689
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 252157994, guid: 6d06d8984c53da54ca71425f8a84d8c8, type: 3}

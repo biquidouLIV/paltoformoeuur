@@ -1,32 +1,34 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class CrochetBalance : Crochet
 {
     [SerializeField] private float delayOnLeaving = 1;
-    [SerializeField] private float speed = 1;
     [SerializeField] private float strength = 1;
+    [SerializeField] private Ease rotationEase;
+    [SerializeField] private float timeForOneRotation;
     private bool isAvailable = true;
     private PlayerController playerController;
     private GameObject parent;
     public bool moving;
-    private bool goingRight = true;
 
     private void Start()
     {
         parent = gameObject.transform.parent.gameObject;
     }
 
-    private void FixedUpdate()
+    public void StartRotation(bool goLeft)
     {
-       Move();
+        moving = true;
+        DoRotation(goLeft);
     }
 
-    public void Move()
+    public void DoRotation(bool left)
     {
-        if (!moving)
+        if (moving)
         {
-            if (Mathf.Abs(parent.transform.eulerAngles.z) < 60 && Mathf.Abs(parent.transform.eulerAngles.z) > 1)
+            if (!left)
             {
                 parent.transform.DORotate(new Vector3(0, 0, 60), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
@@ -35,7 +37,7 @@ public class CrochetBalance : Crochet
                         DoRotation(!left);
                     });
             }
-            else if (Mathf.Abs(parent.transform.eulerAngles.z) > 60)
+            else
             {
                 parent.transform.DORotate(new Vector3(0, 0, 310), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
@@ -44,20 +46,6 @@ public class CrochetBalance : Crochet
                         DoRotation(!left);
                     });
             }
-        }
-        else if (goingRight && (Mathf.Abs(parent.transform.eulerAngles.z) > 305 || Mathf.Abs(parent.transform.eulerAngles.z) < 50))
-        {
-            parent.transform.Rotate(new Vector3(0, 0, speed));
-        }
-        else if (Mathf.Abs(parent.transform.eulerAngles.z) > 310 || Mathf.Abs(parent.transform.eulerAngles.z) < 55)
-        {
-            goingRight = false;
-            parent.transform.Rotate(new Vector3(0, 0, -speed));
-        }
-        else
-        {
-            goingRight = true;
-            parent.transform.Rotate(new Vector3(0, 0, speed));
         }
     }
     
@@ -71,7 +59,6 @@ public class CrochetBalance : Crochet
         {
             playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.Accroche(this);
-            goingRight = playerController.gameObject.transform.position.x < transform.position.x;
             playerController.gameObject.transform.eulerAngles = parent.transform.eulerAngles;
             isAvailable = false;
         }

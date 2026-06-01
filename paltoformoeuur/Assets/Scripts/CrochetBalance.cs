@@ -33,6 +33,7 @@ public class CrochetBalance : Crochet
             else if (Mathf.Abs(parent.transform.eulerAngles.z) > 60)
             {
                 parent.transform.Rotate(new Vector3(0, 0, speed));
+                
             }
         }
         else if (goingRight && (Mathf.Abs(parent.transform.eulerAngles.z) > 305 || Mathf.Abs(parent.transform.eulerAngles.z) < 50))
@@ -48,6 +49,7 @@ public class CrochetBalance : Crochet
         {
             goingRight = true;
             parent.transform.Rotate(new Vector3(0, 0, speed));
+            PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
         }
     }
     

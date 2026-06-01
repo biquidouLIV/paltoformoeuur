@@ -32,7 +32,7 @@ public class CrochetBalance : Crochet
         {
             if (!left)
             {
-                parent.transform.DORotate(new Vector3(parent.transform.position.x, parent.transform.position.y, 60), timeForOneRotation)
+                parent.transform.DORotate(new Vector3(0, 0, 60), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
                     {
                         PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
@@ -41,7 +41,7 @@ public class CrochetBalance : Crochet
             }
             else
             {
-                parent.transform.DORotate(new Vector3(parent.transform.position.x, parent.transform.position.y, 310), timeForOneRotation)
+                parent.transform.DORotate(new Vector3(0, 0, 310), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
                     {
                         PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
@@ -70,7 +70,7 @@ public class CrochetBalance : Crochet
     public override IEnumerator Active(Rigidbody2D rigidbody)
     {
         parent.transform.DOKill();
-        parent.transform.DORotate(new Vector3(parent.transform.position.x,parent.transform.position.y, 0),2).SetEase(rotationEase);
+        parent.transform.DORotate(Vector3.zero,2).SetEase(rotationEase);
         moving = false;
         if (parent.transform.eulerAngles.z < 60)
         {

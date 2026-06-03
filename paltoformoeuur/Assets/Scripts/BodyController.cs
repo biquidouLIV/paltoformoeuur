@@ -409,7 +409,7 @@ public class BodyController : PlayerController
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
         moveInput = Vector2.zero;
-        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
+        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 2f, 0), tempsAccroche)
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;

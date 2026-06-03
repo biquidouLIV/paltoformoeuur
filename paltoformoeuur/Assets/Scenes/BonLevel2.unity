@@ -39222,6 +39222,7 @@ GameObject:
   - component: {fileID: 1348491755}
   - component: {fileID: 1348491754}
   - component: {fileID: 1348491756}
+  - component: {fileID: 1348491757}
   m_Layer: 0
   m_Name: MetroLamp_front
   m_TagString: Untagged
@@ -39355,6 +39356,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1348491757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348491753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f303bbd9097f8e4cbaaef545ed78d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  delay: 0.2
+  minIntensityValue: 0
+  maxIntensityValue: 8
 --- !u!1001 &1349402094
 PrefabInstance:
   m_ObjectHideFlags: 0

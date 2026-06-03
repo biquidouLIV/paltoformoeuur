@@ -1686,7 +1686,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 153206188, guid: 36e6d798dabbc7e49aa2eb7b58fb5a36, type: 3}
@@ -2457,7 +2457,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 153206188, guid: 36e6d798dabbc7e49aa2eb7b58fb5a36, type: 3}
@@ -17881,6 +17881,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   pauseMenu: {fileID: 0}
+  defaultPauseMenu: {fileID: 0}
+  settingsMenu: {fileID: 0}
+  defaultPauseSelected: {fileID: 0}
+  defaultSettingsSelected: {fileID: 0}
+  settingsTab: []
+  settingsTabIcon: []
+  transitionScreen: {fileID: 0}
 --- !u!4 &697880595
 Transform:
   m_ObjectHideFlags: 0
@@ -23997,7 +24004,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 923256040, guid: c80f127e71192cc4f9520aca3aa1a634, type: 3}
@@ -45549,7 +45556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4938187692499657133, guid: b5b8c7f756c6cdc448fb42abe3b32730, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5834304487149730333, guid: b5b8c7f756c6cdc448fb42abe3b32730, type: 3}
       propertyPath: m_AnchorMax.y

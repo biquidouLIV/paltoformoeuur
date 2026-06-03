@@ -272,6 +272,8 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
+        if(accroche) return;
+        
         if (headController.isRecalling)
         {
             return;
@@ -305,6 +307,8 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
+        if(accroche) return;
+        
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
             if(hand.activeSelf) return;

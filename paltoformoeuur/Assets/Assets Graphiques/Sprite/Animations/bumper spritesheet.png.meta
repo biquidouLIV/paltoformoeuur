@@ -1,0 +1,326 @@
+fileFormatVersion: 2
+guid: 4d4f4092bf73a2b48bbb4dd77b19bfb0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bumper spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1671
+        y: 57
+        width: 165
+        height: 467
+      alignment: 9
+      pivot: {x: 0.5, y: 0.14561027}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c307097833a5ab45a22aa6bdce68882
+      internalID: -928182340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 59
+        width: 158
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8daaf566df0d9044abdc590265d419c
+      internalID: -331986794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 57
+        width: 149
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43870968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42854b27a51eb404ba66be7ec1b7ce96
+      internalID: -1853395867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 57
+        width: 148
+        height: 260
+      alignment: 9
+      pivot: {x: 0.5, y: 0.26153848}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142fbc57dfa78124b8696b744dc52acb
+      internalID: -529505813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 57
+        width: 190
+        height: 364
+      alignment: 9
+      pivot: {x: 0.5, y: 0.18681319}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68d8e8633bace746b5a25fd192e196e
+      internalID: -1094832667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 57
+        width: 275
+        height: 432
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1574074}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cb31062aaeaeb438e27c6621feb3ab
+      internalID: 1355303580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 56
+        width: 223
+        height: 467
+      alignment: 9
+      pivot: {x: 0.5, y: 0.14561027}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3c3d2620dbb93e4a88245d6a4b5b0c2
+      internalID: -411289820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e11c2b67f7e0b7e4cbc8f6f9aeffa3fd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      bumper spritesheet_0: -331986794
+      bumper spritesheet_1: -1853395867
+      bumper spritesheet_10: 1593280028
+      bumper spritesheet_11: 893385260
+      bumper spritesheet_12: -34711067
+      bumper spritesheet_13: 1565174759
+      bumper spritesheet_14: -6566761
+      bumper spritesheet_15: 1612286094
+      bumper spritesheet_16: -1081606646
+      bumper spritesheet_17: 1322827088
+      bumper spritesheet_18: -1846596003
+      bumper spritesheet_19: -2085267437
+      bumper spritesheet_2: -928182340
+      bumper spritesheet_20: -2073425684
+      bumper spritesheet_21: -704652082
+      bumper spritesheet_22: -654583789
+      bumper spritesheet_23: 2084051449
+      bumper spritesheet_24: -245410097
+      bumper spritesheet_25: -1158626344
+      bumper spritesheet_26: -1116364877
+      bumper spritesheet_3: -529505813
+      bumper spritesheet_4: -1094832667
+      bumper spritesheet_5: 1355303580
+      bumper spritesheet_6: -411289820
+      bumper spritesheet_7: 1687411037
+      bumper spritesheet_8: 491055689
+      bumper spritesheet_9: -1553385938
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

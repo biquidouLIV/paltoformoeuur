@@ -162,18 +162,20 @@ public class HandController : PlayerController
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;
+        bool fromLeft = crochet.transform.position.x < transform.position.x;
         elementRigidbody.simulated = false;
         moveInput = Vector2.zero;
         transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
             .OnComplete(() =>
             {
                 gameObject.transform.parent = currentCrochet.transform;
-                crochet.moving = true;
+                crochet.StartRotation(fromLeft);
             });
     }
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
+        PlayerManager.instance.controlledPart = PlayerPart.body;
         handAnimator.SetBool("IsWalking", false);
         accroche = true;
         currentCrochet = crochet;

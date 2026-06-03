@@ -45,6 +45,7 @@ public class BodyController : PlayerController
     private Crochet currentCrochet;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
+    private float delayZoomHead;
 
     public float distanceWithGround;
     public bool canThrowHead;
@@ -58,6 +59,7 @@ public class BodyController : PlayerController
             launchForce = bodyData.launchForce;
             bufferingTime = bodyData.bufferingTime;
             coyoteTime = bodyData.coyoteTime;
+            delayZoomHead = bodyData.delayZoomHead;
             timeSinceLastJump = jumpMinimumDelay;
             head.SetActive(false);
             hand.SetActive(false);
@@ -155,7 +157,6 @@ public class BodyController : PlayerController
     {
         if (accroche)
         {
-            
             return;
         }
         if (isAiming)
@@ -254,6 +255,14 @@ public class BodyController : PlayerController
         distanceWithGround = hit.distance;
     }
 
+    public IEnumerator Fall()
+    {
+        rotation = Vector2.right;
+        SpawnHead();
+        CameraManager.instance.HeadZoom();
+        yield return new WaitForSeconds(delayZoomHead);
+        CameraManager.instance.UnZoom();
+    }
 
     private void OnDrawGizmos()
     {
@@ -342,7 +351,6 @@ public class BodyController : PlayerController
         if (CheckIfGrounded())
         {
             moveInput = Vector2.zero;
-            
         }
         else
         {
@@ -350,7 +358,6 @@ public class BodyController : PlayerController
             StartCoroutine(VelocityWhenSpawnHand());
         }
     }
-    
     
     private void SpawnHead()
     {
@@ -399,7 +406,6 @@ public class BodyController : PlayerController
     {
         PlayerManager.instance.PlayerInput.enabled = true;
     }
-    
     
     public override void Accroche(CrochetBalance crochet)
     {

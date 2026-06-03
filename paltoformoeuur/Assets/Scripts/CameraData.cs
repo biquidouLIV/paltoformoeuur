@@ -6,5 +6,6 @@ public class CameraData : ScriptableObject
 {
     public float bodyCameraFOV = 5;
     public float headCameraFOV = 12;
+    public float zoomHeadCameraFOV = 12;
     public float FOVTransitionDuration;
 }

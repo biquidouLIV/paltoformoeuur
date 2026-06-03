@@ -7,4 +7,5 @@ public class BodyData : PlayerData
     public float launchForce;
     public float coyoteTime;
     public float bufferingTime;
+    public float delayZoomHead;
 }

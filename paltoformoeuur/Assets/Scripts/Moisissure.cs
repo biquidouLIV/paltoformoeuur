@@ -1,17 +1,16 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Moisissure : MonoBehaviour
 {
-    [FormerlySerializedAs("ralentissement")] [SerializeField] private float slowdown;
-    [FormerlySerializedAs("ralentissementInstantane")] [SerializeField] private float instantSlowdown;
+    [SerializeField] private float ralentissement;
+    [SerializeField] private float ralentissementInstantane;
         
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Head"))
         {
-            other.GetComponent<Rigidbody2D>().angularDamping += slowdown;
-            other.GetComponent<Rigidbody2D>().linearVelocity /= instantSlowdown;
+            other.GetComponent<Rigidbody2D>().angularDamping += ralentissement;
+            other.GetComponent<Rigidbody2D>().linearVelocity /= ralentissementInstantane;
             return;
         }
         if (other.GetComponent<PlayerController>() != null)
@@ -24,7 +23,7 @@ public class Moisissure : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Head"))
         {
-            other.GetComponent<Rigidbody2D>().angularDamping -= slowdown;
+            other.GetComponent<Rigidbody2D>().angularDamping -= ralentissement;
         }
     }
 }

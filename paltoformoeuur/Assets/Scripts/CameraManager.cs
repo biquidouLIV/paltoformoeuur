@@ -36,6 +36,7 @@ public class CameraManager : MonoBehaviour
     
     private float bodyCameraFOV;
     private float headCameraFOV ;
+    private float zoomHeadCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
 
@@ -50,20 +51,17 @@ public class CameraManager : MonoBehaviour
         defaultTargetOffset = cinemachinePositionComposer.TargetOffset;
         defaultLookAheadTime = cinemachinePositionComposer.Lookahead.Time;
         
-        
         body = PlayerManager.instance.bodyController;
         head = PlayerManager.instance.headController;
         cinemachine.Follow = head.transform;
-        
 
         bodyCameraFOV = data.bodyCameraFOV;
         headCameraFOV = data.headCameraFOV;
+        zoomHeadCameraFOV = data.zoomHeadCameraFOV;
         FOVTransitionDuration = data.FOVTransitionDuration;
-        
         
         targetPart = body;
         ChangeTarget(PlayerPart.body);
-         
      }
      
     public void ChangeTarget(PlayerPart part)
@@ -73,7 +71,6 @@ public class CameraManager : MonoBehaviour
             case PlayerPart.body:
                 targetFOV = bodyCameraFOV;
                 targetPart = body;
-
                 break;
             case PlayerPart.head:
                 targetFOV = headCameraFOV;
@@ -85,13 +82,23 @@ public class CameraManager : MonoBehaviour
         DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, FOVTransitionDuration);
     }
 
+    public void HeadZoom()
+    {
+        targetFOV = zoomHeadCameraFOV;
+        DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, 1);
+    }
+    
+    public void UnZoom()
+    {
+        targetFOV = headCameraFOV;
+        DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, 1);
+    }
+    
     public void CameraOnRecallHead()
     {
         DOTween.To(() => cinemachinePositionComposer.TargetOffset, x => cinemachinePositionComposer.TargetOffset = x, defaultTargetOffset, 1);
         cinemachinePositionComposer.Lookahead.Enabled = true;
     }
-    
-    
     
     public IEnumerator CameraOnRespawn()
     {
@@ -99,7 +106,5 @@ public class CameraManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         cinemachinePositionComposer.Lookahead.Time = defaultLookAheadTime;
     }
-
-
 }
 

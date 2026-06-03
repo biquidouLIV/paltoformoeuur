@@ -31,8 +31,9 @@ public class HeadController : PlayerController
         colliderRond.enabled = true;
     }
 
-    protected void Update()
+    protected override void Update()
     {
+        base.Update();
         if (Mathf.Abs(elementRigidbody.linearVelocity.x) < 0.2f)
         {
             elementRigidbody.linearVelocity = new Vector2(0, elementRigidbody.linearVelocity.y);

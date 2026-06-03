@@ -4,9 +4,12 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerController : MonoBehaviour
 {
+    
+    
     [Header("Refs")]
-    [SerializeField] private PlayerData data;
-    [SerializeField] protected GameObject player;
+        [SerializeField] private PlayerData data;
+        [SerializeField] protected GameObject player;
+
     
     [NonSerialized] public Rigidbody2D elementRigidbody;
     [NonSerialized] public Vector2 moveInput;
@@ -14,6 +17,7 @@ public abstract class PlayerController : MonoBehaviour
     protected float sprintSpeed = 1;
     private float speed = 1;
     //protected float sprintSpeedMultiplier = 2;
+    
     
     protected BodyController bodyScript;
     
@@ -30,9 +34,9 @@ public abstract class PlayerController : MonoBehaviour
         bodyScript = player.GetComponent<BodyController>();
     }
     
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
-        transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.fixedDeltaTime,0),Space.World);
+        transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }
     
     public virtual void OnMove(InputAction.CallbackContext context)
@@ -66,5 +70,8 @@ public abstract class PlayerController : MonoBehaviour
     {
         
     }
+
+
+
 }
         

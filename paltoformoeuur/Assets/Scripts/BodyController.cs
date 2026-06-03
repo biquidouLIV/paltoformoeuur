@@ -410,6 +410,8 @@ public class BodyController : PlayerController
     public override void Accroche(CrochetBalance crochet)
     {
         bodyAnimator.SetBool("IsWalking", false);
+        bodyAnimator.SetBool("IsFalling", false);
+        bodyAnimator.SetBool("IsBalancing", true);
         accroche = true;
         bool fromLeft = crochet.transform.position.x < transform.position.x;
         currentCrochet = crochet;
@@ -441,6 +443,7 @@ public class BodyController : PlayerController
     
     public override void Decroche()
     {
+        bodyAnimator.SetBool("IsBalancing", false);
         gameObject.transform.parent = playerParent.transform;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;

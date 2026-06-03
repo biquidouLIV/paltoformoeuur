@@ -118,4 +118,29 @@ public class PlayerManager : MonoBehaviour
         handController.Recall();
     }
     
+    
+    //UI
+
+    #region UI
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        UIManager.instance.Pause(context);
+    }
+
+    public void NextTab(InputAction.CallbackContext context)
+    {
+        UIManager.instance.NextTab(context);
+    }
+    public void PreviousTab(InputAction.CallbackContext context)
+    {
+        UIManager.instance.NextTab(context);
+    }
+
+    public void GoBack(InputAction.CallbackContext context)
+    {
+        UIManager.instance.GoBack(context);
+    }
+
+    #endregion
 }

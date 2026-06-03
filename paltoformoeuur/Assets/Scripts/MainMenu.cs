@@ -1,65 +1,48 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Experimental.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-    public static UIManager instance;
-
     private enum Menu
     {
-        noMenu,
-        pause,
+        main,
         settings,
     }
     
-    [Header("menus")]
-        [SerializeField] private GameObject pauseMenu;
-        [SerializeField] private GameObject defaultPauseMenu;
+    [Header("Menu")]
+        [SerializeField] private GameObject mainMenu;
         [SerializeField] private GameObject settingsMenu;
-
-    [Header("defaultSelectedButtons")]
-        [SerializeField] private GameObject defaultPauseSelected;
+    
+    [Header("Menu Default Button")]
+        [SerializeField] private GameObject defaultMainSelected;
         [SerializeField] private GameObject defaultSettingsSelected;
     
     [Header("settings menu")]
         [SerializeField] private GameObject[] settingsTab;
         [SerializeField] private GameObject[] settingsTabIcon;
         private int settingsTabIndex = 0;
-    
-
-    [Header("transition")]
-        [SerializeField] private RectTransform transitionScreen;
-    
-    
-    private float actualTimeScale;
-    private Menu menu;
+        
+        
+    [SerializeField] private RectTransform transitionScreen;
     private EventSystem eventSystem;
-    
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(this);
-    }
+    private Menu menu;
+
 
     private void Start()
     {
+        Time.timeScale = 1;
         eventSystem = EventSystem.current;
-        PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
-        ChangeMenu(Menu.noMenu);
-        
-        
-        
         transitionScreen.gameObject.SetActive(true);
         StartCoroutine(TransitionOpen());
+        ChangeMenu(Menu.main);
     }
     
-
     private IEnumerator TransitionOpen()
     {
         yield return new WaitForSeconds(0.5f);
@@ -67,7 +50,6 @@ public class UIManager : MonoBehaviour
         transitionScreen.DOLocalMove(new Vector3(-1920, 0, 0), 1).SetUpdate(true);
     }
     
-
     public void LoadScene(int scene)
     {
         transitionScreen.localPosition = new Vector3(1920, 0, 0);
@@ -75,6 +57,8 @@ public class UIManager : MonoBehaviour
             .SetUpdate(true)
             .OnComplete((() =>
             {
+                Time.timeScale = 1;
+                transitionScreen.DOKill();
                 SceneManager.LoadScene(scene);
             }));
     }
@@ -85,69 +69,26 @@ public class UIManager : MonoBehaviour
         return;
     }
 
-
     private void ChangeMenu(Menu newMenu)
     {
         switch (newMenu)
         {
-            case(Menu.noMenu):
-                Time.timeScale = 1;
-                PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
-                pauseMenu.SetActive(false);
-                defaultPauseMenu.SetActive(false);
+            case(Menu.main):
+                eventSystem.SetSelectedGameObject(defaultMainSelected);
+                mainMenu.SetActive(true);
                 settingsMenu.SetActive(false);
                 break;
-            
-            case(Menu.pause):
-                Time.timeScale = 0;
-                eventSystem.SetSelectedGameObject(defaultPauseSelected);
-                PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("UI");
-                settingsTabIndex = 0;
-                
-                pauseMenu.SetActive(true);
-                defaultPauseMenu.SetActive(true);
-                settingsMenu.SetActive(false);
-                break;
-            
             case(Menu.settings):
+                settingsTabIndex = 0;
                 eventSystem.SetSelectedGameObject(defaultSettingsSelected);
-                pauseMenu.SetActive(true);
-                defaultPauseMenu.SetActive(false);
+                mainMenu.SetActive(false);
                 settingsMenu.SetActive(true);
-                UpdateSettingsTab();
                 break;
         }
+
         menu = newMenu;
     }
-    
-    
-    
-    
-    
-    //pour input manette
-    public void Pause(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            Pause();
-        }
-    }
 
-    //pour bouton
-    public void Pause()
-    {
-        if (pauseMenu == null) return;
-       
-        if (menu == Menu.noMenu)
-        {
-            ChangeMenu(Menu.pause);
-        }
-        else
-        {
-            ChangeMenu(Menu.noMenu);
-        }
-        
-    }
     public void Settings()
     {
         ChangeMenu(Menu.settings);
@@ -202,9 +143,7 @@ public class UIManager : MonoBehaviour
     {
         if (context.started)
         {
-            if(menu == Menu.settings) ChangeMenu(Menu.pause);
+            if(menu == Menu.settings) ChangeMenu(Menu.main);
         }
     }
 }
-
-

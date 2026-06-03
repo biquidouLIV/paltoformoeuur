@@ -1007,19 +1007,7 @@ MonoBehaviour:
     m_ActionId: 475056bb-c4c0-4157-bd78-a926b777fea4
     m_ActionName: 'Test/Next[/Keyboard/2,/XInputControllerWindows/dpad/right]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2365311328493070183}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
-        m_MethodName: OnSprint
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 50481e4a-cac9-484c-9ced-1de06fe8f09b
     m_ActionName: 'Test/Sprint[/Keyboard/leftShift,/XInputControllerWindows/buttonWest]'
   - m_PersistentCalls:
@@ -1040,8 +1028,8 @@ MonoBehaviour:
     m_ActionName: 'Test/RecallHand[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 0
         m_Arguments:
@@ -1056,8 +1044,8 @@ MonoBehaviour:
     m_ActionName: 'UI/Pause[/XInputControllerWindows/start,/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 0
         m_Arguments:
@@ -1072,8 +1060,8 @@ MonoBehaviour:
     m_ActionName: 'Player/Pause[/XInputControllerWindows/start,/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: NextTab
         m_Mode: 0
         m_Arguments:
@@ -1088,8 +1076,8 @@ MonoBehaviour:
     m_ActionName: 'UI/NextTab[/XInputControllerWindows/rightShoulder,/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: PreviousTab
         m_Mode: 0
         m_Arguments:
@@ -1104,8 +1092,8 @@ MonoBehaviour:
     m_ActionName: 'UI/PreviousTab[/XInputControllerWindows/leftShoulder,/Keyboard/q]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2365311328493070183}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: GoBack
         m_Mode: 0
         m_Arguments:

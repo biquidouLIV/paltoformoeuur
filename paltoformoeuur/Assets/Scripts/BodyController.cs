@@ -281,6 +281,7 @@ public class BodyController : PlayerController
         
         if (context.started && !isAiming)
         {
+            StartCoroutine(VelocityWhenSpawnHand());
             if(head.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
@@ -311,6 +312,7 @@ public class BodyController : PlayerController
         
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
+            StartCoroutine(VelocityWhenSpawnHand());
             if(hand.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
@@ -358,7 +360,7 @@ public class BodyController : PlayerController
         }
         else
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
             StartCoroutine(VelocityWhenSpawnHand());
         }
     }

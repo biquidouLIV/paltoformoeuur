@@ -172,7 +172,7 @@ public class HandController : PlayerController
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
-        PlayerManager.instance.controlledPart = PlayerPart.body;
+        //PlayerManager.instance.controlledPart = PlayerPart.body;
         handAnimator.SetBool("IsWalking", false);
         handAnimator.SetBool("IsAccroche", true);
         accroche = true;

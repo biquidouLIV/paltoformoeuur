@@ -86,10 +86,6 @@ public class HandController : PlayerController
     //ca s'appelle jump mais c'est un dash
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            Debug.Log("ez");
-        }
         if (context.performed && accroche)
         {
             Decroche();

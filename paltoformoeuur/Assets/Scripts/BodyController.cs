@@ -41,7 +41,7 @@ public class BodyController : PlayerController
     private GameObject aim;
     public bool isAiming;
     private PlayerPart aimingPart;
-    private bool accroche;
+    public bool accroche;
     private Crochet currentCrochet;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
@@ -430,22 +430,6 @@ public class BodyController : PlayerController
                 crochet.StartRotation(fromLeft);
             });
     }
-    
-    /*
-    public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
-    {
-        bodyAnimator.SetBool("IsWalking", false);
-        accroche = true;
-        currentCrochet = crochet;
-        elementRigidbody.simulated = false;
-        moveInput = Vector2.zero;
-        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
-            .OnComplete(() =>
-            {
-                gameObject.transform.parent = currentCrochet.transform;
-                fallingPlatform.falling = true;
-            });
-    }*/
     
     public override void Decroche()
     {

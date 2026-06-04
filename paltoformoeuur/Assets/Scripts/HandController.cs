@@ -19,7 +19,7 @@ public class HandController : PlayerController
     private int recallSpeed;
     
     private bool canDash = true;
-    private bool accroche;
+    public bool accroche;
     private Crochet currentCrochet;
     private int direction = 1;
 
@@ -156,6 +156,7 @@ public class HandController : PlayerController
     public override void Accroche(CrochetBalance crochet)
     {
         handAnimator.SetBool("IsWalking", false);
+        handAnimator.SetBool("IsBalancing", true);
         accroche = true;
         currentCrochet = crochet;
         bool fromLeft = crochet.transform.position.x < transform.position.x;
@@ -187,6 +188,7 @@ public class HandController : PlayerController
     
     public override void Decroche()
     {
+        handAnimator.SetBool("IsBalancing", false);
         gameObject.transform.parent = null;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;

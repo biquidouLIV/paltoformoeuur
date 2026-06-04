@@ -1,16 +1,49 @@
+using System;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static SoundManager instance;
+    
+    [Header("Player")]
+    public AudioClip walkForest;
+    public AudioClip jump;
+    public AudioClip aim;
+    public AudioClip launch;
+    public AudioClip deathFinal;
+    public AudioClip deathMold;
+    public AudioClip collidePart;
+    public AudioClip walkArm;
+    public AudioClip dashBras;
+    
+    [Header("Enviro")]
+    public AudioClip bumperSound;
+    public AudioClip triggerButton;
+    public AudioClip triggerCheckpoint;
+    public AudioClip respawnCheckpoint;
+    public AudioClip respawnCheckpoint2;
+    
+    [Header("UI")]
+    public AudioClip pause;
+    public AudioClip UIButtonClick;
+    public AudioClip UIButtonClickMenu;
+    public AudioClip UIButtonHover;
+
+    private AudioSource audioSource;
+    
+    private void Awake()
     {
-        
+        if (instance != null) Destroy(this);
+        else instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
+
+    public void PlaySound(AudioClip audio)
+    {
+        audioSource.PlayOneShot(audio);
     }
 }

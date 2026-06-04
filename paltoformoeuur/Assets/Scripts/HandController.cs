@@ -34,9 +34,8 @@ public class HandController : PlayerController
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         if (elementRigidbody.linearVelocityY < 0f)
         {
             handAnimator.SetBool("IsFalling",true);
@@ -56,10 +55,12 @@ public class HandController : PlayerController
         
         if (moveInput.x > 0)
         {
+            if (elementRigidbody.linearVelocityX < 0) elementRigidbody.linearVelocityX = 0;
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
         else if(moveInput.x < 0)
         {
+            if (elementRigidbody.linearVelocityX > 0) elementRigidbody.linearVelocityX = 0;
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
         
@@ -130,10 +131,10 @@ public class HandController : PlayerController
     {
         canDash = false;
         handAnimator.SetBool("IsDashing",true);
-        elementRigidbody.linearVelocityX += dashSpeed*direction;
+        elementRigidbody.linearVelocityX += dashSpeed * direction;
         yield return new WaitForSeconds(dashDuration);
+        elementRigidbody.linearVelocityX = Mathf.Max(elementRigidbody.linearVelocityX - dashSpeed * direction,0);
         handAnimator.SetBool("IsDashing",false);
-        elementRigidbody.linearVelocityX -= dashSpeed*direction;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }

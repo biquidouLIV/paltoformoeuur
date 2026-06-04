@@ -68,9 +68,8 @@ public class BodyController : PlayerController
         }
     }
             
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         AnimationGestion();
         UpdateVariableJump();
         CheckJump();

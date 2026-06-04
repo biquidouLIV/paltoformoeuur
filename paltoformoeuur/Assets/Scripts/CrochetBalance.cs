@@ -33,7 +33,8 @@ public class CrochetBalance : Crochet
                 parent.transform.DORotate(new Vector3(0, 0, 60), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
                     {
-                        PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
+                        if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
+                        if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
                         DoRotation(!left);
                     });
             }
@@ -42,7 +43,8 @@ public class CrochetBalance : Crochet
                 parent.transform.DORotate(new Vector3(0, 0, 310), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
                     {
-                        PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
+                        if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
+                        if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
                         DoRotation(!left);
                     });
             }

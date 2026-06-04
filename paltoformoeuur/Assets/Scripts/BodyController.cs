@@ -50,6 +50,7 @@ public class BodyController : PlayerController
     public float distanceWithGround;
     public bool canThrowHead;
     public bool canThrowHand;
+    public bool isDying;
     
     public override void Init(PlayerData data)
     {
@@ -63,6 +64,7 @@ public class BodyController : PlayerController
             timeSinceLastJump = jumpMinimumDelay;
             head.SetActive(false);
             hand.SetActive(false);
+            isDying = false;
         }
     }
             
@@ -386,6 +388,7 @@ public class BodyController : PlayerController
     public override void Die()
     {
         bodyAnimator.SetTrigger("Die");
+        isDying = true;
         PlayerManager.instance.PlayerInput.enabled = false;
     }
 
@@ -410,6 +413,7 @@ public class BodyController : PlayerController
     //event dans l'anim de respawn
     public void ActiveInput()
     {
+        isDying = false;
         PlayerManager.instance.PlayerInput.enabled = true;
     }
     

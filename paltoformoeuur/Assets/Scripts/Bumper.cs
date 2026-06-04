@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bumper : MonoBehaviour
@@ -45,5 +44,6 @@ public class Bumper : MonoBehaviour
                 break;
         }
         animator.Play("Bump");
+        SoundManager.instance.PlaySound(SoundManager.instance.bumperSound);
     }
 }

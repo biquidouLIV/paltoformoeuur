@@ -34,7 +34,7 @@ public abstract class PlayerController : MonoBehaviour
         bodyScript = player.GetComponent<BodyController>();
     }
     
-    protected virtual void Update()
+    protected void FixedUpdate()
     {
         transform.Translate(new Vector2(moveInput.x * speed * sprintSpeed * Time.deltaTime,0),Space.World);
     }

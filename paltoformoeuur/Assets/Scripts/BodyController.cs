@@ -41,7 +41,7 @@ public class BodyController : PlayerController
     private GameObject aim;
     public bool isAiming;
     private PlayerPart aimingPart;
-    private bool accroche;
+    public bool accroche;
     private Crochet currentCrochet;
     private float timeSinceLastJump;
     private float jumpMinimumDelay = 0.3f;
@@ -50,6 +50,7 @@ public class BodyController : PlayerController
     public float distanceWithGround;
     public bool canThrowHead;
     public bool canThrowHand;
+    public bool isDying;
     
     public override void Init(PlayerData data)
     {
@@ -63,12 +64,12 @@ public class BodyController : PlayerController
             timeSinceLastJump = jumpMinimumDelay;
             head.SetActive(false);
             hand.SetActive(false);
+            isDying = false;
         }
     }
             
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         AnimationGestion();
         UpdateVariableJump();
         CheckJump();
@@ -113,7 +114,9 @@ public class BodyController : PlayerController
     {
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
+            if(isDying)return;
             //jumpSound.Play();
+            SoundManager.instance.PlaySound(SoundManager.instance.jump);
             timeSinceLastJump = 0;
             elementRigidbody.linearVelocityY = 0;
             elementRigidbody.linearVelocityY = jumpHeight;
@@ -172,7 +175,6 @@ public class BodyController : PlayerController
             {
                 moveInput = Vector2.zero;
             }
-            
         }
         else
         {
@@ -272,6 +274,8 @@ public class BodyController : PlayerController
 
     public void OnAimHead(InputAction.CallbackContext context)
     {
+        if(accroche) return;
+        
         if (headController.isRecalling)
         {
             return;
@@ -279,17 +283,19 @@ public class BodyController : PlayerController
         
         if (context.started && !isAiming)
         {
+            StartCoroutine(VelocityWhenSpawnHand());
             if(head.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHead",true);
+            SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.head;
         }
         
         else if (context.canceled && isAiming && aimingPart == PlayerPart.head && PlayerManager.instance.headOnBody)
         {     
             SpawnHead();
-            
+            SoundManager.instance.PlaySound(SoundManager.instance.launch);
             Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHead)return;
@@ -305,17 +311,22 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
+        if(accroche) return;
+        
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)
         {
+            StartCoroutine(VelocityWhenSpawnHand());
             if(hand.activeSelf) return;
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHand",true);
+            SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.hand;
         }
         else if (context.canceled && isAiming && aimingPart == PlayerPart.hand && PlayerManager.instance.handOnBody)
         {
             SpawnHand();
+            SoundManager.instance.PlaySound(SoundManager.instance.launch);
             Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHand)return;
@@ -354,7 +365,7 @@ public class BodyController : PlayerController
         }
         else
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
             StartCoroutine(VelocityWhenSpawnHand());
         }
     }
@@ -380,7 +391,9 @@ public class BodyController : PlayerController
     public override void Die()
     {
         bodyAnimator.SetTrigger("Die");
+        isDying = true;
         PlayerManager.instance.PlayerInput.enabled = false;
+        elementRigidbody.linearVelocityX = 0;
     }
 
     
@@ -389,6 +402,7 @@ public class BodyController : PlayerController
     {
         StartCoroutine(CameraManager.instance.CameraOnRespawn());
         transform.position = PlayerManager.instance.checkpointTransform;
+        SoundManager.instance.PlaySound(SoundManager.instance.respawnCheckpoint);
         
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
         {
@@ -404,12 +418,15 @@ public class BodyController : PlayerController
     //event dans l'anim de respawn
     public void ActiveInput()
     {
+        isDying = false;
         PlayerManager.instance.PlayerInput.enabled = true;
     }
     
     public override void Accroche(CrochetBalance crochet)
     {
         bodyAnimator.SetBool("IsWalking", false);
+        bodyAnimator.SetBool("IsFalling", false);
+        bodyAnimator.SetBool("IsBalancing", true);
         accroche = true;
         bool fromLeft = crochet.transform.position.x < transform.position.x;
         currentCrochet = crochet;
@@ -423,28 +440,13 @@ public class BodyController : PlayerController
             });
     }
     
-    /*
-    public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
-    {
-        bodyAnimator.SetBool("IsWalking", false);
-        accroche = true;
-        currentCrochet = crochet;
-        elementRigidbody.simulated = false;
-        moveInput = Vector2.zero;
-        transform.DOMove(crochet.gameObject.transform.position - new Vector3(0, 0.8f, 0), tempsAccroche)
-            .OnComplete(() =>
-            {
-                gameObject.transform.parent = currentCrochet.transform;
-                fallingPlatform.falling = true;
-            });
-    }*/
-    
     public override void Decroche()
     {
+        bodyAnimator.SetBool("IsBalancing", false);
         gameObject.transform.parent = playerParent.transform;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;
-        StartCoroutine(currentCrochet.Active(elementRigidbody));
+        StartCoroutine(currentCrochet.OnLeave(elementRigidbody));
         accroche = false;
         currentCrochet = null;
     }

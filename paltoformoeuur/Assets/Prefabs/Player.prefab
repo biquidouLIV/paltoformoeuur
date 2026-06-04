@@ -411,9 +411,11 @@ MonoBehaviour:
   distanceVisionTete: 10
   bufferingTimeCounter: 0
   isAiming: 0
-  timeSinceLastJump: 0
+  accroche: 0
+  distanceWithGround: 0
   canThrowHead: 0
   canThrowHand: 0
+  isDying: 0
 --- !u!95 &6755396211980822311
 Animator:
   serializedVersion: 7
@@ -1295,6 +1297,7 @@ MonoBehaviour:
   player: {fileID: 3024878346645139155}
   tempsAccroche: 0.2
   handAnimator: {fileID: 5572336904471285171}
+  accroche: 0
 --- !u!95 &5572336904471285171
 Animator:
   serializedVersion: 7

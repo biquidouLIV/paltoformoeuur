@@ -52,9 +52,6 @@ public class UIManager : MonoBehaviour
         eventSystem = EventSystem.current;
         PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
         ChangeMenu(Menu.noMenu);
-        
-        
-        
         transitionScreen.gameObject.SetActive(true);
         StartCoroutine(TransitionOpen());
     }
@@ -82,10 +79,8 @@ public class UIManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
-        return;
     }
-
-
+    
     private void ChangeMenu(Menu newMenu)
     {
         switch (newMenu)
@@ -129,6 +124,7 @@ public class UIManager : MonoBehaviour
     {
         if (context.started)
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.pause);
             Pause();
         }
     }

@@ -19,7 +19,7 @@ public class HandController : PlayerController
     private int recallSpeed;
     
     private bool canDash = true;
-    private bool accroche;
+    public bool accroche;
     private Crochet currentCrochet;
     private int direction = 1;
 
@@ -34,9 +34,8 @@ public class HandController : PlayerController
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         if (elementRigidbody.linearVelocityY < 0f)
         {
             handAnimator.SetBool("IsFalling",true);
@@ -56,14 +55,17 @@ public class HandController : PlayerController
         
         if (moveInput.x > 0)
         {
+            if (elementRigidbody.linearVelocityX < 0) elementRigidbody.linearVelocityX = 0;
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
         else if(moveInput.x < 0)
         {
+            if (elementRigidbody.linearVelocityX > 0) elementRigidbody.linearVelocityX = 0;
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
         
         handAnimator.SetBool("IsWalking", true);
+        SoundManager.instance.PlaySound(SoundManager.instance.walkArm);
         base.OnMove(context);
         
         if (moveInput.x > 0)
@@ -86,10 +88,6 @@ public class HandController : PlayerController
     //ca s'appelle jump mais c'est un dash
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            Debug.Log("ez");
-        }
         if (context.performed && accroche)
         {
             Decroche();
@@ -115,7 +113,7 @@ public class HandController : PlayerController
                     bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
-                    PlayerManager.instance.PlayerInput.enabled = true;
+                    if (!PlayerManager.instance.bodyController.isDying) PlayerManager.instance.PlayerInput.enabled = true;
                     PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
                     PlayerManager.instance.StartCoroutine(doLatter());
                     gameObject.SetActive(false);
@@ -134,10 +132,11 @@ public class HandController : PlayerController
     {
         canDash = false;
         handAnimator.SetBool("IsDashing",true);
-        elementRigidbody.linearVelocityX += dashSpeed*direction;
+        SoundManager.instance.PlaySound(SoundManager.instance.dashBras);
+        elementRigidbody.linearVelocityX += dashSpeed * direction;
         yield return new WaitForSeconds(dashDuration);
+        elementRigidbody.linearVelocityX = Mathf.Max(elementRigidbody.linearVelocityX - dashSpeed * direction,0);
         handAnimator.SetBool("IsDashing",false);
-        elementRigidbody.linearVelocityX -= dashSpeed*direction;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
@@ -160,6 +159,7 @@ public class HandController : PlayerController
     public override void Accroche(CrochetBalance crochet)
     {
         handAnimator.SetBool("IsWalking", false);
+        handAnimator.SetBool("IsBalancing", true);
         accroche = true;
         currentCrochet = crochet;
         bool fromLeft = crochet.transform.position.x < transform.position.x;
@@ -175,8 +175,9 @@ public class HandController : PlayerController
     
     public override void Accroche(CrochetPlatform crochet, FallingPlatform fallingPlatform)
     {
-        PlayerManager.instance.controlledPart = PlayerPart.body;
+        //PlayerManager.instance.controlledPart = PlayerPart.body;
         handAnimator.SetBool("IsWalking", false);
+        handAnimator.SetBool("IsAccroche", true);
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;
@@ -191,11 +192,12 @@ public class HandController : PlayerController
     
     public override void Decroche()
     {
+        handAnimator.SetBool("IsBalancing", false);
         gameObject.transform.parent = null;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;
         accroche = false;
-        currentCrochet.StartCoroutine(currentCrochet.Active(elementRigidbody));
+        currentCrochet.StartCoroutine(currentCrochet.OnLeave(elementRigidbody));
         currentCrochet = null;
     }
 }

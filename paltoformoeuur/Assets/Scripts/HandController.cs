@@ -111,7 +111,7 @@ public class HandController : PlayerController
                     bodyScript.bodyAnimator.SetBool("IsArmless",false);
                     DisableElement();
                     PlayerManager.instance.handOnBody = true;
-                    PlayerManager.instance.PlayerInput.enabled = true;
+                    if (!PlayerManager.instance.bodyController.isDying) PlayerManager.instance.PlayerInput.enabled = true;
                     PlayerManager.instance.ChangeControlledPart(PlayerPart.body);
                     PlayerManager.instance.StartCoroutine(doLatter());
                     gameObject.SetActive(false);

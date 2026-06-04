@@ -82,7 +82,6 @@ public class HeadController : PlayerController
     {
         yield return new WaitForSeconds(0.5f);
         bodyScript.canThrowHead = false;
-        
     }
 
     private void OnDisable()

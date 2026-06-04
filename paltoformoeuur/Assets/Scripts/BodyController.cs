@@ -114,6 +114,8 @@ public class BodyController : PlayerController
     {
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
+            if(isDying)return;
+            //jumpSound.Play();
             SoundManager.instance.PlaySound(SoundManager.instance.jump);
             timeSinceLastJump = 0;
             elementRigidbody.linearVelocityY = 0;
@@ -391,6 +393,7 @@ public class BodyController : PlayerController
         bodyAnimator.SetTrigger("Die");
         isDying = true;
         PlayerManager.instance.PlayerInput.enabled = false;
+        elementRigidbody.linearVelocityX = 0;
     }
 
     

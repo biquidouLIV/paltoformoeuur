@@ -39,6 +39,7 @@ public class CameraManager : MonoBehaviour
     private float zoomHeadCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
+    private Vector3 targetOffset;
 
 
     private Vector3 defaultTargetOffset;
@@ -84,6 +85,8 @@ public class CameraManager : MonoBehaviour
 
     public void HeadZoom()
     {
+        cinemachinePositionComposer.TargetOffset = Vector3.zero;
+        cinemachinePositionComposer.Lookahead.Enabled = false;
         targetFOV = zoomHeadCameraFOV;
         DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, 1);
     }

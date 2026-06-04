@@ -395,7 +395,7 @@ MonoBehaviour:
   player: {fileID: 3024878346645139155}
   defaultRotationInput: {x: 0.8, y: 0.6}
   tempsAccroche: 0
-  jumpRaycastSize: {x: 0.5, y: 0.14}
+  jumpRaycastSize: {x: 0.4, y: 0.14}
   jumpRaycastOrigin: {x: 0.1, y: 0.09}
   playerParent: {fileID: 6260475154895817139}
   hand: {fileID: 6392271598579402724}
@@ -411,9 +411,11 @@ MonoBehaviour:
   distanceVisionTete: 10
   bufferingTimeCounter: 0
   isAiming: 0
+  accroche: 0
   distanceWithGround: 0
   canThrowHead: 0
   canThrowHand: 0
+  isDying: 0
 --- !u!95 &6755396211980822311
 Animator:
   serializedVersion: 7
@@ -1295,6 +1297,7 @@ MonoBehaviour:
   player: {fileID: 3024878346645139155}
   tempsAccroche: 0.2
   handAnimator: {fileID: 5572336904471285171}
+  accroche: 0
 --- !u!95 &5572336904471285171
 Animator:
   serializedVersion: 7

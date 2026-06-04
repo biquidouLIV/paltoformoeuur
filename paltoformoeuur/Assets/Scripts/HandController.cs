@@ -174,6 +174,7 @@ public class HandController : PlayerController
     {
         PlayerManager.instance.controlledPart = PlayerPart.body;
         handAnimator.SetBool("IsWalking", false);
+        handAnimator.SetBool("IsAccroche", true);
         accroche = true;
         currentCrochet = crochet;
         elementRigidbody.simulated = false;

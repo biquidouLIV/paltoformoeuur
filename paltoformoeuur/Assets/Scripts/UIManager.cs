@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.Experimental.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,20 +28,32 @@ public class UIManager : MonoBehaviour
     [Header("defaultSelectedButtons")]
         [SerializeField] private GameObject defaultPauseSelected;
         [SerializeField] private GameObject defaultSettingsSelected;
-    
+
+    [Header("pause menu")] 
+        [SerializeField] private RectTransform selectionArrow;
+        [SerializeField] private float arrowSpeed = 0.2f;
+        [SerializeField] private Ease arrowEase;
+
+        [SerializeField] private RectTransform header;
+        [SerializeField] private RectTransform[] buttons;
+        
     [Header("settings menu")]
         [SerializeField] private GameObject[] settingsTab;
         [SerializeField] private GameObject[] settingsTabIcon;
+        [SerializeField] private RectTransform settingsSelectionTabIcon;
+        [SerializeField] private float settingsTabSelectionSpeed = 0.2f;
+        [SerializeField] private Ease settingsTabSelectionEase;
         private int settingsTabIndex = 0;
     
-
     [Header("transition")]
         [SerializeField] private RectTransform transitionScreen;
+    
     
     
     private float actualTimeScale;
     private Menu menu;
     private EventSystem eventSystem;
+    private GameObject currentSelectedButton;
     
     private void Awake()
     {
@@ -50,6 +64,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         eventSystem = EventSystem.current;
+        currentSelectedButton = defaultPauseSelected;
         PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
         ChangeMenu(Menu.noMenu);
         
@@ -58,7 +73,18 @@ public class UIManager : MonoBehaviour
         transitionScreen.gameObject.SetActive(true);
         StartCoroutine(TransitionOpen());
     }
-    
+
+    private void Update()
+    {
+        if(menu != Menu.pause) return;
+        if (currentSelectedButton != eventSystem.currentSelectedGameObject)
+        {
+            MoveSelectionArrow();
+        }
+
+        currentSelectedButton = eventSystem.currentSelectedGameObject;
+
+    }
 
     private IEnumerator TransitionOpen()
     {
@@ -93,9 +119,26 @@ public class UIManager : MonoBehaviour
             case(Menu.noMenu):
                 Time.timeScale = 1;
                 PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
-                pauseMenu.SetActive(false);
-                defaultPauseMenu.SetActive(false);
-                settingsMenu.SetActive(false);
+                
+                
+                //setup anims
+                
+                
+                
+                //anims
+                pauseMenu.GetComponent<Image>().DOFade(0, 0.2f)
+                    .SetUpdate(true)
+                    .OnComplete((() =>
+                    {
+                        pauseMenu.SetActive(false);
+                    }));
+                header.DOAnchorPos(new Vector2(0, 200), 0.2f)
+                    .SetUpdate(true)
+                    .OnComplete((() =>
+                    {
+                        
+                    }));
+                
                 break;
             
             case(Menu.pause):
@@ -107,6 +150,22 @@ public class UIManager : MonoBehaviour
                 pauseMenu.SetActive(true);
                 defaultPauseMenu.SetActive(true);
                 settingsMenu.SetActive(false);
+                
+                //setup anims
+                
+                //anims
+                pauseMenu.GetComponent<Image>().DOFade(0.9f, 0.2f)
+                    .SetUpdate(true);
+                
+                header.DOAnchorPos(new Vector2(0, (-150)), 0.2f)
+                    .SetUpdate(true)
+                    .OnComplete((() =>
+                    {
+                        
+                    }));
+                
+                
+                
                 break;
             
             case(Menu.settings):
@@ -119,7 +178,13 @@ public class UIManager : MonoBehaviour
         }
         menu = newMenu;
     }
-    
+
+    private void MoveSelectionArrow()
+    {
+        selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+            .SetUpdate(true)
+            .SetEase(arrowEase);
+    }
     
     
     
@@ -146,7 +211,6 @@ public class UIManager : MonoBehaviour
         {
             ChangeMenu(Menu.noMenu);
         }
-        
     }
     public void Settings()
     {
@@ -188,14 +252,16 @@ public class UIManager : MonoBehaviour
             if (i == settingsTabIndex)
             {
                 settingsTab[i].SetActive(true);
-                settingsTabIcon[i].SetActive(true);
+                settingsSelectionTabIcon.DOAnchorPosX(settingsTabIcon[i].GetComponent<RectTransform>().anchoredPosition.x, arrowSpeed)
+                            .SetUpdate(true)
+                            .SetEase(settingsTabSelectionEase);
             }
             else
             {
                 settingsTab[i].SetActive(false);
-                settingsTabIcon[i].SetActive(false);
             }
         }
+        
     }
 
     public void GoBack(InputAction.CallbackContext context)

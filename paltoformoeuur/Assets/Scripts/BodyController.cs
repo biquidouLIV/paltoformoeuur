@@ -390,6 +390,7 @@ public class BodyController : PlayerController
         bodyAnimator.SetTrigger("Die");
         isDying = true;
         PlayerManager.instance.PlayerInput.enabled = false;
+        elementRigidbody.linearVelocityX = 0;
     }
 
     

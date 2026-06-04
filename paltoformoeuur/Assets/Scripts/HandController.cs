@@ -65,6 +65,7 @@ public class HandController : PlayerController
         }
         
         handAnimator.SetBool("IsWalking", true);
+        SoundManager.instance.PlaySound(SoundManager.instance.walkArm);
         base.OnMove(context);
         
         if (moveInput.x > 0)
@@ -131,6 +132,7 @@ public class HandController : PlayerController
     {
         canDash = false;
         handAnimator.SetBool("IsDashing",true);
+        SoundManager.instance.PlaySound(SoundManager.instance.dashBras);
         elementRigidbody.linearVelocityX += dashSpeed * direction;
         yield return new WaitForSeconds(dashDuration);
         elementRigidbody.linearVelocityX = Mathf.Max(elementRigidbody.linearVelocityX - dashSpeed * direction,0);

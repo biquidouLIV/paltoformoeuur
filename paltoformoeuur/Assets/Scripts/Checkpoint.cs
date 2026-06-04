@@ -12,6 +12,7 @@ public class Checkpoint : MonoBehaviour
         }
         if (PlayerManager.instance.indiceCheckpoint < indiceCheckpoint)
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.triggerCheckpoint);
             PlayerManager.instance.checkpointTransform = transform.position;
             PlayerManager.instance.indiceCheckpoint = indiceCheckpoint;
         }

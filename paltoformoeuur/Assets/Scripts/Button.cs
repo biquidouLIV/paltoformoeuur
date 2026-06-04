@@ -7,16 +7,14 @@ public class Button : MonoBehaviour
     [SerializeField] private Door[] doorList;
     [SerializeField] private Animator animator;
     [NonSerialized] public bool isActivated;
-
-
-
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(isActivated)return;
         isActivated = true;
 
         animator.Play("Activation");
+        SoundManager.instance.PlaySound(SoundManager.instance.triggerButton);
         foreach (var door in doorList)
         {
             door.Open();

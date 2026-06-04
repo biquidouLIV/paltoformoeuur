@@ -7,6 +7,7 @@ public class Spike : MonoBehaviour
         if (other.GetComponent<PlayerController>() != null)
         {
             other.GetComponent<PlayerController>().Die();
+            SoundManager.instance.PlaySound(SoundManager.instance.deathFinal);
         }
     }
 }

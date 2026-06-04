@@ -114,7 +114,7 @@ public class BodyController : PlayerController
     {
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
-            //jumpSound.Play();
+            SoundManager.instance.PlaySound(SoundManager.instance.jump);
             timeSinceLastJump = 0;
             elementRigidbody.linearVelocityY = 0;
             elementRigidbody.linearVelocityY = jumpHeight;
@@ -173,7 +173,6 @@ public class BodyController : PlayerController
             {
                 moveInput = Vector2.zero;
             }
-            
         }
         else
         {
@@ -287,13 +286,14 @@ public class BodyController : PlayerController
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHead",true);
+            SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.head;
         }
         
         else if (context.canceled && isAiming && aimingPart == PlayerPart.head && PlayerManager.instance.headOnBody)
         {     
             SpawnHead();
-            
+            SoundManager.instance.PlaySound(SoundManager.instance.launch);
             Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHead)return;
@@ -318,11 +318,13 @@ public class BodyController : PlayerController
             isAiming = true;
             Time.timeScale = 0.25f;
             bodyAnimator.SetBool("IsAimingHand",true);
+            SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.hand;
         }
         else if (context.canceled && isAiming && aimingPart == PlayerPart.hand && PlayerManager.instance.handOnBody)
         {
             SpawnHand();
+            SoundManager.instance.PlaySound(SoundManager.instance.launch);
             Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHand)return;
@@ -397,6 +399,7 @@ public class BodyController : PlayerController
     {
         StartCoroutine(CameraManager.instance.CameraOnRespawn());
         transform.position = PlayerManager.instance.checkpointTransform;
+        SoundManager.instance.PlaySound(SoundManager.instance.respawnCheckpoint);
         
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
         {

@@ -114,6 +114,7 @@ public class BodyController : PlayerController
     {
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
+            if(isDying)return;
             //jumpSound.Play();
             timeSinceLastJump = 0;
             elementRigidbody.linearVelocityY = 0;

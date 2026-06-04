@@ -64,11 +64,12 @@ public class CrochetBalance : Crochet
         }
     }
     
-    public override IEnumerator Active(Rigidbody2D rigidbody)
+    public override IEnumerator OnLeave(Rigidbody2D rigidbody)
     {
         parent.transform.DOKill();
-        parent.transform.DORotate(Vector3.zero,2).SetEase(rotationEase);
+        parent.transform.DORotate(Vector3.zero,0.5f).SetEase(rotationEase);
         moving = false;
+        rigidbody.linearVelocity = Vector2.zero;
         if (parent.transform.eulerAngles.z < 60)
         {
             rigidbody.AddForce(new (parent.transform.eulerAngles.z * strength, 0f));

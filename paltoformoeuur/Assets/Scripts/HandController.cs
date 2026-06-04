@@ -191,7 +191,7 @@ public class HandController : PlayerController
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;
         accroche = false;
-        currentCrochet.StartCoroutine(currentCrochet.Active(elementRigidbody));
+        currentCrochet.StartCoroutine(currentCrochet.OnLeave(elementRigidbody));
         currentCrochet = null;
     }
 }

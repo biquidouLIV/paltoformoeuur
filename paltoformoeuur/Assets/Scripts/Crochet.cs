@@ -3,5 +3,5 @@ using UnityEngine;
 
 public abstract class Crochet : MonoBehaviour
 {
-    public abstract IEnumerator Active(Rigidbody2D rigidbody);
+    public abstract IEnumerator OnLeave(Rigidbody2D rigidbody);
 }

@@ -453,7 +453,7 @@ public class BodyController : PlayerController
         gameObject.transform.parent = playerParent.transform;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;
-        StartCoroutine(currentCrochet.Active(elementRigidbody));
+        StartCoroutine(currentCrochet.OnLeave(elementRigidbody));
         accroche = false;
         currentCrochet = null;
     }

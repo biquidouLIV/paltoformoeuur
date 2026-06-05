@@ -80,6 +80,7 @@ public class CrochetBalance : Crochet
         }
         if (other.gameObject.CompareTag("Hand") || other.gameObject.CompareTag("Body"))
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.crochet);
             playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.Accroche(this);
             playerController.gameObject.transform.eulerAngles = parent.transform.eulerAngles;

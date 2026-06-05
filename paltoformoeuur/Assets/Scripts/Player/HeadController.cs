@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -91,5 +92,10 @@ public class HeadController : PlayerController
     public override void Die()
     {
         Recall();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.collidePart);
     }
 }

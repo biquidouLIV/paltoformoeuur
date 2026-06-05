@@ -1383,6 +1383,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 082e4526db2687646b63d17f6dee40ef, type: 3}
+--- !u!1001 &1296645533
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.223968
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.096402
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483575309843097663, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: m_Name
+      value: SoundManagerForest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
 --- !u!1 &1297732404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,8 +1612,18 @@ MonoBehaviour:
   settingsMenu: {fileID: 0}
   defaultPauseSelected: {fileID: 0}
   defaultSettingsSelected: {fileID: 0}
+  selectionArrow: {fileID: 0}
+  arrowSpeed: 0.2
+  arrowEase: 0
+  header: {fileID: 0}
+  buttons: []
   settingsTab: []
   settingsTabIcon: []
+  settingsSelectionTabIcon: {fileID: 0}
+  settingsTabSelectionSpeed: 0.2
+  settingsTabSelectionEase: 0
+  settingsTab1Components: []
+  controller: {fileID: 0}
   transitionScreen: {fileID: 0}
 --- !u!4 &1312463647
 Transform:
@@ -1845,6 +1912,7 @@ MonoBehaviour:
   strength: 10
   rotationEase: 10
   timeForOneRotation: 1
+  speedForFirstRotation: 2
   moving: 0
 --- !u!61 &1511642065
 BoxCollider2D:
@@ -3167,3 +3235,4 @@ SceneRoots:
   - {fileID: 189571464}
   - {fileID: 2075966473}
   - {fileID: 1242588192}
+  - {fileID: 1296645533}

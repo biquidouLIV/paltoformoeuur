@@ -7,7 +7,6 @@ public class Moisissure : MonoBehaviour
         
     private void OnTriggerEnter2D(Collider2D other)
     {
-        SoundManager.instance.PlaySound(SoundManager.instance.deathMold);
         if (other.gameObject.CompareTag("Head"))
         {
             other.GetComponent<Rigidbody2D>().angularDamping += ralentissement;
@@ -16,6 +15,7 @@ public class Moisissure : MonoBehaviour
         }
         if (other.GetComponent<PlayerController>() != null)
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.deathMold);
             other.GetComponent<PlayerController>().Die();
         }
     }

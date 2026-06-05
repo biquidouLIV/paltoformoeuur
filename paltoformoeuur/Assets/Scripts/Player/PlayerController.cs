@@ -4,20 +4,16 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerController : MonoBehaviour
 {
-    
-    
     [Header("Refs")]
-        [SerializeField] private PlayerData data;
-        [SerializeField] protected GameObject player;
-
-    
+    [SerializeField] private PlayerData data;
+    [SerializeField] protected GameObject player;
+        
     [NonSerialized] public Rigidbody2D elementRigidbody;
     [NonSerialized] public Vector2 moveInput;
     
     protected float sprintSpeed = 1;
     private float speed = 1;
     //protected float sprintSpeedMultiplier = 2;
-    
     
     protected BodyController bodyScript;
     

@@ -15,6 +15,7 @@ public class CrochetPlatform : Crochet
         }
         if (other.gameObject.CompareTag("Hand"))
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.crochet);
             other.gameObject.GetComponent<PlayerController>().Accroche(this, fallingPlatform);
             isAvailable = false;
         }

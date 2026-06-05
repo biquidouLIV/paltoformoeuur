@@ -51,6 +51,7 @@ public class BodyController : PlayerController
     public bool canThrowHead;
     public bool canThrowHand;
     public bool isDying;
+    private SpriteRenderer sprite;
     
     public override void Init(PlayerData data)
     {
@@ -65,6 +66,7 @@ public class BodyController : PlayerController
             head.SetActive(false);
             hand.SetActive(false);
             isDying = false;
+            sprite = GetComponent<SpriteRenderer>();
         }
     }
             
@@ -138,7 +140,7 @@ public class BodyController : PlayerController
             if (rotation.magnitude <= 0.1)
             {
                 rotation = defaultRotationInput;
-                if (GetComponent<SpriteRenderer>().flipX)
+                if (sprite.flipX)
                 {
                     rotation.x = -defaultRotationInput.x;
                 }
@@ -179,6 +181,7 @@ public class BodyController : PlayerController
         else
         {
             bodyAnimator.SetBool("IsWalking",true);
+            SoundManager.instance.PlayLongSound(SoundManager.instance.walkForest);
             base.OnMove(context);
 
             if (moveInput.x > 0)
@@ -195,6 +198,7 @@ public class BodyController : PlayerController
 
         if (context.canceled)
         {
+            SoundManager.instance.StopSound();
             bodyAnimator.SetBool("IsWalking",false);
         }
     }
@@ -449,5 +453,10 @@ public class BodyController : PlayerController
         StartCoroutine(currentCrochet.OnLeave(elementRigidbody));
         accroche = false;
         currentCrochet = null;
+    }
+
+    public void Land()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.land);
     }
 }

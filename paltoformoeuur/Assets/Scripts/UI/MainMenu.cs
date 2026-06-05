@@ -56,6 +56,7 @@ public class MainMenu : MonoBehaviour
     
     private void Start()
     {
+        Time.timeScale = 1;
         eventSystem = EventSystem.current;
         currentSelectedButton = defaultMainMenuSelected;
         GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
@@ -76,9 +77,11 @@ public class MainMenu : MonoBehaviour
     }
     private IEnumerator TransitionOpen()
     {
+        Debug.Log("1");
         yield return new WaitForSeconds(0.5f);
         transitionScreen.localPosition = new Vector3(0, 0, 0);
         transitionScreen.DOLocalMove(new Vector3(-1920, 0, 0), 1).SetUpdate(true);
+        Debug.Log("2");
     }
     public void LoadScene(int scene)
     {
@@ -96,7 +99,7 @@ public class MainMenu : MonoBehaviour
         {
             case(Menu.mainMenu):
                 eventSystem.SetSelectedGameObject(defaultMainMenuSelected);
-                currentSelectedButton = eventSystem.currentSelectedGameObject;
+                currentSelectedButton = defaultMainMenuSelected;
                 
 
                 if (menu == Menu.settings)
@@ -151,9 +154,7 @@ public class MainMenu : MonoBehaviour
                 .OnComplete((() =>
                 {
                     selectionArrow
-                        .DOAnchorPosY(
-                            eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y,
-                            arrowSpeed)
+                        .DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
                         .SetUpdate(true)
                         .SetEase(arrowEase);
                 }));
@@ -173,12 +174,12 @@ public class MainMenu : MonoBehaviour
                     .SetUpdate(true);
             }
         private void MoveSelectionArrow()
-            {
-                selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
-                    .SetUpdate(true)
-                    .SetEase(arrowEase);
-                SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
-            }
+        {
+            selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+                .SetUpdate(true)
+                .SetEase(arrowEase);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
+        }
         
     #endregion
 
@@ -209,7 +210,7 @@ public class MainMenu : MonoBehaviour
                     }));
             }
     
-            settingsSelectionTabIcon.DOAnchorPosX(-1100, 0.2f)
+            settingsSelectionTabIcon.DOAnchorPosX(-2000, 0.2f)
                 .SetUpdate(true);
     
             HideSettingsTab(0);
@@ -229,7 +230,6 @@ public class MainMenu : MonoBehaviour
     
             if (index == 1)
             {
-                Debug.Log("show tab" + index);
                 controller.GetComponent<Image>().DOFade(1, 0.2f)
                     .SetUpdate(true);
             }

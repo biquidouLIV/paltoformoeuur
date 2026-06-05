@@ -179,6 +179,7 @@ public class BodyController : PlayerController
         else
         {
             bodyAnimator.SetBool("IsWalking",true);
+            SoundManager.instance.PlaySound(SoundManager.instance.walkForest);
             base.OnMove(context);
 
             if (moveInput.x > 0)

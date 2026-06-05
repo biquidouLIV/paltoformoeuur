@@ -21,7 +21,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip triggerButton;
     public AudioClip triggerCheckpoint;
     public AudioClip respawnCheckpoint;
-    public AudioClip respawnCheckpoint2;
     
     [Header("UI")]
     public AudioClip pause;

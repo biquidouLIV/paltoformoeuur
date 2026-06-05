@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -10,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip jump;
     public AudioClip aim;
     public AudioClip launch;
+    public AudioClip land;
+    public AudioClip crochet;
     public AudioClip deathFinal;
     public AudioClip deathMold;
     public AudioClip collidePart;
@@ -44,5 +45,17 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(AudioClip audio)
     {
         audioSource.PlayOneShot(audio);
+    }
+    
+    
+    public void PlayLongSound(AudioClip audio)
+    {
+        audioSource.clip = audio;
+        audioSource.Play();
+    }
+
+    public void StopSound()
+    {
+        audioSource.Stop();
     }
 }

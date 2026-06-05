@@ -65,7 +65,7 @@ public class HandController : PlayerController
         }
         
         handAnimator.SetBool("IsWalking", true);
-        SoundManager.instance.PlaySound(SoundManager.instance.walkArm);
+        SoundManager.instance.PlayLongSound(SoundManager.instance.walkArm);
         base.OnMove(context);
         
         if (moveInput.x > 0)
@@ -81,6 +81,7 @@ public class HandController : PlayerController
 
         if (context.canceled)
         {
+            SoundManager.instance.StopSound();
             handAnimator.SetBool("IsWalking",false);
         }
     }

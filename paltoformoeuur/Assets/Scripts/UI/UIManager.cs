@@ -214,12 +214,12 @@ public class UIManager : MonoBehaviour
                     .SetUpdate(true);
             }
         private void MoveSelectionArrow()
-            {
-                selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
-                    .SetUpdate(true)
-                    .SetEase(arrowEase);
-                SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
-            }
+        {
+            selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+                .SetUpdate(true)
+                .SetEase(arrowEase);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
+        }
         
     #endregion
 
@@ -270,7 +270,6 @@ public class UIManager : MonoBehaviour
     
             if (index == 1)
             {
-                Debug.Log("show tab" + index);
                 controller.GetComponent<Image>().DOFade(1, 0.2f)
                     .SetUpdate(true);
             }

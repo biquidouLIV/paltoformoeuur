@@ -118,6 +118,11 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 0;
                 eventSystem.SetSelectedGameObject(defaultPauseSelected);
 
+                if (menu == Menu.noMenu)
+                {
+                    SoundManager.instance.PlaySound(SoundManager.instance.pause);
+                }
+                
                 if (menu == Menu.settings)
                 {
                     eventSystem.SetSelectedGameObject(buttons[1].gameObject);

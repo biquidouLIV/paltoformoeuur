@@ -117,6 +117,7 @@ public class UIManager : MonoBehaviour
             case(Menu.pause):
                 Time.timeScale = 0;
                 eventSystem.SetSelectedGameObject(defaultPauseSelected);
+                SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
 
                 if (menu == Menu.noMenu)
                 {
@@ -217,6 +218,7 @@ public class UIManager : MonoBehaviour
                 selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
                     .SetUpdate(true)
                     .SetEase(arrowEase);
+                SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
             }
         
     #endregion
@@ -293,9 +295,10 @@ public class UIManager : MonoBehaviour
         {
             for (int i = 0; i < settingsTab.Length; i++)
             {
+                
                 if (i == settingsTabIndex)
                 {
-                    //settingsTab[i].SetActive(true);
+                    SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
                     settingsSelectionTabIcon.DOAnchorPosX(settingsTabIcon[i].anchoredPosition.x, settingsTabSelectionSpeed)
                                 .SetUpdate(true)
                                 .SetEase(settingsTabSelectionEase);
@@ -303,7 +306,6 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    //settingsTab[i].SetActive(false);
                     HideSettingsTab(i);
                 }
             }
@@ -375,6 +377,12 @@ public class UIManager : MonoBehaviour
             }
         }
     #endregion
+
+
+    public void ButtonClickSound()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.UIButtonClick);
+    }
 }
 
 

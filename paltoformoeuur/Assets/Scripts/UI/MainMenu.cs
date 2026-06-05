@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -115,7 +113,7 @@ public class MainMenu : MonoBehaviour
                 eventSystem.SetSelectedGameObject(defaultSettingsSelected);
                 settingsTabIndex = 0;
                 
-                HidePauseMenu(newMenu);
+                HidePauseMenu();
                 ShowSettingsMenu();
                 UpdateSettingsTab();
                 break;
@@ -160,7 +158,7 @@ public class MainMenu : MonoBehaviour
                         .SetEase(arrowEase);
                 }));
         }
-        private void HidePauseMenu(Menu newMenu)
+        private void HidePauseMenu()
         {
             header.DOAnchorPos(new Vector2(0, 200), 0.2f)
                 .SetUpdate(true);
@@ -176,8 +174,7 @@ public class MainMenu : MonoBehaviour
             }
         private void MoveSelectionArrow()
             {
-                selectionArrow
-                    .DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+                selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
                     .SetUpdate(true)
                     .SetEase(arrowEase);
                 SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);

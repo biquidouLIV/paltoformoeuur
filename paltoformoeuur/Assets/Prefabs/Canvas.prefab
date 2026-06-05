@@ -589,7 +589,19 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5709177258050006516}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1212974026643397757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,7 +1703,7 @@ MonoBehaviour:
   defaultPauseMenu: {fileID: 4615042082948278446}
   settingsMenu: {fileID: 4919361754033998925}
   defaultPauseSelected: {fileID: 4304960599995541122}
-  defaultSettingsSelected: {fileID: 9117202695586111222}
+  defaultSettingsSelected: {fileID: 5029311705935826326}
   selectionArrow: {fileID: 5650740727542098207}
   arrowSpeed: 0.2
   arrowEase: 9
@@ -1714,6 +1726,10 @@ MonoBehaviour:
   - {fileID: 292388338050049946}
   - {fileID: 3389952989239872628}
   - {fileID: 5265162031329665924}
+  slider:
+  - {fileID: 4985583615818552495}
+  - {fileID: 5802474302336708650}
+  - {fileID: 7234246738443851043}
   controller: {fileID: 5548104214406583669}
   transitionScreen: {fileID: 1670787953790476381}
 --- !u!1 &4983913769973101470
@@ -1880,7 +1896,19 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5709177258050006516}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeMainVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5359117296156061059
 GameObject:
   m_ObjectHideFlags: 0
@@ -4123,4 +4151,16 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5709177258050006516}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeEffectVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

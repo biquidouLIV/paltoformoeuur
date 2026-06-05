@@ -40,6 +40,8 @@ public class MainMenu : MonoBehaviour
         
         [Header("settings tab 1")]
             [SerializeField] private RectTransform[] settingsTab1Components;
+            [SerializeField] private Slider[] slider;
+            
         [Header("settings tab 2")] 
             [SerializeField] private RectTransform controller;
         
@@ -175,6 +177,7 @@ public class MainMenu : MonoBehaviour
             }
         private void MoveSelectionArrow()
         {
+            if (eventSystem.currentSelectedGameObject == null) return;
             selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
                 .SetUpdate(true)
                 .SetEase(arrowEase);
@@ -195,6 +198,10 @@ public class MainMenu : MonoBehaviour
                     {
                         settingsMenu.GetComponent<CanvasGroup>().interactable = true;
                     }));
+                
+            slider[0].value = SoundManager.instance.mainVolume;
+            slider[1].value = SoundManager.instance.soundEffectVolume;
+            slider[2].value = SoundManager.instance.musicVolume;
             }
             ShowSettingsTab(0);
         }
@@ -311,6 +318,24 @@ public class MainMenu : MonoBehaviour
             {
                 if(menu == Menu.settings) ChangeMenu(Menu.mainMenu);
             }
+        }
+        
+        public void ChangeMainVolume()
+        {
+            SoundManager.instance.ChangeMainVolume(slider[0].value);
+            Debug.Log("1");
+        }
+
+        public void ChangeEffectVolume()
+        {
+            SoundManager.instance.ChangeEffectVolume(slider[1].value);
+            Debug.Log("2");
+        }
+
+        public void ChangeMusicVolume()
+        {
+            SoundManager.instance.ChangeMusicVolume(slider[2].value);
+            Debug.Log("3");
         }
     #endregion
     

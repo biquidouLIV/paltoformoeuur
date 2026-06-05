@@ -37,9 +37,9 @@ public class SoundManager : MonoBehaviour
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioSource musicSource;
         
-    private float mainVolume;
-    private float soundEffectVolume;
-    private float musicVolume;
+    public float mainVolume;
+    public float soundEffectVolume;
+    public float musicVolume;
         
     private void Awake()
     {
@@ -92,7 +92,7 @@ public class SoundManager : MonoBehaviour
     {
         mainVolume = volume;
         musicSource.volume = mainVolume * musicVolume;
-        PlayerPrefs.SetFloat("mainVolume", soundEffectVolume);
+        PlayerPrefs.SetFloat("mainVolume", mainVolume);
     }
 
     public void ChangeEffectVolume(float volume)

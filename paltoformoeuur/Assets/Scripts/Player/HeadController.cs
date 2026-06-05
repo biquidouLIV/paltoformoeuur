@@ -96,7 +96,7 @@ public class HeadController : PlayerController
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("wall"))
+        if (other.gameObject.CompareTag("Wall"))
         {
             SoundManager.instance.PlaySound(SoundManager.instance.collidePart);
         }

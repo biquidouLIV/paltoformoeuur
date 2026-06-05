@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private int timeBetweenMusics = 5;
     
     [Header("Player")]
-        public AudioClip walkForest;
+        public AudioClip[] walk;
         public AudioClip jump;
         public AudioClip aim;
         public AudioClip launch;
@@ -54,10 +54,11 @@ public class SoundManager : MonoBehaviour
         mainVolume = PlayerPrefs.GetFloat("mainVolume");
         StartCoroutine(PlayMusic());
     }
-
+    
     public void PlaySound(AudioClip audio)
     {
         audioSource.PlayOneShot(audio,mainVolume * soundEffectVolume);
+        Debug.Log(audio.name);
     }
     
     public void PlayLongSound(AudioClip audio)
@@ -65,6 +66,7 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = audio;
         audioSource.volume = mainVolume * soundEffectVolume;
         audioSource.Play();
+        Debug.Log(audio.name);
     }
 
     public void StopSound()
@@ -80,7 +82,7 @@ public class SoundManager : MonoBehaviour
         yield return new WaitForSeconds(music.length + timeBetweenMusics);
         StartCoroutine(PlayMusic());
     }
-
+    
     public void ChangeMusicVolume(float volume)
     {
         musicVolume = volume;
@@ -99,5 +101,10 @@ public class SoundManager : MonoBehaviour
     {
         soundEffectVolume = volume;
         PlayerPrefs.SetFloat("soundEffectVolume", soundEffectVolume);
+    }
+
+    public void PlayStepSound()
+    {
+        PlaySound(walk[Random.Range(0,walk.Length)]);
     }
 }

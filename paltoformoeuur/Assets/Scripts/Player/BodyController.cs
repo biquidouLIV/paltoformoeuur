@@ -182,18 +182,15 @@ public class BodyController : PlayerController
         else
         {
             bodyAnimator.SetBool("IsWalking",true);
-            SoundManager.instance.PlayLongSound(SoundManager.instance.walkForest);
             base.OnMove(context);
 
             if (moveInput.x > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
-                //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
             else if(moveInput.x < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
-                //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
         }
 
@@ -203,23 +200,6 @@ public class BodyController : PlayerController
             bodyAnimator.SetBool("IsWalking",false);
         }
     }
-
-    /*public override void OnSprint(InputAction.CallbackContext context)
-    {
-        if(sprintSpeedMultiplier == 1) return;
-        
-        if (context.performed)
-        {
-            bodyScript.bodyAnimator.SetBool("IsSprinting",true);
-            sprintSpeed = sprintSpeedMultiplier;
-        }
-
-        if (context.canceled)
-        {
-            bodyScript.bodyAnimator.SetBool("IsSprinting",false);
-            sprintSpeed = 1;
-        }
-    }*/
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -460,5 +440,10 @@ public class BodyController : PlayerController
     public void Land()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.land);
+    }
+
+    public void PlayStepSound()
+    {
+        SoundManager.instance.PlayStepSound();
     }
 }

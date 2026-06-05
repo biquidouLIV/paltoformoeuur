@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,7 +6,9 @@ public class Arrow : MonoBehaviour
     [SerializeField] private GameObject arrow;
     
     [SerializeField] private Vector2 arrowDistance;
+    [SerializeField] private Vector2 arrowDistanceOnPlayer;
     [SerializeField] private Vector2 maxDistance;
+    [SerializeField] private Vector2 maxDistanceOnPlayer;
 
     [SerializeField] private float scaleDuration = 0.1f;
     [SerializeField] private float minScale;
@@ -41,35 +42,38 @@ public class Arrow : MonoBehaviour
                 break;
         }
         
-        
-        
         distance.x = Mathf.Abs(head.transform.position.x - targetPart.transform.position.x);
         distance.y = Mathf.Abs(head.transform.position.y - targetPart.transform.position.y);
-        
-        
         
         Move();
         Rotate();
         Scale();
-        }
+    }
 
     private void Move()
     {
         Vector2 destination = targetPart.transform.position;
-        destination.x = Mathf.Clamp(destination.x, head.transform.position.x - arrowDistance.x, head.transform.position.x + arrowDistance.x);
-        destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistance.y, head.transform.position.y + arrowDistance.y);
-        
+        if (!PlayerManager.instance.headOnBody)
+        {
+            destination.x = Mathf.Clamp(destination.x, head.transform.position.x - arrowDistance.x, head.transform.position.x + arrowDistance.x);
+            destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistance.y, head.transform.position.y + arrowDistance.y);
+        }
+        else
+        {
+            destination.x = Mathf.Clamp(destination.x, head.transform.position.x - arrowDistanceOnPlayer.x, head.transform.position.x + arrowDistanceOnPlayer.x);
+            destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistanceOnPlayer.y, head.transform.position.y + arrowDistanceOnPlayer.y);
+        }
         arrow.transform.DOMove(destination, 0.1f);
     }
 
     private void Rotate()
     {
         float rotation = Mathf.Acos((targetPart.transform.position.x - head.transform.position.x)/Vector3.Distance(targetPart.transform.position,head.transform.position)) * 180/Mathf.PI;
-              if (targetPart.transform.position.y < head.transform.position.y)
-              {
-                  rotation = -rotation;
-              }
-              arrow.transform.DORotate(new Vector3(0, 0, rotation), 0.1f);  
+        if (targetPart.transform.position.y < head.transform.position.y)
+        {
+            rotation = -rotation;
+        }
+        arrow.transform.DORotate(new Vector3(0, 0, rotation), 0.1f);  
     }
 
 
@@ -82,15 +86,16 @@ public class Arrow : MonoBehaviour
                 scale.x = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
                 scale.y = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
             }
-            else
-            {
-                scale = Vector3.zero;
-            }
-
+            else scale = Vector3.zero;
         }
         else
         {
-            scale = Vector3.zero;
+            if (PlayerManager.instance.controlledPart == PlayerPart.hand && distance.x >= maxDistanceOnPlayer.x || distance.y >= maxDistanceOnPlayer.y)
+            {
+                scale.x = Mathf.Clamp(1 / (distance.magnitude - 13.5f) * scaleMultiplicator, minScale, maxScale); 
+                scale.y = Mathf.Clamp(1 / (distance.magnitude - 13.5f) * scaleMultiplicator, minScale, maxScale);
+            }
+            else scale = Vector3.zero;
         }
         
         if(arrow.transform.localScale == scale) return;

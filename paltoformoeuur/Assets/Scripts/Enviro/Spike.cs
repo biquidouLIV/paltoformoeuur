@@ -4,9 +4,13 @@ public class Spike : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerController>() != null)
+        PlayerController controller = other.GetComponent<PlayerController>();
+        if (controller != null)
         {
-            other.GetComponent<PlayerController>().Die();
+            controller.Die();
+        }
+        if (other.gameObject.CompareTag("Body"))
+        {
             SoundManager.instance.PlaySound(SoundManager.instance.deathFinal);
         }
     }

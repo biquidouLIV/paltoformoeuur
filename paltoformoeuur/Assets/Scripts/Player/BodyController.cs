@@ -166,6 +166,7 @@ public class BodyController : PlayerController
         }
         if (isAiming)
         {
+            SoundManager.instance.StopSound();
             bodyAnimator.SetBool("IsWalking",false);
             rotationInput = context.ReadValue<Vector2>();
             if (rotationInput.x + rotationInput.y > 0.1 || rotationInput.x + rotationInput.y < -0.1)
@@ -428,6 +429,7 @@ public class BodyController : PlayerController
     
     public override void Accroche(CrochetBalance crochet)
     {
+        SoundManager.instance.StopSound();
         bodyAnimator.SetBool("IsWalking", false);
         bodyAnimator.SetBool("IsFalling", false);
         bodyAnimator.SetBool("IsBalancing", true);

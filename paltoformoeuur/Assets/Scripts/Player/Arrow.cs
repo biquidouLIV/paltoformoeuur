@@ -92,6 +92,8 @@ public class Arrow : MonoBehaviour
         {
             scale = Vector3.zero;
         }
+        
+        if(arrow.transform.localScale == scale) return;
         arrow.transform.DOScale(scale,scaleDuration);
     }
     

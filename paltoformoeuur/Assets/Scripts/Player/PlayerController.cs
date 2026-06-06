@@ -23,7 +23,6 @@ public abstract class PlayerController : MonoBehaviour
     protected virtual void Start()
     {
         speed = data.speed;
-        //sprintSpeedMultiplier = data.sprintSpeedMultiplier;
         Init(data);
         
         elementRigidbody = GetComponent<Rigidbody2D>();

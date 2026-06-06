@@ -66,6 +66,8 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         pauseMenu.gameObject.SetActive(true);
         eventSystem = EventSystem.current;
         currentSelectedButton = defaultPauseSelected;

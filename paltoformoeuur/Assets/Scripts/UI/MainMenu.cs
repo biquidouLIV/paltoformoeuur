@@ -58,6 +58,8 @@ public class MainMenu : MonoBehaviour
     
     private void Start()
     {
+        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1;
         eventSystem = EventSystem.current;
         currentSelectedButton = defaultMainMenuSelected;

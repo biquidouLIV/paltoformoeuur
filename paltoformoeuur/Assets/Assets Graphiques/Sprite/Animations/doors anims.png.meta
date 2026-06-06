@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -82,6 +82,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -191,7 +204,7 @@ TextureImporter:
         x: 470
         y: 167
         width: 144
-        height: 505
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,7 +226,7 @@ TextureImporter:
         x: 910
         y: 167
         width: 144
-        height: 505
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +245,10 @@ TextureImporter:
       name: doors anims_18
       rect:
         serializedVersion: 2
-        x: 1369
+        x: 1368
         y: 167
         width: 144
-        height: 505
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,7 +270,7 @@ TextureImporter:
         x: 1812
         y: 167
         width: 144
-        height: 505
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,6 +281,50 @@ TextureImporter:
       bones: []
       spriteID: ce1fa372c7120d646a1b71a1bb68e177
       internalID: 915851349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doors anims_23
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 932
+        width: 103
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f26c5826ad367644bedfabf67da1d59
+      internalID: -238926166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doors anims_25
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 651
+        width: 144
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 12, z: 0, w: 70}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830f41a45cf83074e903ee2866dc1a4c
+      internalID: -339725859
       vertices: []
       indices: 
       edges: []
@@ -301,6 +358,12 @@ TextureImporter:
       doors anims_18: 1882721606
       doors anims_19: 915851349
       doors anims_2: -1704900640
+      doors anims_20: -2053105848
+      doors anims_21: -1046854825
+      doors anims_22: 846928256
+      doors anims_23: -238926166
+      doors anims_24: 333234665
+      doors anims_25: -339725859
       doors anims_3: 547114693
       doors anims_4: -401640035
       doors anims_5: 635623566

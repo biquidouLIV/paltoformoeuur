@@ -137,11 +137,11 @@ TextureImporter:
         serializedVersion: 2
         x: 779
         y: 747
-        width: 186
+        width: 185
         height: 114
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 150, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -163,7 +163,7 @@ TextureImporter:
         height: 134
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 198, y: 0, z: 10, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -307,6 +307,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Pipe_Floor_Juncction
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 759
+        width: 131
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a327d4aade991c4690135654703a519
+      internalID: 603772756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pipe_Tjunction
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 330
+        width: 251
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: debc55cd27c37504493a1882d15509a3
+      internalID: 1050230834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -338,9 +382,11 @@ TextureImporter:
       Pipe_CurveEndR: 997031433
       Pipe_CurveTopL: -42290343
       Pipe_CurveTopR: 1756380038
+      Pipe_Floor_Juncction: 603772756
       Pipe_Straight: 179863744
       Pipe_StraightEndL: -1980861176
       Pipe_StraightEndR: 659582780
+      Pipe_Tjunction: 1050230834
       Pipe_TurnBotL: 210642480
       Pipe_TurnBotR: -903184931
   mipmapLimitGroupName: 

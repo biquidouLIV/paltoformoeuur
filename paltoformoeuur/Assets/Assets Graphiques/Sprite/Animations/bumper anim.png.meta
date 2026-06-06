@@ -1,0 +1,472 @@
+fileFormatVersion: 2
+guid: 940e8592470c3e94f9a51c32c1e65d5b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bumper anim_2
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 633
+        width: 103
+        height: 248
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efcc16311f3740c43bf76055c8700658
+      internalID: 840879284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 633
+        width: 124
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a2fb1707688324ab1a338613e4df42
+      internalID: -580315954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_3
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 633
+        width: 161
+        height: 351
+      alignment: 9
+      pivot: {x: 0.5950311, y: 0.17663817}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3726cc215edc14fb742baedb45f3a8
+      internalID: 168201442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_4
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 633
+        width: 241
+        height: 414
+      alignment: 9
+      pivot: {x: 0.5572614, y: 0.14975846}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a725955a7328d4ca724b105d0e87ec
+      internalID: -726414697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_5
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 633
+        width: 169
+        height: 448
+      alignment: 9
+      pivot: {x: 0.52307695, y: 0.13839285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3997f154b43476941b15884c64eae515
+      internalID: -1424847905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_6
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 633
+        width: 126
+        height: 448
+      alignment: 9
+      pivot: {x: 0.4952381, y: 0.13839285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02c8163df3703f42bda01d83fd294e7
+      internalID: -1733216405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_1
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 633
+        width: 123
+        height: 146
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42465752}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbede08df12733a4e8dd8ec32a2c5450
+      internalID: 1232429666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_9
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 79
+        width: 106
+        height: 237
+      alignment: 9
+      pivot: {x: 0.50377357, y: 0.23206751}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a1911a2eff4514aaf3739cd1a8298a
+      internalID: -1272193887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 79
+        width: 126
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 323e0813d2bdd374c9d8ed6215c7ab51
+      internalID: 631316663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_10
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 79
+        width: 164
+        height: 333
+      alignment: 9
+      pivot: {x: 0.597561, y: 0.16516517}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ea66548f2a9524381482dd0cad205c
+      internalID: -679123762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_11
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 79
+        width: 244
+        height: 402
+      alignment: 9
+      pivot: {x: 0.55737704, y: 0.13681592}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1396ff122f66745439ea6b4ee0ff4202
+      internalID: -564023650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_12
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 79
+        width: 171
+        height: 431
+      alignment: 9
+      pivot: {x: 0.53216374, y: 0.1276102}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ced8b1dbaa56a4e9a3b5ea39d96636
+      internalID: -1509796354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_13
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 79
+        width: 126
+        height: 434
+      alignment: 9
+      pivot: {x: 0.50793654, y: 0.12672812}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178b8c3bef3ecc947a448e8f24c98f48
+      internalID: -1626051710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bumper anim_8
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 79
+        width: 126
+        height: 134
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41044775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0109db13dcd15b3429b978d12a2cc3d7
+      internalID: -126734003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d8e5584a49867de468f078589ccaaf91
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      bumper anim_0: -580315954
+      bumper anim_1: 1232429666
+      bumper anim_10: -679123762
+      bumper anim_11: -564023650
+      bumper anim_12: -1509796354
+      bumper anim_13: -1626051710
+      bumper anim_14: 1981032841
+      bumper anim_16: -2102643013
+      bumper anim_18: 1902255073
+      bumper anim_19: 472459286
+      bumper anim_2: 840879284
+      bumper anim_20: -151716323
+      bumper anim_21: 1498608846
+      bumper anim_22: -2075759207
+      bumper anim_23: 1907262093
+      bumper anim_24: 613563462
+      bumper anim_25: -959277172
+      bumper anim_26: -1760444100
+      bumper anim_27: 49378386
+      bumper anim_28: -133295800
+      bumper anim_29: -172327578
+      bumper anim_3: 168201442
+      bumper anim_30: -1275208878
+      bumper anim_32: -858631400
+      bumper anim_33: -556268402
+      bumper anim_35: -880173792
+      bumper anim_36: -690311870
+      bumper anim_39: 37102375
+      bumper anim_4: -726414697
+      bumper anim_41: -1653227299
+      bumper anim_43: -90543790
+      bumper anim_45: 653453241
+      bumper anim_46: 657587799
+      bumper anim_47: -1508990376
+      bumper anim_48: 2006713578
+      bumper anim_49: 1678169921
+      bumper anim_5: -1424847905
+      bumper anim_50: -845713814
+      bumper anim_51: -1232718841
+      bumper anim_52: 1737984080
+      bumper anim_53: -916292770
+      bumper anim_6: -1733216405
+      bumper anim_7: 631316663
+      bumper anim_8: -126734003
+      bumper anim_9: -1272193887
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

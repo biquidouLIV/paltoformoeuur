@@ -56,6 +56,7 @@ public class CrochetBalance : Crochet
                     {
                         if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
                         if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
+                        SoundManager.instance.PlaySound(SoundManager.instance.crochetDroite);
                         DoRotation(true);
                     });
             }
@@ -66,6 +67,7 @@ public class CrochetBalance : Crochet
                     {
                         if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
                         if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
+                        SoundManager.instance.PlaySound(SoundManager.instance.crochetGauche);
                         DoRotation(false);
                     });
             }

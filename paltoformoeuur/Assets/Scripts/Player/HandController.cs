@@ -65,7 +65,6 @@ public class HandController : PlayerController
         }
         
         handAnimator.SetBool("IsWalking", true);
-        SoundManager.instance.PlayLongSound(SoundManager.instance.walkArm);
         base.OnMove(context);
         
         if (moveInput.x > 0)
@@ -81,7 +80,6 @@ public class HandController : PlayerController
 
         if (context.canceled)
         {
-            SoundManager.instance.StopSound();
             handAnimator.SetBool("IsWalking",false);
         }
     }
@@ -200,5 +198,10 @@ public class HandController : PlayerController
         accroche = false;
         currentCrochet.StartCoroutine(currentCrochet.OnLeave(elementRigidbody));
         currentCrochet = null;
+    }
+
+    public void PlayArmStepSound()
+    {
+        SoundManager.instance.PlayArmStepSound();
     }
 }

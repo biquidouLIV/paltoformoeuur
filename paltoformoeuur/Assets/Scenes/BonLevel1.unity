@@ -1686,7 +1686,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 153206188, guid: 36e6d798dabbc7e49aa2eb7b58fb5a36, type: 3}
@@ -2457,7 +2457,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 153206188, guid: 36e6d798dabbc7e49aa2eb7b58fb5a36, type: 3}
@@ -24206,7 +24206,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 923256040, guid: c80f127e71192cc4f9520aca3aa1a634, type: 3}
@@ -25480,8 +25480,8 @@ Transform:
   m_GameObject: {fileID: 1061114946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -68.800446, y: 65.9597, z: 0}
-  m_LocalScale: {x: 13.6, y: 1.037, z: 1}
+  m_LocalPosition: {x: -68.7038, y: 65.9597, z: 0}
+  m_LocalScale: {x: 13.40688, y: 1.037, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1455292667}
@@ -36802,6 +36802,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -3.6699991
       objectReference: {fileID: 0}
+    - target: {fileID: 184820699474090374, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Size.x
+      value: 7.7120743
+      objectReference: {fileID: 0}
+    - target: {fileID: 184820699474090374, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4111699
+      objectReference: {fileID: 0}
+    - target: {fileID: 184820699474090374, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.14732993
+      objectReference: {fileID: 0}
+    - target: {fileID: 184820699474090374, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1244151
+      objectReference: {fileID: 0}
+    - target: {fileID: 184820699474090374, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184820699474090374, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 8.010584
+      objectReference: {fileID: 0}
+    - target: {fileID: 184820699474090374, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.66000026
+      objectReference: {fileID: 0}
     - target: {fileID: 838756968391416380, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -36832,6 +36860,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1510428790120488762, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817287706468419393, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Size.x
+      value: 1.656175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817287706468419393, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32365525
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817287706468419393, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.007368982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817287706468419393, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.16817242
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817287706468419393, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}
+      propertyPath: m_AutoTiling
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1879408991901099085, guid: a540deb9b17e22e4a9cac9eb08832f0f, type: 3}

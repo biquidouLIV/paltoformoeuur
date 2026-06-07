@@ -3,6 +3,7 @@ using UnityEngine;
 public class BreakableWall : MonoBehaviour
 {
     [SerializeField] private float velocityToBreak;
+    [SerializeField] private GameObject vfx;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,6 +13,7 @@ public class BreakableWall : MonoBehaviour
             if (rigidbodyD.linearVelocity.magnitude > velocityToBreak)
             {
                 Destroy(gameObject);
+                Instantiate(vfx,transform.position, Quaternion.identity);
                 rigidbodyD.linearVelocity = new(rigidbodyD.linearVelocity.x / 2, rigidbodyD.linearVelocity.y / 2);
             }
         }

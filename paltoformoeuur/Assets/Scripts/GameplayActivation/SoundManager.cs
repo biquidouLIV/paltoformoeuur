@@ -31,6 +31,7 @@ public class SoundManager : MonoBehaviour
         public AudioClip crochet;
         public AudioClip crochetGauche;
         public AudioClip crochetDroite;
+        public AudioClip breakableWall;
     
     [Header("UI")]
         public AudioClip pause;
@@ -76,7 +77,6 @@ public class SoundManager : MonoBehaviour
         }
         
         audioSource.PlayOneShot(audio,mainVolume * soundEffectVolume);
-        Debug.Log(audio.name);
     }
     
     public void PlayLongSound(AudioClip audio)
@@ -84,7 +84,6 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = audio;
         audioSource.volume = mainVolume * soundEffectVolume;
         audioSource.Play();
-        Debug.Log(audio.name);
     }
 
     public void StopSound()

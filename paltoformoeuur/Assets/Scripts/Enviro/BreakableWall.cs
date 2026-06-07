@@ -34,6 +34,7 @@ public class BreakableWall : MonoBehaviour
                         Destroy(gameObject);
                     }));
                 
+                SoundManager.instance.PlaySound(SoundManager.instance.breakableWall);
                 Instantiate(vfx,transform.position, Quaternion.identity);
                 rigidbodyD.linearVelocity = new(rigidbodyD.linearVelocity.x / 2, rigidbodyD.linearVelocity.y / 2);
             }

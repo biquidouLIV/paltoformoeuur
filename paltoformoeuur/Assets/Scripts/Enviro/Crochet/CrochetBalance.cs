@@ -25,21 +25,19 @@ public class CrochetBalance : Crochet
         
         if (!goLeft)
         {
+            StartCoroutine(ChangeSide(timeForOneRotation/speedForFirstRotation,true));
             parent.transform.DORotate(new Vector3(0, 0, 60), timeForOneRotation/speedForFirstRotation)
                 .SetEase(Ease.OutCubic).OnComplete(() =>
                 {
-                    if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
-                    if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
                     DoRotation(true);
                 });
         }
         else
         {
+            StartCoroutine(ChangeSide(timeForOneRotation/speedForFirstRotation,false));
             parent.transform.DORotate(new Vector3(0, 0, 310), timeForOneRotation/speedForFirstRotation)
                 .SetEase(Ease.OutCubic).OnComplete(() =>
                 {
-                    if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
-                    if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
                     DoRotation(false);
                 });
         }
@@ -51,23 +49,19 @@ public class CrochetBalance : Crochet
         {
             if (!left)
             {
+                StartCoroutine(ChangeSide(timeForOneRotation,true));
                 parent.transform.DORotate(new Vector3(0, 0, 60), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
                     {
-                        if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
-                        if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
-                        SoundManager.instance.PlaySound(SoundManager.instance.crochetDroite);
                         DoRotation(true);
                     });
             }
             else
             {
+                StartCoroutine(ChangeSide(timeForOneRotation,false));
                 parent.transform.DORotate(new Vector3(0, 0, 310), timeForOneRotation)
                     .SetEase(rotationEase).OnComplete(() =>
                     {
-                        if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
-                        if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
-                        SoundManager.instance.PlaySound(SoundManager.instance.crochetGauche);
                         DoRotation(false);
                     });
             }
@@ -106,5 +100,21 @@ public class CrochetBalance : Crochet
         }
         yield return new WaitForSeconds(delayOnLeaving);
         isAvailable = true;
+    }
+
+    private IEnumerator ChangeSide(float time, bool left)
+    {
+        yield return new WaitForSeconds(time - 0.3f);
+        if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
+        if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
+
+        if (left)
+        {
+            SoundManager.instance.PlaySound(SoundManager.instance.crochetGauche);
+        }
+        else
+        {
+            SoundManager.instance.PlaySound(SoundManager.instance.crochetDroite);
+        }
     }
 }

@@ -94,7 +94,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 520697185
-  m_SortingLayer: 14
+  m_SortingLayer: 15
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Positions:
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 411411620518389706}
   - component: {fileID: 3226355294599407309}
   - component: {fileID: 5572336904471285171}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: hand
   m_TagString: Hand
   m_Icon: {fileID: 0}
@@ -1196,7 +1196,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1288385847
   m_SortingLayer: 12
-  m_SortingOrder: 19
+  m_SortingOrder: 21
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1947884401, guid: bf941a80899ff2546b349e473b288c30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1251,7 +1251,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

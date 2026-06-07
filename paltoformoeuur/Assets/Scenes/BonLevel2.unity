@@ -5014,6 +5014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -30.284
       objectReference: {fileID: 0}
+    - target: {fileID: 5730153184043695302, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.4411135
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17840,6 +17844,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2838027032615123497, guid: 166a58b96c0a8704f818f0668d3fd3cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.14369749
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838027032615123497, guid: 166a58b96c0a8704f818f0668d3fd3cc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.17833
       objectReference: {fileID: 0}
@@ -17915,6 +17923,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 8.477247
       objectReference: {fileID: 0}
+    - target: {fileID: 7936794104818088312, guid: 166a58b96c0a8704f818f0668d3fd3cc, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936794104818088312, guid: 166a58b96c0a8704f818f0668d3fd3cc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8988456449524170286, guid: 166a58b96c0a8704f818f0668d3fd3cc, type: 3}
       propertyPath: m_Size.x
       value: 1.1128616
@@ -63978,7 +63994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5730153184043695302, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 6.6554766
+      value: 3.3889487
       objectReference: {fileID: 0}
     - target: {fileID: 5730153184043695302, guid: b9a7fabbd57edf64e818384dd0103916, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
@@ -86015,13 +86031,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: MetroLamp_front
       objectReference: {fileID: 0}
+    - target: {fileID: 5996695801883806030, guid: 6f69b807cd8334f4cab3a52a78c3089c, type: 3}
+      propertyPath: delay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996695801883806030, guid: 6f69b807cd8334f4cab3a52a78c3089c, type: 3}
+      propertyPath: maxIntensityValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996695801883806030, guid: 6f69b807cd8334f4cab3a52a78c3089c, type: 3}
+      propertyPath: minIntensityValue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8172462164107978943, guid: 6f69b807cd8334f4cab3a52a78c3089c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.73
+      value: 32.416
       objectReference: {fileID: 0}
     - target: {fileID: 8172462164107978943, guid: 6f69b807cd8334f4cab3a52a78c3089c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.52
+      value: -7.674
       objectReference: {fileID: 0}
     - target: {fileID: 8172462164107978943, guid: 6f69b807cd8334f4cab3a52a78c3089c, type: 3}
       propertyPath: m_LocalPosition.z

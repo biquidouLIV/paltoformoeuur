@@ -23,7 +23,6 @@ public abstract class PlayerController : MonoBehaviour
     protected virtual void Start()
     {
         speed = data.speed;
-        //sprintSpeedMultiplier = data.sprintSpeedMultiplier;
         Init(data);
         
         elementRigidbody = GetComponent<Rigidbody2D>();
@@ -50,6 +49,7 @@ public abstract class PlayerController : MonoBehaviour
     {
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
+        SoundManager.instance.PlaySound(SoundManager.instance.recall);
     }
 
     public virtual void Accroche(CrochetBalance crochet)

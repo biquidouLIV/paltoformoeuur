@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 3024878346645139155}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -419.25, y: -59.8, z: 0}
+  m_LocalPosition: {x: -0.049980164, y: -0.099998474, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1368,9 +1368,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2698130083467774183, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698130083467774183, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3634672901258561433, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
       propertyPath: m_Name
       value: Flame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077804493930006526, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077804493930006526, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077804493930006526, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077804493930006526, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: CustomDataModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

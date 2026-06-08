@@ -92,8 +92,6 @@ public class SoundManager : MonoBehaviour
         }
     }
     
-    
-    
     public void ChangeMusicVolume(float volume)
     {
         musicVolume = volume;

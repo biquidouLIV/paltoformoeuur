@@ -36,12 +36,13 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        if (PlayerPrefs.GetInt("musicVolume") == 1) slowMo = true;
+        else slowMo = false;
         checkpointTransform = transform.position;
         indiceCheckpoint = 0;
         handAnchorPosition = handController.gameObject.transform.localPosition;
         headAnchorPosition = headController.gameObject.transform.localPosition;
     }
-    
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -102,6 +103,13 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }*/
+    
+    public void ActiveUnactiveSlowMo(bool isSlowMo)
+    {
+        slowMo = isSlowMo;
+        if (slowMo) PlayerPrefs.SetInt("slowMo", 1);
+        else PlayerPrefs.SetInt("slowMo", 0);
+    }
 
     public void EnableHand()
     {

@@ -88,11 +88,6 @@ public class HeadController : PlayerController
         bodyScript.canThrowHead = false;
     }
 
-    private void OnDisable()
-    {
-        bodyScript.bodyAnimator.SetBool("IsHeadless",false);
-    }
-
     public override void Die()
     {
         Recall();

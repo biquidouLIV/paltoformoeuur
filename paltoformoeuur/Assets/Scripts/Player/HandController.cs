@@ -148,11 +148,6 @@ public class HandController : PlayerController
     {
         canDash = true;
     }
-
-    private void OnDisable()
-    {
-        bodyScript.bodyAnimator.SetBool("IsArmless",false);
-    }
     
     public override void Die()
     {

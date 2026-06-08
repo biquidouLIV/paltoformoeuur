@@ -52,7 +52,7 @@ public class BodyController : PlayerController
     public bool canThrowHand;
     public bool isDying;
     private SpriteRenderer sprite;
-    
+
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -68,6 +68,9 @@ public class BodyController : PlayerController
             canThrowHand = true;
             canThrowHead = true;
             isAiming = false;
+            bodyAnimator = GetComponent<Animator>();
+            bodyAnimator.SetBool("IsArmless",false);
+            bodyAnimator.SetBool("IsHeadless",false);
         }
     }
             
@@ -300,10 +303,6 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
-        Debug.Log(canThrowHand);
-        Debug.Log(PlayerManager.instance.handOnBody);
-        Debug.Log(hand.activeSelf);
-        
         if(accroche) return;
         
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)

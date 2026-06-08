@@ -839,12 +839,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b79b9c0e282774d911c73a0111aeda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  slowMo: 0
+  slowMoValue: 0.5
   bodyController: {fileID: 1466060844073490421}
   handController: {fileID: 3226355294599407309}
   headController: {fileID: 1720413786365845372}
   controlledPart: 0
   PlayerInput: {fileID: 2160805316179249409}
-  flame: {fileID: 7678228728239746693}
   flameHead: {fileID: 3350630382703590183}
   handOnBody: 1
   headOnBody: 1
@@ -1458,10 +1459,5 @@ PrefabInstance:
 --- !u!4 &5613493480384707835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1520349101338760679, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
-  m_PrefabInstance: {fileID: 6412703553708402972}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7678228728239746693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3634672901258561433, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
   m_PrefabInstance: {fileID: 6412703553708402972}
   m_PrefabAsset: {fileID: 0}

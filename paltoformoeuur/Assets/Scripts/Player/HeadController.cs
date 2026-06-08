@@ -71,7 +71,6 @@ public class HeadController : PlayerController
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
                     PlayerManager.instance.flameHead.SetActive(false);
-                    PlayerManager.instance.flame.SetActive(true);
                     PlayerManager.instance.StartCoroutine(doLatter());
                     isRecalling = false;
                     gameObject.SetActive(false);

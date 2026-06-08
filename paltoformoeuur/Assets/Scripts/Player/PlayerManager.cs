@@ -18,8 +18,7 @@ public class PlayerManager : MonoBehaviour
     [NonSerialized] public Vector3 headAnchorPosition;
     
     [SerializeField] public PlayerInput PlayerInput;
-
-    public GameObject flame;
+    
     public GameObject flameHead;
     
     public bool handOnBody = true;
@@ -114,7 +113,6 @@ public class PlayerManager : MonoBehaviour
     {
         headOnBody = false;
         flameHead.SetActive(true);
-        flame.SetActive(false);
     }
 
     public void OnRecallHead()

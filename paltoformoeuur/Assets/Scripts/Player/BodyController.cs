@@ -63,10 +63,11 @@ public class BodyController : PlayerController
             coyoteTime = bodyData.coyoteTime;
             delayZoomHead = bodyData.delayZoomHead;
             timeSinceLastJump = jumpMinimumDelay;
-            head.SetActive(false);
-            hand.SetActive(false);
             isDying = false;
             sprite = GetComponent<SpriteRenderer>();
+            canThrowHand = true;
+            canThrowHead = true;
+            isAiming = false;
         }
     }
             
@@ -116,8 +117,7 @@ public class BodyController : PlayerController
     {
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
-            if(isDying)return;
-            //jumpSound.Play();
+            if(isDying) return;
             SoundManager.instance.PlaySound(SoundManager.instance.jump);
             timeSinceLastJump = 0;
             elementRigidbody.linearVelocityY = 0;
@@ -300,6 +300,10 @@ public class BodyController : PlayerController
     
     public void OnAimHand(InputAction.CallbackContext context)
     {
+        Debug.Log(canThrowHand);
+        Debug.Log(PlayerManager.instance.handOnBody);
+        Debug.Log(hand.activeSelf);
+        
         if(accroche) return;
         
         if (context.started && !isAiming && PlayerManager.instance.handOnBody)

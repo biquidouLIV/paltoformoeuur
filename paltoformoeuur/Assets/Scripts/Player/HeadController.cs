@@ -17,6 +17,7 @@ public class HeadController : PlayerController
         if (data is HeadData headData)
         {
             recallSpeed = headData.recallSpeed;
+            gameObject.SetActive(false);
         }
     }
 

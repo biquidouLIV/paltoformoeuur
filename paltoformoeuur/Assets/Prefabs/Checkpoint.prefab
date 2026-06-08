@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6912086672005064010}
+  - {fileID: 4349935896682613672}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4980874029472045699
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   indiceCheckpoint: 1
+  flame: {fileID: 1961244427466578390}
 --- !u!61 &7937993786502967657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1594524909
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1096834067, guid: 97070713b4100fd46945ff0ac45a165e, type: 3}
@@ -184,3 +186,74 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &2974432757693636175
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1121140875482410451}
+    m_Modifications:
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.344
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634672901258561433, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_Name
+      value: FlameCheckpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634672901258561433, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+--- !u!1 &1961244427466578390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3634672901258561433, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+  m_PrefabInstance: {fileID: 2974432757693636175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4349935896682613672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1520349101338760679, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+  m_PrefabInstance: {fileID: 2974432757693636175}
+  m_PrefabAsset: {fileID: 0}

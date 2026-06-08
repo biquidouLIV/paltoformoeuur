@@ -181,44 +181,24 @@ public class BodyController : PlayerController
         else
         {
             bodyAnimator.SetBool("IsWalking",true);
-            SoundManager.instance.PlayLongSound(SoundManager.instance.walkForest);
             base.OnMove(context);
 
             if (moveInput.x > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
-                //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
             else if(moveInput.x < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
-                //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
         }
 
         if (context.canceled)
         {
-            SoundManager.instance.StopSound();
+
             bodyAnimator.SetBool("IsWalking",false);
         }
     }
-
-    /*public override void OnSprint(InputAction.CallbackContext context)
-    {
-        if(sprintSpeedMultiplier == 1) return;
-        
-        if (context.performed)
-        {
-            bodyScript.bodyAnimator.SetBool("IsSprinting",true);
-            sprintSpeed = sprintSpeedMultiplier;
-        }
-
-        if (context.canceled)
-        {
-            bodyScript.bodyAnimator.SetBool("IsSprinting",false);
-            sprintSpeed = 1;
-        }
-    }*/
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -268,6 +248,11 @@ public class BodyController : PlayerController
         CameraManager.instance.HeadZoom();
         yield return new WaitForSeconds(delayZoomHead);
         CameraManager.instance.UnZoom();
+    }
+
+    public void FallSound()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.chute);
     }
 
     private void OnDrawGizmos()
@@ -428,6 +413,7 @@ public class BodyController : PlayerController
     
     public override void Accroche(CrochetBalance crochet)
     {
+
         bodyAnimator.SetBool("IsWalking", false);
         bodyAnimator.SetBool("IsFalling", false);
         bodyAnimator.SetBool("IsBalancing", true);
@@ -459,4 +445,10 @@ public class BodyController : PlayerController
     {
         SoundManager.instance.PlaySound(SoundManager.instance.land);
     }
+
+    public void PlayStepSound()
+    {
+        SoundManager.instance.PlayStepSound();
+    }
+    
 }

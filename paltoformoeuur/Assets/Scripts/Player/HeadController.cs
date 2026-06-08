@@ -34,6 +34,8 @@ public class HeadController : PlayerController
 
     protected void Update()
     {
+        PlayerManager.instance.flameHead.transform.position = transform.position;
+        
         if (Mathf.Abs(elementRigidbody.linearVelocity.x) < 0.2f)
         {
             elementRigidbody.linearVelocity = new Vector2(0, elementRigidbody.linearVelocity.y);
@@ -49,7 +51,7 @@ public class HeadController : PlayerController
     
     public override void Recall()
     {
-        if (isRecalling)
+        if (isRecalling || PlayerManager.instance.headOnBody)
         {
             return;
         }
@@ -68,6 +70,8 @@ public class HeadController : PlayerController
                     bodyScript.bodyAnimator.SetBool("IsHeadless",false);
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
+                    PlayerManager.instance.flameHead.SetActive(false);
+                    PlayerManager.instance.flame.SetActive(true);
                     PlayerManager.instance.StartCoroutine(doLatter());
                     isRecalling = false;
                     gameObject.SetActive(false);
@@ -96,6 +100,9 @@ public class HeadController : PlayerController
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        SoundManager.instance.PlaySound(SoundManager.instance.collidePart);
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            SoundManager.instance.PlaySound(SoundManager.instance.collidePart);
+        }
     }
 }

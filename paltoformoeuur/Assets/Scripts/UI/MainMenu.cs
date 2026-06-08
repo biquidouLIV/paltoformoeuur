@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -42,6 +40,8 @@ public class MainMenu : MonoBehaviour
         
         [Header("settings tab 1")]
             [SerializeField] private RectTransform[] settingsTab1Components;
+            [SerializeField] private Slider[] slider;
+            
         [Header("settings tab 2")] 
             [SerializeField] private RectTransform controller;
         
@@ -58,6 +58,9 @@ public class MainMenu : MonoBehaviour
     
     private void Start()
     {
+        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
         eventSystem = EventSystem.current;
         currentSelectedButton = defaultMainMenuSelected;
         GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
@@ -78,9 +81,11 @@ public class MainMenu : MonoBehaviour
     }
     private IEnumerator TransitionOpen()
     {
+        Debug.Log("1");
         yield return new WaitForSeconds(0.5f);
         transitionScreen.localPosition = new Vector3(0, 0, 0);
         transitionScreen.DOLocalMove(new Vector3(-1920, 0, 0), 1).SetUpdate(true);
+        Debug.Log("2");
     }
     public void LoadScene(int scene)
     {
@@ -98,10 +103,12 @@ public class MainMenu : MonoBehaviour
         {
             case(Menu.mainMenu):
                 eventSystem.SetSelectedGameObject(defaultMainMenuSelected);
-                currentSelectedButton = eventSystem.currentSelectedGameObject;
+                currentSelectedButton = defaultMainMenuSelected;
+                
 
                 if (menu == Menu.settings)
                 {
+                    SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
                     eventSystem.SetSelectedGameObject(buttons[1].gameObject);
                 }
                 
@@ -113,7 +120,7 @@ public class MainMenu : MonoBehaviour
                 eventSystem.SetSelectedGameObject(defaultSettingsSelected);
                 settingsTabIndex = 0;
                 
-                HidePauseMenu(newMenu);
+                HidePauseMenu();
                 ShowSettingsMenu();
                 UpdateSettingsTab();
                 break;
@@ -151,14 +158,12 @@ public class MainMenu : MonoBehaviour
                 .OnComplete((() =>
                 {
                     selectionArrow
-                        .DOAnchorPosY(
-                            eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y,
-                            arrowSpeed)
+                        .DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
                         .SetUpdate(true)
                         .SetEase(arrowEase);
                 }));
         }
-        private void HidePauseMenu(Menu newMenu)
+        private void HidePauseMenu()
         {
             header.DOAnchorPos(new Vector2(0, 200), 0.2f)
                 .SetUpdate(true);
@@ -173,12 +178,13 @@ public class MainMenu : MonoBehaviour
                     .SetUpdate(true);
             }
         private void MoveSelectionArrow()
-            {
-                selectionArrow
-                    .DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
-                    .SetUpdate(true)
-                    .SetEase(arrowEase);
-            }
+        {
+            if (eventSystem.currentSelectedGameObject == null) return;
+            selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+                .SetUpdate(true)
+                .SetEase(arrowEase);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
+        }
         
     #endregion
 
@@ -194,6 +200,10 @@ public class MainMenu : MonoBehaviour
                     {
                         settingsMenu.GetComponent<CanvasGroup>().interactable = true;
                     }));
+                
+            slider[0].value = SoundManager.instance.mainVolume;
+            slider[1].value = SoundManager.instance.soundEffectVolume;
+            slider[2].value = SoundManager.instance.musicVolume;
             }
             ShowSettingsTab(0);
         }
@@ -209,7 +219,7 @@ public class MainMenu : MonoBehaviour
                     }));
             }
     
-            settingsSelectionTabIcon.DOAnchorPosX(-1100, 0.2f)
+            settingsSelectionTabIcon.DOAnchorPosX(-2000, 0.2f)
                 .SetUpdate(true);
     
             HideSettingsTab(0);
@@ -229,7 +239,6 @@ public class MainMenu : MonoBehaviour
     
             if (index == 1)
             {
-                Debug.Log("show tab" + index);
                 controller.GetComponent<Image>().DOFade(1, 0.2f)
                     .SetUpdate(true);
             }
@@ -256,7 +265,7 @@ public class MainMenu : MonoBehaviour
             {
                 if (i == settingsTabIndex)
                 {
-                    //settingsTab[i].SetActive(true);
+                    SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
                     settingsSelectionTabIcon.DOAnchorPosX(settingsTabIcon[i].anchoredPosition.x, settingsTabSelectionSpeed)
                                 .SetUpdate(true)
                                 .SetEase(settingsTabSelectionEase);
@@ -264,7 +273,6 @@ public class MainMenu : MonoBehaviour
                 }
                 else
                 {
-                    //settingsTab[i].SetActive(false);
                     HideSettingsTab(i);
                 }
             }
@@ -313,6 +321,28 @@ public class MainMenu : MonoBehaviour
                 if(menu == Menu.settings) ChangeMenu(Menu.mainMenu);
             }
         }
-    #endregion
+        
+        public void ChangeMainVolume()
+        {
+            SoundManager.instance.ChangeMainVolume(slider[0].value);
+            Debug.Log("1");
+        }
 
+        public void ChangeEffectVolume()
+        {
+            SoundManager.instance.ChangeEffectVolume(slider[1].value);
+            Debug.Log("2");
+        }
+
+        public void ChangeMusicVolume()
+        {
+            SoundManager.instance.ChangeMusicVolume(slider[2].value);
+            Debug.Log("3");
+        }
+    #endregion
+    
+    public void ButtonClickSound()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.UIButtonClick);
+    }
 }

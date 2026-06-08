@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -82,6 +82,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -888,6 +901,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ArmlessFall
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 424
+        width: 130
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4428167a61a6a5d469bd9996e1a0c9c0
+      internalID: -388925342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadlessArmlessFall
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 102
+        width: 130
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0033933dd9639be4a9748c4d4d4e71f2
+      internalID: -1213857837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -914,6 +971,7 @@ TextureImporter:
       ArmlessDeath_7: -1413004421
       ArmlessDeath_8: 453990007
       ArmlessDeath_9: -1561789170
+      ArmlessFall: -388925342
       ArmlessRespawn_1: 1357416981
       ArmlessRespawn_2: -950123353
       ArmlessRespawn_3: -1972190975
@@ -932,6 +990,7 @@ TextureImporter:
       HeadlessArmlessDeath_7: 1150106860
       HeadlessArmlessDeath_8: -578105371
       HeadlessArmlessDeath_9: 1303570327
+      HeadlessArmlessFall: -1213857837
       HeadlessArmlessRespawn_1: 506830675
       HeadlessArmlessRespawn_2: -1321871666
       HeadlessArmlessRespawn_3: -843641118

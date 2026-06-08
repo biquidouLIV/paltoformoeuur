@@ -23,7 +23,6 @@ public abstract class PlayerController : MonoBehaviour
     protected virtual void Start()
     {
         speed = data.speed;
-        //sprintSpeedMultiplier = data.sprintSpeedMultiplier;
         Init(data);
         
         elementRigidbody = GetComponent<Rigidbody2D>();
@@ -48,6 +47,7 @@ public abstract class PlayerController : MonoBehaviour
     
     public virtual void Recall()
     {
+        SoundManager.instance.PlaySound(SoundManager.instance.recall);
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
     }

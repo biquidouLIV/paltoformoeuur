@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Experimental.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +17,7 @@ public class UIManager : MonoBehaviour
         pause,
         settings,
     }
+
     
     [Header("menus")]
         [SerializeField] private GameObject pauseMenu;
@@ -44,15 +43,15 @@ public class UIManager : MonoBehaviour
         [SerializeField] private float settingsTabSelectionSpeed = 0.2f;
         [SerializeField] private Ease settingsTabSelectionEase;
         
-        [Header("settings tab 1")]
-            [SerializeField] private RectTransform[] settingsTab1Components;
-        [Header("settings tab 2")] 
+    [Header("settings tab 1")]
+        [SerializeField] private RectTransform[] settingsTab1Components;
+        [SerializeField] private Slider[] slider;
+    
+    [Header("settings tab 2")] 
             [SerializeField] private RectTransform controller;
         
     [Header("transition")]
         [SerializeField] private RectTransform transitionScreen;
-    
-    
     
     private float actualTimeScale;
     private Menu menu;
@@ -67,6 +66,8 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         pauseMenu.gameObject.SetActive(true);
         eventSystem = EventSystem.current;
         currentSelectedButton = defaultPauseSelected;
@@ -117,6 +118,7 @@ public class UIManager : MonoBehaviour
             case(Menu.pause):
                 Time.timeScale = 0;
                 eventSystem.SetSelectedGameObject(defaultPauseSelected);
+                SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
 
                 if (menu == Menu.noMenu)
                 {
@@ -213,11 +215,13 @@ public class UIManager : MonoBehaviour
                     .SetUpdate(true);
             }
         private void MoveSelectionArrow()
-            {
-                selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
-                    .SetUpdate(true)
-                    .SetEase(arrowEase);
-            }
+        {
+            if (eventSystem.currentSelectedGameObject == null) return;
+            selectionArrow.DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+                .SetUpdate(true)
+                .SetEase(arrowEase);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
+        }
         
     #endregion
 
@@ -264,11 +268,14 @@ public class UIManager : MonoBehaviour
                     settingsTab1Components[i].DOAnchorPosX(0, 0.2f + 0.1f * i)
                         .SetUpdate(true);
                 }
+
+                slider[0].value = SoundManager.instance.mainVolume;
+                slider[1].value = SoundManager.instance.soundEffectVolume;
+                slider[2].value = SoundManager.instance.musicVolume;
             }
     
             if (index == 1)
             {
-                Debug.Log("show tab" + index);
                 controller.GetComponent<Image>().DOFade(1, 0.2f)
                     .SetUpdate(true);
             }
@@ -293,9 +300,10 @@ public class UIManager : MonoBehaviour
         {
             for (int i = 0; i < settingsTab.Length; i++)
             {
+                
                 if (i == settingsTabIndex)
                 {
-                    //settingsTab[i].SetActive(true);
+                    SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
                     settingsSelectionTabIcon.DOAnchorPosX(settingsTabIcon[i].anchoredPosition.x, settingsTabSelectionSpeed)
                                 .SetUpdate(true)
                                 .SetEase(settingsTabSelectionEase);
@@ -303,7 +311,6 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    //settingsTab[i].SetActive(false);
                     HideSettingsTab(i);
                 }
             }
@@ -374,7 +381,28 @@ public class UIManager : MonoBehaviour
                 if(menu == Menu.settings) ChangeMenu(Menu.pause);
             }
         }
+
+        public void ChangeMainVolume()
+        {
+            SoundManager.instance.ChangeMainVolume(slider[0].value);
+        }
+
+        public void ChangeEffectVolume()
+        {
+            SoundManager.instance.ChangeEffectVolume(slider[1].value);
+        }
+
+        public void ChangeMusicVolume()
+        {
+            SoundManager.instance.ChangeMusicVolume(slider[2].value);
+        }
     #endregion
+
+
+    public void ButtonClickSound()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.UIButtonClick);
+    }
 }
 
 

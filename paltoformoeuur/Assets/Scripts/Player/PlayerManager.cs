@@ -6,15 +6,18 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     [Header("Pas touche GD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")]
-    [SerializeField] public BodyController bodyController;
-    [SerializeField] public HandController handController;
-    [SerializeField] public HeadController headController;
-    [SerializeField] public PlayerPart controlledPart;
+    public BodyController bodyController;
+    public HandController handController;
+    public HeadController headController;
+    public PlayerPart controlledPart;
     
     [NonSerialized] public Vector3 handAnchorPosition;
     [NonSerialized] public Vector3 headAnchorPosition;
-
+    
     [SerializeField] public PlayerInput PlayerInput;
+
+    public GameObject flame;
+    public GameObject flameHead;
     
     public bool handOnBody = true;
     public bool headOnBody = true;
@@ -36,6 +39,7 @@ public class PlayerManager : MonoBehaviour
         handAnchorPosition = handController.gameObject.transform.localPosition;
         headAnchorPosition = headController.gameObject.transform.localPosition;
     }
+    
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -106,6 +110,8 @@ public class PlayerManager : MonoBehaviour
     public void EnableHead()
     {
         headOnBody = false;
+        PlayerManager.instance.flameHead.SetActive(true);
+        PlayerManager.instance.flame.SetActive(false);
     }
 
     public void OnRecallHead()

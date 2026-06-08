@@ -9,14 +9,20 @@ public class Moisissure : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Head"))
         {
-            other.GetComponent<Rigidbody2D>().angularDamping += ralentissement;
-            other.GetComponent<Rigidbody2D>().linearVelocity /= ralentissementInstantane;
+            Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+            rigidbody.angularDamping += ralentissement;
+            rigidbody.linearVelocity /= ralentissementInstantane;
             return;
         }
-        if (other.GetComponent<PlayerController>() != null)
+        if (other.gameObject.CompareTag("Body"))
         {
             SoundManager.instance.PlaySound(SoundManager.instance.deathMold);
-            other.GetComponent<PlayerController>().Die();
+        }
+
+        PlayerController controller = other.GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            controller.Die();
         }
     }
 

@@ -99,6 +99,11 @@ public class HandController : PlayerController
 
     public override void Recall()
     {
+        if (PlayerManager.instance.handOnBody)
+        {
+            return;
+        }
+        
         if (currentCrochet != null)
         {
             Decroche();

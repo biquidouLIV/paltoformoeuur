@@ -47,9 +47,9 @@ public abstract class PlayerController : MonoBehaviour
     
     public virtual void Recall()
     {
+        SoundManager.instance.PlaySound(SoundManager.instance.recall);
         transform.parent = player.transform;
         elementRigidbody.simulated = false;
-        SoundManager.instance.PlaySound(SoundManager.instance.recall);
     }
 
     public virtual void Accroche(CrochetBalance crochet)

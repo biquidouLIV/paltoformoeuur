@@ -10,6 +10,7 @@ public class FallingPlatform : MonoBehaviour
     {
         fallingAnchor.SetActive(false);
     }
+    
     public void Update()
     {
         if (!falling) return;
@@ -20,6 +21,7 @@ public class FallingPlatform : MonoBehaviour
         else
         {
             falling = false;
+            PlayerManager.instance.handController.Recall();
         }
     }
 }

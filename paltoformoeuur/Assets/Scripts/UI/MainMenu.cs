@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
         
         [Header("settings tab 1")]
             [SerializeField] private RectTransform[] settingsTab1Components;
+            [SerializeField] private GameObject[] settingsTab1Objects;
             [SerializeField] private Slider[] slider;
             [SerializeField] private RectTransform settingsTabArrow;
             
@@ -296,9 +297,10 @@ public class MainMenu : MonoBehaviour
             if (eventSystem.currentSelectedGameObject == null) return;
 
             float target = 250;
-            if (eventSystem.currentSelectedGameObject == slider[0].gameObject) target = 250;
-            if (eventSystem.currentSelectedGameObject == slider[1].gameObject) target = 100;
-            if (eventSystem.currentSelectedGameObject == slider[2].gameObject) target = -50;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[0]) target = 250;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[1]) target = 100;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[2]) target = -50;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[3]) target = -200;
             
             settingsTabArrow.DOAnchorPosY(target, arrowSpeed)
                 .SetUpdate(true)

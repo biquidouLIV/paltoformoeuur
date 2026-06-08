@@ -110,8 +110,8 @@ public class PlayerManager : MonoBehaviour
     public void EnableHead()
     {
         headOnBody = false;
-        PlayerManager.instance.flameHead.SetActive(true);
-        PlayerManager.instance.flame.SetActive(false);
+        flameHead.SetActive(true);
+        flame.SetActive(false);
     }
 
     public void OnRecallHead()

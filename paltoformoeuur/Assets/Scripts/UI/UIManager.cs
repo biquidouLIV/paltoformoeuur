@@ -242,6 +242,7 @@ public class UIManager : MonoBehaviour
             slider[0].value = SoundManager.instance.mainVolume;
             slider[1].value = SoundManager.instance.soundEffectVolume;
             slider[2].value = SoundManager.instance.musicVolume;
+            settingsTab1Objects[3].GetComponent<Toggle>().isOn = PlayerManager.instance.slowMo;
             ShowSettingsTab(0);
         }
         private void HideSettingsMenu()
@@ -415,6 +416,11 @@ public class UIManager : MonoBehaviour
         {
             SoundManager.instance.ChangeMusicVolume(slider[2].value);
             SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
+        }
+
+        public void changeSlowMo()
+        {
+            PlayerManager.instance.slowMo = settingsTab1Objects[3].GetComponent<Toggle>().isOn;
         }
     #endregion
 

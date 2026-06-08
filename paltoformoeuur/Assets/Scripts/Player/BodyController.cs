@@ -318,8 +318,8 @@ public class BodyController : PlayerController
             SoundManager.instance.PlaySound(SoundManager.instance.launch);
             //Time.timeScale = 1f;
             isAiming = false;
-            if(canThrowHand)return;
-            if(hand.activeSelf)return;
+            if (canThrowHand) return;
+            if (hand.activeSelf) return;
             canThrowHand = true;
             aimingPart = default;
         }
@@ -413,7 +413,7 @@ public class BodyController : PlayerController
     
     public override void Accroche(CrochetBalance crochet)
     {
-
+        isAiming = false;
         bodyAnimator.SetBool("IsWalking", false);
         bodyAnimator.SetBool("IsFalling", false);
         bodyAnimator.SetBool("IsBalancing", true);

@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 10;
         checkpointTransform = transform.position;
         indiceCheckpoint = 0;
         handAnchorPosition = handController.gameObject.transform.localPosition;

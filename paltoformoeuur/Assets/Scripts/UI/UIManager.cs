@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -50,7 +51,9 @@ public class UIManager : MonoBehaviour
         [SerializeField] private RectTransform settingsTabArrow;
     
     [Header("settings tab 2")] 
-            [SerializeField] private RectTransform controller;
+        [SerializeField] private RectTransform controller;
+        [SerializeField] private Image[] lines;
+        [SerializeField] private TMP_Text[] texts;
         
     [Header("transition")]
         [SerializeField] private RectTransform transitionScreen;
@@ -281,6 +284,15 @@ public class UIManager : MonoBehaviour
             {
                 controller.GetComponent<Image>().DOFade(1, 0.2f)
                     .SetUpdate(true);
+                foreach (var line in lines)
+                {
+                    DOTween.To(() => line.fillAmount, x => line.fillAmount = x, 1, 0.2f).SetUpdate(true);
+                }
+
+                foreach (var text in texts)
+                {
+                    DOTween.To(() =>  text.color, x => text.color = x, Color.white, 0.2f).SetUpdate(true);  
+                }
             }
         }
         private void HideSettingsTab(int index)
@@ -299,6 +311,16 @@ public class UIManager : MonoBehaviour
             {
                 controller.GetComponent<Image>().DOFade(0, 0.2f)
                     .SetUpdate(true);
+                
+                foreach (var line in lines)
+                {
+                    DOTween.To(() => line.fillAmount, x => line.fillAmount = x, 0, 0.2f).SetUpdate(true);
+                }
+
+                foreach (var text in texts)
+                {
+                    DOTween.To(() =>  text.color, x => text.color = x, new Color(255,255,255,0), 0.2f).SetUpdate(true);  
+                }
             }
         }
         private void UpdateSettingsTab()

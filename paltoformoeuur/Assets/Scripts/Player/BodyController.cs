@@ -415,6 +415,7 @@ public class BodyController : PlayerController
     {
         isAiming = false;
         bodyAnimator.SetBool("IsWalking", false);
+        bodyAnimator.SetBool("IsAiming", false);
         bodyAnimator.SetBool("IsFalling", false);
         bodyAnimator.SetBool("IsBalancing", true);
         accroche = true;

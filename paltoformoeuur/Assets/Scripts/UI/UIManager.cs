@@ -158,6 +158,7 @@ public class UIManager : MonoBehaviour
     #region PauseMenu
         private void ShowPauseMenu()
         {
+            PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("UI");
             selectionArrow.anchoredPosition = buttons[0].anchoredPosition;
 
             pauseMenu.GetComponent<Image>().DOFade(0.9f, 0.2f)
@@ -181,19 +182,18 @@ public class UIManager : MonoBehaviour
                 .OnComplete((() =>
                 {
                     selectionArrow
-                        .DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+                        .DOAnchorPosY(
+                            eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y,
+                            arrowSpeed)
                         .SetUpdate(true)
-                        .SetEase(arrowEase)
-                        .OnComplete((() =>
-                        {
-                            PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("UI");
-                        }));
+                        .SetEase(arrowEase);
                 }));
         }
         private void HidePauseMenu(Menu newMenu)
             {
                 if (newMenu == Menu.noMenu)
                 {
+                    if(newMenu == Menu.noMenu) PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
                     pauseMenu.GetComponent<Image>().DOFade(0, 0.2f)
                         .SetUpdate(true)
                         .OnComplete((() =>
@@ -201,14 +201,10 @@ public class UIManager : MonoBehaviour
                                     
                         }));
                 }
-        
-                        
+
+
                 header.DOAnchorPos(new Vector2(0, 200), 0.2f)
-                    .SetUpdate(true)
-                    .OnComplete((() =>
-                    {
-                        if(newMenu == Menu.noMenu) PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
-                    }));
+                    .SetUpdate(true);
                         
                 for (int i = 0; i < buttons.Length; i++)
                 {

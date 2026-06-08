@@ -141,7 +141,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void PreviousTab(InputAction.CallbackContext context)
     {
-        UIManager.instance.NextTab(context);
+        UIManager.instance.PreviousTab(context);
     }
 
     public void GoBack(InputAction.CallbackContext context)

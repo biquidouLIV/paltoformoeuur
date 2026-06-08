@@ -3679,6 +3679,7 @@ GameObject:
   - component: {fileID: 137688469}
   - component: {fileID: 137688468}
   - component: {fileID: 137688467}
+  - component: {fileID: 137688470}
   m_Layer: 12
   m_Name: Text_003
   m_TagString: Untagged
@@ -3849,6 +3850,19 @@ RectTransform:
   m_AnchoredPosition: {x: 127.38, y: -5.1}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &137688470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137688466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  distanceToSee: 10
 --- !u!1001 &138288314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11893,6 +11907,7 @@ GameObject:
   - component: {fileID: 458961020}
   - component: {fileID: 458961019}
   - component: {fileID: 458961018}
+  - component: {fileID: 458961021}
   m_Layer: 12
   m_Name: Text_001
   m_TagString: Untagged
@@ -12063,6 +12078,19 @@ RectTransform:
   m_AnchoredPosition: {x: -20.44, y: 8.62}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &458961021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458961017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  distanceToSee: 10
 --- !u!1001 &460406345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18327,6 +18355,7 @@ GameObject:
   - component: {fileID: 777508384}
   - component: {fileID: 777508383}
   - component: {fileID: 777508382}
+  - component: {fileID: 777508385}
   m_Layer: 12
   m_Name: Text_004
   m_TagString: Untagged
@@ -18497,6 +18526,19 @@ RectTransform:
   m_AnchoredPosition: {x: 148.07, y: -11.46}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &777508385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777508381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  distanceToSee: 10
 --- !u!1001 &789373938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21424,6 +21466,7 @@ GameObject:
   - component: {fileID: 954463019}
   - component: {fileID: 954463018}
   - component: {fileID: 954463017}
+  - component: {fileID: 954463020}
   m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
@@ -21594,6 +21637,19 @@ RectTransform:
   m_AnchoredPosition: {x: -66.41592, y: -5.4}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &954463020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954463016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  distanceToSee: 10
 --- !u!1001 &956518880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39619,6 +39675,7 @@ GameObject:
   - component: {fileID: 1731526466}
   - component: {fileID: 1731526465}
   - component: {fileID: 1731526464}
+  - component: {fileID: 1731526467}
   m_Layer: 12
   m_Name: Text_002
   m_TagString: Untagged
@@ -39789,6 +39846,19 @@ RectTransform:
   m_AnchoredPosition: {x: -15.58, y: 1.65}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1731526467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731526463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  distanceToSee: 10
 --- !u!1001 &1733057146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45777,6 +45847,7 @@ GameObject:
   - component: {fileID: 2074419879}
   - component: {fileID: 2074419878}
   - component: {fileID: 2074419877}
+  - component: {fileID: 2074419880}
   m_Layer: 12
   m_Name: Text_005
   m_TagString: Untagged
@@ -45947,6 +46018,19 @@ RectTransform:
   m_AnchoredPosition: {x: 278.88, y: 2.09}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2074419880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074419876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  distanceToSee: 10
 --- !u!4 &2074516815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8124529808478007202, guid: 4a3d77a3e1f38cd40878a9174d2401fa, type: 3}

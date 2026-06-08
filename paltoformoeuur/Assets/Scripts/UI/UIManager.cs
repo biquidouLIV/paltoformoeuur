@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     [Header("settings tab 1")]
         [SerializeField] private RectTransform[] settingsTab1Components;
         [SerializeField] private Slider[] slider;
+        [SerializeField] private RectTransform settingsTabArrow;
     
     [Header("settings tab 2")] 
             [SerializeField] private RectTransform controller;
@@ -78,10 +79,13 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if(menu != Menu.pause) return;
         if (currentSelectedButton != eventSystem.currentSelectedGameObject && menu == Menu.pause)
         {
             MoveSelectionArrow();
+        }
+        if (currentSelectedButton != eventSystem.currentSelectedGameObject && menu == Menu.settings && settingsTabIndex == 0)
+        {
+            MoveSettings1SelectionArrow();
         }
 
         currentSelectedButton = eventSystem.currentSelectedGameObject;
@@ -117,6 +121,8 @@ public class UIManager : MonoBehaviour
             
             case(Menu.pause):
                 Time.timeScale = 0;
+                defaultPauseMenu.GetComponent<CanvasGroup>().interactable = true;
+                settingsMenu.GetComponent<CanvasGroup>().interactable = false;
                 eventSystem.SetSelectedGameObject(defaultPauseSelected);
                 SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
 
@@ -136,6 +142,8 @@ public class UIManager : MonoBehaviour
                 break;
             
             case(Menu.settings):
+                defaultPauseMenu.GetComponent<CanvasGroup>().interactable = false;
+                settingsMenu.GetComponent<CanvasGroup>().interactable = true;
                 eventSystem.SetSelectedGameObject(defaultSettingsSelected);
                 settingsTabIndex = 0;
                 HidePauseMenu(newMenu);
@@ -150,13 +158,9 @@ public class UIManager : MonoBehaviour
         private void ShowPauseMenu()
         {
             selectionArrow.anchoredPosition = buttons[0].anchoredPosition;
-                    
+
             pauseMenu.GetComponent<Image>().DOFade(0.9f, 0.2f)
-                .SetUpdate(true)
-                .OnComplete((() =>
-                {
-                    defaultPauseMenu.GetComponent<CanvasGroup>().interactable = true;
-                }));
+                .SetUpdate(true);
                     
             header.DOAnchorPos(new Vector2(0, (-150)), 0.2f)
                 .SetUpdate(true)
@@ -232,12 +236,11 @@ public class UIManager : MonoBehaviour
             for (int i = 0; i < settingsTabIcon.Length; i++)
             {
                 settingsTabIcon[i].DOAnchorPosY(50, 0.2f + i * 0.1f)
-                    .SetUpdate(true)
-                    .OnComplete((() =>
-                    {
-                        settingsMenu.GetComponent<CanvasGroup>().interactable = true;
-                    }));
+                    .SetUpdate(true);
             }
+            slider[0].value = SoundManager.instance.mainVolume;
+            slider[1].value = SoundManager.instance.soundEffectVolume;
+            slider[2].value = SoundManager.instance.musicVolume;
             ShowSettingsTab(0);
         }
         private void HideSettingsMenu()
@@ -245,11 +248,7 @@ public class UIManager : MonoBehaviour
             for (int i = 0; i < settingsTabIcon.Length; i++)
             {
                 settingsTabIcon[i].DOAnchorPosY(200, 0.2f + i * 0.1f)
-                    .SetUpdate(true)
-                    .OnComplete((() =>
-                    {
-                        settingsMenu.GetComponent<CanvasGroup>().interactable = false;
-                    }));
+                    .SetUpdate(true);
             }
     
             settingsSelectionTabIcon.DOAnchorPosX(-1100, 0.2f)
@@ -269,9 +268,8 @@ public class UIManager : MonoBehaviour
                         .SetUpdate(true);
                 }
 
-                slider[0].value = SoundManager.instance.mainVolume;
-                slider[1].value = SoundManager.instance.soundEffectVolume;
-                slider[2].value = SoundManager.instance.musicVolume;
+                settingsTabArrow.DOAnchorPosX(850, 0.2f)
+                    .SetUpdate(true);
             }
     
             if (index == 1)
@@ -289,6 +287,8 @@ public class UIManager : MonoBehaviour
                     settingsTab1Components[i].DOAnchorPosX(-1920, 0.2f + 0.1f * i)
                         .SetUpdate(true);
                 }
+                settingsTabArrow.DOAnchorPosX(2000, 0.2f)
+                    .SetUpdate(true);
             }
             if (index == 1)
             {
@@ -314,6 +314,21 @@ public class UIManager : MonoBehaviour
                     HideSettingsTab(i);
                 }
             }
+        }
+        
+        private void MoveSettings1SelectionArrow()
+        {
+            if (eventSystem.currentSelectedGameObject == null) return;
+
+            float target = 250;
+            if (eventSystem.currentSelectedGameObject == slider[0].gameObject) target = 250;
+            if (eventSystem.currentSelectedGameObject == slider[1].gameObject) target = 100;
+            if (eventSystem.currentSelectedGameObject == slider[2].gameObject) target = -50;
+            
+            settingsTabArrow.DOAnchorPosY(target, arrowSpeed)
+                .SetUpdate(true)
+                .SetEase(arrowEase);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
         }
         
     #endregion
@@ -385,16 +400,19 @@ public class UIManager : MonoBehaviour
         public void ChangeMainVolume()
         {
             SoundManager.instance.ChangeMainVolume(slider[0].value);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
         }
 
         public void ChangeEffectVolume()
         {
             SoundManager.instance.ChangeEffectVolume(slider[1].value);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
         }
 
         public void ChangeMusicVolume()
         {
             SoundManager.instance.ChangeMusicVolume(slider[2].value);
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
         }
     #endregion
 

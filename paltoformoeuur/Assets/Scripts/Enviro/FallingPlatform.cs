@@ -12,9 +12,14 @@ public class FallingPlatform : MonoBehaviour
     }
     public void Update()
     {
-        if (falling && transform.position.y > fallingAnchor.transform.position.y)
+        if (!falling) return;
+        if (transform.position.y > fallingAnchor.transform.position.y)
         {
             transform.Translate(new Vector2(0, -1 * speed * Time.deltaTime),Space.World);
+        }
+        else
+        {
+            falling = false;
         }
     }
 }

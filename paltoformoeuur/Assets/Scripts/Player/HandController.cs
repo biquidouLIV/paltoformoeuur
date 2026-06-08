@@ -197,6 +197,7 @@ public class HandController : PlayerController
     public override void Decroche()
     {
         handAnimator.SetBool("IsBalancing", false);
+        handAnimator.SetBool("IsAccroche", false);
         gameObject.transform.parent = null;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;

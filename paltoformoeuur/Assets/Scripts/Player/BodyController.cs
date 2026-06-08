@@ -275,7 +275,7 @@ public class BodyController : PlayerController
             StartCoroutine(VelocityWhenSpawnHand());
             if(head.activeSelf) return;
             isAiming = true;
-            //Time.timeScale = 0.25f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = PlayerManager.instance.slowMoValue;
             bodyAnimator.SetBool("IsAimingHead",true);
             SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.head;
@@ -285,14 +285,14 @@ public class BodyController : PlayerController
         {     
             SpawnHead();
             SoundManager.instance.PlaySound(SoundManager.instance.launch);
-            //Time.timeScale = 1f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHead)return;
             if (head.activeSelf) return;
             canThrowHead = true;
             aimingPart = default;
         }
-        else if (context.canceled)
+        else if (context.canceled && PlayerManager.instance.slowMo)
         {
             Time.timeScale = 1f;
         }
@@ -307,7 +307,7 @@ public class BodyController : PlayerController
             StartCoroutine(VelocityWhenSpawnHand());
             if(hand.activeSelf) return;
             isAiming = true;
-            //Time.timeScale = 0.25f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = PlayerManager.instance.slowMoValue;
             bodyAnimator.SetBool("IsAimingHand",true);
             SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.hand;
@@ -316,14 +316,14 @@ public class BodyController : PlayerController
         {
             SpawnHand();
             SoundManager.instance.PlaySound(SoundManager.instance.launch);
-            //Time.timeScale = 1f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = 1f;
             isAiming = false;
             if (canThrowHand) return;
             if (hand.activeSelf) return;
             canThrowHand = true;
             aimingPart = default;
         }
-        else if (context.canceled)
+        else if (context.canceled && PlayerManager.instance.slowMo)
         {
             Time.timeScale = 1f;
         }

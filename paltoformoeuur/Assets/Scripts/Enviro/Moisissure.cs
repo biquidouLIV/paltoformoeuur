@@ -9,7 +9,7 @@ public class Moisissure : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Head"))
         {
-            Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+            Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
             rigidbody.angularDamping += ralentissement;
             rigidbody.linearVelocity /= ralentissementInstantane;
             return;

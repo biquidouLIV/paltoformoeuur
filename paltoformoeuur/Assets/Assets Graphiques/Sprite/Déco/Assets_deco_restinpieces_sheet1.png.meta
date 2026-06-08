@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -154,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fungus_tree_pleurote_yellow
+      name: Fungus_tree_pleurote_1
       rect:
         serializedVersion: 2
         x: 391
@@ -176,11 +176,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fungus_tree_pleurote_orange
+      name: Fungus_tree_pleurote_2
       rect:
         serializedVersion: 2
-        x: 750
-        y: 794
+        x: 759
+        y: 797
         width: 302
         height: 247
       alignment: 0
@@ -483,6 +483,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Fungus_Tree_pleurote3
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 563
+        width: 362
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c44c599eef5c74f9bda39918484715
+      internalID: 1324808679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fungus_Ground_Flat
+      rect:
+        serializedVersion: 2
+        x: 1276
+        y: 504
+        width: 498
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcea55037ffb3e0418f521b4ccc48624
+      internalID: 1621938413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -711,14 +755,16 @@ TextureImporter:
       Ensemble_grass_2: 1215399339
       Ensemble_grass_3: 1052851577
       Ensemble_grass_4: -1809298599
+      Fungus_Ground_Flat: 1621938413
+      Fungus_Tree_pleurote3: 1324808679
       Fungus_ground_catinella: -1308795538
       Fungus_ground_peacocktail: 1450757537
       Fungus_tree_blade: -291791216
       Fungus_tree_catinella: -1488642634
       Fungus_tree_peacocktail2: 1497382519
       Fungus_tree_peacocktail_tree_1: 1514141573
-      Fungus_tree_pleurote_orange: 1212132646
-      Fungus_tree_pleurote_yellow: 780116434
+      Fungus_tree_pleurote_1: 780116434
+      Fungus_tree_pleurote_2: 1212132646
       Solo_grass_1: 548619600
       Solo_grass_2: -883234184
       Solo_grass_3: -557702939

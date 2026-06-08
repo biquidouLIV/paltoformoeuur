@@ -66,6 +66,7 @@ public class SoundManager : MonoBehaviour
             ambientSoundSource.clip = ambientSound;
             ambientSoundSource.volume = mainVolume * soundEffectVolume;
             ambientSoundSource.loop = true;
+            ambientSoundSource.Play();
         }
     }
     
@@ -79,18 +80,6 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(audio,mainVolume * soundEffectVolume);
     }
     
-    public void PlayLongSound(AudioClip audio)
-    {
-        audioSource.clip = audio;
-        audioSource.volume = mainVolume * soundEffectVolume;
-        audioSource.Play();
-    }
-
-    public void StopSound()
-    {
-        audioSource.Stop();
-    }
-    
     private IEnumerator PlayMusic()
     {
         if (music != null)
@@ -102,6 +91,8 @@ public class SoundManager : MonoBehaviour
             StartCoroutine(PlayMusic());
         }
     }
+    
+    
     
     public void ChangeMusicVolume(float volume)
     {

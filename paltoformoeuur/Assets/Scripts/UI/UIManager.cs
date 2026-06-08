@@ -238,6 +238,9 @@ public class UIManager : MonoBehaviour
                 settingsTabIcon[i].DOAnchorPosY(50, 0.2f + i * 0.1f)
                     .SetUpdate(true);
             }
+            slider[0].value = SoundManager.instance.mainVolume;
+            slider[1].value = SoundManager.instance.soundEffectVolume;
+            slider[2].value = SoundManager.instance.musicVolume;
             ShowSettingsTab(0);
         }
         private void HideSettingsMenu()

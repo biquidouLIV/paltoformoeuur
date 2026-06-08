@@ -87,8 +87,18 @@ public class SoundManager : MonoBehaviour
             musicSource.clip = music;
             musicSource.volume = mainVolume * musicVolume;
             musicSource.Play();
-            yield return new WaitForSeconds(music.length + timeBetweenMusics);
-            StartCoroutine(PlayMusic());
+
+            if (timeBetweenMusics == 0)
+            {
+                musicSource.loop = true;
+            }
+            else
+            {
+                yield return new WaitForSeconds(music.length + timeBetweenMusics);
+                StartCoroutine(PlayMusic());
+            }
+            
+            
         }
     }
     

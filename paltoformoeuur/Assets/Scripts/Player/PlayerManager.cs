@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        if (PlayerPrefs.GetInt("musicVolume") == 1) slowMo = true;
+        if (PlayerPrefs.GetInt("slowMo") == 1) slowMo = true;
         else slowMo = false;
         checkpointTransform = transform.position;
         indiceCheckpoint = 0;

@@ -238,7 +238,14 @@ public class UIManager : MonoBehaviour
             slider[0].value = SoundManager.instance.mainVolume;
             slider[1].value = SoundManager.instance.soundEffectVolume;
             slider[2].value = SoundManager.instance.musicVolume;
-            settingsTab1Objects[3].GetComponent<Toggle>().isOn = PlayerManager.instance.slowMo;
+            if (PlayerPrefs.GetInt("slowMo") == 1)
+            {
+                settingsTab1Objects[3].GetComponent<Toggle>().isOn = true;
+            }
+            else
+            {
+                settingsTab1Objects[3].GetComponent<Toggle>().isOn = false;
+            }
             ShowSettingsTab(0);
         }
         private void HideSettingsMenu()
@@ -416,7 +423,16 @@ public class UIManager : MonoBehaviour
 
         public void changeSlowMo()
         {
-            PlayerManager.instance.slowMo = settingsTab1Objects[3].GetComponent<Toggle>().isOn;
+            if (settingsTab1Objects[3].GetComponent<Toggle>().isOn)
+            {
+                PlayerPrefs.SetInt("slowMo",1);
+                PlayerManager.instance.slowMo = true;
+            }
+            else
+            {
+                PlayerPrefs.SetInt("slowMo",0);
+                PlayerManager.instance.slowMo = false;
+            }
         }
     #endregion
 

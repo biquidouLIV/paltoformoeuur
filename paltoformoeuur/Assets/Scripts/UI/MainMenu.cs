@@ -402,6 +402,7 @@ public class MainMenu : MonoBehaviour
         
         public void changeSlowMo()
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
             if (settingsTab1Objects[3].GetComponent<Toggle>().isOn)
             {
                 PlayerPrefs.SetInt("slowMo",1);

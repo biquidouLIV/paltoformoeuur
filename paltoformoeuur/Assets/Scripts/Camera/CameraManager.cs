@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
     public float animatiqueCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
-    [SerializeField] private Vector3 targetOffset;
+    public Vector3 targetOffset;
     
     private float defaultLookAheadTime;
     

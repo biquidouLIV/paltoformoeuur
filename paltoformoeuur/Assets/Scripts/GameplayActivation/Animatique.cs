@@ -10,6 +10,10 @@ public class Animatique : MonoBehaviour
 
     public void EndAnimatique()
     {
+        if (SceneManager.GetActiveScene().buildIndex + 1 > SceneManager.sceneCount)
+        {
+            UIManager.instance.LoadScene(0);
+        }
         UIManager.instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

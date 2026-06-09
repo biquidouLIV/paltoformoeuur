@@ -22,6 +22,7 @@ public class SoundManager : MonoBehaviour
         public AudioClip dashBras;
         public AudioClip recall;
         public AudioClip chute;
+        public AudioClip rollingHead;
     
     [Header("Enviro")]
         public AudioClip bumperSound;

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c052bc659fbed4da755f586eae5f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  ambientSound: {fileID: 0}
-  music: {fileID: 8300000, guid: f7c8df0a4485d444192c0b0da13bb327, type: 3}
+  ambientSound: {fileID: 8300000, guid: 023207672e8d10340bbda9f0137867dd, type: 3}
+  music: {fileID: 8300000, guid: a5e669f910248cd4b965109e5223b04f, type: 3}
   timeBetweenMusics: 0
   walk:
   - {fileID: 8300000, guid: bbc501174d9793d44810d6293a9a0abf, type: 3}
@@ -70,7 +70,7 @@ MonoBehaviour:
   bumperSound: {fileID: 8300000, guid: acd5494089981da459caf4ca0b40b12a, type: 3}
   triggerButton: {fileID: 8300000, guid: 509b0a0e481540c4098643cbeb2953c4, type: 3}
   triggerCheckpoint: {fileID: 8300000, guid: 2162a44338fc5e64cbf8c63486a84636, type: 3}
-  respawnCheckpoint: {fileID: 8300000, guid: 22f6796f94900154797b647b519c3f5a, type: 3}
+  respawnCheckpoint: {fileID: 8300000, guid: 9fd5d82c8cd910a4ea9ddca8c813cd66, type: 3}
   crochet: {fileID: 8300000, guid: 3a2d11759a341dc4daeb6f7034508519, type: 3}
   crochetGauche: {fileID: 8300000, guid: 217b85fd8f65fd94a90d16e20f88b100, type: 3}
   crochetDroite: {fileID: 8300000, guid: ed2f9b71b0537c44ca2b01b0242ae3f8, type: 3}

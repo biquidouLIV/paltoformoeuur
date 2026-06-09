@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerAnimatique : MonoBehaviour
 {
@@ -8,9 +9,7 @@ public class TriggerAnimatique : MonoBehaviour
     {
         if (other.CompareTag("Body"))
         {
-            CameraManager.instance.ChangeTargetAnimatique();
-            PlayerManager.instance.PlayerInput.enabled = false;
-            animatiqueAnimator.Play("EndAnimation");
+            UIManager.instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

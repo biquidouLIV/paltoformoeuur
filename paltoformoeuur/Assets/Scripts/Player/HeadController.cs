@@ -10,7 +10,8 @@ public class HeadController : PlayerController
     private int recallSpeed;
     private float initialAngularDamping;
     public bool isRecalling;
-
+    private AudioSource audio;
+    
 
     public override void Init(PlayerData data)
     {
@@ -24,6 +25,10 @@ public class HeadController : PlayerController
     protected override void Start()
     {
         base.Start();
+        audio = GetComponent<AudioSource>();
+        audio.clip = SoundManager.instance.rollingHead;
+        audio.loop = true;
+        audio.volume = SoundManager.instance.soundEffectVolume * SoundManager.instance.mainVolume;
         initialAngularDamping = elementRigidbody.angularDamping;
     }
 
@@ -42,6 +47,7 @@ public class HeadController : PlayerController
             elementRigidbody.linearVelocity = new Vector2(0, elementRigidbody.linearVelocity.y);
             colliderCarre.enabled = true;
             colliderRond.enabled = false;
+            audio.Stop();
         }
         else
         {
@@ -57,6 +63,7 @@ public class HeadController : PlayerController
             return;
         }
 
+        audio.Stop();
         isRecalling = true;
         CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
@@ -99,5 +106,6 @@ public class HeadController : PlayerController
         {
             SoundManager.instance.PlaySound(SoundManager.instance.collidePart);
         }
+        audio.Play();
     }
 }

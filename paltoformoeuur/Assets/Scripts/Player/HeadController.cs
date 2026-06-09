@@ -64,6 +64,7 @@ public class HeadController : PlayerController
         }
 
         audio.Stop();
+        Debug.Log("stop");
         isRecalling = true;
         CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
@@ -106,6 +107,15 @@ public class HeadController : PlayerController
         {
             SoundManager.instance.PlaySound(SoundManager.instance.collidePart);
         }
-        audio.Play();
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (colliderRond.enabled)
+        {
+            if (audio.isPlaying) return;
+            audio.Play();
+            Debug.Log("play");
+        }
     }
 }

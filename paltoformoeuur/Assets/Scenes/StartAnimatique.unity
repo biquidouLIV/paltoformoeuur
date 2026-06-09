@@ -13916,6 +13916,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1520349101338760679, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2698130083467774183, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -13923,6 +13927,10 @@ PrefabInstance:
     - target: {fileID: 3634672901258561433, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
       propertyPath: m_Name
       value: Flame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634672901258561433, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3634672901258561433, guid: e7738c24b1da777429ab8daf4250a8c7, type: 3}
       propertyPath: m_IsActive
@@ -25104,7 +25112,7 @@ GameObject:
   - component: {fileID: 971446461}
   - component: {fileID: 971446460}
   - component: {fileID: 971446463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Animatique 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

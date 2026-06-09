@@ -423,7 +423,10 @@ public class BodyController : PlayerController
         PlayerManager.instance.flameHead.SetActive(false);
         yield return null;
         PlayerManager.instance.flame.SetActive(true);
-        PlayerManager.instance.flameHead.SetActive(true);
+        if (!PlayerManager.instance.headOnBody)
+        {
+            PlayerManager.instance.flameHead.SetActive(true);
+        }
     }
     
     //event dans l'anim de respawn

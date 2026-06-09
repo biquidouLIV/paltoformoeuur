@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -45,11 +46,14 @@ public class UIManager : MonoBehaviour
         
     [Header("settings tab 1")]
         [SerializeField] private RectTransform[] settingsTab1Components;
+        [SerializeField] private GameObject[] settingsTab1Objects;
         [SerializeField] private Slider[] slider;
         [SerializeField] private RectTransform settingsTabArrow;
     
     [Header("settings tab 2")] 
-            [SerializeField] private RectTransform controller;
+        [SerializeField] private RectTransform controller;
+        [SerializeField] private Image[] lines;
+        [SerializeField] private TMP_Text[] texts;
         
     [Header("transition")]
         [SerializeField] private RectTransform transitionScreen;
@@ -157,6 +161,7 @@ public class UIManager : MonoBehaviour
     #region PauseMenu
         private void ShowPauseMenu()
         {
+            PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("UI");
             selectionArrow.anchoredPosition = buttons[0].anchoredPosition;
 
             pauseMenu.GetComponent<Image>().DOFade(0.9f, 0.2f)
@@ -180,19 +185,18 @@ public class UIManager : MonoBehaviour
                 .OnComplete((() =>
                 {
                     selectionArrow
-                        .DOAnchorPosY(eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y, arrowSpeed)
+                        .DOAnchorPosY(
+                            eventSystem.currentSelectedGameObject.GetComponent<RectTransform>().anchoredPosition.y,
+                            arrowSpeed)
                         .SetUpdate(true)
-                        .SetEase(arrowEase)
-                        .OnComplete((() =>
-                        {
-                            PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("UI");
-                        }));
+                        .SetEase(arrowEase);
                 }));
         }
         private void HidePauseMenu(Menu newMenu)
             {
                 if (newMenu == Menu.noMenu)
                 {
+                    if(newMenu == Menu.noMenu) PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
                     pauseMenu.GetComponent<Image>().DOFade(0, 0.2f)
                         .SetUpdate(true)
                         .OnComplete((() =>
@@ -200,14 +204,10 @@ public class UIManager : MonoBehaviour
                                     
                         }));
                 }
-        
-                        
+
+
                 header.DOAnchorPos(new Vector2(0, 200), 0.2f)
-                    .SetUpdate(true)
-                    .OnComplete((() =>
-                    {
-                        if(newMenu == Menu.noMenu) PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
-                    }));
+                    .SetUpdate(true);
                         
                 for (int i = 0; i < buttons.Length; i++)
                 {
@@ -241,6 +241,14 @@ public class UIManager : MonoBehaviour
             slider[0].value = SoundManager.instance.mainVolume;
             slider[1].value = SoundManager.instance.soundEffectVolume;
             slider[2].value = SoundManager.instance.musicVolume;
+            if (PlayerPrefs.GetInt("slowMo") == 1)
+            {
+                settingsTab1Objects[3].GetComponent<Toggle>().isOn = true;
+            }
+            else
+            {
+                settingsTab1Objects[3].GetComponent<Toggle>().isOn = false;
+            }
             ShowSettingsTab(0);
         }
         private void HideSettingsMenu()
@@ -276,6 +284,15 @@ public class UIManager : MonoBehaviour
             {
                 controller.GetComponent<Image>().DOFade(1, 0.2f)
                     .SetUpdate(true);
+                foreach (var line in lines)
+                {
+                    DOTween.To(() => line.fillAmount, x => line.fillAmount = x, 1, 0.2f).SetUpdate(true);
+                }
+
+                foreach (var text in texts)
+                {
+                    DOTween.To(() =>  text.color, x => text.color = x, Color.white, 0.2f).SetUpdate(true);  
+                }
             }
         }
         private void HideSettingsTab(int index)
@@ -294,6 +311,16 @@ public class UIManager : MonoBehaviour
             {
                 controller.GetComponent<Image>().DOFade(0, 0.2f)
                     .SetUpdate(true);
+                
+                foreach (var line in lines)
+                {
+                    DOTween.To(() => line.fillAmount, x => line.fillAmount = x, 0, 0.2f).SetUpdate(true);
+                }
+
+                foreach (var text in texts)
+                {
+                    DOTween.To(() =>  text.color, x => text.color = x, new Color(255,255,255,0), 0.2f).SetUpdate(true);  
+                }
             }
         }
         private void UpdateSettingsTab()
@@ -321,9 +348,10 @@ public class UIManager : MonoBehaviour
             if (eventSystem.currentSelectedGameObject == null) return;
 
             float target = 250;
-            if (eventSystem.currentSelectedGameObject == slider[0].gameObject) target = 250;
-            if (eventSystem.currentSelectedGameObject == slider[1].gameObject) target = 100;
-            if (eventSystem.currentSelectedGameObject == slider[2].gameObject) target = -50;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[0]) target = 250;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[1]) target = 100;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[2]) target = -50;
+            if (eventSystem.currentSelectedGameObject == settingsTab1Objects[3]) target = -200;
             
             settingsTabArrow.DOAnchorPosY(target, arrowSpeed)
                 .SetUpdate(true)
@@ -413,6 +441,20 @@ public class UIManager : MonoBehaviour
         {
             SoundManager.instance.ChangeMusicVolume(slider[2].value);
             SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
+        }
+
+        public void changeSlowMo()
+        {
+            if (settingsTab1Objects[3].GetComponent<Toggle>().isOn)
+            {
+                PlayerPrefs.SetInt("slowMo",1);
+                PlayerManager.instance.slowMo = true;
+            }
+            else
+            {
+                PlayerPrefs.SetInt("slowMo",0);
+                PlayerManager.instance.slowMo = false;
+            }
         }
     #endregion
 

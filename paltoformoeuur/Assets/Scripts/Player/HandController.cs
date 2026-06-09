@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -11,8 +10,7 @@ public class HandController : PlayerController
 
     [Header("Refs")]
         [SerializeField] public Animator handAnimator;
-
-
+    
     private float dashSpeed;
     private float dashDuration;
     private float dashCooldown;
@@ -22,7 +20,7 @@ public class HandController : PlayerController
     public bool accroche;
     private Crochet currentCrochet;
     private int direction = 1;
-
+    
     public override void Init(PlayerData data)
     {
         if (data is HandData handData)
@@ -31,6 +29,7 @@ public class HandController : PlayerController
             dashDuration = handData.dashDuration;
             dashCooldown = handData.dashCooldown;
             recallSpeed = handData.recallSpeed;
+            gameObject.SetActive(false);
         }
     }
 
@@ -149,11 +148,6 @@ public class HandController : PlayerController
     {
         canDash = true;
     }
-
-    private void OnDisable()
-    {
-        bodyScript.bodyAnimator.SetBool("IsArmless",false);
-    }
     
     public override void Die()
     {
@@ -197,6 +191,7 @@ public class HandController : PlayerController
     public override void Decroche()
     {
         handAnimator.SetBool("IsBalancing", false);
+        handAnimator.SetBool("IsAccroche", false);
         gameObject.transform.parent = null;
         gameObject.transform.eulerAngles = Vector3.zero;
         elementRigidbody.simulated = true;

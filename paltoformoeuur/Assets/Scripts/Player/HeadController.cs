@@ -17,6 +17,7 @@ public class HeadController : PlayerController
         if (data is HeadData headData)
         {
             recallSpeed = headData.recallSpeed;
+            gameObject.SetActive(false);
         }
     }
 
@@ -71,7 +72,6 @@ public class HeadController : PlayerController
                     DisableElement();
                     PlayerManager.instance.headOnBody = true;
                     PlayerManager.instance.flameHead.SetActive(false);
-                    PlayerManager.instance.flame.SetActive(true);
                     PlayerManager.instance.StartCoroutine(doLatter());
                     isRecalling = false;
                     gameObject.SetActive(false);
@@ -86,11 +86,6 @@ public class HeadController : PlayerController
     {
         yield return new WaitForSeconds(0.5f);
         bodyScript.canThrowHead = false;
-    }
-
-    private void OnDisable()
-    {
-        bodyScript.bodyAnimator.SetBool("IsHeadless",false);
     }
 
     public override void Die()

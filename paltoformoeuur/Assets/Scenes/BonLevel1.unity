@@ -13556,6 +13556,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 533047115932145220, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: rollingHead
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 533047115932145220, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
+      propertyPath: ambientSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 023207672e8d10340bbda9f0137867dd, type: 3}
     - target: {fileID: 6401497175502737231, guid: e060af6010e2ea942800e301b46e0f3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

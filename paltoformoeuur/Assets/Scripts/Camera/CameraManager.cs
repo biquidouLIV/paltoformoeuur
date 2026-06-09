@@ -105,6 +105,7 @@ public class CameraManager : MonoBehaviour
     {
         DOTween.To(() => cinemachinePositionComposer.TargetOffset, x => cinemachinePositionComposer.TargetOffset = x, defaultTargetOffset, 1);
         cinemachinePositionComposer.Lookahead.Enabled = true;
+        cinemachinePositionComposer.TargetOffset = targetOffset;
     }
     
     public IEnumerator CameraOnRespawn()

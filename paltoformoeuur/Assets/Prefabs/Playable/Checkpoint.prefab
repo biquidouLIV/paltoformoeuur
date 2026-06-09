@@ -234,6 +234,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2544213880201840055, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
+      propertyPath: m_Intensity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3634672901258561433, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
       propertyPath: m_Name
       value: FlameCheckpoint
@@ -243,7 +247,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3672125453634566875, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f6884b0ca8e0a41b6af231093733d3, type: 3}

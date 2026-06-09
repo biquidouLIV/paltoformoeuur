@@ -28,9 +28,8 @@ public class CameraManager : MonoBehaviour
     public float animatiqueCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
-    private Vector3 targetOffset;
+    [SerializeField] private Vector3 targetOffset;
     
-    private Vector3 defaultTargetOffset;
     private float defaultLookAheadTime;
     
     private void Awake()
@@ -42,7 +41,6 @@ public class CameraManager : MonoBehaviour
      {
         cinemachine = GetComponent<CinemachineCamera>();
         cinemachinePositionComposer = GetComponent<CinemachinePositionComposer>();
-        defaultTargetOffset = cinemachinePositionComposer.TargetOffset;
         defaultLookAheadTime = cinemachinePositionComposer.Lookahead.Time;
         
         body = PlayerManager.instance.bodyController;
@@ -103,7 +101,6 @@ public class CameraManager : MonoBehaviour
     
     public void CameraOnRecallHead()
     {
-        DOTween.To(() => cinemachinePositionComposer.TargetOffset, x => cinemachinePositionComposer.TargetOffset = x, defaultTargetOffset, 1);
         cinemachinePositionComposer.Lookahead.Enabled = true;
         cinemachinePositionComposer.TargetOffset = targetOffset;
     }

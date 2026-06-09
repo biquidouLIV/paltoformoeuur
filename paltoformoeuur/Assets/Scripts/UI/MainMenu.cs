@@ -151,7 +151,7 @@ public class MainMenu : MonoBehaviour
                     defaultMainMenuSelected.GetComponent<CanvasGroup>().interactable = true;
                 }));
                     
-            header.DOAnchorPos(new Vector2(0, (-150)), 0.2f)
+            header.DOAnchorPos(new Vector2(450, (-550)), 0.2f)
                 .SetUpdate(true)
                 .OnComplete((() =>
                 {
@@ -176,7 +176,7 @@ public class MainMenu : MonoBehaviour
         }
         private void HidePauseMenu()
         {
-            header.DOAnchorPos(new Vector2(0, 200), 0.2f)
+            header.DOAnchorPos(new Vector2(-1000, (-550)), 0.2f)
                 .SetUpdate(true);
                         
                 for (int i = 0; i < buttons.Length; i++)
@@ -185,7 +185,7 @@ public class MainMenu : MonoBehaviour
                         .SetUpdate(true);
                 }
         
-                selectionArrow.DOSizeDelta(new Vector2(5000, 200f), 0.3f)
+                selectionArrow.DOSizeDelta(new Vector2(7000, 200f), 0.3f)
                     .SetUpdate(true);
             }
         private void MoveSelectionArrow()

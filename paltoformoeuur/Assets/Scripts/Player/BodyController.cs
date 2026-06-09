@@ -247,7 +247,7 @@ public class BodyController : PlayerController
     public IEnumerator Fall()
     {
         rotation = Vector2.right;
-        SpawnHead();
+        SpawnHead(true,500);
         CameraManager.instance.HeadZoom();
         yield return new WaitForSeconds(delayZoomHead);
         CameraManager.instance.UnZoom();
@@ -362,7 +362,7 @@ public class BodyController : PlayerController
         }
     }
     
-    private void SpawnHead()
+    private void SpawnHead(bool chuteEvent = false, int forceIfChuteEvent = 500)
     {
         bodyAnimator.SetBool("IsHeadless", true);
         head.SetActive(true);
@@ -370,8 +370,16 @@ public class BodyController : PlayerController
         colliderWithoutHead.enabled = true;
         headController.elementRigidbody.simulated = true;
         head.layer = 7;
+
+        if (!chuteEvent)
+        {
+            headController.elementRigidbody.AddForce(rotation * launchForce);
+        }
+        else if (chuteEvent)
+        {
+            headController.elementRigidbody.AddForce(rotation * forceIfChuteEvent);
+        }
         
-        headController.elementRigidbody.AddForce(rotation * launchForce);
         rotation = Vector2.zero;
         
         PlayerManager.instance.EnableHead();

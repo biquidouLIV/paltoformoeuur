@@ -3915,7 +3915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutoText
-  distanceToSee: 10
+  playerPart: 1
+  distanceToSee: 5
 --- !u!1001 &138288314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9570,11 +9571,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 124.68
+      value: -71.3
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.62
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13330,6 +13331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  playerPart: 0
   distanceToSee: 10
 --- !u!1001 &460406345
 PrefabInstance:
@@ -22217,7 +22219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutoText
-  distanceToSee: 10
+  playerPart: 1
+  distanceToSee: 5
 --- !u!1001 &789373938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25717,7 +25720,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.38435745, w: 0}
+  m_margin: {x: 0, y: 0, z: -7.730671, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -25791,7 +25794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -66.41592, y: -5.4}
+  m_AnchoredPosition: {x: -70.33, y: -6.79}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &954463020
@@ -25806,7 +25809,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  distanceToSee: 10
+  playerPart: 0
+  distanceToSee: 5
 --- !u!1001 &956518880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46148,6 +46152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  playerPart: 0
   distanceToSee: 10
 --- !u!1001 &1733057146
 PrefabInstance:
@@ -53125,6 +53130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutoText
+  playerPart: 0
   distanceToSee: 10
 --- !u!4 &2074516815 stripped
 Transform:

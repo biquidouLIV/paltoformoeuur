@@ -1,8 +1,15 @@
+using System;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private int indiceCheckpoint;
+    [SerializeField] private GameObject flame;
+
+    private void Start()
+    {
+        if(flame !=null)flame.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,6 +19,7 @@ public class Checkpoint : MonoBehaviour
         }
         if (PlayerManager.instance.indiceCheckpoint < indiceCheckpoint)
         {
+            if(flame !=null)flame.SetActive(true);
             SoundManager.instance.PlaySound(SoundManager.instance.triggerCheckpoint);
             PlayerManager.instance.checkpointTransform = transform.position;
             PlayerManager.instance.indiceCheckpoint = indiceCheckpoint;

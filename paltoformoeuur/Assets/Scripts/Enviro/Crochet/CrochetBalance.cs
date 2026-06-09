@@ -104,10 +104,16 @@ public class CrochetBalance : Crochet
 
     private IEnumerator ChangeSide(float time, bool left)
     {
+        StartCoroutine(ChangeSideSound(time, left));
         yield return new WaitForSeconds(time - 0.3f);
         if(PlayerManager.instance.bodyController.accroche) PlayerManager.instance.bodyController.bodyAnimator.SetTrigger("ChangeBalancingSide");
         if(PlayerManager.instance.handController.accroche) PlayerManager.instance.handController.handAnimator.SetTrigger("ChangeBalancingSide");
+        
+    }
 
+    private IEnumerator ChangeSideSound(float time, bool left)
+    {
+        yield return new WaitForSeconds(time - 0.65f);
         if (left)
         {
             SoundManager.instance.PlaySound(SoundManager.instance.crochetGauche);

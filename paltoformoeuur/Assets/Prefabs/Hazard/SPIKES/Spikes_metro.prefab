@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 872880872606218616}
   - component: {fileID: 6164615766553575847}
   - component: {fileID: 3030678209154185990}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spikes_metro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 2.83, y: 1.72}
+  m_Size: {x: 2.83, y: 1.5794151}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -143,8 +143,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.83, y: 1.72}
-    newSize: {x: 2.83, y: 1.72}
+    oldSize: {x: 2.83, y: 1.58}
+    newSize: {x: 2.83, y: 1.5794151}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0

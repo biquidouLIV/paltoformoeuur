@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+    [Header("Slow Motion")]
+    public bool slowMo;
+    public float slowMoValue;
     [Header("Pas touche GD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")]
     public BodyController bodyController;
     public HandController handController;
@@ -15,8 +18,7 @@ public class PlayerManager : MonoBehaviour
     [NonSerialized] public Vector3 headAnchorPosition;
     
     [SerializeField] public PlayerInput PlayerInput;
-
-    public GameObject flame;
+    
     public GameObject flameHead;
     
     public bool handOnBody = true;
@@ -34,12 +36,13 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        if (PlayerPrefs.GetInt("slowMo") == 1) slowMo = true;
+        else slowMo = false;
         checkpointTransform = transform.position;
         indiceCheckpoint = 0;
         handAnchorPosition = handController.gameObject.transform.localPosition;
         headAnchorPosition = headController.gameObject.transform.localPosition;
     }
-    
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -100,6 +103,13 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }*/
+    
+    public void ActiveUnactiveSlowMo(bool isSlowMo)
+    {
+        slowMo = isSlowMo;
+        if (slowMo) PlayerPrefs.SetInt("slowMo", 1);
+        else PlayerPrefs.SetInt("slowMo", 0);
+    }
 
     public void EnableHand()
     {
@@ -110,8 +120,7 @@ public class PlayerManager : MonoBehaviour
     public void EnableHead()
     {
         headOnBody = false;
-        PlayerManager.instance.flameHead.SetActive(true);
-        PlayerManager.instance.flame.SetActive(false);
+        flameHead.SetActive(true);
     }
 
     public void OnRecallHead()
@@ -140,7 +149,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void PreviousTab(InputAction.CallbackContext context)
     {
-        UIManager.instance.NextTab(context);
+        UIManager.instance.PreviousTab(context);
     }
 
     public void GoBack(InputAction.CallbackContext context)

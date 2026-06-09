@@ -52,7 +52,7 @@ public class BodyController : PlayerController
     public bool canThrowHand;
     public bool isDying;
     private SpriteRenderer sprite;
-    
+
     public override void Init(PlayerData data)
     {
         if (data is BodyData bodyData)
@@ -63,10 +63,14 @@ public class BodyController : PlayerController
             coyoteTime = bodyData.coyoteTime;
             delayZoomHead = bodyData.delayZoomHead;
             timeSinceLastJump = jumpMinimumDelay;
-            head.SetActive(false);
-            hand.SetActive(false);
             isDying = false;
             sprite = GetComponent<SpriteRenderer>();
+            canThrowHand = true;
+            canThrowHead = true;
+            isAiming = false;
+            bodyAnimator = GetComponent<Animator>();
+            bodyAnimator.SetBool("IsArmless",false);
+            bodyAnimator.SetBool("IsHeadless",false);
         }
     }
             
@@ -116,8 +120,7 @@ public class BodyController : PlayerController
     {
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
-            if(isDying)return;
-            //jumpSound.Play();
+            if(isDying) return;
             SoundManager.instance.PlaySound(SoundManager.instance.jump);
             timeSinceLastJump = 0;
             elementRigidbody.linearVelocityY = 0;
@@ -275,7 +278,7 @@ public class BodyController : PlayerController
             StartCoroutine(VelocityWhenSpawnHand());
             if(head.activeSelf) return;
             isAiming = true;
-            Time.timeScale = 0.25f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = PlayerManager.instance.slowMoValue;
             bodyAnimator.SetBool("IsAimingHead",true);
             SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.head;
@@ -285,14 +288,14 @@ public class BodyController : PlayerController
         {     
             SpawnHead();
             SoundManager.instance.PlaySound(SoundManager.instance.launch);
-            Time.timeScale = 1f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = 1f;
             isAiming = false;
             if(canThrowHead)return;
             if (head.activeSelf) return;
             canThrowHead = true;
             aimingPart = default;
         }
-        else if (context.canceled)
+        else if (context.canceled && PlayerManager.instance.slowMo)
         {
             Time.timeScale = 1f;
         }
@@ -307,7 +310,7 @@ public class BodyController : PlayerController
             StartCoroutine(VelocityWhenSpawnHand());
             if(hand.activeSelf) return;
             isAiming = true;
-            Time.timeScale = 0.25f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = PlayerManager.instance.slowMoValue;
             bodyAnimator.SetBool("IsAimingHand",true);
             SoundManager.instance.PlaySound(SoundManager.instance.aim);
             aimingPart = PlayerPart.hand;
@@ -316,14 +319,14 @@ public class BodyController : PlayerController
         {
             SpawnHand();
             SoundManager.instance.PlaySound(SoundManager.instance.launch);
-            Time.timeScale = 1f;
+            if (PlayerManager.instance.slowMo) Time.timeScale = 1f;
             isAiming = false;
-            if(canThrowHand)return;
-            if(hand.activeSelf)return;
+            if (canThrowHand) return;
+            if (hand.activeSelf) return;
             canThrowHand = true;
             aimingPart = default;
         }
-        else if (context.canceled)
+        else if (context.canceled && PlayerManager.instance.slowMo)
         {
             Time.timeScale = 1f;
         }
@@ -413,8 +416,9 @@ public class BodyController : PlayerController
     
     public override void Accroche(CrochetBalance crochet)
     {
-
+        isAiming = false;
         bodyAnimator.SetBool("IsWalking", false);
+        bodyAnimator.SetBool("IsAiming", false);
         bodyAnimator.SetBool("IsFalling", false);
         bodyAnimator.SetBool("IsBalancing", true);
         accroche = true;

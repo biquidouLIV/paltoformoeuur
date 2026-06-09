@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7209757175736522679}
   - component: {fileID: -7954686333201304079}
   - component: {fileID: -2102936532331555223}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: moisissure_spritesheet_final_V1_022
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Moisissure
   ralentissement: 10
-  ralentissementInstantane: 2
+  ralentissementInstantane: 1
 --- !u!61 &-2102936532331555223
 BoxCollider2D:
   m_ObjectHideFlags: 0

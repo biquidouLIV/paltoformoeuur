@@ -5,18 +5,37 @@ using UnityEngine;
 
 public class TutoText : MonoBehaviour
 {
+    private enum Type
+    {
+        player,
+        head,
+    }
+
+    [SerializeField] private Type playerPart = Type.player;
     [SerializeField] private float distanceToSee = 10f;
+
+    private PlayerController target;
     private TMP_Text text;
 
     private void Start()
     {
         text = GetComponent<TMP_Text>();
         text.color = new Color(255, 255, 25, 0);
+
+        switch (playerPart)
+        {
+            case(Type.player):
+                target = PlayerManager.instance.bodyController;
+                break;
+            case(Type.head):
+                target = PlayerManager.instance.headController;
+                break;
+        }
     }
 
     private void Update()
     {
-        if (Vector3.Distance(PlayerManager.instance.bodyController.transform.position, transform.position) < distanceToSee)
+        if (Vector3.Distance(target.transform.position, transform.position) < distanceToSee)
         {
             Show();
         }

@@ -3642,7 +3642,7 @@ MonoBehaviour:
   m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 1ba1d10d000000008b5ee90a69f69df3137bf5a02dc7eac8196fc515bbb04328b185854cb310362c0d81a41e3735cb4c0948964e6135091fddfeabae698fb4394bec1f759b96b1ff
+  m_ApplyToSortingLayers: 1ba1d10d000000008b5ee90a69f69df3137bf5a02dc7eac8196fc515bbb04328b185854cb310362c0d81a41e3735cb4c0948964e6135091fddfeabae698fb4394bec1f759b96b1ffafc6935a
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7875,6 +7875,10 @@ PrefabInstance:
     - target: {fileID: 6260475154895817139, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047679854187176443, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42630,7 +42634,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1965026379
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -339725859, guid: c4791eb2d19e30e4693e78dfc4bac519, type: 3}
@@ -43441,11 +43445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556278198592640035, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_SortingLayer
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2556278198592640035, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_SortingLayerID
-      value: 1283818929
+      value: 741740723
       objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
@@ -70089,7 +70093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250709955230073784, guid: 80f5fc1873b4bdf4288e581abfc112bb, type: 3}
       propertyPath: m_SortingLayer
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4250709955230073784, guid: 80f5fc1873b4bdf4288e581abfc112bb, type: 3}
       propertyPath: m_SortingLayerID
@@ -81585,11 +81589,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556278198592640035, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_SortingLayer
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2556278198592640035, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_SortingLayerID
-      value: 1283818929
+      value: 741740723
       objectReference: {fileID: 0}
     - target: {fileID: 2814017697645673123, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_Name
@@ -81649,6 +81653,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3445280501816471197, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311674152255581046, guid: f64f0c8812e4cf64e9f889660f665014, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -3760,7 +3760,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Appuyer LT pour Lancer la Tete
+  m_text: Press LT to Throw your Head
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9571,11 +9571,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -71.3
+      value: 277.5
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.9
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4225828230949415905, guid: 4ffbb410423ba754197902c8c8d5f668, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13176,7 +13176,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Appuyer RT pour Lancer le Bras
+  m_text: 'Press RT to Throw your Arm
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21973,7 +21975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Appuyer LB pour Rappeler la Tete
+  m_text: Press LB to Recall your Head
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -25563,7 +25565,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Utiliser le Stick Gauche pour D\xE9placer\nAppuyer A pour Sauter"
+  m_text: 'Use the Left Stick to Move
+
+    Press A to Jump'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -45907,7 +45911,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Appuyer RB pour Rappeler le Bras
+  m_text: Press RB to Recall your Arm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52816,7 +52820,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Appuyer A pour Dash avec le Bras
+  m_text: Press A to Dash with your Arm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52956,7 +52960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 279.92874, y: 0.25185752}
+  m_AnchoredPosition: {x: 290.56, y: -9.78}
   m_SizeDelta: {x: 9.808, y: 3.2786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2074419880
@@ -52971,7 +52975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ecc2766a9cd094596b23f66c5905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutoText
-  playerPart: 0
+  playerPart: 1
   distanceToSee: 10
 --- !u!4 &2074516815 stripped
 Transform:

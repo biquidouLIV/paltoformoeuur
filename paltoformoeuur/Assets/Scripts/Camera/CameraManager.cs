@@ -7,25 +7,12 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
 
     private Vector2 defaultOffset;
-    
     
     [SerializeField] private CameraData data;
     [SerializeField] private Ease horizontalEase;
     [SerializeField] private Ease verticalEase;
-    
     
     private CinemachineCamera cinemachine;
     private CinemachinePositionComposer cinemachinePositionComposer;
@@ -46,6 +33,11 @@ public class CameraManager : MonoBehaviour
     private Vector3 defaultTargetOffset;
     private float defaultLookAheadTime;
     
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(this);
+    }
      private void Start()
      {
         cinemachine = GetComponent<CinemachineCamera>();
@@ -74,6 +66,7 @@ public class CameraManager : MonoBehaviour
             case PlayerPart.body:
                 targetFOV = bodyCameraFOV;
                 targetPart = body;
+                cinemachinePositionComposer.TargetOffset = targetOffset;
                 break;
             case PlayerPart.head:
                 targetFOV = headCameraFOV;
@@ -119,6 +112,15 @@ public class CameraManager : MonoBehaviour
         cinemachinePositionComposer.Lookahead.Time = 0;
         yield return new WaitForSeconds(3);
         cinemachinePositionComposer.Lookahead.Time = defaultLookAheadTime;
+    }
+
+    public void ChangeOffset(int i)
+    {
+        targetOffset = new(0, i, 0);
+        if (PlayerManager.instance.headOnBody)
+        {
+            cinemachinePositionComposer.TargetOffset = targetOffset;
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6d06d8984c53da54ca71425f8a84d8c8
+guid: 9b36bd47c15a61041b84f91b8b513f6b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -110,57 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hook_base
+      name: ASSETS_ELLIOT_FORET_2_0
       rect:
         serializedVersion: 2
-        x: 215
-        y: 637
-        width: 132
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7ae8f9fa74b2654cbd2e72cab381222
-      internalID: 252157994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Checkpoint_goop
-      rect:
-        serializedVersion: 2
-        x: 445
-        y: 539
-        width: 86
-        height: 169
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7a4e5aaa578cd1489406561e3edb8f6
-      internalID: -158216485
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Checkpoint_manhole
-      rect:
-        serializedVersion: 2
-        x: 669
-        y: 572
+        x: 2343
+        y: 788
         width: 144
-        height: 144
+        height: 402
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +125,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5b46ea3b74c23b4a91426439f46c5f6
-      internalID: -1269685553
+      spriteID: 68359927bde5fa845ac480f0bd28a2d5
+      internalID: 563353215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inflammable_mold
+      name: ASSETS_ELLIOT_FORET_2_1
       rect:
         serializedVersion: 2
-        x: 893
-        y: 409
-        width: 166
-        height: 285
+        x: 2671
+        y: 55
+        width: 1028
+        height: 1918
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 542, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987036e1ed1cf844c82f70489444415e
+      internalID: -1067105906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ASSETS_ELLIOT_FORET_2_2
+      rect:
+        serializedVersion: 2
+        x: 3709
+        y: 261
+        width: 5
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,42 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 790c48ef0fa26dc42ba7ef470cf1341a
-      internalID: 140526857
+      spriteID: 24044ac545f902d42b7fa428fc9e0693
+      internalID: 183453435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hook_tip
+      name: ASSETS_ELLIOT_FORET_2_3
       rect:
         serializedVersion: 2
-        x: 252
-        y: 421
-        width: 59
-        height: 189
-      alignment: 9
-      pivot: {x: 0.4943144, y: 0.8806171}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f3963887c07cec499ec4e2a19093451
-      internalID: -2033500963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Assets_Restinpieces_metro_01_5
-      rect:
-        serializedVersion: 2
-        x: 1059
-        y: 494
-        width: 4
-        height: 22
+        x: 2863
+        y: 45
+        width: 21
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,30 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46067d54aa689c846b63a4c60f678536
-      internalID: -1358087392
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Checkpoint_Metro
-      rect:
-        serializedVersion: 2
-        x: 441
-        y: 370
-        width: 109
-        height: 102
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6831d2ac4526ad459124f8d79e219c5
-      internalID: -1942960877
+      spriteID: 3045ecd553a1038479b9ab2f3cc07e5b
+      internalID: -718094438
       vertices: []
       indices: 
       edges: []
@@ -267,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a04f8e7adfa87724ca8fbaaaa5f97b54
+    spriteID: fb81f60e183e7164f8d5eb9888715a0d
     internalID: 0
     vertices: []
     indices: 
@@ -279,13 +213,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Assets_Restinpieces_metro_01_5: -1358087392
-      Checkpoint_Metro: -1942960877
-      Checkpoint_goop: -158216485
-      Checkpoint_manhole: -1269685553
-      Hook_base: 252157994
-      Hook_tip: -2033500963
-      Inflammable_mold: 140526857
+      ASSETS_ELLIOT_FORET_2_0: 563353215
+      ASSETS_ELLIOT_FORET_2_1: -1067105906
+      ASSETS_ELLIOT_FORET_2_2: 183453435
+      ASSETS_ELLIOT_FORET_2_3: -718094438
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

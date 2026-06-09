@@ -393,7 +393,11 @@ public class BodyController : PlayerController
     public void Respawn()
     {
         StartCoroutine(CameraManager.instance.CameraOnRespawn());
+        PlayerManager.instance.flame.SetActive(false);
+        PlayerManager.instance.flameHead.SetActive(false);
         transform.position = PlayerManager.instance.checkpointTransform;
+        PlayerManager.instance.flame.SetActive(true);
+        PlayerManager.instance.flameHead.SetActive(true);
         SoundManager.instance.PlaySound(SoundManager.instance.respawnCheckpoint);
         
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)

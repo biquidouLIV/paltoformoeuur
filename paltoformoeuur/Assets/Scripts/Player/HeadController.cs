@@ -64,7 +64,6 @@ public class HeadController : PlayerController
         }
 
         audio.Stop();
-        Debug.Log("stop");
         isRecalling = true;
         CameraManager.instance.ChangeTarget(PlayerPart.body);
         elementRigidbody.angularDamping = initialAngularDamping;
@@ -115,7 +114,6 @@ public class HeadController : PlayerController
         {
             if (audio.isPlaying) return;
             audio.Play();
-            Debug.Log("play");
         }
     }
 }

@@ -5,15 +5,11 @@ public class Animatique : MonoBehaviour
 {
     private void Start()
     {
-        CameraManager.instance.ChangeTargetAnimatique();
+        StartCoroutine(TransitionManager.instance.TransitionOpen());
     }
 
     public void EndAnimatique()
     {
-        if (SceneManager.GetActiveScene().buildIndex + 1 > SceneManager.sceneCount)
-        {
-            UIManager.instance.LoadScene(0);
-        }
-        UIManager.instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        TransitionManager.instance.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
     }
 }

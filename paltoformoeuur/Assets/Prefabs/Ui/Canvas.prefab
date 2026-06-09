@@ -2899,6 +2899,7 @@ GameObject:
   - component: {fileID: 7795005320594701846}
   - component: {fileID: 1390846863827442161}
   - component: {fileID: 5709177258050006516}
+  - component: {fileID: 5063246314887167003}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3057,6 +3058,18 @@ MonoBehaviour:
   - {fileID: 36396548530783395}
   - {fileID: 2231772904136823743}
   - {fileID: 1282674731771917336}
+--- !u!114 &5063246314887167003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4938187692499657133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b59285ac8089448aa053e5bc439212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransitionManager
   transitionScreen: {fileID: 1670787953790476381}
 --- !u!1 &4983913769973101470
 GameObject:

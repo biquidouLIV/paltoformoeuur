@@ -1,10 +1,8 @@
-using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
 using UnityEngine.UI;
 
@@ -54,9 +52,6 @@ public class UIManager : MonoBehaviour
         [SerializeField] private RectTransform controller;
         [SerializeField] private Image[] lines;
         [SerializeField] private TMP_Text[] texts;
-        
-    [Header("transition")]
-        [SerializeField] private RectTransform transitionScreen;
     
     private float actualTimeScale;
     private Menu menu;
@@ -73,13 +68,12 @@ public class UIManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        pauseMenu.gameObject.SetActive(false);
+        pauseMenu.gameObject.SetActive(true);
         eventSystem = EventSystem.current;
         currentSelectedButton = defaultPauseSelected;
         PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
         ChangeMenu(Menu.noMenu);
-        transitionScreen.gameObject.SetActive(true);
-        StartCoroutine(TransitionOpen());
+        TransitionOpen();
     }
     private void Update()
     {
@@ -95,22 +89,17 @@ public class UIManager : MonoBehaviour
         currentSelectedButton = eventSystem.currentSelectedGameObject;
 
     }
-    private IEnumerator TransitionOpen()
+
+    private void TransitionOpen()
     {
-        yield return new WaitForSeconds(0.5f);
-        transitionScreen.localPosition = new Vector3(0, 0, 0);
-        transitionScreen.DOLocalMove(new Vector3(-1920, 0, 0), 1).SetUpdate(true);
+        StartCoroutine(TransitionManager.instance.TransitionOpen());
     }
+
     public void LoadScene(int scene)
     {
-        transitionScreen.localPosition = new Vector3(1920, 0, 0);
-        transitionScreen.DOLocalMove(new Vector3(0, 0, 0), 1)
-            .SetUpdate(true)
-            .OnComplete((() =>
-            {
-                SceneManager.LoadScene(scene);
-            }));
+        TransitionManager.instance.LoadScene(scene);
     }
+    
     private void ChangeMenu(Menu newMenu)
     {
         switch (newMenu)

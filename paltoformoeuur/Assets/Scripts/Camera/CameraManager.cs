@@ -30,18 +30,19 @@ public class CameraManager : MonoBehaviour
     private CinemachineCamera cinemachine;
     private CinemachinePositionComposer cinemachinePositionComposer;
     
-    private HeadController head; 
+    private HeadController head;
     private BodyController body;
+    public GameObject animatique;
     private PlayerController targetPart;
     
     private float bodyCameraFOV;
     private float headCameraFOV ;
     private float zoomHeadCameraFOV ;
+    public float animatiqueCameraFOV ;
     private float FOVTransitionDuration;
     private float targetFOV;
     private Vector3 targetOffset;
-
-
+    
     private Vector3 defaultTargetOffset;
     private float defaultLookAheadTime;
     
@@ -67,6 +68,7 @@ public class CameraManager : MonoBehaviour
      
     public void ChangeTarget(PlayerPart part)
     {
+        cinemachine.Follow = head.transform;
         switch (part)
         {
             case PlayerPart.body:
@@ -83,6 +85,15 @@ public class CameraManager : MonoBehaviour
         DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, FOVTransitionDuration);
     }
 
+    public void ChangeTargetAnimatique()
+    {
+        targetFOV = animatiqueCameraFOV;
+        cinemachinePositionComposer.TargetOffset = Vector3.zero;
+        cinemachinePositionComposer.Lookahead.Enabled = false;
+        cinemachine.Follow = animatique.transform;
+        DOTween.To(() => cinemachine.Lens.OrthographicSize, x => cinemachine.Lens.OrthographicSize = x, targetFOV, 0.1f);
+    }
+    
     public void HeadZoom()
     {
         cinemachinePositionComposer.TargetOffset = Vector3.zero;

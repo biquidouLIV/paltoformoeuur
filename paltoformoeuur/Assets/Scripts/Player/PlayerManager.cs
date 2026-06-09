@@ -18,7 +18,8 @@ public class PlayerManager : MonoBehaviour
     [NonSerialized] public Vector3 headAnchorPosition;
     
     [SerializeField] public PlayerInput PlayerInput;
-    
+
+    public GameObject flame;
     public GameObject flameHead;
     
     public bool handOnBody = true;
@@ -87,22 +88,6 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }
-
-    /*public void OnSprint(InputAction.CallbackContext context)
-    {
-        switch (controlledPart)
-        {
-            case PlayerPart.body:
-                bodyController.OnSprint(context);
-                break;
-            case PlayerPart.hand:
-                handController.OnSprint(context);
-                break;
-            default:
-                Debug.LogError("No controlled part");
-                break;
-        }
-    }*/
     
     public void ActiveUnactiveSlowMo(bool isSlowMo)
     {

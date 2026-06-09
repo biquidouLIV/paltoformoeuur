@@ -393,7 +393,9 @@ public class BodyController : PlayerController
     public void Respawn()
     {
         StartCoroutine(CameraManager.instance.CameraOnRespawn());
+        StartCoroutine(FlameOnDeath());
         transform.position = PlayerManager.instance.checkpointTransform;
+        
         SoundManager.instance.PlaySound(SoundManager.instance.respawnCheckpoint);
         
         if (Vector3.Distance(transform.position, head.transform.position) > distanceVisionTete)
@@ -407,6 +409,15 @@ public class BodyController : PlayerController
         }
     }
 
+    private IEnumerator FlameOnDeath()
+    {
+        PlayerManager.instance.flame.SetActive(false);
+        PlayerManager.instance.flameHead.SetActive(false);
+        yield return null;
+        PlayerManager.instance.flame.SetActive(true);
+        PlayerManager.instance.flameHead.SetActive(true);
+    }
+    
     //event dans l'anim de respawn
     public void ActiveInput()
     {

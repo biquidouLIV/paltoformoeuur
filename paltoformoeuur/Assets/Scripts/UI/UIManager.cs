@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        pauseMenu.gameObject.SetActive(true);
+        pauseMenu.gameObject.SetActive(false);
         eventSystem = EventSystem.current;
         currentSelectedButton = defaultPauseSelected;
         PlayerManager.instance.PlayerInput.SwitchCurrentActionMap("Player");
@@ -445,6 +445,7 @@ public class UIManager : MonoBehaviour
 
         public void changeSlowMo()
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.UIButtonHover);
             if (settingsTab1Objects[3].GetComponent<Toggle>().isOn)
             {
                 PlayerPrefs.SetInt("slowMo",1);

@@ -43,6 +43,7 @@ public class PlayerManager : MonoBehaviour
         indiceCheckpoint = 0;
         handAnchorPosition = handController.gameObject.transform.localPosition;
         headAnchorPosition = headController.gameObject.transform.localPosition;
+        flameHead.SetActive(false);
     }
 
     public void OnMove(InputAction.CallbackContext context)

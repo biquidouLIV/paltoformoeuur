@@ -43,7 +43,7 @@ public class Arrow : MonoBehaviour
         }
         
         distance.x = Mathf.Abs(head.transform.position.x - targetPart.transform.position.x);
-        distance.y = Mathf.Abs(head.transform.position.y - targetPart.transform.position.y);
+        distance.y = Mathf.Abs(head.transform.position.y - targetPart.transform.position.y - CameraManager.instance.targetOffset.y);
         
         Move();
         Rotate();
@@ -56,12 +56,12 @@ public class Arrow : MonoBehaviour
         if (!PlayerManager.instance.headOnBody)
         {
             destination.x = Mathf.Clamp(destination.x, head.transform.position.x - arrowDistance.x, head.transform.position.x + arrowDistance.x);
-            destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistance.y, head.transform.position.y + arrowDistance.y);
+            destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistance.y - 1, head.transform.position.y + arrowDistance.y + 1);
         }
         else
         {
             destination.x = Mathf.Clamp(destination.x, head.transform.position.x - arrowDistanceOnPlayer.x, head.transform.position.x + arrowDistanceOnPlayer.x);
-            destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistanceOnPlayer.y, head.transform.position.y + arrowDistanceOnPlayer.y);
+            destination.y = Mathf.Clamp(destination.y, head.transform.position.y - arrowDistanceOnPlayer.y + CameraManager.instance.targetOffset.y, head.transform.position.y + arrowDistanceOnPlayer.y + CameraManager.instance.targetOffset.y);
         }
         arrow.transform.DOMove(destination, 0.1f);
     }
@@ -83,8 +83,10 @@ public class Arrow : MonoBehaviour
         {
             if (distance.x >= maxDistance.x || distance.y >= maxDistance.y)
             {
-                scale.x = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
-                scale.y = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
+                scale.x = 1;
+                scale.y = 1;
+                //scale.x = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
+                //scale.y = Mathf.Clamp(1 / (distance.magnitude - 15) * scaleMultiplicator, minScale, maxScale);
             }
             else scale = Vector3.zero;
         }
@@ -92,8 +94,10 @@ public class Arrow : MonoBehaviour
         {
             if (PlayerManager.instance.controlledPart == PlayerPart.hand && distance.x >= maxDistanceOnPlayer.x || distance.y >= maxDistanceOnPlayer.y)
             {
-                scale.x = Mathf.Clamp(1 / (distance.magnitude - 13.5f) * scaleMultiplicator, minScale, maxScale); 
-                scale.y = Mathf.Clamp(1 / (distance.magnitude - 13.5f) * scaleMultiplicator, minScale, maxScale);
+                scale.x = 1;
+                scale.y = 1;
+                //scale.x = Mathf.Clamp(1 / (distance.magnitude - 13.5f) * scaleMultiplicator, minScale, maxScale); 
+                //scale.y = Mathf.Clamp(1 / (distance.magnitude - 13.5f) * scaleMultiplicator, minScale, maxScale);
             }
             else scale = Vector3.zero;
         }

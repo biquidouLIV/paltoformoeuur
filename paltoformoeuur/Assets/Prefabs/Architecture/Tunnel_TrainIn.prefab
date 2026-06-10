@@ -103,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5452847800040325957}
   - component: {fileID: 3331371957135087819}
+  - component: {fileID: 6369271155255622820}
   m_Layer: 0
   m_Name: Spot Light 2D
   m_TagString: Untagged
@@ -177,6 +178,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &6369271155255622820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735034347827839731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f303bbd9097f8e4cbaaef545ed78d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightVariation
+  delay: 0.3
+  minIntensityValue: 1
+  maxIntensityValue: 2
 --- !u!1 &8911898576512742985
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8016390106604259830}
   - component: {fileID: 6756435147410174903}
+  - component: {fileID: 4959111258101781595}
   m_Layer: 0
   m_Name: Spot Light 2D_001
   m_TagString: Untagged
@@ -261,3 +278,18 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &4959111258101781595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911898576512742985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f303bbd9097f8e4cbaaef545ed78d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightVariation
+  delay: 0.3
+  minIntensityValue: 1
+  maxIntensityValue: 2

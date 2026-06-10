@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5587349092839969670}
   - component: {fileID: 3328289642680938557}
+  - component: {fileID: 4041205770691778076}
   m_Layer: 0
   m_Name: Spot Light 2D
   m_TagString: Untagged
@@ -84,6 +85,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &4041205770691778076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334413995368730720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f303bbd9097f8e4cbaaef545ed78d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightVariation
+  delay: 0.3
+  minIntensityValue: 0.5
+  maxIntensityValue: 1
 --- !u!1 &7893232556721625499
 GameObject:
   m_ObjectHideFlags: 0

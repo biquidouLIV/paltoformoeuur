@@ -13,6 +13,7 @@ public class TutoText : MonoBehaviour
 
     [SerializeField] private Type playerPart = Type.player;
     [SerializeField] private float distanceToSee = 10f;
+    private Color invisible = new (255,255,255,0);
 
     private PlayerController target;
     private TMP_Text text;
@@ -20,7 +21,7 @@ public class TutoText : MonoBehaviour
     private void Start()
     {
         text = GetComponent<TMP_Text>();
-        text.color = new Color(255, 255, 25, 0);
+        text.color = invisible;
 
         switch (playerPart)
         {
@@ -47,8 +48,8 @@ public class TutoText : MonoBehaviour
 
     private void Hide()
     {
-        if(text.color == new Color(255,255,255,0)) return;
-        DOTween.To(() => text.color, x => text.color = x, new Color(255,255,255,0), 1);
+        if(text.color == invisible) return;
+        DOTween.To(() => text.color, x => text.color = x, invisible, 1);
     }
 
     private void Show()

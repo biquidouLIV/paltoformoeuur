@@ -121,6 +121,7 @@ public class BodyController : PlayerController
         if ((bufferingTimeCounter > 0f && coyoteTimeCounter > 0.0f && timeSinceLastJump > jumpMinimumDelay && !hitBumper) || (bufferingTimeCounter > 0f && CheckIfGrounded()))
         {
             if(isDying) return;
+			Debug.Log("Jump");
             SoundManager.instance.PlaySound(SoundManager.instance.jump);
             timeSinceLastJump = 0;
             elementRigidbody.linearVelocityY = 0;
@@ -230,7 +231,7 @@ public class BodyController : PlayerController
     private bool CheckIfGrounded()
     {
         bool onFloor = Physics2D.BoxCast(transform.position + (Vector3)jumpRaycastOrigin, jumpRaycastSize, 0f,
-            Vector2.down, 1, ~LayerMask.GetMask("Player", "Checkpoint", "Bumper", "Ignore Raycast"));
+            Vector2.down, 1, ~LayerMask.GetMask("Player", "Checkpoint", "Bumper", "Hand", "Body"));
         if (onFloor)
         {
             hitBumper = false;
@@ -240,7 +241,7 @@ public class BodyController : PlayerController
 
     private void CheckDistanceWithGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~LayerMask.GetMask("Player", "Checkpoint","Bumper", "Hand", "Body"));
         distanceWithGround = hit.distance;
     }
 

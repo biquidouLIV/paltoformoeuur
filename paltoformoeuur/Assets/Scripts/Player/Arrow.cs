@@ -21,10 +21,11 @@ public class Arrow : MonoBehaviour
     private HandController hand;
     private HeadController head;
     private PlayerController targetPart;
+    private Vector3 rotation = new ();
 
     private void Start()
     {
-        arrow.transform.localScale = new Vector3(0, 0, 0);
+        arrow.transform.localScale = Vector3.zero;
         body = PlayerManager.instance.bodyController;
         head = PlayerManager.instance.headController;
         hand = PlayerManager.instance.handController;
@@ -68,12 +69,14 @@ public class Arrow : MonoBehaviour
 
     private void Rotate()
     {
-        float rotation = Mathf.Acos((targetPart.transform.position.x - head.transform.position.x)/Vector3.Distance(targetPart.transform.position,head.transform.position)) * 180/Mathf.PI;
+        float rotationY = Mathf.Acos((targetPart.transform.position.x - head.transform.position.x)/Vector3.Distance(targetPart.transform.position,head.transform.position)) * 180/Mathf.PI;
         if (targetPart.transform.position.y < head.transform.position.y)
         {
-            rotation = -rotation;
+            rotationY = -rotationY;
         }
-        arrow.transform.DORotate(new Vector3(0, 0, rotation), 0.1f);  
+
+        rotation.y = rotationY;
+        arrow.transform.DORotate(rotation, 0.1f);  
     }
 
 
